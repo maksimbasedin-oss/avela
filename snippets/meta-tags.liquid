@@ -80,7 +80,12 @@
   {{ display_title }}
   {%- if current_tags %} – {{ current_tags | join: ', ' }}{% endif -%}
   {%- if current_page != 1 %} – {{ current_page }}{% endif -%}
-  {%- unless display_title contains brand_name or page_title contains brand_name or page_title contains shop.name %} – {{ brand_name }}{% endunless -%}
+  {%- liquid
+    assign title_check = display_title | downcase
+    assign brand_check = brand_name | downcase
+    assign shop_check = shop.name | downcase
+  -%}
+  {%- unless title_check contains brand_check or title_check contains shop_check or title_check contains 'avela' %} – {{ brand_name }}{% endunless -%}
 </title>
 
 <link
