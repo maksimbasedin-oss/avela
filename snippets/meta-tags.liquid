@@ -53,6 +53,11 @@
       if filter.active_values.size > 0
         assign faceted_index = true
       endif
+      for value in filter.values
+        if value.active
+          assign faceted_index = true
+        endif
+      endfor
       if filter.type == 'price_range'
         if filter.min_value.value != blank or filter.max_value.value != blank
           assign faceted_index = true
