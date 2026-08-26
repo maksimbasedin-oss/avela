@@ -54,6 +54,18 @@
     assign display_title = 'Tüm Tesettür Ürünler | Avela'
     assign og_title = display_title
     assign og_description = 'Avela tesettür elbise, takım, tunik, pantolon ve dış giyim modellerinin tamamı.'
+  elsif request.page_type == 'policy'
+    if request.path contains 'privacy'
+      assign display_title = 'Gizlilik Politikası | Avela'
+      assign og_description = 'Avela kişisel verileri nasıl işler? Gizlilik politikasını okuyun.'
+    elsif request.path contains 'terms'
+      assign display_title = 'Kullanım Koşulları | Avela'
+      assign og_description = 'avelatr.com alışveriş ve site kullanım koşullarını inceleyin.'
+    else
+      assign display_title = 'Teslimat ve İade | Avela'
+      assign og_description = 'Avela kargo süresi, ücretsiz kargo eşiği ve 14 gün iade koşullarını inceleyin.'
+    endif
+    assign og_title = display_title
   endif
 
   if request.page_type == 'product'
@@ -80,7 +92,7 @@
 
 {%- liquid
   assign robots_noindex = false
-  if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password'
+  if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password' or request.page_type == 'policy'
     assign robots_noindex = true
   endif
   if request.page_type == 'product' and product.metafields.seo.hidden.value == 1
