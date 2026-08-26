@@ -59,3 +59,48 @@
     ]
   }
 </script>
+
+{%- if request.page_type == 'collection' and collection.handle != 'frontpage' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ page_title | default: collection.title | json }},
+      "description": {{ page_description | default: collection.description | strip_html | json }},
+      "url": {{ canonical_url | json }}
+      {%- if collection.image != blank -%}
+        ,"image": {{ collection.image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+    }
+  </script>
+{%- elsif request.page_type == 'list-collections' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Tesettür Koleksiyonları | Avela",
+      "description": "Tesettür elbise, takım, tunik, pantolon, dış giyim ve şal koleksiyonlarını inceleyin.",
+      "url": {{ canonical_url | json }}
+    }
+  </script>
+{%- elsif request.page_type == 'blog' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": {{ page_title | json }},
+      "description": {{ page_description | default: '' | json }},
+      "url": {{ canonical_url | json }}
+    }
+  </script>
+{%- elsif request.page_type == 'page' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": {{ page_title | json }},
+      "description": {{ page_description | default: '' | json }},
+      "url": {{ canonical_url | json }}
+    }
+  </script>
+{%- endif -%}

@@ -1,7 +1,13 @@
 {% liquid
   assign current_variant = product.selected_or_first_available_variant
   assign product_form_id = 'ProductForm-' | append: section.id
-  assign parent_collection = product.collections.first
+  assign parent_collection = nil
+  for product_collection in product.collections
+    if product_collection.handle != 'frontpage'
+      assign parent_collection = product_collection
+      break
+    endif
+  endfor
 %}
 
 <product-info class="product" data-section="{{ section.id }}">
