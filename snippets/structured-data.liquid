@@ -40,8 +40,10 @@
           {{ social_facebook | json }},
           {{ social_tiktok | json }}
         ]
-        {%- if settings.logo -%}
+        {%- if settings.logo != blank -%}
           ,"logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
+        {%- else -%}
+          ,"logo": {{ 'logo-avela.png' | asset_url | prepend: 'https:' | json }}
         {%- endif -%}
       },
       {
