@@ -33,16 +33,48 @@
     when 'My Store', 'Mağazam'
       assign display_title = brand_name
   endcase
-  assign home_seo_title = 'Avela | Tesettür Elbise, Takım ve Dış Giyim'
-  assign home_seo_description = 'Tesettür elbise, takım, tunik, pantolon ve dış giyim. Bedenini seç, sepete at. Ücretsiz kargo Avela’da.'
+  assign home_seo_title = settings.seo_home_title | default: 'Avela | Tesettür Elbise, Takım ve Dış Giyim'
+  assign home_seo_description = settings.seo_home_description | default: 'Tesettür elbise, takım, tunik, pantolon ve dış giyim. Bedenini seç, sepete at. Ücretsiz kargo Avela’da.'
   assign og_title = display_title
+  assign seo_canonical = canonical_url
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: home_seo_description
+  assign faceted_index = false
+
+  if request.page_type == 'collection'
+    if current_tags != blank
+      assign faceted_index = true
+    endif
+    if collection.sort_by != blank and collection.sort_by != collection.default_sort_by
+      assign faceted_index = true
+    endif
+    for filter in collection.filters
+      if filter.active_values.size > 0
+        assign faceted_index = true
+      endif
+      if filter.type == 'price_range'
+        if filter.min_value.value != blank or filter.max_value.value != blank
+          assign faceted_index = true
+        endif
+      endif
+    endfor
+    if faceted_index
+      assign seo_canonical = request.origin | append: collection.url
+    endif
+  endif
+
+  if request.page_type == 'blog' and current_tags != blank
+    assign faceted_index = true
+    assign seo_canonical = request.origin | append: blog.url
+  endif
 
   if request.page_type == 'index'
-    assign display_title = home_seo_title
-    assign og_title = home_seo_title
+    assign raw_home_title = page_title | default: '' | downcase
+    if page_title == blank or page_title == shop.name or page_title == brand_name or raw_home_title == 'avelatr.com' or raw_home_title contains 'myshopify.com' or page_title == shop.domain
+      assign display_title = home_seo_title
+      assign og_title = home_seo_title
+    endif
     if page_description == blank or page_description == shop.name or page_description == brand_name
       assign og_description = home_seo_description
     endif
@@ -87,7 +119,7 @@
 
 {%- liquid
   assign robots_noindex = false
-  if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password' or request.page_type == 'policy'
+  if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password' or request.page_type == 'policy' or faceted_index
     assign robots_noindex = true
   endif
   if request.page_type == 'product' and product.metafields.seo.hidden.value == 1
@@ -110,10 +142,15 @@
 <link rel="icon" href="{{ 'favicon-48.png' | asset_url }}" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}" sizes="180x180">
 
+{%- if current_page != 1 -%}
+  {%- assign og_title = display_title | append: ' – ' | append: current_page -%}
+{%- endif -%}
+
 <title>
   {{ display_title }}
-  {%- if current_tags %} – {{ current_tags | join: ', ' }}{% endif -%}
-  {%- if current_page != 1 %} – {{ current_page }}{% endif -%}
+  {%- unless faceted_index -%}
+    {%- if current_page != 1 %} – {{ current_page }}{% endif -%}
+  {%- endunless -%}
   {%- liquid
     assign title_check = display_title | downcase
     assign brand_check = brand_name | downcase
@@ -126,7 +163,7 @@
 
 <link
   rel="canonical"
-  href="{{ canonical_url }}"
+  href="{{ seo_canonical }}"
 >
 
 <meta
@@ -140,7 +177,7 @@
 >
 <meta
   property="og:url"
-  content="{{ og_url }}"
+  content="{{ seo_canonical | default: og_url }}"
 >
 <meta
   property="og:title"

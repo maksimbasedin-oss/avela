@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "404": "Bulunamadı",
@@ -35,6 +44,7 @@
     "text": "Metin",
     "theme": "Tema",
     "trust": "Güven",
+    "seo": "SEO",
     "typography": "Tipografi",
     "announcement": "Duyuru çubuğu",
     "ticker": "Kayar yazı",
@@ -123,7 +133,9 @@
     "trust_support": "Destek metni",
     "whatsapp_url": "WhatsApp bağlantısı",
     "youtube": "YouTube",
-    "fallback_handle": "Yedek koleksiyon handle"
+    "fallback_handle": "Yedek koleksiyon handle",
+    "seo_home_title": "Ana sayfa başlık yedeği",
+    "seo_home_description": "Ana sayfa açıklama yedeği"
   },
   "info": {
     "social_empty": "Instagram, Facebook ve TikTok boşsa avelatr hesabı kullanılır. Pinterest ve YouTube boşsa gizlenir.",
@@ -134,7 +146,10 @@
     "contact_email": "Sitede görünen destek e-postası. Boşsa info@avelatr.com kullanılır.",
     "whatsapp_url": "Tam URL, örneğin https://wa.me/90XXXXXXXXXX",
     "free_shipping_threshold": "Yalnızca sayı, örneğin 2000. Para birimi mağazadan gelir.",
-    "customer_account_menu": "İçerik → Menüler altında Siparişler ve Profil bağlantılarını düzenleyin. Varsayılan: customer-account-main-menu."
+    "customer_account_menu": "İçerik → Menüler altında Siparişler ve Profil bağlantılarını düzenleyin. Varsayılan: customer-account-main-menu.",
+    "seo_native": "Admin’deki sayfa başlığı ve açıklama doluysa onlar kullanılır. Bu alanlar yalnızca boş veya mağaza adı olduğunda devreye girer.",
+    "seo_home_title": "Online mağaza tercihlerindeki başlık boşsa veya yalnızca mağaza adıysa kullanılır.",
+    "seo_home_description": "Online mağaza tercihlerindeki açıklama boşsa kullanılır."
   },
   "options": {
     "alignment": {

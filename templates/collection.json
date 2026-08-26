@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -5,7 +14,7 @@
       "settings": {
         "products_per_page": 12,
         "columns": "3",
-        "seo_content": "<p>Stokta olan parçalar listelenir. Kalıp, kumaş ve beden bilgisi her ürün sayfasındadır.</p>"
+        "seo_content": ""
       },
       "blocks": {
         "faq-size": {
@@ -21,27 +30,9 @@
             "question": "Kargo ve iade nasıl işler?",
             "answer": "<p>Güncel kargo eşiği ve iade süresi Theme Settings ve Kargo ve iade sayfasından yönetilir.</p>"
           }
-        },
-        "rel-new": {
-          "type": "related",
-          "settings": {
-            "collection": "693360558418"
-          }
-        },
-        "rel-best": {
-          "type": "related",
-          "settings": {
-            "collection": "693360787794"
-          }
-        },
-        "rel-dress": {
-          "type": "related",
-          "settings": {
-            "collection": "693360591186"
-          }
         }
       },
-      "block_order": ["faq-size", "faq-ship", "rel-new", "rel-best", "rel-dress"]
+      "block_order": ["faq-size", "faq-ship"]
     }
   },
   "order": ["main"]

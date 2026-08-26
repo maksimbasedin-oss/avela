@@ -295,6 +295,12 @@
           </ul>
 
           {% if paginate.pages > 1 %}
+            {% if paginate.previous %}
+              <link rel="prev" href="{{ paginate.previous.url }}">
+            {% endif %}
+            {% if paginate.next %}
+              <link rel="next" href="{{ paginate.next.url }}">
+            {% endif %}
             <nav class="collection__pagination" aria-label="{{ 'collections.pagination' | t }}">
               {{ paginate | default_pagination }}
             </nav>

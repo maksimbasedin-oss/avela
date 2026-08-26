@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "accessibility": {
     "skip_to_content": "İçeriğe geç",
@@ -13,8 +22,10 @@
   },
   "404": {
     "title": "404",
-    "not_found": "Sayfa bulunamadı.",
-    "back_to_shopping": "Alışverişe dön"
+    "not_found": "Aradığınız sayfayı bulamadık.",
+    "back_home": "Ana sayfaya dön",
+    "back_to_shopping": "Tesettür elbiseleri keşfet",
+    "search_hint": "Koleksiyon veya ürün ara"
   },
   "blog": {
     "article_comments": "Yorumlar",

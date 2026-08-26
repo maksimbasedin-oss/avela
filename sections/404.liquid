@@ -1,9 +1,31 @@
 <div class="error-page">
   <p class="eyebrow">{{ '404.title' | t }}</p>
   <h1>{{ '404.not_found' | t }}</h1>
-  {% assign shop_label = '404.back_to_shopping' | t %}
-  {% render 'button', label: shop_label, url: routes.all_products_collection_url, style: 'primary' %}
+
+  <div class="error-page__actions">
+    {% assign home_label = '404.back_home' | t %}
+    {% render 'button', label: home_label, url: routes.root_url, style: 'primary' %}
+    {% if collections['tesettur-elbise'] != blank %}
+      {% assign shop_label = '404.back_to_shopping' | t %}
+      {% render 'button', label: shop_label, url: collections['tesettur-elbise'].url, style: 'secondary' %}
+    {% endif %}
+  </div>
+
   {% render 'predictive-search', input_id: 'ErrorSearch', results_id: 'PredictiveResults404' %}
+
+  <nav class="error-page__links" aria-label="{{ 'collections.title' | t }}">
+    <ul class="error-page__list" role="list">
+      {% assign error_handles = 'yeni-sezon,cok-satanlar,tesettur-elbise,tesettur-takim,tesettur-tunik,dis-giyim,sal-esarp' | split: ',' %}
+      {% for handle in error_handles %}
+        {% assign error_collection = collections[handle] %}
+        {% if error_collection != blank and error_collection.products_count > 0 %}
+          <li>
+            <a href="{{ error_collection.url }}">{% render 'turkish-upper', text: error_collection.title, handle: error_collection.handle %}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
 </div>
 
 {% stylesheet %}
@@ -13,7 +35,33 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-md);
-    max-width: 32rem;
+    max-width: 36rem;
+  }
+
+  .error-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .error-page__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .error-page__list a {
+    display: inline-flex;
+    min-height: var(--touch-min);
+    align-items: center;
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
   }
 {% endstylesheet %}
 

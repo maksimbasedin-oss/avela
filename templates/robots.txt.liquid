@@ -1,0 +1,19 @@
+{% for group in robots.default_groups %}
+  {{- group.user_agent }}
+
+  {% for rule in group.rules %}
+    {{- rule }}
+  {% endfor %}
+
+  {%- if group.user_agent.value == '*' -%}
+    {{ 'Disallow: /search' }}
+    {{ 'Disallow: /search?' }}
+    {{ 'Disallow: /*?*filter.v.' }}
+    {{ 'Disallow: /*?*filter.p.' }}
+    {{ 'Disallow: /*?*sort_by=' }}
+  {%- endif -%}
+
+  {%- if group.sitemap != blank -%}
+    {{ group.sitemap }}
+  {%- endif -%}
+{% endfor %}
