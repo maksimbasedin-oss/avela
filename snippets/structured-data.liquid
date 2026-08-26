@@ -3,9 +3,9 @@
 {% enddoc %}
 
 {% liquid
-  assign brand_name = shop.name
-  if shop.name == 'My Store' or shop.name == 'Mağazam' or shop.name == blank
-    assign brand_name = 'general.brand' | t
+  assign brand_name = 'general.brand' | t
+  if brand_name == blank or brand_name == 'general.brand'
+    assign brand_name = shop.name
   endif
   assign organization = brand_name | json
   assign site_url = shop.url

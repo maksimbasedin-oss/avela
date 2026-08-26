@@ -8,9 +8,9 @@
 <meta name="theme-color" content="{{ settings.background_color }}">
 
 {%- liquid
-  assign brand_name = shop.name
-  if shop.name == 'My Store' or shop.name == 'Mağazam' or shop.name == blank
-    assign brand_name = 'general.brand' | t
+  assign brand_name = 'general.brand' | t
+  if brand_name == blank or brand_name == 'general.brand'
+    assign brand_name = shop.name
   endif
   assign display_title = page_title | default: brand_name
   case display_title
@@ -68,7 +68,24 @@
   endif
 -%}
 
-{%- if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password' -%}
+{%- liquid
+  assign robots_noindex = false
+  if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password'
+    assign robots_noindex = true
+  endif
+  if request.page_type == 'product' and product.metafields.seo.hidden.value == 1
+    assign robots_noindex = true
+  elsif request.page_type == 'collection' and collection.metafields.seo.hidden.value == 1
+    assign robots_noindex = true
+  elsif request.page_type == 'page' and page.metafields.seo.hidden.value == 1
+    assign robots_noindex = true
+  elsif request.page_type == 'article' and article.metafields.seo.hidden.value == 1
+    assign robots_noindex = true
+  elsif request.page_type == 'blog' and blog.metafields.seo.hidden.value == 1
+    assign robots_noindex = true
+  endif
+-%}
+{%- if robots_noindex -%}
   <meta name="robots" content="noindex, follow">
 {%- endif -%}
 
@@ -83,9 +100,11 @@
   {%- liquid
     assign title_check = display_title | downcase
     assign brand_check = brand_name | downcase
-    assign shop_check = shop.name | downcase
   -%}
-  {%- unless title_check contains brand_check or title_check contains shop_check or title_check contains 'avela' %} – {{ brand_name }}{% endunless -%}
+  {%- if title_check contains brand_check -%}
+  {%- else -%}
+    – {{ brand_name }}
+  {%- endif -%}
 </title>
 
 <link
