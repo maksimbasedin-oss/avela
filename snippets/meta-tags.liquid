@@ -72,13 +72,8 @@
     assign og_type = 'product'
   elsif request.page_type == 'article'
     assign og_type = 'article'
-  elsif request.page_type == 'password' or request.page_type == 'policy'
-    if request.page_type == 'password'
-      assign og_url = request.origin
-    endif
-    if request.page_type == 'policy' and page_description == blank
-      assign og_description = home_seo_description
-    endif
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
   endif
 
   assign use_share_image = false
