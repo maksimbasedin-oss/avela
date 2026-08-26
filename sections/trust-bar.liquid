@@ -1,6 +1,6 @@
 {% liquid
   assign has_trust = false
-  if settings.trust_shipping != blank or settings.trust_returns != blank or settings.trust_payment != blank or settings.trust_support != blank or settings.whatsapp_url != blank or settings.free_shipping_threshold != blank
+  if settings.trust_shipping != blank or settings.trust_returns != blank or settings.trust_payment != blank or settings.trust_support != blank or settings.free_shipping_threshold != blank
     assign has_trust = true
   endif
 %}
@@ -22,11 +22,6 @@
     {% endif %}
     {% if settings.trust_support != blank %}
       <li>{% render 'turkish-upper', text: settings.trust_support %}</li>
-    {% endif %}
-    {% if settings.whatsapp_url != blank %}
-      <li>
-        <a href="{{ settings.whatsapp_url }}">{{ 'accessibility.whatsapp' | t }}</a>
-      </li>
     {% endif %}
     <li class="trust-bar__brand">
       <a class="trust-bar__brand-link" href="{{ routes.root_url }}" aria-label="{{ 'general.brand' | t }}">
