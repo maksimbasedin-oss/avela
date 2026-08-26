@@ -133,6 +133,8 @@
     assign robots_noindex = true
   elsif request.page_type == 'page' and page.metafields.seo.hidden.value == 1
     assign robots_noindex = true
+  elsif request.page_type == 'page' and page.handle == 'google4233273a4d902871'
+    assign robots_noindex = true
   elsif request.page_type == 'article' and article.metafields.seo.hidden.value == 1
     assign robots_noindex = true
   elsif request.page_type == 'blog' and blog.metafields.seo.hidden.value == 1
