@@ -1,0 +1,75 @@
+{% doc %}
+  Renders breadcrumbs and BreadcrumbList JSON-LD.
+
+  @param {string} current_title - Current page title
+  @param {string} [current_url] - Current page URL
+  @param {string} [current_handle] - Current resource handle
+  @param {string} [parent_title] - Optional parent title
+  @param {string} [parent_url] - Optional parent URL
+  @param {string} [parent_handle] - Parent resource handle
+  @example
+  {% render 'breadcrumbs', current_title: product.title, current_url: product.url %}
+{% enddoc %}
+
+{% liquid
+  assign page_url = current_url | default: request.path
+%}
+{% capture crumb_current %}
+  {% render 'storefront-title', text: current_title, handle: current_handle %}
+{% endcapture %}
+{% assign crumb_current = crumb_current | strip %}
+{% capture crumb_parent %}
+  {% render 'storefront-title', text: parent_title, handle: parent_handle %}
+{% endcapture %}
+{% assign crumb_parent = crumb_parent | strip %}
+
+<nav class="breadcrumbs" aria-label="{{ 'accessibility.breadcrumb' | t }}">
+  <ol class="breadcrumbs__list">
+    <li>
+      <a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a>
+    </li>
+    {% if crumb_parent != blank and parent_url != blank %}
+      <li>
+        <a href="{{ parent_url }}">{{ crumb_parent }}</a>
+      </li>
+    {% endif %}
+    <li>
+      <span aria-current="page">{{ crumb_current }}</span>
+    </li>
+  </ol>
+</nav>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ 'general.home' | t | json }},
+        "item": {{ request.origin | json }}
+      }
+      {%- if parent_title != blank and parent_url != blank -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ crumb_parent | json }},
+        "item": {{ request.origin | append: parent_url | json }}
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ crumb_current | json }},
+        "item": {{ request.origin | append: page_url | json }}
+      }
+      {%- else -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ crumb_current | json }},
+        "item": {{ request.origin | append: page_url | json }}
+      }
+      {%- endif -%}
+    ]
+  }
+</script>

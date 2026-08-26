@@ -1,0 +1,135 @@
+{% doc %}
+  Editorial article card.
+
+  @param {article} article - Article to render
+  @param {boolean} [featured] - Wider featured layout
+  @example
+  {% render 'article-card', article: article %}
+{% enddoc %}
+
+{% liquid
+  assign is_featured = featured | default: false
+%}
+
+<article class="article-card{% if is_featured %} article-card--feature{% endif %}">
+  <a class="article-card__media" href="{{ article.url }}">
+    {% if article.image %}
+      {% assign image_alt = article.image.alt | default: article.title %}
+      {{
+        article.image
+        | image_url: width: 900
+        | image_tag:
+          widths: '400, 600, 900',
+          sizes: '(min-width: 750px) 33vw, 100vw',
+          loading: 'lazy',
+          alt: image_alt
+      }}
+    {% endif %}
+  </a>
+  <div class="article-card__body">
+    {% assign date = article.published_at | time_tag: format: 'date' %}
+    <p class="text-caption">{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
+    {% if article.tags.size > 0 %}
+      <ul class="article-card__topics" role="list">
+        {% for tag in article.tags %}
+          {% unless tag contains '-' %}
+            <li>
+              <a class="article-card__topic" href="{{ blog.url }}/tagged/{{ tag | handleize }}">
+                {% render 'blog-topic-icon', tag: tag %}
+                <span>{% render 'turkish-upper', text: tag %}</span>
+              </a>
+            </li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <h2>
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h2>
+    {% if article.excerpt != blank %}
+      <p>{% if is_featured %}{{ article.excerpt | strip_html | truncate: 360 }}{% else %}{{ article.excerpt | strip_html | truncate: 220 }}{% endif %}</p>
+    {% endif %}
+    <a class="button button--text" href="{{ article.url }}">{{ 'blog.read' | t }}</a>
+  </div>
+</article>
+
+{% stylesheet %}
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .article-card__media {
+    display: block;
+    background: var(--color-border);
+    overflow: hidden;
+  }
+
+  .article-card__media img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .article-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .article-card__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .article-card__topic {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.75rem;
+    padding: 0 0.5rem 0 0.3rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-foreground);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .article-card__topic .blog-topic-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .article-card h2 {
+    font-size: 1.35rem;
+  }
+
+  .article-card h2 a {
+    text-decoration: none;
+  }
+
+  .article-card--feature {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .article-card--feature h2 {
+    font-size: 1.85rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .article-card--feature {
+      grid-template-columns: 1.2fr 1fr;
+      align-items: end;
+    }
+
+    .article-card--feature h2 {
+      font-size: 2.25rem;
+    }
+  }
+{% endstylesheet %}

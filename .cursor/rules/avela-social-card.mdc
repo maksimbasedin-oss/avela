@@ -1,0 +1,14 @@
+---
+description: Avela sosyal medya kartını değiştirme
+alwaysApply: true
+---
+
+# Avela sosyal medya kartı
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/6cN0TGK9/image.png
+
+Dosya: `assets/social-card.png` (640×537)
+
+Kullanıldığı yerler: `snippets/meta-tags.liquid` (`og:image`, `twitter:image` varsayılanı). Ürün, koleksiyon ve yazı sayfalarında `page_image` varsa o önceliklidir.
+
+Kullanıcı açıkça başka bir görsel vermeden bu kartı başka kaynakla, logo ile veya düz renk placeholder ile değiştirme.

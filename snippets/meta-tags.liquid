@@ -1,0 +1,190 @@
+{% doc %}
+  Renders document meta, Open Graph, canonical, and structured data.
+{% enddoc %}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="{{ settings.background_color }}">
+
+{%- liquid
+  assign brand_name = shop.name
+  if shop.name == 'My Store' or shop.name == 'Mağazam' or shop.name == blank
+    assign brand_name = 'general.brand' | t
+  endif
+  assign display_title = page_title | default: brand_name
+  case display_title
+    when 'Products', 'All products', 'Catalog'
+      assign display_title = 'search.products' | t
+    when 'News'
+      assign display_title = 'blog.news' | t
+    when 'Search'
+      assign display_title = 'search.title' | t
+    when 'Your Shopping Cart', 'Shopping Cart', 'Cart'
+      assign display_title = 'cart.title' | t
+    when 'Account'
+      assign display_title = 'customers.account' | t
+    when 'Create Account'
+      assign display_title = 'customers.register' | t
+    when 'Reset Account'
+      assign display_title = 'customers.forgot' | t
+    when 'Home', 'Home page'
+      assign display_title = 'general.home' | t
+    when 'My Store', 'Mağazam'
+      assign display_title = brand_name
+  endcase
+  assign og_title = display_title
+  assign og_url = canonical_url | default: request.origin
+  assign og_type = 'website'
+  assign og_description = page_description | default: shop.description | default: brand_name
+
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
+  endif
+
+  assign use_share_image = false
+  if request.page_type == 'product' or request.page_type == 'article' or request.page_type == 'collection'
+    if page_image != blank
+      assign share_image = page_image
+      assign use_share_image = true
+    endif
+  endif
+-%}
+
+{%- if request.page_type == 'search' or request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'password' -%}
+  <meta name="robots" content="noindex, follow">
+{%- endif -%}
+
+<link rel="icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" sizes="32x32">
+<link rel="icon" href="{{ 'favicon-48.png' | asset_url }}" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}" sizes="180x180">
+
+<title>
+  {{ display_title }}
+  {%- if current_tags %} – {{ current_tags | join: ', ' }}{% endif -%}
+  {%- if current_page != 1 %} – {{ current_page }}{% endif -%}
+  {%- unless display_title contains brand_name or page_title contains brand_name or page_title contains shop.name %} – {{ brand_name }}{% endunless -%}
+</title>
+
+<link
+  rel="canonical"
+  href="{{ canonical_url }}"
+>
+
+{% if page_description %}
+  <meta
+    name="description"
+    content="{{ page_description | escape }}"
+  >
+{% endif %}
+
+<meta
+  property="og:site_name"
+  content="{{ brand_name | escape }}"
+>
+<meta
+  property="og:url"
+  content="{{ og_url }}"
+>
+<meta
+  property="og:title"
+  content="{{ og_title | escape }}"
+>
+<meta
+  property="og:type"
+  content="{{ og_type }}"
+>
+<meta
+  property="og:description"
+  content="{{ og_description | escape }}"
+>
+<meta
+  property="og:locale"
+  content="{{ request.locale.iso_code | replace: '-', '_' }}"
+>
+
+{%- if use_share_image -%}
+  <meta
+    property="og:image"
+    content="https:{{ share_image | image_url: width: 1200 }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ share_image | image_url: width: 1200 }}"
+  >
+  <meta
+    property="og:image:width"
+    content="1200"
+  >
+  <meta
+    property="og:image:height"
+    content="{{ share_image.height | times: 1200 | divided_by: share_image.width }}"
+  >
+  <meta
+    name="twitter:image"
+    content="https:{{ share_image | image_url: width: 1200 }}"
+  >
+{%- else -%}
+  <meta
+    property="og:image"
+    content="https:{{ 'social-card.png' | asset_url }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ 'social-card.png' | asset_url }}"
+  >
+  <meta
+    property="og:image:width"
+    content="640"
+  >
+  <meta
+    property="og:image:height"
+    content="537"
+  >
+  <meta
+    property="og:image:alt"
+    content="{{ brand_name | escape }}"
+  >
+  <meta
+    name="twitter:image"
+    content="https:{{ 'social-card.png' | asset_url }}"
+  >
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <script type="application/ld+json">
+    {{ product | structured_data }}
+  </script>
+
+  <meta
+    property="og:price:amount"
+    content="{{ product.price | money_without_currency | strip_html }}"
+  >
+  <meta
+    property="og:price:currency"
+    content="TRY"
+  >
+{%- endif -%}
+
+{%- if request.page_type == 'article' -%}
+  <script type="application/ld+json">
+    {{ article | structured_data }}
+  </script>
+{%- endif -%}
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+>
+<meta
+  name="twitter:title"
+  content="{{ og_title | escape }}"
+>
+<meta
+  name="twitter:description"
+  content="{{ og_description | escape }}"
+>

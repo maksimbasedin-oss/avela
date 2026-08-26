@@ -1,0 +1,29 @@
+<div class="customers customers--wide">
+  <p><a href="{{ routes.account_url }}">{{ 'customers.orders' | t }}</a></p>
+  <h1>{{ 'customers.order' | t: name: order.name }}</h1>
+  <p>
+    {{ 'customers.order_date' | t }}: {{ order.created_at | date: '%d.%m.%Y' }}
+    · {{ 'customers.order_payment' | t }}: {{ order.financial_status_label }}
+    · {{ 'customers.order_fulfillment' | t }}: {{ order.fulfillment_status_label }}
+  </p>
+
+  <ul class="customers__orders" role="list">
+    {% for line_item in order.line_items %}
+      <li>
+        <a href="{{ line_item.product.url }}">{{ line_item.title }}</a>
+        <span>{{ line_item.quantity }}</span>
+        <span>{% render 'money', amount: line_item.final_line_price %}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p>{{ 'cart.subtotal' | t }}: {% render 'money', amount: order.total_price %}</p>
+
+  {% if order.shipping_address %}
+    <div>
+      <h2>{{ 'customers.order_fulfillment' | t }}</h2>
+      {{ order.shipping_address | format_address }}
+    </div>
+  {% endif %}
+</div>
+

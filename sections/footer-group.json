@@ -1,0 +1,41 @@
+{
+  "type": "footer",
+  "name": "t:general.footer",
+  "sections": {
+    "social-strip": {
+      "type": "social-strip",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "brand_text": "Her Kumaşta Bir Hikâye, Her Hikâyede Sen",
+        "contact_heading": "Bize ulaşın",
+        "contact_email": "info@avelatr.com",
+        "show_contact": true,
+        "show_trust": true,
+        "show_payment_icons": true
+      },
+      "blocks": {
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Alışveriş",
+            "menu": "footer-shop",
+            "use_shop_fallback": true
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Yardım",
+            "menu": "footer",
+            "use_shop_fallback": false
+          }
+        }
+      },
+      "block_order": ["shop", "help"]
+    }
+  },
+  "order": ["social-strip", "footer"]
+}

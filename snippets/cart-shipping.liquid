@@ -1,0 +1,49 @@
+{% doc %}
+  Free shipping remaining message and progress.
+
+  @example
+  {% render 'cart-shipping' %}
+{% enddoc %}
+
+{% liquid
+  assign threshold = settings.free_shipping_threshold | plus: 0 | times: 100
+  assign remaining = threshold | minus: cart.total_price
+  assign progress = 0
+  if threshold > 0
+    assign progress = cart.total_price | times: 100.0 | divided_by: threshold | at_most: 100
+  endif
+%}
+{% capture remaining_money %}{% render 'money', amount: remaining %}{% endcapture %}
+
+{% if settings.free_shipping_threshold != blank and cart.item_count > 0 %}
+  <div class="cart-shipping">
+    {% if threshold > cart.total_price %}
+      <p class="text-caption">{{ 'cart.shipping_remaining_html' | t: amount: remaining_money }}</p>
+    {% else %}
+      <p class="text-caption">{{ 'cart.shipping_unlocked' | t }}</p>
+    {% endif %}
+    <div class="cart-shipping__track" aria-hidden="true">
+      <span class="cart-shipping__bar" style="--progress: {{ progress }}%"></span>
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .cart-shipping {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .cart-shipping__track {
+    height: 0.25rem;
+    background: var(--color-border);
+  }
+
+  .cart-shipping__bar {
+    display: block;
+    width: var(--progress);
+    height: 100%;
+    background: var(--color-accent);
+  }
+{% endstylesheet %}

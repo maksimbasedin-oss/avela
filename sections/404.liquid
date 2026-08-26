@@ -1,0 +1,25 @@
+<div class="error-page">
+  <p class="eyebrow">{{ '404.title' | t }}</p>
+  <h1>{{ '404.not_found' | t }}</h1>
+  {% assign shop_label = '404.back_to_shopping' | t %}
+  {% render 'button', label: shop_label, url: routes.all_products_collection_url, style: 'primary' %}
+  {% render 'predictive-search', input_id: 'ErrorSearch', results_id: 'PredictiveResults404' %}
+</div>
+
+{% stylesheet %}
+  .error-page {
+    padding-block: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    max-width: 32rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.404",
+  "settings": []
+}
+{% endschema %}

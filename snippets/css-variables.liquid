@@ -1,0 +1,46 @@
+{% doc %}
+  Outputs theme design tokens from Theme Settings.
+{% enddoc %}
+
+{% style %}
+  {{ settings.type_heading_font | font_face: font_display: 'swap' }}
+  {{ settings.type_heading_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+  {{ settings.type_primary_font | font_face: font_display: 'swap' }}
+  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+
+  :root {
+    --font-heading--family: {{ settings.type_heading_font.family }}, Didot, Georgia, 'Times New Roman', {{ settings.type_heading_font.fallback_families }};
+    --font-heading--style: {{ settings.type_heading_font.style }};
+    --font-heading--weight: {{ settings.type_heading_font.weight }};
+    --font-primary--family: {{ settings.type_primary_font.family }}, 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, sans-serif;
+    --font-primary--style: {{ settings.type_primary_font.style }};
+    --font-primary--weight: {{ settings.type_primary_font.weight }};
+    --page-width: {{ settings.max_page_width }};
+    --page-margin: {{ settings.min_page_margin }}px;
+    --color-background: {{ settings.background_color }};
+    --color-foreground: {{ settings.foreground_color }};
+    --color-secondary: {{ settings.secondary_color }};
+    --color-accent: {{ settings.accent_color }};
+    --color-button: {{ settings.button_color }};
+    --color-button-label: {{ settings.button_label_color }};
+    --color-sale: {{ settings.sale_color }};
+    --color-border: {{ settings.border_color }};
+    --color-surface: {{ settings.surface_color | default: '#F2F2F2' }};
+    --radius-button: {{ settings.button_corner_radius }}px;
+    --radius-card: {{ settings.card_corner_radius }}px;
+    --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+    --space-2xs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --touch-min: 2.75rem;
+    --icon-stroke-width: 1.25;
+    --header-height: 4.25rem;
+    --sticky-offset: 4.25rem;
+  }
+{% endstyle %}

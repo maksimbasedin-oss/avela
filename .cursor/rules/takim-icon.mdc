@@ -1,0 +1,14 @@
+---
+description: Tesettür takım kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Tesettür takım ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/gGcG2w8/image.png
+
+Dosya: `assets/icon-cat-takim.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `takim`), `snippets/blog-topic-icon.liquid` (tag `takim`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

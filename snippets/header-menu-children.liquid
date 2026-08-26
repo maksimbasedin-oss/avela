@@ -1,0 +1,54 @@
+{% doc %}
+  Renders distinct child links for a header menu item.
+
+  @param {link} link - Parent menu link
+  @param {boolean} [is_mega] - Use mega-menu columns
+  @param {string} [all_url] - Parent collection URL, rendered last on the right
+  @param {boolean} [all_current] - Whether the parent collection is current
+  @example
+  {% render 'header-menu-children', link: link, is_mega: true %}
+{% enddoc %}
+
+<ul class="header-menu__children{% if is_mega %} header-menu__children--mega{% endif %}">
+  {% for child in link.links %}
+    {% if child.url == link.url %}
+      {% continue %}
+    {% endif %}
+    {% liquid
+      assign grandchild_count = 0
+      for grandchild in child.links
+        if grandchild.url != child.url
+          assign grandchild_count = grandchild_count | plus: 1
+        endif
+      endfor
+    %}
+    <li>
+      <a href="{{ child.url }}">{% render 'turkish-upper', text: child.title %}</a>
+      {% if grandchild_count > 0 %}
+        <ul class="header-menu__grandchildren">
+          {% for grandchild in child.links %}
+            {% if grandchild.url == child.url %}
+              {% continue %}
+            {% endif %}
+            <li>
+              <a href="{{ grandchild.url }}">{% render 'turkish-upper', text: grandchild.title %}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+  {% if all_url != blank %}
+    <li class="header-menu__item-all">
+      <a
+        class="header-menu__all"
+        href="{{ all_url }}"
+        {% if all_current %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{ 'general.view_collection' | t }}
+      </a>
+    </li>
+  {% endif %}
+</ul>

@@ -1,0 +1,62 @@
+{% doc %}
+  Renders the Shopify account avatar and in-page account sheet.
+
+  @param {string} [menu] - Customer account menu handle
+  @example
+  {% render 'account-button', menu: 'customer-account-main-menu' %}
+{% enddoc %}
+
+{% liquid
+  assign account_menu = menu | default: 'customer-account-main-menu'
+%}
+
+<shopify-account class="account-button" menu="{{ account_menu | escape }}" aria-label="{{ 'accessibility.account' | t }}">
+  <span slot="signed-out-avatar">
+    <span class="visually-hidden">{{ 'accessibility.account' | t }}</span>
+    {{ 'icon-account.svg' | inline_asset_content }}
+  </span>
+</shopify-account>
+
+{% stylesheet %}
+  .account-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    color: var(--color-foreground);
+    --shopify-account-color-accent: var(--color-accent);
+    --shopify-account-color-background: var(--color-background);
+    --shopify-account-color-text: var(--color-foreground);
+    --shopify-account-color-border: var(--color-border);
+    --shopify-account-color-text-subdued: var(--color-secondary);
+    --shopify-account-font-body: var(--font-primary--family);
+    --shopify-account-font-heading: var(--font-heading--family);
+    --shopify-account-radius-base: var(--radius-card);
+    --shopify-account-radius-button: var(--radius-button);
+    --shopify-account-radius-input: var(--style-border-radius-inputs);
+    --shopify-account-signed-in-avatar-size: 1.4rem;
+    --shopify-account-signed-in-avatar-color-background: var(--color-foreground);
+    --shopify-account-signed-in-avatar-color-text: var(--color-background);
+    --shopify-account-avatar-size: var(--touch-min);
+  }
+
+  .account-button::part(signed-out-avatar) {
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .account-button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    display: block;
+  }
+{% endstylesheet %}

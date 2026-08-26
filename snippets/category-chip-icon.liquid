@@ -1,0 +1,60 @@
+{% doc %}
+  Avela kategori ikonu. Sade çizgi, her kategori için ayrı form.
+
+  @param {string} icon - Icon key or auto
+  @param {string} [handle] - Collection handle used when icon is auto
+{% enddoc %}
+
+{% liquid
+  assign key = icon | default: 'auto'
+  if key == 'auto' or key == blank
+    assign handle_key = handle | default: '' | downcase
+    if handle_key contains 'elbise' and handle_key contains 'abiye'
+      assign key = 'abiye'
+    elsif handle_key contains 'abiye'
+      assign key = 'abiye'
+    elsif handle_key contains 'elbise'
+      assign key = 'elbise'
+    elsif handle_key contains 'takim'
+      assign key = 'takim'
+    elsif handle_key contains 'tunik'
+      assign key = 'tunik'
+    elsif handle_key contains 'pantolon'
+      assign key = 'pantolon'
+    elsif handle_key contains 'sal' or handle_key contains 'esarp'
+      assign key = 'sal'
+    elsif handle_key contains 'indirim' or handle_key contains 'sale'
+      assign key = 'indirim'
+    elsif handle_key contains 'dis-giyim' or handle_key contains 'ferace' or handle_key contains 'kap' or handle_key contains 'pardesu' or handle_key contains 'trenckot' or handle_key contains 'kaban'
+      assign key = 'dis-giyim'
+    else
+      assign key = 'collection'
+    endif
+  endif
+%}
+
+<span class="category-chips__icon" aria-hidden="true">
+  {%- case key -%}
+    {%- when 'elbise' -%}
+      <img src="{{ 'icon-cat-elbise.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'takim' -%}
+      <img src="{{ 'icon-cat-takim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'tunik' -%}
+      <img src="{{ 'icon-cat-tunik.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'pantolon' -%}
+      <img src="{{ 'icon-cat-pantolon.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'dis-giyim' -%}
+      <img src="{{ 'icon-cat-dis-giyim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'sal' -%}
+      <img src="{{ 'icon-cat-sal.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'abiye' -%}
+      <img src="{{ 'icon-cat-abiye.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'indirim' -%}
+      <img src="{{ 'icon-cat-indirim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- else -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8.2 4.4h7.6L17.4 8.2l.6 12.2H6l.6-12.2z"/>
+        <path d="M9.6 8.2h4.8"/>
+      </svg>
+  {%- endcase -%}
+</span>

@@ -1,0 +1,123 @@
+<div class="page-main">
+  {% render 'breadcrumbs', current_title: page.title, current_url: page.url %}
+
+  <h1>{{ page.title }}</h1>
+
+  {% if page.content != blank %}
+    <div class="rte">{{ page.content }}</div>
+  {% endif %}
+
+  {% if section.settings.show_contact_form %}
+    {% form 'contact', class: 'page-main__form' %}
+      {% if form.posted_successfully? %}
+        <p>{{ 'pages.contact_success' | t }}</p>
+      {% endif %}
+      {{ form.errors | default_errors }}
+
+      <div class="field">
+        <label class="field__label" for="ContactName">{{ 'pages.contact_name' | t }}</label>
+        <input id="ContactName" class="field__input" type="text" name="contact[name]" required>
+      </div>
+      <div class="field">
+        <label class="field__label" for="ContactEmail">{{ 'pages.contact_email' | t }}</label>
+        <input id="ContactEmail" class="field__input" type="email" name="contact[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label class="field__label" for="ContactBody">{{ 'pages.contact_body' | t }}</label>
+        <textarea id="ContactBody" class="field__input" name="contact[body]" rows="6" required></textarea>
+      </div>
+      <button class="button" type="submit">{{ 'pages.contact_submit' | t }}</button>
+    {% endform %}
+
+    {% assign store_email = settings.contact_email | default: 'info@avelatr.com' %}
+    {% if store_email != blank %}
+      <p>
+        <a href="mailto:{{ store_email }}">{{ store_email }}</a>
+      </p>
+    {% endif %}
+    {% if settings.whatsapp_url != blank %}
+      <p>
+        <a href="{{ settings.whatsapp_url }}">{{ 'accessibility.whatsapp' | t }}</a>
+      </p>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .page-main {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 42rem;
+  }
+
+  .page-main .rte h2 {
+    margin: 1.75rem 0 0.65rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+  }
+
+  .page-main .rte h3 {
+    margin: 1.25rem 0 0.45rem;
+    font-size: 1rem;
+  }
+
+  .page-main .rte p,
+  .page-main .rte li {
+    color: var(--color-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  .page-main .rte ul,
+  .page-main .rte ol {
+    margin: 0.4rem 0 1rem 1.15rem;
+    padding: 0;
+  }
+
+  .page-main .rte li + li {
+    margin-top: 0.35rem;
+  }
+
+  .page-main .rte table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.85rem 0 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .page-main .rte th,
+  .page-main .rte td {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem 0.35rem 0.5rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .page-main .rte th {
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+
+  .page-main__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_contact_form",
+      "label": "t:labels.show_contact_form",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

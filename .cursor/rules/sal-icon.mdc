@@ -1,0 +1,14 @@
+---
+description: Şal ve eşarp kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Şal ve eşarp ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/HDdQG18H/image.png
+
+Dosya: `assets/icon-cat-sal.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `sal`), `snippets/blog-topic-icon.liquid` (tag `sal`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

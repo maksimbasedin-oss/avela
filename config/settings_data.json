@@ -1,0 +1,28 @@
+{
+  "current": {
+    "logo": "shopify://shop_images/avela-demo-logo.png",
+    "logo_width": 156,
+    "favicon": "shopify://shop_images/avela-demo-favicon.png",
+    "type_heading_font": "linotype_didot_n4",
+    "type_primary_font": "avenir_next_n4",
+    "background_color": "#FFFFFF",
+    "foreground_color": "#111111",
+    "secondary_color": "#6B6B6B",
+    "accent_color": "#111111",
+    "button_color": "#111111",
+    "button_label_color": "#FFFFFF",
+    "sale_color": "#111111",
+    "border_color": "#E8E8E8",
+    "surface_color": "#F2F2F2",
+    "contact_email": "info@avelatr.com",
+    "whatsapp_url": "https://wa.me/905364984727",
+    "social_instagram": "https://www.instagram.com/avelatr",
+    "social_tiktok": "https://www.tiktok.com/@avelatr",
+    "social_facebook": "https://www.facebook.com/avelatr",
+    "free_shipping_threshold": "2000",
+    "trust_shipping": "Hızlı teslimat. Güvenli ve özenli ulaşım.",
+    "trust_returns": "14 gün içinde iade. Kullanılmamış ve etiketli ürünler.",
+    "trust_payment": "Güvenli ödeme. Kredi kartı ve 3D Secure.",
+    "trust_support": "Hafta içi 09:00-18:00 destek."
+  }
+}

@@ -1,0 +1,18 @@
+{% doc %}
+  Wishlist placeholder for a future app or account feature.
+
+  @param {product} product - Product
+  @example
+  {% render 'wishlist-button', product: product %}
+{% enddoc %}
+
+<button
+  type="button"
+  class="wishlist-button"
+  data-wishlist-placeholder
+  data-product-handle="{{ product.handle }}"
+  aria-pressed="false"
+  aria-label="{{ 'products.wishlist' | t }}"
+>
+  {{ 'products.wishlist' | t }}
+</button>

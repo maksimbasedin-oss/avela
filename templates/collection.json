@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+        "products_per_page": 12,
+        "columns": "3",
+        "seo_content": "<p>Stokta olan parçalar listelenir. Kalıp, kumaş ve beden bilgisi her ürün sayfasındadır.</p>"
+      },
+      "blocks": {
+        "faq-size": {
+          "type": "faq",
+          "settings": {
+            "question": "Beden tablosu nerede?",
+            "answer": "<p>Her ürün sayfasında kalıp, boy ve beden tablosu yer alır. Modelin giydiği beden ayrıca belirtilir.</p>"
+          }
+        },
+        "faq-ship": {
+          "type": "faq",
+          "settings": {
+            "question": "Kargo ve iade nasıl işler?",
+            "answer": "<p>Güncel kargo eşiği ve iade süresi Theme Settings ve Kargo ve iade sayfasından yönetilir.</p>"
+          }
+        },
+        "rel-new": {
+          "type": "related",
+          "settings": {
+            "collection": "693360558418"
+          }
+        },
+        "rel-best": {
+          "type": "related",
+          "settings": {
+            "collection": "693360787794"
+          }
+        },
+        "rel-dress": {
+          "type": "related",
+          "settings": {
+            "collection": "693360591186"
+          }
+        }
+      },
+      "block_order": ["faq-size", "faq-ship", "rel-new", "rel-best", "rel-dress"]
+    }
+  },
+  "order": ["main"]
+}

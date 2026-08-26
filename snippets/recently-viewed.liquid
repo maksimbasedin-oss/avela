@@ -1,0 +1,114 @@
+{% doc %}
+  Saves the current product and lists recently viewed products.
+
+  @param {product} product - Current product
+  @example
+  {% render 'recently-viewed', product: product %}
+{% enddoc %}
+
+<recently-viewed
+  class="recently-viewed"
+  data-id="{{ product.id }}"
+  data-url="{{ product.url }}"
+  data-title="{{ product.title | escape }}"
+  data-image="{% if product.featured_image %}{{ product.featured_image | image_url: width: 400 }}{% endif %}"
+  data-price="{% render 'money', amount: product.price %}"
+  hidden
+>
+  <h2>{{ 'products.recently_viewed' | t }}</h2>
+  <ul class="recently-viewed__grid" data-recent-list role="list"></ul>
+</recently-viewed>
+
+{% stylesheet %}
+  .recently-viewed {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .recently-viewed__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .recently-viewed__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-decoration: none;
+  }
+
+  .recently-viewed__card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: var(--color-border);
+  }
+
+  @media screen and (min-width: 750px) {
+    .recently-viewed__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('recently-viewed')) {
+    customElements.define(
+      'recently-viewed',
+      class RecentlyViewed extends HTMLElement {
+        connectedCallback() {
+          const storageKey = 'avela-recent';
+          const current = {
+            id: this.dataset.id,
+            url: this.dataset.url,
+            title: this.dataset.title,
+            image: this.dataset.image,
+            price: this.dataset.price,
+          };
+          let items = [];
+          try {
+            items = JSON.parse(localStorage.getItem(storageKey) || '[]');
+          } catch (error) {
+            items = [];
+          }
+          items = items.filter((item) => item.id !== current.id);
+          const others = items.slice(0, 4);
+          items.unshift(current);
+          localStorage.setItem(storageKey, JSON.stringify(items.slice(0, 8)));
+          if (!others.length) return;
+          const list = this.querySelector('[data-recent-list]');
+          others.forEach((item) => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.className = 'recently-viewed__card';
+            link.href = item.url || '#';
+            if (item.image) {
+              const image = document.createElement('img');
+              image.src = item.image;
+              image.alt = item.title || '';
+              image.width = 400;
+              image.height = 533;
+              image.loading = 'lazy';
+              link.appendChild(image);
+            }
+            const title = document.createElement('span');
+            title.textContent = item.title || '';
+            const price = document.createElement('span');
+            price.className = 'text-caption';
+            price.textContent = item.price || '';
+            link.append(title, price);
+            li.appendChild(link);
+            list.appendChild(li);
+          });
+          this.hidden = false;
+        }
+      }
+    );
+  }
+{% endjavascript %}

@@ -1,0 +1,115 @@
+{% doc %}
+  Stil rehberi konu ikonu. Her konu için ayrı, özgün çizgi.
+
+  @param {string} tag - Topic tag or all
+  @example
+  {% render 'blog-topic-icon', tag: 'Bakım' %}
+{% enddoc %}
+
+{% liquid
+  assign topic_key = tag | default: 'all' | handleize
+  if topic_key == blank
+    assign topic_key = 'all'
+  endif
+%}
+
+<span class="blog-topic-icon" aria-hidden="true">
+  {%- case topic_key -%}
+    {%- when 'all', 'tumu' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.2 6.2h8.2v12.4H6.4A1.2 1.2 0 0 1 5.2 17.4z"/>
+        <path d="M13.4 6.2h5.4v11.2a1.2 1.2 0 0 1-1.2 1.2H13.4"/>
+        <path d="M7.4 9h4.2M7.4 12h4.2M7.4 15h2.6"/>
+      </svg>
+    {%- when 'abiye' -%}
+      <img src="{{ 'icon-cat-abiye.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'bakim' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.2 7.2 12 4.4l6.8 2.8"/>
+        <path d="M12 4.4v2.4"/>
+        <path d="M7.2 8.6h9.6L15.8 20H8.2z"/>
+        <path d="M10.2 13.2c0 1.2.8 2.2 1.8 2.2s1.8-1 1.8-2.2c0-1.2-1.8-2.6-1.8-2.6s-1.8 1.4-1.8 2.6z"/>
+      </svg>
+    {%- when 'beden' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="5.2" r="1.5"/>
+        <path d="M8.4 9.2 12 8l3.6 1.2 1.6 11.2H6.8z"/>
+        <path d="M8.8 13.4h6.4"/>
+        <path d="M4.4 8.2v10.8"/>
+        <path d="M3.6 8.2h1.6M3.6 12h1.6M3.6 15.8h1.6M3.6 19h1.6"/>
+      </svg>
+    {%- when 'dis-giyim' -%}
+      <img src="{{ 'icon-cat-dis-giyim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'elbise' -%}
+      <img src="{{ 'icon-cat-elbise.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'kalip' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.2 4.6h8.4l3.2 3.2v11.6H6.2z" stroke-dasharray="1.6 1.4"/>
+        <path d="M14.6 4.6v3.2h3.2"/>
+        <path d="M8.4 10.2h4.8M8.4 13.4h3.2"/>
+        <circle cx="16.2" cy="16.4" r="0.7"/>
+      </svg>
+    {%- when 'kombin' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.8 5.2h6.2L12.2 8v4.6H3.6V8z"/>
+        <path d="M4.2 12.6h7.4L10.6 20H5.2z"/>
+        <path d="M13.6 8.6h5.8l1.2 2.2v4H12.8v-4z"/>
+        <path d="M13.2 14.8h6.8L19.2 20h-5z"/>
+      </svg>
+    {%- when 'kumas' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.6 8.2c2.4-1.6 4.8-1.6 7.4 0s5 1.6 7.4 0"/>
+        <path d="M4.6 12c2.4-1.6 4.8-1.6 7.4 0s5 1.6 7.4 0"/>
+        <path d="M4.6 15.8c2.4-1.6 4.8-1.6 7.4 0s5 1.6 7.4 0"/>
+        <path d="M4.6 8.2v7.6M19.4 8.2v7.6"/>
+      </svg>
+    {%- when 'mevsim' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8.2"/>
+        <path d="M12 3.8v16.4M3.8 12h16.4"/>
+        <path d="M12 6.4 13.4 8 12 8.8 10.6 8z"/>
+        <path d="M16.8 11.2c.8 1.2.6 2.6-.4 3"/>
+        <path d="M8.4 14.8h2.2l-1 2.6"/>
+        <path d="M15.6 16.6h2.2"/>
+      </svg>
+    {%- when 'renk' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.4" y="5.2" width="5.2" height="13.6" rx="0.4"/>
+        <rect x="9.4" y="7.4" width="5.2" height="11.4" rx="0.4"/>
+        <rect x="14.4" y="4.6" width="5.2" height="14.2" rx="0.4"/>
+      </svg>
+    {%- when 'sal' -%}
+      <img src="{{ 'icon-cat-sal.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'takim' -%}
+      <img src="{{ 'icon-cat-takim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'tunik' -%}
+      <img src="{{ 'icon-cat-tunik.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'pantolon' -%}
+      <img src="{{ 'icon-cat-pantolon.png' | asset_url }}" alt="" width="24" height="24">
+    {%- else -%}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.2 6.2h8.2v12.4H6.4A1.2 1.2 0 0 1 5.2 17.4z"/>
+        <path d="M13.4 6.2h5.4v11.2a1.2 1.2 0 0 1-1.2 1.2H13.4"/>
+      </svg>
+  {%- endcase -%}
+</span>
+
+{% stylesheet %}
+  .blog-topic-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+  }
+
+  .blog-topic-icon svg,
+  .blog-topic-icon img {
+    display: block;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+{% endstylesheet %}

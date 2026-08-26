@@ -1,0 +1,158 @@
+{% paginate search.results by 24 %}
+  <div class="search-page">
+    {% assign search_title = 'search.title' | t %}
+    {% render 'breadcrumbs', current_title: search_title, current_url: routes.search_url %}
+
+    <header class="search-page__header">
+      <h1>{% render 'turkish-upper', text: search_title %}</h1>
+      {% render 'predictive-search',
+        input_id: 'SearchPage',
+        results_id: 'PredictiveResultsPage',
+        terms: search.terms
+      %}
+    </header>
+
+    {% if search.performed %}
+      {% if search.results_count == 0 %}
+        <p>{{ 'search.no_results_html' | t: terms: search.terms }}</p>
+      {% else %}
+        <div class="search-page__toolbar">
+          <p class="text-caption">
+            {{ 'search.results_for_html' | t: terms: search.terms, count: search.results_count }}
+          </p>
+          {% if search.sort_options.size > 0 %}
+            <div class="field">
+              <label class="field__label" for="SearchSort">{{ 'collections.sort' | t }}</label>
+              <select id="SearchSort" class="field__input" data-search-sort>
+                {% for option in search.sort_options %}
+                  <option
+                    value="{{ option.value }}"
+                    {% if option.value == search.sort_by %}
+                      selected
+                    {% endif %}
+                  >
+                    {% render 'sort-label', value: option.value, fallback: option.name %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+        </div>
+
+        <ul class="search-page__grid" role="list">
+          {% for result in search.results %}
+            <li>
+              {% if result.object_type == 'product' %}
+                {% render 'product-card', product: result, loading: 'lazy' %}
+              {% else %}
+                <a class="search-page__other" href="{{ result.url }}">
+                  {% assign featured_image = result.featured_image | default: result.image %}
+                  {% if featured_image %}
+                    {{
+                      featured_image
+                      | image_url: width: 720
+                      | image_tag:
+                        widths: '360, 540, 720',
+                        sizes: '(min-width: 750px) 25vw, 50vw',
+                        loading: 'lazy',
+                        alt: result.title
+                    }}
+                  {% endif %}
+                  <span>{{ result.title }}</span>
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+
+        {% if paginate.pages > 1 %}
+          <nav class="search-page__pagination" aria-label="{{ 'collections.pagination' | t }}">
+            {{ paginate | default_pagination }}
+          </nav>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </div>
+{% endpaginate %}
+
+{% stylesheet %}
+  .search-page {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .search-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 40rem;
+  }
+
+  .search-page__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--space-md);
+  }
+
+  .search-page__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .search-page__other {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-decoration: none;
+  }
+
+  .search-page__other img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .search-page__pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .search-page__pagination a,
+  .search-page__pagination span {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .search-page__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('[data-search-sort]').forEach((select) => {
+    select.addEventListener('change', () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('sort_by', select.value);
+      window.location.assign(url.toString());
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.search",
+  "settings": []
+}
+{% endschema %}

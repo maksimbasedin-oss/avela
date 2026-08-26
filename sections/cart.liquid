@@ -1,0 +1,63 @@
+<div class="cart-page">
+  <h1>{{ 'cart.title' | t }}</h1>
+
+  {% if cart.item_count == 0 %}
+    {% assign continue_label = 'cart.continue' | t %}
+    <p>{{ 'cart.empty' | t }}</p>
+    {% render 'button', label: continue_label, url: routes.all_products_collection_url, style: 'primary' %}
+  {% else %}
+    <form action="{{ routes.cart_url }}" method="post" class="cart-page__form">
+      {% render 'cart-items', show_quantity: true %}
+
+      <div class="cart-page__aside">
+        {% render 'cart-shipping' %}
+        <p class="cart-drawer__subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          {% render 'money', amount: cart.total_price %}
+        </p>
+        {% assign continue_label = 'cart.continue' | t %}
+        {% render 'button',
+          label: continue_label,
+          url: routes.all_products_collection_url,
+          style: 'secondary',
+          full_width: true
+        %}
+        <button class="button button--full" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </div>
+    </form>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .cart-page {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .cart-page__form {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .cart-page__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  @media screen and (min-width: 750px) {
+    .cart-page__form {
+      grid-template-columns: 1.4fr 0.8fr;
+      align-items: start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.cart",
+  "settings": []
+}
+{% endschema %}

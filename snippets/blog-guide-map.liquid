@@ -1,0 +1,80 @@
+{% doc %}
+  Stil rehberi konu haritası. Etiketi olan konular yazı listesine bağlanır.
+
+  @example
+  {% render 'blog-guide-map' %}
+{% enddoc %}
+
+{% liquid
+  assign map_title = 'blog.map_title' | t
+  assign map_text = 'blog.map_text' | t
+  assign topics = 'Elbise,Tunik,Takım,Pantolon,Dış giyim,Şal,Abiye,Kumaş,Beden,Kalıp,Renk,Mevsim,Bakım,Kombin' | split: ','
+%}
+
+<section class="blog-page__map" aria-labelledby="BlogMap">
+  <div class="section-head">
+    <span class="section-head__index">05</span>
+    <h2 id="BlogMap">{% render 'turkish-upper', text: map_title %}</h2>
+  </div>
+  <p class="blog-page__how-text">{{ map_text | escape }}</p>
+  <ul class="blog-page__map-list" role="list">
+    {% for topic in topics %}
+      {% liquid
+        assign desc = ''
+        assign has_tag = false
+        if blog.all_tags contains topic
+          assign has_tag = true
+        endif
+        case topic
+          when 'Elbise'
+            assign desc = 'blog.map_elbise' | t
+          when 'Tunik'
+            assign desc = 'blog.map_tunik' | t
+          when 'Takım'
+            assign desc = 'blog.map_takim' | t
+          when 'Pantolon'
+            assign desc = 'blog.map_pantolon' | t
+          when 'Dış giyim'
+            assign desc = 'blog.map_dis_giyim' | t
+          when 'Şal'
+            assign desc = 'blog.map_sal' | t
+          when 'Abiye'
+            assign desc = 'blog.map_abiye' | t
+          when 'Kumaş'
+            assign desc = 'blog.map_kumas' | t
+          when 'Beden'
+            assign desc = 'blog.map_beden' | t
+          when 'Kalıp'
+            assign desc = 'blog.map_kalip' | t
+          when 'Renk'
+            assign desc = 'blog.map_renk' | t
+          when 'Mevsim'
+            assign desc = 'blog.map_mevsim' | t
+          when 'Bakım'
+            assign desc = 'blog.map_bakim' | t
+          when 'Kombin'
+            assign desc = 'blog.map_kombin' | t
+        endcase
+      %}
+      <li>
+        {% if has_tag %}
+          <a class="blog-page__map-card" href="{{ blog.url }}/tagged/{{ topic | handleize }}">
+            {% render 'blog-topic-icon', tag: topic %}
+            <div>
+              <h3>{% render 'turkish-upper', text: topic %}</h3>
+              <p>{{ desc | escape }}</p>
+            </div>
+          </a>
+        {% else %}
+          <div class="blog-page__map-card blog-page__map-card--static">
+            {% render 'blog-topic-icon', tag: topic %}
+            <div>
+              <h3>{% render 'turkish-upper', text: topic %}</h3>
+              <p>{{ desc | escape }}</p>
+            </div>
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

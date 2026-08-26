@@ -1,0 +1,263 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Avela",
+    "theme_version": "0.1.0",
+    "theme_author": "Avela",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "t:general.logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:labels.logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 280,
+        "step": 4,
+        "unit": "px",
+        "label": "t:labels.logo_width",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:labels.favicon"
+      }
+    ]
+  },
+  {
+    "name": "t:general.colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "t:labels.background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "foreground_color",
+        "label": "t:labels.foreground",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "t:labels.secondary_color",
+        "default": "#6B6B6B"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "t:labels.accent_color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "t:labels.button_color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "button_label_color",
+        "label": "t:labels.button_label",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "sale_color",
+        "label": "t:labels.sale_color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "t:labels.border_color",
+        "default": "#E8E8E8"
+      },
+      {
+        "type": "color",
+        "id": "surface_color",
+        "label": "t:labels.secondary_color",
+        "default": "#F2F2F2"
+      }
+    ]
+  },
+  {
+    "name": "t:general.typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:general.fonts"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "t:labels.heading_font",
+        "default": "linotype_didot_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_primary_font",
+        "label": "t:labels.body_font",
+        "default": "avenir_next_n4"
+      }
+    ]
+  },
+  {
+    "name": "t:general.layout",
+    "settings": [
+      {
+        "type": "select",
+        "id": "max_page_width",
+        "label": "t:labels.page_width",
+        "options": [
+          {
+            "value": "90rem",
+            "label": "t:options.page_width.narrow"
+          },
+          {
+            "value": "110rem",
+            "label": "t:options.page_width.wide"
+          }
+        ],
+        "default": "90rem"
+      },
+      {
+        "type": "range",
+        "id": "min_page_margin",
+        "min": 12,
+        "max": 48,
+        "step": 2,
+        "unit": "px",
+        "label": "t:labels.page_margin",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "button_corner_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "t:labels.button_corner_radius",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "card_corner_radius",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "label": "t:labels.card_corner_radius",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "input_corner_radius",
+        "min": 0,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.input_corner_radius",
+        "default": 2
+      }
+    ]
+  },
+  {
+    "name": "t:general.social",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:info.social_empty"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "t:labels.instagram",
+        "default": "https://www.instagram.com/avelatr"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "t:labels.tiktok",
+        "default": "https://www.tiktok.com/@avelatr"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "t:labels.pinterest"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "t:labels.facebook",
+        "default": "https://www.facebook.com/avelatr"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "t:labels.youtube"
+      }
+    ]
+  },
+  {
+    "name": "t:general.trust",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:info.trust_empty"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "t:labels.contact_email",
+        "info": "t:info.contact_email",
+        "default": "info@avelatr.com"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_url",
+        "label": "t:labels.whatsapp_url",
+        "info": "t:info.whatsapp_url",
+        "default": "https://wa.me/905364984727"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold",
+        "label": "t:labels.free_shipping_threshold",
+        "info": "t:info.free_shipping_threshold",
+        "default": "2000"
+      },
+      {
+        "type": "text",
+        "id": "trust_shipping",
+        "label": "t:labels.trust_shipping"
+      },
+      {
+        "type": "text",
+        "id": "trust_returns",
+        "label": "t:labels.trust_returns"
+      },
+      {
+        "type": "text",
+        "id": "trust_payment",
+        "label": "t:labels.trust_payment"
+      },
+      {
+        "type": "text",
+        "id": "trust_support",
+        "label": "t:labels.trust_support"
+      }
+    ]
+  }
+]

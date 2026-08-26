@@ -1,0 +1,24 @@
+{% doc %}
+  Türkçe büyük harf. i → İ, ı → I. CSS uppercase kullanma.
+
+  @param {string} text - Metin
+  @param {string} [handle] - Kaynak handle
+  @example
+  {% render 'turkish-upper', text: 'Yeni' %}
+{% enddoc %}
+{%- capture source -%}
+  {%- render 'storefront-title', text: text, handle: handle -%}
+{%- endcapture -%}
+{%- liquid
+  assign source = source | strip
+  assign upper = source | replace: 'i', '§'
+  assign upper = upper | replace: 'ı', 'I'
+  assign upper = upper | replace: 'ş', 'Ş'
+  assign upper = upper | replace: 'ğ', 'Ğ'
+  assign upper = upper | replace: 'ü', 'Ü'
+  assign upper = upper | replace: 'ö', 'Ö'
+  assign upper = upper | replace: 'ç', 'Ç'
+  assign upper = upper | upcase
+  assign upper = upper | replace: '§', 'İ'
+-%}
+{{- upper -}}

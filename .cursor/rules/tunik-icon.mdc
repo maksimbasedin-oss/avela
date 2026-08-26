@@ -1,0 +1,14 @@
+---
+description: Tesettür tunik kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Tesettür tunik ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/1Ynz9fF4/image.png
+
+Dosya: `assets/icon-cat-tunik.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `tunik`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

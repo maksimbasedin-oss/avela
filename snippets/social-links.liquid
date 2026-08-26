@@ -1,0 +1,68 @@
+{% doc %}
+  Instagram, TikTok ve Facebook bağlantıları. Kullanıcı adı avelatr.
+  @param {string} [class] - Liste sınıfı
+  @param {boolean} [icons_only] - Yalnızca ikon göster, etiketi gizle
+  @example
+  {% render 'social-links', class: 'footer__links footer__links--social', icons_only: true %}
+{% enddoc %}
+
+{% liquid
+  assign social_instagram = settings.social_instagram | default: 'https://www.instagram.com/avelatr'
+  assign social_tiktok = settings.social_tiktok | default: 'https://www.tiktok.com/@avelatr'
+  assign social_facebook = settings.social_facebook | default: 'https://www.facebook.com/avelatr'
+  assign social_pinterest = settings.social_pinterest
+  assign social_youtube = settings.social_youtube
+  assign label_class = 'social-link__label'
+  if icons_only
+    assign label_class = 'visually-hidden'
+  endif
+%}
+
+<ul class="{{ class }}" role="list">
+  <li>
+    <a class="social-link" href="{{ social_instagram }}" rel="noopener">
+      {{ 'icon-instagram.svg' | inline_asset_content }}
+      <span class="{{ label_class }}">Instagram</span>
+    </a>
+  </li>
+  <li>
+    <a class="social-link" href="{{ social_tiktok }}" rel="noopener">
+      {{ 'icon-tiktok.svg' | inline_asset_content }}
+      <span class="{{ label_class }}">TikTok</span>
+    </a>
+  </li>
+  <li>
+    <a class="social-link" href="{{ social_facebook }}" rel="noopener">
+      {{ 'icon-facebook.svg' | inline_asset_content }}
+      <span class="{{ label_class }}">Facebook</span>
+    </a>
+  </li>
+  {% if social_pinterest != blank %}
+    <li>
+      <a class="social-link" href="{{ social_pinterest }}" rel="noopener">
+        <span class="{{ label_class }}">Pinterest</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if social_youtube != blank %}
+    <li>
+      <a class="social-link" href="{{ social_youtube }}" rel="noopener">
+        <span class="{{ label_class }}">YouTube</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>
+
+{% stylesheet %}
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .social-link svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 auto;
+  }
+{% endstylesheet %}

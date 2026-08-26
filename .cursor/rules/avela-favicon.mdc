@@ -1,0 +1,17 @@
+---
+description: Avela favicon ikonunu değiştirme
+alwaysApply: true
+---
+
+# Avela favicon
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/q3NMPhM6/image.png
+
+Dosyalar:
+- `assets/favicon.png` (32×32)
+- `assets/favicon-48.png` (48×48)
+- `assets/apple-touch-icon.png` (180×180)
+
+Kullanıldığı yerler: `snippets/meta-tags.liquid`, `layout/theme.liquid`, `layout/password.liquid`.
+
+Kullanıcı açıkça başka bir görsel vermeden bu faviconu başka kaynakla, eski demo PNG ile veya `favicon.svg` ile değiştirme.

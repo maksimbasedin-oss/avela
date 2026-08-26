@@ -1,0 +1,14 @@
+---
+description: Tesettür pantolon kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Tesettür pantolon ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/XxrnMkRH/image.png
+
+Dosya: `assets/icon-cat-pantolon.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `pantolon`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

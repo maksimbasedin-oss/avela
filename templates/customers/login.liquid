@@ -1,0 +1,53 @@
+<div class="customers">
+  <h1>{{ 'customers.login.title' | t }}</h1>
+
+  {% form 'customer_login', class: 'customers__form' %}
+    {{ form.errors | default_errors }}
+    <div class="field">
+      <label class="field__label" for="CustomerEmail">{{ 'customers.login.email' | t }}</label>
+      <input
+        id="CustomerEmail"
+        class="field__input"
+        type="email"
+        name="customer[email]"
+        autocomplete="email"
+        required
+      >
+    </div>
+    <div class="field">
+      <label class="field__label" for="CustomerPassword">{{ 'customers.login.password' | t }}</label>
+      <input
+        id="CustomerPassword"
+        class="field__input"
+        type="password"
+        name="customer[password]"
+        autocomplete="current-password"
+        required
+      >
+    </div>
+    <button class="button" type="submit">{{ 'customers.login.submit' | t }}</button>
+  {% endform %}
+
+  <p>
+    <a href="#Recover">{{ 'customers.forgot' | t }}</a>
+    ·
+    <a href="{{ routes.account_register_url }}">{{ 'customers.register' | t }}</a>
+  </p>
+
+  <div id="Recover">
+    <h2>{{ 'customers.forgot' | t }}</h2>
+    {% form 'recover_customer_password', class: 'customers__form' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+        <p>{{ 'customers.recover_success' | t }}</p>
+      {% else %}
+        <div class="field">
+          <label class="field__label" for="RecoverEmail">{{ 'customers.login.email' | t }}</label>
+          <input id="RecoverEmail" class="field__input" type="email" name="email" autocomplete="email" required>
+        </div>
+        <button class="button button--secondary" type="submit">{{ 'customers.recover_submit' | t }}</button>
+      {% endif %}
+    {% endform %}
+  </div>
+</div>
+

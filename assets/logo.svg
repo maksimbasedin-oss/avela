@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="none" role="img" aria-labelledby="avelaLogoTitle">
+  <title id="avelaLogoTitle">Avela</title>
+  <g transform="translate(4 2)" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="1.35" d="M18 4.2C13.2 11 8.6 19.2 6.4 31.6"/>
+    <path stroke-width="1.35" d="M18 4.2c3.4 4.8 7.2 12.2 9.2 27.4"/>
+    <path stroke-width="1.35" d="M9.6 20.6c3.4-2.6 8.2-3.1 16.2.6"/>
+    <path stroke-width="1.2" d="M18 4.2c2.8-2.4 7.4-.4 8.2 2.8"/>
+  </g>
+  <text
+    x="52"
+    y="28"
+    fill="currentColor"
+    font-family="Didot, Georgia, 'Times New Roman', serif"
+    font-size="20"
+    letter-spacing="0.36em"
+  >AVELA</text>
+</svg>

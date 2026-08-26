@@ -1,0 +1,973 @@
+{% paginate collection.products by section.settings.products_per_page %}
+  {% liquid
+    assign sort_by = collection.sort_by | default: collection.default_sort_by
+    assign has_filters = false
+    if collection.filters.size > 0
+      assign has_filters = true
+    endif
+  %}
+
+  {% capture display_title %}
+    {% render 'storefront-title', text: collection.title, handle: collection.handle %}
+  {% endcapture %}
+  {% assign display_title = display_title | strip %}
+
+  <div class="collection">
+    {% render 'breadcrumbs', current_title: display_title, current_url: collection.url, current_handle: collection.handle %}
+
+    <header class="collection__header">
+      <h1>{% render 'turkish-upper', text: display_title %}</h1>
+      <p class="text-caption">
+        {{ 'collections.product_count' | t: count: collection.products_count }}
+      </p>
+      {% if collection.description != blank %}
+        <div class="rte collection__intro">{{ collection.description }}</div>
+      {% endif %}
+    </header>
+
+    {% if has_filters %}
+      <input id="CollectionFilters" class="visually-hidden collection-filters-check" type="checkbox">
+    {% endif %}
+
+    {% assign filter_label = 'collections.filter' | t %}
+    {% assign sort_label = 'collections.sort' | t %}
+    {% assign view_label = 'collections.view' | t %}
+    {% assign view_single_label = 'collections.view_single' | t %}
+    {% assign view_double_label = 'collections.view_double' | t %}
+    {% capture current_sort_label %}
+      {% render 'sort-label', value: sort_by, fallback: sort_by %}
+    {% endcapture %}
+
+    <div class="collection__toolbar{% if has_filters %} collection__toolbar--filters{% endif %}">
+      {% if has_filters %}
+        <label class="collection__tool collection__tool--filter" for="CollectionFilters">
+          <span class="eyebrow">{% render 'turkish-upper', text: filter_label %}</span>
+          <span class="collection__sort-mark" aria-hidden="true"></span>
+        </label>
+      {% endif %}
+
+      <details class="collection__sort">
+        <summary class="collection__tool collection__tool--sort">
+          <span class="collection__sort-copy">
+            <span class="eyebrow">{% render 'turkish-upper', text: sort_label %}</span>
+            <span class="collection__sort-value">{{ current_sort_label | strip }}</span>
+          </span>
+          <span class="collection__sort-mark" aria-hidden="true"></span>
+        </summary>
+        <ul class="collection__sort-menu" role="list">
+          {% for option in collection.sort_options %}
+            <li>
+              <a
+                class="collection__sort-link{% if option.value == sort_by %} is-active{% endif %}"
+                href="{{ collection.url | sort_by: option.value }}"
+                data-collection-sort
+                data-value="{{ option.value | escape }}"
+                {% if option.value == sort_by %}
+                  aria-current="true"
+                {% endif %}
+              >
+                {% render 'sort-label', value: option.value, fallback: option.name %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+
+      <div class="collection__view" role="group" aria-label="{{ view_label | escape }}">
+        <button
+          class="collection__view-btn"
+          type="button"
+          data-grid-view="1"
+          aria-pressed="false"
+          aria-label="{{ view_single_label | escape }}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="6" y="5" width="12" height="14"></rect>
+          </svg>
+        </button>
+        <button
+          class="collection__view-btn"
+          type="button"
+          data-grid-view="2"
+          aria-pressed="true"
+          aria-label="{{ view_double_label | escape }}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="4" y="5" width="7" height="14"></rect>
+            <rect x="13" y="5" width="7" height="14"></rect>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="collection__layout{% if has_filters %} collection__layout--filters{% endif %}">
+      {% if has_filters %}
+        <form class="collection__filters" method="get" action="{{ collection.url }}">
+          <input type="hidden" name="sort_by" value="{{ sort_by }}">
+
+          {% liquid
+            assign has_color_filter = false
+            assign has_size_filter = false
+            for filter in collection.filters
+              assign pname = filter.param_name | default: '' | downcase
+              assign flabel = filter.label | default: '' | downcase
+              if pname contains 'option.renk' or pname contains 'option.color' or flabel == 'renk' or flabel == 'color' or flabel == 'colour'
+                assign has_color_filter = true
+              endif
+              if pname contains 'option.beden' or pname contains 'option.size' or flabel == 'beden' or flabel == 'size'
+                assign has_size_filter = true
+              endif
+            endfor
+
+            assign color_keys = '|'
+            assign color_list = ''
+            assign size_keys = '|'
+            assign size_list = ''
+            unless has_color_filter and has_size_filter
+              for product in collection.all_products
+                for option in product.options_with_values
+                  assign oname = option.name | downcase
+                  if oname == 'renk' or oname == 'color' or oname == 'colour'
+                    for val in option.values
+                      assign token = '|' | append: val | append: '|'
+                      unless color_keys contains token
+                        assign color_keys = color_keys | append: val | append: '|'
+                        if color_list != blank
+                          assign color_list = color_list | append: '|||'
+                        endif
+                        assign color_list = color_list | append: val
+                      endunless
+                    endfor
+                  elsif oname == 'beden' or oname == 'size'
+                    for val in option.values
+                      assign token = '|' | append: val | append: '|'
+                      unless size_keys contains token
+                        assign size_keys = size_keys | append: val | append: '|'
+                        if size_list != blank
+                          assign size_list = size_list | append: '|||'
+                        endif
+                        assign size_list = size_list | append: val
+                      endunless
+                    endfor
+                  endif
+                endfor
+              endfor
+            endunless
+            assign color_values = color_list | split: '|||'
+            assign size_values = size_list | split: '|||'
+          %}
+
+          {% for filter in collection.filters %}
+            {% liquid
+              assign pname = filter.param_name | default: '' | downcase
+              assign flabel = filter.label | default: '' | downcase
+              assign is_color_filter = false
+              assign is_size_filter = false
+              if pname contains 'option.renk' or pname contains 'option.color' or flabel == 'renk' or flabel == 'color' or flabel == 'colour'
+                assign is_color_filter = true
+              endif
+              if pname contains 'option.beden' or pname contains 'option.size' or flabel == 'beden' or flabel == 'size'
+                assign is_size_filter = true
+              endif
+            %}
+            {% capture filter_heading %}
+              {% render 'filter-label', text: filter.label, param: filter.param_name %}
+            {% endcapture %}
+            <details class="collection__filter" open>
+              <summary>{% render 'turkish-upper', text: filter_heading %}</summary>
+
+              {% case filter.type %}
+                {% when 'price_range' %}
+                  <div class="collection__price">
+                    <label class="field">
+                      <span class="field__label">{{ 'collections.price_from' | t }}</span>
+                      <input
+                        class="field__input"
+                        type="number"
+                        name="{{ filter.min_value.param_name }}"
+                        value="{{ filter.min_value.value }}"
+                        min="0"
+                        placeholder="{{ filter.range_min }}"
+                      >
+                    </label>
+                    <label class="field">
+                      <span class="field__label">{{ 'collections.price_to' | t }}</span>
+                      <input
+                        class="field__input"
+                        type="number"
+                        name="{{ filter.max_value.param_name }}"
+                        value="{{ filter.max_value.value }}"
+                        min="0"
+                        placeholder="{{ filter.range_max }}"
+                      >
+                    </label>
+                  </div>
+                {% else %}
+                  <ul class="collection__filter-values{% if is_color_filter %} collection__filter-values--swatch{% endif %}{% if is_size_filter %} collection__filter-values--size{% endif %}">
+                    {% for value in filter.values %}
+                      <li>
+                        <label>
+                          <input
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            {% if value.active %}
+                              checked
+                            {% endif %}
+                          >
+                          {% if is_color_filter %}
+                            {% render 'color-swatch', value: value.label %}
+                          {% endif %}
+                          <span>{% render 'filter-label', text: value.label, param: filter.param_name %}</span>
+                          {% if value.count %}
+                            <span class="text-caption">({{ value.count }})</span>
+                          {% endif %}
+                        </label>
+                      </li>
+                    {% endfor %}
+                    {% if is_size_filter %}
+                      {% render 'collection-size-logo', count: filter.values.size %}
+                    {% endif %}
+                  </ul>
+              {% endcase %}
+            </details>
+          {% endfor %}
+
+          {% unless has_color_filter %}
+            {% if color_list != blank %}
+              {% assign color_heading = 'collections.filter_color' | t %}
+              <details class="collection__filter" open>
+                <summary>{% render 'turkish-upper', text: color_heading %}</summary>
+                <ul class="collection__filter-values collection__filter-values--swatch">
+                  {% for val in color_values %}
+                    <li>
+                      <label>
+                        <input type="checkbox" name="filter.v.option.renk" value="{{ val | escape }}">
+                        {% render 'color-swatch', value: val %}
+                        <span>{{ val }}</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </details>
+            {% endif %}
+          {% endunless %}
+
+          {% unless has_size_filter %}
+            {% if size_list != blank %}
+              {% assign size_heading = 'collections.filter_size' | t %}
+              <details class="collection__filter" open>
+                <summary>{% render 'turkish-upper', text: size_heading %}</summary>
+                <ul class="collection__filter-values collection__filter-values--size">
+                  {% for val in size_values %}
+                    <li>
+                      <label>
+                        <input type="checkbox" name="filter.v.option.beden" value="{{ val | escape }}">
+                        <span>{{ val }}</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                  {% render 'collection-size-logo', count: size_values.size %}
+                </ul>
+              </details>
+            {% endif %}
+          {% endunless %}
+
+          <button class="button button--full" type="submit">{{ 'collections.apply' | t }}</button>
+          <a class="button button--text" href="{{ collection.url }}">{{ 'collections.clear' | t }}</a>
+        </form>
+      {% endif %}
+
+      <div class="collection__main">
+        {% if collection.products.size > 0 %}
+          <ul class="collection__grid collection__grid--{{ section.settings.columns }}" data-collection-grid data-cols="2" role="list">
+            {% for product in collection.products %}
+              <li>
+                {% liquid
+                  assign card_loading = 'lazy'
+                  if forloop.index <= 4
+                    assign card_loading = 'eager'
+                  endif
+                %}
+                {% render 'product-card', product: product, loading: card_loading %}
+              </li>
+            {% endfor %}
+          </ul>
+
+          {% if paginate.pages > 1 %}
+            <nav class="collection__pagination" aria-label="{{ 'collections.pagination' | t }}">
+              {{ paginate | default_pagination }}
+            </nav>
+          {% endif %}
+        {% else %}
+          <p>{{ 'collections.empty' | t }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% liquid
+      assign seo_html = section.settings.seo_content
+      if collection.metafields.custom.seo_content != blank
+        assign seo_html = collection.metafields.custom.seo_content | metafield_tag
+      endif
+    %}
+    {% if seo_html != blank %}
+      <div class="rte collection__seo">{{ seo_html }}</div>
+    {% endif %}
+
+    {% liquid
+      assign related_total = 0
+      for block in section.blocks
+        if block.type == 'related' and block.settings.collection != blank
+          assign related_total = related_total | plus: 1
+        endif
+      endfor
+    %}
+    {% if related_total > 0 %}
+      <nav class="collection__related" aria-label="{{ 'collections.related' | t }}">
+        {% assign related_heading = 'collections.related' | t %}
+        <h2>{% render 'turkish-upper', text: related_heading %}</h2>
+        <ul class="collection__related-list" role="list">
+          {% for block in section.blocks %}
+            {% if block.type == 'related' and block.settings.collection != blank %}
+              <li {{ block.shopify_attributes }}>
+                {% capture related_title %}
+                  {% render 'storefront-title', text: block.settings.collection.title, handle: block.settings.collection.handle %}
+                {% endcapture %}
+                <a href="{{ block.settings.collection.url }}">{% render 'turkish-upper', text: related_title %}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% else %}
+      {% render 'collection-links', collection: collection %}
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% if block.type == '@app' %}
+        <div {{ block.shopify_attributes }}>{% render block %}</div>
+      {% endif %}
+    {% endfor %}
+
+    {% liquid
+      assign faq_total = 0
+      for block in section.blocks
+        if block.type == 'faq' and block.settings.question != blank
+          assign faq_total = faq_total | plus: 1
+        endif
+      endfor
+    %}
+
+    {% if faq_total > 0 %}
+      <section class="collection__faq" aria-labelledby="CollectionFaq">
+        <h2 id="CollectionFaq">{{ 'collections.faq' | t }}</h2>
+        {% for block in section.blocks %}
+          {% if block.type == 'faq' and block.settings.question != blank %}
+            <details class="collection__faq-item" {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.question | escape }}</summary>
+              <div class="rte">{{ block.settings.answer }}</div>
+            </details>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {%- assign faq_count = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'faq' and block.settings.question != blank -%}
+                {%- if faq_count > 0 -%},{%- endif -%}
+                {
+                  "@type": "Question",
+                  "name": {{ block.settings.question | json }},
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": {{ block.settings.answer | strip_html | json }}
+                  }
+                }
+                {%- assign faq_count = faq_count | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          ]
+        }
+      </script>
+    {% endif %}
+  </div>
+{% endpaginate %}
+
+{% stylesheet %}
+  .breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md);
+    font-size: 0.8125rem;
+    color: var(--color-secondary);
+  }
+
+  .breadcrumbs__list li:not(:last-child)::after {
+    content: '/';
+    margin-left: var(--space-xs);
+  }
+
+  .breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .collection__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .collection__header h1 {
+    max-width: 14ch;
+  }
+
+  .collection__intro {
+    max-width: 42rem;
+    color: var(--color-secondary);
+  }
+
+  .collection__toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    margin-bottom: var(--space-lg);
+    position: sticky;
+    top: var(--sticky-offset);
+    z-index: 5;
+    background: var(--color-surface);
+    border: 1px solid var(--color-foreground);
+  }
+
+  .collection__toolbar--filters {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .collection__tool {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    cursor: pointer;
+    color: var(--color-foreground);
+  }
+
+  .collection__tool--filter {
+    justify-content: space-between;
+    gap: 0.65rem;
+    border-right: 1px solid var(--color-foreground);
+  }
+
+  .collection__tool--filter .eyebrow {
+    color: inherit;
+  }
+
+  .collection__tool--sort {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  .collection__tool--sort::-webkit-details-marker {
+    display: none;
+  }
+
+  .collection__sort-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .collection__sort-value {
+    overflow: hidden;
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .collection__sort-mark {
+    flex: 0 0 auto;
+    position: relative;
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  .collection__sort-mark::before,
+  .collection__sort-mark::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+  }
+
+  .collection__sort-mark::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .collection__sort-mark::after {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+
+  .collection__sort[open] .collection__sort-mark::after {
+    display: none;
+  }
+
+  .collection__sort {
+    position: relative;
+    min-width: 0;
+  }
+
+  .collection__sort-menu {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -1px;
+    right: -1px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-foreground);
+  }
+
+  .collection__sort-link {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    color: var(--color-foreground);
+    font-size: 0.8125rem;
+    text-decoration: none;
+  }
+
+  .collection__sort-link.is-active,
+  .collection__sort-link:hover,
+  .collection__sort-link:focus-visible {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .collection__view {
+    display: flex;
+    border-left: 1px solid var(--color-foreground);
+  }
+
+  .collection__view-btn {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .collection__view-btn + .collection__view-btn {
+    border-left: 1px solid var(--color-foreground);
+  }
+
+  .collection__view-btn svg {
+    display: block;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .collection__view-btn[aria-pressed='true'] {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .collection-filters-check:checked ~ .collection__toolbar .collection__tool--filter {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .collection-filters-check:checked ~ .collection__toolbar .collection__tool--filter .collection__sort-mark::after {
+    display: none;
+  }
+
+  .collection__layout--filters {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .collection__filters {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .collection__filter-values {
+    list-style: none;
+    padding: var(--space-sm) 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .collection__filter-values label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-height: 2.25rem;
+  }
+
+  .collection__filter summary {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    cursor: pointer;
+  }
+
+  .collection__filter-values--swatch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2xs) var(--space-xs);
+  }
+
+  .collection__filter-values--swatch label {
+    min-height: var(--touch-min);
+  }
+
+  .collection__filter-values--swatch .color-swatch,
+  .collection__filter-values .color-swatch {
+    flex: 0 0 0.85rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border: 1px solid var(--color-foreground);
+    background: var(--swatch);
+  }
+
+  .collection__filter-values--size {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-foreground);
+    border: 1px solid var(--color-foreground);
+    padding: 0;
+    margin-top: var(--space-sm);
+  }
+
+  .collection__filter-values--size li {
+    background: var(--color-surface);
+  }
+
+  .collection__filter-values--size label {
+    justify-content: center;
+    min-height: 2.5rem;
+    margin: 0;
+    padding: 0 0.4rem;
+  }
+
+  .collection__filter-values--size input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .collection__filter-values--size label:has(input:checked) {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .collection__filter-size-logo {
+    display: grid;
+    place-items: center;
+    background: var(--color-surface);
+    color: var(--color-foreground);
+    pointer-events: none;
+    min-height: 2.5rem;
+    padding: 0 0.45rem;
+  }
+
+  .collection__filter-size-logo .brand-logo {
+    gap: 0.32rem;
+  }
+
+  .collection__filter-size-logo .brand-logo__mark {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .collection__filter-size-logo .brand-logo__word {
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+  }
+
+  .collection__filter-size-logo--mark .brand-logo__word {
+    display: none;
+  }
+
+  .collection__price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    padding-top: var(--space-sm);
+  }
+
+  .collection__grid {
+    display: grid;
+    gap: var(--space-xs);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .collection__grid--2,
+  .collection__grid--3,
+  .collection__grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .collection__grid[data-cols='1'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .collection__pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding-block: var(--space-xl);
+  }
+
+  .collection__pagination a,
+  .collection__pagination span {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .collection__seo {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-secondary);
+    max-width: 48rem;
+  }
+
+  .collection__related {
+    margin-top: var(--space-2xl);
+  }
+
+  .collection__related-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0 0;
+  }
+
+  .collection__related-list a {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: 1px solid currentcolor;
+  }
+
+  .collection__faq {
+    margin-top: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .collection__faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-sm);
+  }
+
+  .collection__faq-item summary {
+    min-height: var(--touch-min);
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collection-filters-check,
+    .collection__tool--filter {
+      display: none;
+    }
+
+    .collection__toolbar--filters {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .collection__layout--filters {
+      grid-template-columns: 15rem 1fr;
+    }
+
+    .collection__filters {
+      display: flex;
+    }
+
+    .collection__grid--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .collection__grid--4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .collection__grid[data-cols='1'] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection-filters-check:checked ~ .collection__layout .collection__filters {
+      display: flex;
+      margin-bottom: var(--space-md);
+      padding: var(--space-md);
+      border: 1px solid var(--color-foreground);
+      background: var(--color-surface);
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const root = document.querySelector('[data-collection-grid]');
+    const toolbar = document.querySelector('.collection__toolbar');
+    if (!toolbar) return;
+
+    const storageKey = 'avela-collection-cols';
+    const buttons = toolbar.querySelectorAll('[data-grid-view]');
+    const applyCols = (cols) => {
+      const next = cols === '1' ? '1' : '2';
+      if (root) root.dataset.cols = next;
+      buttons.forEach((button) => {
+        button.setAttribute('aria-pressed', button.dataset.gridView === next ? 'true' : 'false');
+      });
+      try {
+        window.localStorage.setItem(storageKey, next);
+      } catch (error) {
+        return;
+      }
+    };
+
+    let stored = '2';
+    try {
+      stored = window.localStorage.getItem(storageKey) || '2';
+    } catch (error) {
+      stored = '2';
+    }
+    applyCols(stored);
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => applyCols(button.dataset.gridView));
+    });
+
+    toolbar.querySelectorAll('[data-collection-sort]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = new URL(window.location.href);
+        url.searchParams.set('sort_by', link.dataset.value);
+        window.location.assign(url.toString());
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    document.querySelectorAll('.collection__filters input[type="checkbox"]').forEach((input) => {
+      const selected = params.getAll(input.name);
+      if (selected.includes(input.value)) input.checked = true;
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "label": "t:labels.products_per_page",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "t:labels.columns",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "richtext",
+      "id": "seo_content",
+      "label": "t:labels.seo_content",
+      "info": "t:info.seo_content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "related",
+      "name": "t:general.collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:labels.collection"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "t:general.faq_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "t:labels.question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "t:labels.answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

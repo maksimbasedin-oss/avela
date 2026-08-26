@@ -1,0 +1,95 @@
+{% doc %}
+  Renders related collection links from live Shopify collections.
+
+  @param {collection} collection - Current collection
+  @example
+  {% render 'collection-links', collection: collection %}
+{% enddoc %}
+
+{% liquid
+  assign related_handles = ''
+  case collection.handle
+    when 'tesettur-elbise'
+      assign related_handles = 'tesettur-takim,tesettur-abiye,sal-esarp,yeni-sezon'
+    when 'tesettur-tunik'
+      assign related_handles = 'tesettur-pantolon,jile-yelek,sal-esarp,yeni-sezon'
+    when 'tesettur-takim'
+      assign related_handles = 'tesettur-ferace,sal-esarp,tesettur-elbise,cok-satanlar'
+    when 'tesettur-pantolon'
+      assign related_handles = 'tesettur-tunik,jile-yelek,tesettur-takim'
+    when 'tesettur-ferace'
+      assign related_handles = 'dis-giyim,sal-esarp,tesettur-kap,tesettur-pardesu'
+    when 'tesettur-kap'
+      assign related_handles = 'dis-giyim,tesettur-ferace,tesettur-pardesu'
+    when 'tesettur-pardesu'
+      assign related_handles = 'tesettur-ferace,dis-giyim,tesettur-kap'
+    when 'tesettur-abiye'
+      assign related_handles = 'tesettur-elbise,sal-esarp,yeni-sezon'
+    when 'dis-giyim'
+      assign related_handles = 'tesettur-ferace,tesettur-kap,tesettur-pardesu,yeni-sezon'
+    when 'sal-esarp'
+      assign related_handles = 'tesettur-elbise,tesettur-takim,tesettur-abiye'
+    when 'jile-yelek'
+      assign related_handles = 'tesettur-tunik,tesettur-pantolon,tesettur-takim'
+    when 'yeni-sezon'
+      assign related_handles = 'tesettur-elbise,tesettur-takim,dis-giyim'
+    when 'cok-satanlar'
+      assign related_handles = 'yeni-sezon,indirim,tesettur-elbise'
+    when 'indirim'
+      assign related_handles = 'yeni-sezon,cok-satanlar'
+  endcase
+
+  assign related_list = related_handles | split: ','
+  assign shown = 0
+%}
+
+{% if related_handles != blank %}
+  <nav class="collection-links" aria-label="{{ 'collections.related' | t }}">
+    {% assign related_heading = 'collections.related' | t %}
+    <p class="eyebrow">{% render 'turkish-upper', text: related_heading %}</p>
+    <ul class="collection-links__list" role="list">
+      {% for handle in related_list %}
+        {% assign related = collections[handle] %}
+        {% if related != blank and related.products_count > 0 %}
+          <li>
+            <a href="{{ related.url }}">{% render 'turkish-upper', text: related.title, handle: related.handle %}</a>
+          </li>
+          {% assign shown = shown | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      {% if blogs['stil-rehberi'] != blank %}
+        <li>
+          <a href="{{ blogs['stil-rehberi'].url }}">{% render 'turkish-upper', text: blogs['stil-rehberi'].title, handle: blogs['stil-rehberi'].handle %}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
+
+{% stylesheet %}
+  .collection-links {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .collection-links__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0 0;
+  }
+
+  .collection-links__list a {
+    display: inline-flex;
+    min-height: var(--touch-min);
+    align-items: center;
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+{% endstylesheet %}

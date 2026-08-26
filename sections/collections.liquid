@@ -1,0 +1,99 @@
+<div class="collections-page">
+  {% assign collections_title = 'collections.title' | t %}
+  {% render 'breadcrumbs', current_title: collections_title, current_url: routes.collections_url %}
+
+  <h1>{{ 'collections.title' | t }}</h1>
+
+  {% assign visible_count = 0 %}
+  {% for collection in collections %}
+    {% if collection.products_count > 0 and collection.handle != 'all' %}
+      {% assign visible_count = visible_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if visible_count == 0 %}
+    <p>{{ 'collections.empty_list' | t }}</p>
+  {% else %}
+    <ul class="collections-page__grid" role="list">
+      {% for collection in collections %}
+        {% if collection.products_count > 0 and collection.handle != 'all' %}
+          <li>
+            <a class="collection-card" href="{{ collection.url }}">
+              {% if collection.featured_image %}
+                {% capture card_title %}
+                  {% render 'storefront-title', text: collection.title, handle: collection.handle %}
+                {% endcapture %}
+                {% assign card_title = card_title | strip %}
+                {% assign card_alt = collection.featured_image.alt | default: card_title %}
+                {{
+                  collection.featured_image
+                  | image_url: width: 900
+                  | image_tag:
+                    widths: '400, 600, 900',
+                    sizes: '(min-width: 750px) 33vw, 100vw',
+                    loading: 'lazy',
+                    alt: card_alt
+                }}
+              {% endif %}
+              <span class="collection-card__title">{{ card_title }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .collections-page {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .collections-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .collections-page .collection-card {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-border);
+    text-decoration: none;
+  }
+
+  .collections-page .collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collections-page .collection-card__title {
+    position: absolute;
+    inset: auto var(--space-md) var(--space-md);
+    font-family: var(--font-heading--family);
+    font-size: 1.5rem;
+    color: var(--color-background);
+  }
+
+  @media screen and (min-width: 750px) {
+    .collections-page__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.collections",
+  "settings": []
+}
+{% endschema %}

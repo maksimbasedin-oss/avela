@@ -1,0 +1,73 @@
+{% doc %}
+  Avela wordmark: face-in-V mark over spaced AVELA letters.
+
+  @param {string} [class] - Extra class on the wrapper
+  @example
+  {% render 'brand-logo' %}
+{% enddoc %}
+
+{% capture brand_name %}
+  {% render 'brand-name' %}
+{% endcapture %}
+{% assign brand_name = brand_name | strip %}
+
+<span class="brand-logo {{ class }}">
+  <img
+    class="brand-logo__image"
+    src="{{ 'logo-avela.png' | asset_url }}"
+    alt="{{ brand_name | escape }}"
+    width="633"
+    height="421"
+    loading="eager"
+  >
+</span>
+
+{% stylesheet %}
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    color: inherit;
+  }
+
+  .brand-logo__image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 6.5rem;
+    max-height: 4.5rem;
+    object-fit: contain;
+  }
+
+  .header__brand .brand-logo__image,
+  .header-drawer__brand .brand-logo__image {
+    max-width: min(var(--logo-width), 7.25rem);
+    max-height: 3.25rem;
+  }
+
+  .footer__brand .brand-logo__image {
+    max-width: 7rem;
+    max-height: 4.75rem;
+  }
+
+  .featured-collection__brand-logo .brand-logo__image {
+    max-width: 8rem;
+    max-height: 6.5rem;
+  }
+
+  .trust-bar .brand-logo__image,
+  .product-card__placeholder .brand-logo__image {
+    max-width: 5.25rem;
+    max-height: 3.5rem;
+  }
+
+  .collection__filter-size-logo .brand-logo__image {
+    max-width: 2.6rem;
+    max-height: 1.7rem;
+  }
+
+  .password-page__brand .brand-logo__image {
+    max-width: 8.5rem;
+    max-height: 6rem;
+  }
+{% endstylesheet %}

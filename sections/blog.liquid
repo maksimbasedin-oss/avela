@@ -1,0 +1,771 @@
+{% paginate blog.articles by 24 %}
+  {% liquid
+    assign intro = section.settings.intro
+    if intro == blank
+      assign intro = 'blog.intro' | t
+    endif
+    assign topics_label = 'blog.topics' | t
+    assign guide_label = 'blog.guide' | t
+    assign featured_label = 'blog.featured' | t
+    assign how_title = 'blog.how_title' | t
+    assign how_text = 'blog.how_text' | t
+    assign intro_more = 'blog.intro_more' | t
+    assign intro_note = 'blog.intro_note' | t
+    assign closing = 'blog.closing' | t
+    assign size_guide_label = 'blog.size_guide' | t
+    assign pillar_fit_title = 'blog.pillar_fit_title' | t
+    assign pillar_fit_text = 'blog.pillar_fit_text' | t
+    assign pillar_fabric_title = 'blog.pillar_fabric_title' | t
+    assign pillar_fabric_text = 'blog.pillar_fabric_text' | t
+    assign pillar_layer_title = 'blog.pillar_layer_title' | t
+    assign pillar_layer_text = 'blog.pillar_layer_text' | t
+    assign pillar_color_title = 'blog.pillar_color_title' | t
+    assign pillar_color_text = 'blog.pillar_color_text' | t
+    assign pillar_measure_title = 'blog.pillar_measure_title' | t
+    assign pillar_measure_text = 'blog.pillar_measure_text' | t
+    assign pillar_care_title = 'blog.pillar_care_title' | t
+    assign pillar_care_text = 'blog.pillar_care_text' | t
+    assign path_title = 'blog.path_title' | t
+    assign path_1_title = 'blog.path_1_title' | t
+    assign path_1_text = 'blog.path_1_text' | t
+    assign path_2_title = 'blog.path_2_title' | t
+    assign path_2_text = 'blog.path_2_text' | t
+    assign path_3_title = 'blog.path_3_title' | t
+    assign path_3_text = 'blog.path_3_text' | t
+    assign path_4_title = 'blog.path_4_title' | t
+    assign path_4_text = 'blog.path_4_text' | t
+    assign audience_title = 'blog.audience_title' | t
+    assign audience_text = 'blog.audience_text' | t
+    assign audience_1_title = 'blog.audience_1_title' | t
+    assign audience_1_text = 'blog.audience_1_text' | t
+    assign audience_2_title = 'blog.audience_2_title' | t
+    assign audience_2_text = 'blog.audience_2_text' | t
+    assign audience_3_title = 'blog.audience_3_title' | t
+    assign audience_3_text = 'blog.audience_3_text' | t
+    assign occasion_title = 'blog.occasion_title' | t
+    assign occasion_text = 'blog.occasion_text' | t
+    assign occ_daily_title = 'blog.occ_daily_title' | t
+    assign occ_daily_text = 'blog.occ_daily_text' | t
+    assign occ_office_title = 'blog.occ_office_title' | t
+    assign occ_office_text = 'blog.occ_office_text' | t
+    assign occ_event_title = 'blog.occ_event_title' | t
+    assign occ_event_text = 'blog.occ_event_text' | t
+    assign occ_travel_title = 'blog.occ_travel_title' | t
+    assign occ_travel_text = 'blog.occ_travel_text' | t
+    assign fabric_title = 'blog.fabric_title' | t
+    assign fabric_text = 'blog.fabric_text' | t
+    assign fab_krep_title = 'blog.fab_krep_title' | t
+    assign fab_krep_text = 'blog.fab_krep_text' | t
+    assign fab_aerobin_title = 'blog.fab_aerobin_title' | t
+    assign fab_aerobin_text = 'blog.fab_aerobin_text' | t
+    assign fab_viskon_title = 'blog.fab_viskon_title' | t
+    assign fab_viskon_text = 'blog.fab_viskon_text' | t
+    assign fab_saten_title = 'blog.fab_saten_title' | t
+    assign fab_saten_text = 'blog.fab_saten_text' | t
+    assign fab_pamuk_title = 'blog.fab_pamuk_title' | t
+    assign fab_pamuk_text = 'blog.fab_pamuk_text' | t
+    assign not_title = 'blog.not_title' | t
+    assign not_text = 'blog.not_text' | t
+    assign not_1 = 'blog.not_1' | t
+    assign not_2 = 'blog.not_2' | t
+    assign not_3 = 'blog.not_3' | t
+    assign check_title = 'blog.check_title' | t
+    assign check_1_title = 'blog.check_1_title' | t
+    assign check_1 = 'blog.check_1' | t
+    assign check_2_title = 'blog.check_2_title' | t
+    assign check_2 = 'blog.check_2' | t
+    assign check_3_title = 'blog.check_3_title' | t
+    assign check_3 = 'blog.check_3' | t
+    assign check_4_title = 'blog.check_4_title' | t
+    assign check_4 = 'blog.check_4' | t
+    assign check_5_title = 'blog.check_5_title' | t
+    assign check_5 = 'blog.check_5' | t
+    assign check_6_title = 'blog.check_6_title' | t
+    assign check_6 = 'blog.check_6' | t
+    assign shipping_label = 'blog.shipping_page' | t
+    assign contact_label = 'blog.contact_page' | t
+    assign show_featured = false
+    assign show_overview = false
+    if current_tags == blank and blog.articles_count > 0
+      assign show_featured = true
+    endif
+    if current_tags == blank
+      assign show_overview = true
+    endif
+  %}
+
+  <div class="blog-page">
+    {% capture blog_title %}
+      {% render 'storefront-title', text: blog.title, handle: blog.handle %}
+    {% endcapture %}
+    {% assign blog_title = blog_title | strip %}
+    {% render 'breadcrumbs', current_title: blog_title, current_url: blog.url, current_handle: blog.handle %}
+
+    <header class="blog-page__header">
+      <p class="eyebrow">{% render 'turkish-upper', text: guide_label %}</p>
+      <h1>{% render 'turkish-upper', text: blog_title, handle: blog.handle %}</h1>
+      {% if intro != blank %}
+        <p class="blog-page__lede">{{ intro | escape }}</p>
+      {% endif %}
+      {% if show_overview and intro_more != blank %}
+        <p class="blog-page__lede blog-page__lede--more">{{ intro_more | escape }}</p>
+      {% endif %}
+      {% if show_overview and intro_note != blank %}
+        <p class="blog-page__lede blog-page__lede--more">{{ intro_note | escape }}</p>
+      {% endif %}
+    </header>
+
+    {% if show_overview %}
+      <section class="blog-page__how" aria-labelledby="BlogHow">
+        <div class="section-head">
+          <span class="section-head__index">01</span>
+          <h2 id="BlogHow">{% render 'turkish-upper', text: how_title %}</h2>
+        </div>
+        <p class="blog-page__how-text">{{ how_text | escape }}</p>
+        <ul class="blog-page__pillars" role="list">
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_fit_title %}</h3>
+            <p>{{ pillar_fit_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_fabric_title %}</h3>
+            <p>{{ pillar_fabric_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_layer_title %}</h3>
+            <p>{{ pillar_layer_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_color_title %}</h3>
+            <p>{{ pillar_color_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_measure_title %}</h3>
+            <p>{{ pillar_measure_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: pillar_care_title %}</h3>
+            <p>{{ pillar_care_text | escape }}</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blog-page__how" aria-labelledby="BlogAudience">
+        <div class="section-head">
+          <span class="section-head__index">02</span>
+          <h2 id="BlogAudience">{% render 'turkish-upper', text: audience_title %}</h2>
+        </div>
+        <p class="blog-page__how-text">{{ audience_text | escape }}</p>
+        <ul class="blog-page__pillars" role="list">
+          <li>
+            <h3>{% render 'turkish-upper', text: audience_1_title %}</h3>
+            <p>{{ audience_1_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: audience_2_title %}</h3>
+            <p>{{ audience_2_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: audience_3_title %}</h3>
+            <p>{{ audience_3_text | escape }}</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blog-page__how" aria-labelledby="BlogOccasion">
+        <div class="section-head">
+          <span class="section-head__index">03</span>
+          <h2 id="BlogOccasion">{% render 'turkish-upper', text: occasion_title %}</h2>
+        </div>
+        <p class="blog-page__how-text">{{ occasion_text | escape }}</p>
+        <ul class="blog-page__pillars" role="list">
+          <li>
+            <h3>{% render 'turkish-upper', text: occ_daily_title %}</h3>
+            <p>{{ occ_daily_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: occ_office_title %}</h3>
+            <p>{{ occ_office_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: occ_event_title %}</h3>
+            <p>{{ occ_event_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: occ_travel_title %}</h3>
+            <p>{{ occ_travel_text | escape }}</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blog-page__how" aria-labelledby="BlogFabric">
+        <div class="section-head">
+          <span class="section-head__index">04</span>
+          <h2 id="BlogFabric">{% render 'turkish-upper', text: fabric_title %}</h2>
+        </div>
+        <p class="blog-page__how-text">{{ fabric_text | escape }}</p>
+        <ul class="blog-page__pillars" role="list">
+          <li>
+            <h3>{% render 'turkish-upper', text: fab_krep_title %}</h3>
+            <p>{{ fab_krep_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: fab_aerobin_title %}</h3>
+            <p>{{ fab_aerobin_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: fab_viskon_title %}</h3>
+            <p>{{ fab_viskon_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: fab_saten_title %}</h3>
+            <p>{{ fab_saten_text | escape }}</p>
+          </li>
+          <li>
+            <h3>{% render 'turkish-upper', text: fab_pamuk_title %}</h3>
+            <p>{{ fab_pamuk_text | escape }}</p>
+          </li>
+        </ul>
+      </section>
+
+      {% render 'blog-guide-map' %}
+
+      <section class="blog-page__how" aria-labelledby="BlogPath">
+        <div class="section-head">
+          <span class="section-head__index">06</span>
+          <h2 id="BlogPath">{% render 'turkish-upper', text: path_title %}</h2>
+        </div>
+        <ol class="blog-page__path">
+          <li>
+            <h4>{% render 'turkish-upper', text: path_1_title %}</h4>
+            <p>{{ path_1_text | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: path_2_title %}</h4>
+            <p>{{ path_2_text | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: path_3_title %}</h4>
+            <p>{{ path_3_text | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: path_4_title %}</h4>
+            <p>{{ path_4_text | escape }}</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="blog-page__check" aria-labelledby="BlogCheck">
+        <h3 class="blog-page__subhead" id="BlogCheck">{% render 'turkish-upper', text: check_title %}</h3>
+        <ol class="blog-page__checks">
+          <li>
+            <h4>{% render 'turkish-upper', text: check_1_title %}</h4>
+            <p>{{ check_1 | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: check_2_title %}</h4>
+            <p>{{ check_2 | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: check_3_title %}</h4>
+            <p>{{ check_3 | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: check_4_title %}</h4>
+            <p>{{ check_4 | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: check_5_title %}</h4>
+            <p>{{ check_5 | escape }}</p>
+          </li>
+          <li>
+            <h4>{% render 'turkish-upper', text: check_6_title %}</h4>
+            <p>{{ check_6 | escape }}</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="blog-page__how" aria-labelledby="BlogNot">
+        <div class="section-head">
+          <span class="section-head__index">07</span>
+          <h2 id="BlogNot">{% render 'turkish-upper', text: not_title %}</h2>
+        </div>
+        <p class="blog-page__how-text">{{ not_text | escape }}</p>
+        <ul class="blog-page__pillars" role="list">
+          <li>
+            <p>{{ not_1 | escape }}</p>
+          </li>
+          <li>
+            <p>{{ not_2 | escape }}</p>
+          </li>
+          <li>
+            <p>{{ not_3 | escape }}</p>
+          </li>
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if blog.all_tags.size > 0 %}
+      <nav class="blog-page__topics" aria-label="{{ topics_label | escape }}">
+        <ul class="blog-page__topics-list" role="list">
+          <li>
+            <a
+              class="blog-page__topic{% if current_tags == blank %} is-current{% endif %}"
+              href="{{ blog.url }}"
+              {% if current_tags == blank %}
+                aria-current="page"
+              {% endif %}
+            >
+              {% assign all_label = 'blog.all' | t %}
+              {% render 'blog-topic-media', tag: 'all', label: all_label %}
+            </a>
+          </li>
+          {% for tag in blog.all_tags %}
+            {% unless tag contains '-' %}
+              <li>
+                <a
+                  class="blog-page__topic{% if current_tags contains tag %} is-current{% endif %}"
+                  href="{{ blog.url }}/tagged/{{ tag | handleize }}"
+                  {% if current_tags contains tag %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {% render 'blog-topic-media', tag: tag, label: tag %}
+                </a>
+              </li>
+            {% endunless %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+
+    {% if blog.articles_count == 0 %}
+      <p>{{ 'blog.empty' | t }}</p>
+    {% elsif show_featured %}
+      {% for article in blog.articles limit: 1 %}
+        <article class="blog-page__feature">
+          <p class="eyebrow">{% render 'turkish-upper', text: featured_label %}</p>
+          {% render 'article-card', article: article, featured: true %}
+        </article>
+      {% endfor %}
+
+      {% if blog.articles_count > 1 %}
+        <div class="section-head">
+          <span class="section-head__index">08</span>
+          <h2>{% render 'turkish-upper', text: guide_label %}</h2>
+        </div>
+        <ul class="blog-page__grid" role="list">
+          {% for article in blog.articles offset: 1 %}
+            <li>
+              {% render 'article-card', article: article %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% else %}
+      <ul class="blog-page__grid" role="list">
+        {% for article in blog.articles %}
+          <li>
+            {% render 'article-card', article: article %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if show_overview and closing != blank %}
+      <aside class="blog-page__close">
+        <p>{{ closing | escape }}</p>
+        <div class="blog-page__close-links">
+          {% if pages['beden-rehberi'] != blank %}
+            <a class="button button--text" href="{{ pages['beden-rehberi'].url }}">{{ size_guide_label | escape }}</a>
+          {% endif %}
+          {% if pages['kargo-ve-iade'] != blank %}
+            <a class="button button--text" href="{{ pages['kargo-ve-iade'].url }}">{{ shipping_label | escape }}</a>
+          {% endif %}
+          {% if pages.contact != blank %}
+            <a class="button button--text" href="{{ pages.contact.url }}">{{ contact_label | escape }}</a>
+          {% endif %}
+        </div>
+      </aside>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <nav class="blog-page__pagination" aria-label="{{ 'collections.pagination' | t }}">
+        {{ paginate | default_pagination }}
+      </nav>
+    {% endif %}
+  </div>
+{% endpaginate %}
+
+{% stylesheet %}
+  .blog-page {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .blog-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 52rem;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .blog-page__lede {
+    max-width: 46rem;
+    color: var(--color-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .blog-page__lede--more {
+    margin: 0;
+  }
+
+  .blog-page__how {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .blog-page__how .section-head {
+    margin-bottom: 0;
+  }
+
+  .blog-page__how-text {
+    max-width: 40rem;
+    margin: 0;
+    color: var(--color-secondary);
+    line-height: 1.65;
+  }
+
+  .blog-page__pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .blog-page__pillars li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .blog-page__pillars h3 {
+    margin: 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .blog-page__pillars p {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .blog-page__subhead {
+    margin: var(--space-sm) 0 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .blog-page__path,
+  .blog-page__checks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: guide-step;
+  }
+
+  .blog-page__path li,
+  .blog-page__checks li {
+    position: relative;
+    padding: var(--space-sm) var(--space-sm) var(--space-sm) 3rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    counter-increment: guide-step;
+  }
+
+  .blog-page__path li::before,
+  .blog-page__checks li::before {
+    content: counter(guide-step, decimal-leading-zero);
+    position: absolute;
+    left: 0.85rem;
+    top: 0.95rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-page__path h4 {
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .blog-page__path p,
+  .blog-page__checks p,
+  .blog-page__checks li {
+    color: var(--color-secondary);
+    line-height: 1.65;
+  }
+
+  .blog-page__checks h4 {
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--color-foreground);
+  }
+
+  .blog-page__checks p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .blog-page__path p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .blog-page__map,
+  .blog-page__check {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .blog-page__map-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .blog-page__map-card {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    min-height: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .blog-page__map-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .blog-page__map-card p {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .blog-page__map-card .blog-topic-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .blog-page__close-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .blog-page__close {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    max-width: 40rem;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .blog-page__close p {
+    margin: 0;
+    color: var(--color-secondary);
+    line-height: 1.65;
+  }
+
+  .blog-page__topics {
+    margin: 0 calc(var(--page-margin) * -1);
+  }
+
+  .blog-page__topics-list {
+    display: flex;
+    gap: var(--space-xs);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    list-style: none;
+    padding: 0 var(--page-margin) var(--space-2xs);
+    margin: 0;
+    scrollbar-width: thin;
+  }
+
+  .blog-page__topic {
+    display: flex;
+    flex-direction: column;
+    width: 7.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    scroll-snap-align: start;
+  }
+
+  .blog-page__topic-media {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-foreground);
+  }
+
+  .blog-topic-icon {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    width: 2.75rem;
+    height: 2.75rem;
+    overflow: hidden;
+  }
+
+  .blog-topic-icon svg,
+  .blog-topic-icon img {
+    display: block;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    max-width: 1.7rem;
+    max-height: 1.7rem;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .blog-page__topic-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: var(--touch-min);
+    padding: 0 0.4rem;
+    border: 1px solid var(--color-border);
+    border-top: 0;
+    background: var(--color-background);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  .blog-page__topic.is-current .blog-page__topic-media,
+  .blog-page__topic[aria-current='page'] .blog-page__topic-media {
+    border-color: var(--color-foreground);
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .blog-page__topic.is-current .blog-page__topic-label,
+  .blog-page__topic[aria-current='page'] .blog-page__topic-label {
+    border-color: var(--color-foreground);
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .blog-page__feature {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .blog-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .blog-page__pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  @media screen and (min-width: 750px) {
+    .blog-page__topics {
+      margin-inline: 0;
+    }
+
+    .blog-page__topics-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+      overflow: visible;
+      padding-inline: 0;
+      scroll-snap-type: none;
+    }
+
+    .blog-page__topic {
+      width: auto;
+    }
+
+    .blog-page__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .blog-page__pillars,
+    .blog-page__path,
+    .blog-page__map-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .blog-page__checks {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .blog-page__path,
+    .blog-page__checks {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.blog",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "t:labels.eyebrow",
+      "default": "Stil rehberi, Avela’da bir parçanın nasıl duracağını kampanya dilinden değil kumaş, kalıp, boy, örtünme payı, şal ve katmandan okur. Yazı satış sırası değil çerçevedir."
+    }
+  ]
+}
+{% endschema %}

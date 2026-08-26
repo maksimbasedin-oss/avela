@@ -1,0 +1,14 @@
+---
+description: İndirim kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# İndirim ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/SXt7Gn8x/image.png
+
+Dosya: `assets/icon-cat-indirim.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `indirim`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

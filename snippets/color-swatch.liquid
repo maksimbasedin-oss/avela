@@ -1,0 +1,42 @@
+{% doc %}
+  Maps a color option name to a CSS swatch token.
+
+  @param {string} value - Color name
+  @param {string} [class] - Extra class names
+  @example
+  {% render 'color-swatch', value: 'Vizon', class: 'product-card__swatch' %}
+{% enddoc %}
+
+{% liquid
+  assign swatch = '#6B6B6B'
+  assign tone = value | downcase
+  if tone == 'siyah' or tone == 'black'
+    assign swatch = '#111111'
+  elsif tone == 'ekru' or tone == 'krem' or tone == 'white'
+    assign swatch = '#EDE6D9'
+  elsif tone == 'bej' or tone == 'taş' or tone == 'tas'
+    assign swatch = '#C8B79A'
+  elsif tone == 'vizon'
+    assign swatch = '#8A7A66'
+  elsif tone == 'kahve' or tone == 'sütlü kahve' or tone == 'sutlu kahve'
+    assign swatch = '#5C4033'
+  elsif tone == 'camel'
+    assign swatch = '#C19A6B'
+  elsif tone == 'antrasit'
+    assign swatch = '#3A3A3A'
+  elsif tone == 'lacivert' or tone == 'navy'
+    assign swatch = '#1B2A4A'
+  elsif tone == 'zeytin' or tone == 'adaçayı' or tone == 'adacayi'
+    assign swatch = '#6B7353'
+  elsif tone == 'pudra' or tone == 'gül kurusu' or tone == 'gul kurusu'
+    assign swatch = '#C9A7A0'
+  elsif tone == 'bordo'
+    assign swatch = '#6B2B2B'
+  endif
+%}
+
+<span
+  class="color-swatch {{ class }}"
+  title="{{ value | escape }}"
+  style="--swatch: {{ swatch }}"
+></span>

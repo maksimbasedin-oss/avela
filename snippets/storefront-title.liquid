@@ -1,0 +1,41 @@
+{% doc %}
+  Sistem ve İngilizce başlıkları Türkçe gösterir.
+
+  @param {string} text - Kaynak başlık
+  @param {string} [handle] - Kaynak handle
+{% enddoc %}
+{%- liquid
+  assign raw = text | default: '' | strip
+  assign key = raw | downcase
+  assign hnd = handle | default: '' | downcase
+  assign label = raw
+
+  if hnd == 'all' or key == 'products' or key == 'all products' or key == 'catalog'
+    assign label = 'search.products' | t
+  elsif hnd == 'news' or key == 'news'
+    assign label = 'blog.news' | t
+  elsif key == 'home' or key == 'home page' or key == 'frontpage'
+    assign label = 'general.home' | t
+  elsif key == 'search'
+    assign label = 'search.title' | t
+  elsif key == 'my store'
+    assign label = 'general.brand' | t
+  elsif key == 'your shopping cart' or key == 'shopping cart' or key == 'cart'
+    assign label = 'cart.title' | t
+  elsif key == 'account'
+    assign label = 'customers.account' | t
+  elsif key == 'create account'
+    assign label = 'customers.register' | t
+  elsif key == 'reset account'
+    assign label = 'customers.forgot' | t
+  elsif key == 'availability'
+    assign label = 'collections.filter_availability' | t
+  elsif key == 'color' or key == 'colour'
+    assign label = 'collections.filter_color' | t
+  elsif key == 'size'
+    assign label = 'collections.filter_size' | t
+  elsif key == 'jile & yelek'
+    assign label = 'collections.jile_yelek' | t
+  endif
+-%}
+{{- label -}}

@@ -1,0 +1,167 @@
+<div class="editorial full-width band band--ash">
+  {% if section.settings.image != blank %}
+    <div class="editorial__media">
+      {% assign editorial_alt = section.settings.image.alt | default: section.settings.heading %}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          widths: '600, 900, 1200, 1600',
+          sizes: '(min-width: 750px) 50vw, 100vw',
+          loading: 'lazy',
+          alt: editorial_alt
+      }}
+    </div>
+  {% endif %}
+
+  <div class="editorial__content">
+    {% if section.settings.eyebrow != blank %}
+      <p class="eyebrow">{% render 'turkish-upper', text: section.settings.eyebrow %}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2>{% render 'turkish-upper', text: section.settings.heading %}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="rte">{{ section.settings.text }}</div>
+    {% endif %}
+    {% if section.settings.button_label != blank %}
+      {% render 'button',
+        label: section.settings.button_label,
+        url: section.settings.button_link,
+        style: section.settings.button_style
+      %}
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .editorial {
+    display: grid;
+    gap: 0;
+    padding-block: 0;
+    margin-block: 0;
+    align-items: stretch;
+    border-block: 1px solid var(--color-foreground);
+  }
+
+  .editorial h2,
+  .editorial .eyebrow,
+  .editorial .rte {
+    color: inherit;
+  }
+
+  .editorial__media {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-border);
+  }
+
+  .editorial__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: grayscale(1);
+  }
+
+  .editorial__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding: var(--space-xl) var(--page-margin);
+    text-align: center;
+  }
+
+  .editorial__content .eyebrow,
+  .editorial__content h2,
+  .editorial__content .rte,
+  .editorial__content .rte p {
+    width: 100%;
+    margin-inline: 0;
+    text-align: center;
+  }
+
+  .editorial .button {
+    align-self: center;
+  }
+
+  .editorial .button--secondary {
+    color: var(--color-foreground);
+    border-color: var(--color-foreground);
+  }
+
+  @media screen and (max-width: 749px) {
+    .editorial.band {
+      padding-inline: 0;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .editorial {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .editorial__content {
+      padding: var(--space-xl);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.editorial",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:labels.eyebrow",
+      "default": "Kombin"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Günlük sadelik"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Tek parça veya takım. Az parça, net duruş.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:labels.button_style",
+      "options": [
+        { "value": "primary", "label": "t:options.button_style.primary" },
+        { "value": "secondary", "label": "t:options.button_style.secondary" },
+        { "value": "text", "label": "t:options.button_style.text" }
+      ],
+      "default": "secondary"
+    }
+  ],
+  "presets": [{ "name": "t:general.editorial" }]
+}
+{% endschema %}

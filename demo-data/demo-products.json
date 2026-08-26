@@ -1,0 +1,5537 @@
+{
+  "vendor": "Demo Modest",
+  "demo": true,
+  "currency_note": "Prices are unit amounts for TRY demo import. Not live market prices.",
+  "product_count": 30,
+  "products": [
+    {
+      "demo": true,
+      "title": "Minimal Kemer Detaylı Krep Tesettür Elbise",
+      "handle": "minimal-kemer-detayli-krep-tesettur-elbise",
+      "sku_base": "ELB-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Elbise",
+      "product_type": "Tesettür Elbise",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "1499.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon",
+        "Ekru"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "elbise",
+        "kadin",
+        "minimal",
+        "gunluk",
+        "krep",
+        "rahat-kalip",
+        "yeni-sezon",
+        "bahar",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-elbise",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "klasik-belden-oturan-tesettur-trenckot"
+      ],
+      "intent": "Transactional",
+      "material": "%97 Polyester %3 Elastan",
+      "fit": "Rahat",
+      "length": "138 cm",
+      "model_height": "175 cm",
+      "model_size": "38",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "30 derecede ters yıkayın. Ağartmayın. Düşük ısıda ütüleyin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Minimal",
+      "occasion": "Günlük",
+      "description_html": "<p>İnce kemer çizgisi beli belirsiz toplar; krep düşüşü gün içinde sakin kalır.</p><h3>Ürün özellikleri</h3><ul><li>Rahat kalıp</li><li>Krep kumaş</li><li>İnce kemer detayı</li><li>Uzun kollu</li><li>Yan dikiş cepli</li></ul><p><strong>Kalıp:</strong> Rahat</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Aynı tonda bir krep şal ve düz bir düz taban yeter.</p><p><strong>Bakım:</strong> 30 derecede ters yıkayın. Ağartmayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Minimal Kemer Detaylı Krep Tesettür Elbise | Demo Modest",
+        "description": "Kemer çizgili krep tesettür elbiseyi günlük tempoya uygun, rahat kalıbıyla inceleyin. Demo Modest katalog kaydı. DEMO katalog kaydıdır; gerçek stok veya marka",
+        "primary_keyword": "tesettür elbise",
+        "secondary_keywords": [
+          "krep tesettür elbise",
+          "minimal tesettür elbise"
+        ],
+        "long_tail_keywords": [
+          "kemer detaylı krep tesettür elbise",
+          "günlük krep tesettür elbise"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Vizon kemer detaylı krep tesettür elbise"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Krep tesettür elbise yan görünüm"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kemer detayı yakın plan"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep kumaş dokusu"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "ELB-001-SIY-36",
+          "qty": 0,
+          "available": false
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "ELB-001-SIY-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "ELB-001-SIY-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "ELB-001-SIY-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "ELB-001-SIY-44",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "ELB-001-VIZ-36",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "ELB-001-VIZ-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "ELB-001-VIZ-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "ELB-001-VIZ-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "ELB-001-VIZ-44",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "36",
+          "sku": "ELB-001-EKR-36",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "ELB-001-EKR-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "ELB-001-EKR-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "ELB-001-EKR-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "ELB-001-EKR-44",
+          "qty": 12,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 14,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Relax Fit Aerobin Tesettür Elbise",
+      "handle": "relax-fit-aerobin-tesettur-elbise",
+      "sku_base": "ELB-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Elbise",
+      "product_type": "Tesettür Elbise",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "1699.00",
+      "compare_at_price": null,
+      "colors": [
+        "Bej",
+        "Taş",
+        "Adaçayı"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "elbise",
+        "kadin",
+        "aerobin",
+        "relax-fit",
+        "gunluk",
+        "cok-satan",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-elbise",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "ince-pamuk-tesettur-esarp",
+        "relax-fit-aerobin-tesettur-tunik"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Relax Fit",
+      "length": "128 cm",
+      "model_height": "173 cm",
+      "model_size": "36",
+      "fabric": "Aerobin",
+      "stretch": "Esnek değil",
+      "care": "30 derecede yıkayın. Askıda kurutun.",
+      "season": "İlkbahar / Yaz",
+      "style": "Salaş",
+      "occasion": "Günlük",
+      "description_html": "<p>Aerobin akışkan durur; relax kesim yürüyüş ve oturuşta kumaşı sıkıştırmaz.</p><h3>Ürün özellikleri</h3><ul><li>Relax fit</li><li>Aerobin kumaş</li><li>Yuvarlak yaka</li><li>Midi boy</li><li>Gizli cep</li></ul><p><strong>Kalıp:</strong> Relax Fit</p><p><strong>Kumaş:</strong> Aerobin</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Taş tonlarında ince bir eşarp ve düz sandalet ile tamamlanır.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Askıda kurutun.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Relax Fit Aerobin Tesettür Elbise | Demo Modest Katalog",
+        "description": "Hafif aerobin kumaşlı relax tesettür elbiseyi yazlık kombinler için inceleyin. Demo Modest DEMO kaydı. Tema testi için hazırlanmıştır; satış verisi içermez.",
+        "primary_keyword": "tesettür elbise",
+        "secondary_keywords": [
+          "aerobin tesettür elbise",
+          "relax fit tesettür elbise"
+        ],
+        "long_tail_keywords": [
+          "yazlık aerobin tesettür elbise",
+          "salaş tesettür elbise"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Bej relax fit aerobin tesettür elbise"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Aerobin tesettür elbise arka duruş"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yaka detayı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Aerobin kumaş dökümü"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Bej",
+          "size": "36",
+          "sku": "ELB-002-BEJ-36",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "38",
+          "sku": "ELB-002-BEJ-38",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "40",
+          "sku": "ELB-002-BEJ-40",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "42",
+          "sku": "ELB-002-BEJ-42",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "44",
+          "sku": "ELB-002-BEJ-44",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "46",
+          "sku": "ELB-002-BEJ-46",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "36",
+          "sku": "ELB-002-TAS-36",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "38",
+          "sku": "ELB-002-TAS-38",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "40",
+          "sku": "ELB-002-TAS-40",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "42",
+          "sku": "ELB-002-TAS-42",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "44",
+          "sku": "ELB-002-TAS-44",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "46",
+          "sku": "ELB-002-TAS-46",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "36",
+          "sku": "ELB-002-ADA-36",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "38",
+          "sku": "ELB-002-ADA-38",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "40",
+          "sku": "ELB-002-ADA-40",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "42",
+          "sku": "ELB-002-ADA-42",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "44",
+          "sku": "ELB-002-ADA-44",
+          "qty": 18,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "46",
+          "sku": "ELB-002-ADA-46",
+          "qty": 18,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 18,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Asimetrik Kesim Viskon Tesettür Elbise",
+      "handle": "asimetrik-kesim-viskon-tesettur-elbise",
+      "sku_base": "ELB-003",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Elbise",
+      "product_type": "Tesettür Elbise",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "1899.00",
+      "compare_at_price": "2299.00",
+      "colors": [
+        "Lacivert",
+        "Siyah"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "indirim"
+      ],
+      "tags": [
+        "tesettur",
+        "elbise",
+        "kadin",
+        "viskon",
+        "modern",
+        "ofis",
+        "indirim",
+        "sonbahar"
+      ],
+      "collections": [
+        "tesettur-elbise",
+        "indirim"
+      ],
+      "related_handles": [
+        "klasik-belden-oturan-tesettur-trenckot",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Commercial Investigation",
+      "material": "%95 Viskon %5 Elastan",
+      "fit": "Regular",
+      "length": "134 cm",
+      "model_height": "176 cm",
+      "model_size": "40",
+      "fabric": "Viskon",
+      "stretch": "Hafif esnek",
+      "care": "Ters çevirerek soğuk yıkayın. Düşük ısıda ütüleyin.",
+      "season": "Sonbahar / Kış",
+      "style": "Modern",
+      "occasion": "Ofis / Davet",
+      "description_html": "<p>Asimetrik etek ucu hareketsiz durmaz; viskon yumuşak tutum verir.</p><h3>Ürün özellikleri</h3><ul><li>Asimetrik etek</li><li>Viskon karışım</li><li>Regular kalıp</li><li>Uzun kol</li><li>Astarlı etek</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Viskon</p><p><strong>Kullanım:</strong> Ofis / Davet</p><p><strong>Kombin önerisi:</strong> Lacivert şal ve sade bir trençkot ile ofis gününe taşınır.</p><p><strong>Bakım:</strong> Ters çevirerek soğuk yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Asimetrik Kesim Viskon Tesettür Elbise | Demo Modest",
+        "description": "Asimetrik etekli viskon tesettür elbiseyi ofis ve davet kombinleri için inceleyin. DEMO fiyat, DEMO stok. Görseller sonradan eklenebilir; sahte görsel adresi",
+        "primary_keyword": "tesettür elbise",
+        "secondary_keywords": [
+          "viskon tesettür elbise",
+          "asimetrik tesettür elbise"
+        ],
+        "long_tail_keywords": [
+          "lacivert asimetrik tesettür elbise",
+          "ofis tesettür elbise"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Lacivert asimetrik viskon tesettür elbise"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Asimetrik etek ucu"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kol ağzı detayı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Viskon kumaş yüzeyi"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "ELB-003-LAC-38",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "ELB-003-LAC-40",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "ELB-003-LAC-42",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "44",
+          "sku": "ELB-003-LAC-44",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "ELB-003-SIY-38",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "ELB-003-SIY-40",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "ELB-003-SIY-42",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "ELB-003-SIY-44",
+          "qty": 9,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 8,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Düz Kesim Uzun Kollu Tesettür Elbise",
+      "handle": "duz-kesim-uzun-kollu-tesettur-elbise",
+      "sku_base": "ELB-004",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Elbise",
+      "product_type": "Tesettür Elbise",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "1299.00",
+      "compare_at_price": null,
+      "colors": [
+        "Kahve",
+        "Antrasit"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46",
+        "48"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "elbise",
+        "kadin",
+        "sade",
+        "gunluk",
+        "krep",
+        "duz-kesim"
+      ],
+      "collections": [
+        "tesettur-elbise"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "beli-lastikli-relax-fit-tesettur-pantolon"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Düz kesim",
+      "length": "136 cm",
+      "model_height": "170 cm",
+      "model_size": "40",
+      "fabric": "Krep",
+      "stretch": "Esnek değil",
+      "care": "30 derecede yıkayın. Yüksek ısıda ütülemeyin.",
+      "season": "Dört mevsim",
+      "style": "Sade",
+      "occasion": "Günlük",
+      "description_html": "<p>Düz kesim süs aramaz; uzun kol ve kapalı yaka günlük ritme uyar.</p><h3>Ürün özellikleri</h3><ul><li>Düz kesim</li><li>Kapalı yaka</li><li>Uzun kol</li><li>İki yan cep</li><li>Midi-uzun boy</li></ul><p><strong>Kalıp:</strong> Düz kesim</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Kahve şal ve düz bir pantolon yerine tek parça bırakın.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Yüksek ısıda ütülemeyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Düz Kesim Uzun Kollu Tesettür Elbise | Demo Modest",
+        "description": "Sade düz kesim tesettür elbiseyi günlük kullanım için inceleyin. Demo Modest DEMO ürünüdür. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir.",
+        "primary_keyword": "tesettür elbise",
+        "secondary_keywords": [
+          "düz kesim tesettür elbise",
+          "uzun kollu tesettür elbise"
+        ],
+        "long_tail_keywords": [
+          "sade günlük tesettür elbise",
+          "kahve tesettür elbise"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Kahve düz kesim tesettür elbise"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Uzun kol duruşu"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yaka kapama detayı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep yüzey"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Kahve",
+          "size": "36",
+          "sku": "ELB-004-KAH-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "38",
+          "sku": "ELB-004-KAH-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "40",
+          "sku": "ELB-004-KAH-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "42",
+          "sku": "ELB-004-KAH-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "44",
+          "sku": "ELB-004-KAH-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "46",
+          "sku": "ELB-004-KAH-46",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "48",
+          "sku": "ELB-004-KAH-48",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "36",
+          "sku": "ELB-004-ANT-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "38",
+          "sku": "ELB-004-ANT-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "40",
+          "sku": "ELB-004-ANT-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "42",
+          "sku": "ELB-004-ANT-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "44",
+          "sku": "ELB-004-ANT-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "46",
+          "sku": "ELB-004-ANT-46",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "48",
+          "sku": "ELB-004-ANT-48",
+          "qty": 0,
+          "available": false
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 13,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Oversize Cepli Keten Görünümlü Tesettür Elbise",
+      "handle": "oversize-cepli-keten-gorunumlu-tesettur-elbise",
+      "sku_base": "ELB-005",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Elbise",
+      "product_type": "Tesettür Elbise",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "1599.00",
+      "compare_at_price": null,
+      "colors": [
+        "Ekru",
+        "Zeytin",
+        "Krem"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "elbise",
+        "kadin",
+        "oversize",
+        "keten-gorunum",
+        "gunluk",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-elbise"
+      ],
+      "related_handles": [
+        "ince-pamuk-tesettur-esarp",
+        "oversize-cepli-tesettur-yelek"
+      ],
+      "intent": "Transactional",
+      "material": "%80 Polyester %20 Viskon",
+      "fit": "Oversize",
+      "length": "122 cm",
+      "model_height": "174 cm",
+      "model_size": "38",
+      "fabric": "Keten görünüm",
+      "stretch": "Esnek değil",
+      "care": "Ters yıkayın. Askıda kurutun. Buharlı ütü tercih edin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Oversize",
+      "occasion": "Günlük / Seyahat",
+      "description_html": "<p>Keten görünümü yazlık durur; oversize cep günlük eşyayı taşır.</p><h3>Ürün özellikleri</h3><ul><li>Oversize kalıp</li><li>Keten görünüm</li><li>Ön cep</li><li>Gömlek yaka</li><li>Diz altı</li></ul><p><strong>Kalıp:</strong> Oversize</p><p><strong>Kumaş:</strong> Keten görünüm</p><p><strong>Kullanım:</strong> Günlük / Seyahat</p><p><strong>Kombin önerisi:</strong> Ekru eşarp ve düz bir spor ayakkabı ile sade kalır.</p><p><strong>Bakım:</strong> Ters yıkayın. Askıda kurutun. Buharlı ütü tercih edin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Oversize Cepli Keten Görünümlü Tesettür Elbise | Demo Modest",
+        "description": "Cepli oversize keten görünümlü tesettür elbiseyi yaz kombinleri için inceleyin. DEMO kayıttır. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür elbise",
+        "secondary_keywords": [
+          "oversize tesettür elbise",
+          "keten görünümlü tesettür elbise"
+        ],
+        "long_tail_keywords": [
+          "cepli oversize tesettür elbise",
+          "yazlık tesettür elbise"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru oversize keten görünümlü tesettür elbise"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Ön cep detayı"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Gömlek yaka"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Keten görünüm doku"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "ELB-005-EKR-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "ELB-005-EKR-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "ELB-005-EKR-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "ELB-005-EKR-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "46",
+          "sku": "ELB-005-EKR-46",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "38",
+          "sku": "ELB-005-ZEY-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "40",
+          "sku": "ELB-005-ZEY-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "42",
+          "sku": "ELB-005-ZEY-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "44",
+          "sku": "ELB-005-ZEY-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "46",
+          "sku": "ELB-005-ZEY-46",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Krem",
+          "size": "38",
+          "sku": "ELB-005-KRE-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Krem",
+          "size": "40",
+          "sku": "ELB-005-KRE-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Krem",
+          "size": "42",
+          "sku": "ELB-005-KRE-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Krem",
+          "size": "44",
+          "sku": "ELB-005-KRE-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Krem",
+          "size": "46",
+          "sku": "ELB-005-KRE-46",
+          "qty": 11,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 15,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Relax Fit Aerobin Tesettür Tunik",
+      "handle": "relax-fit-aerobin-tesettur-tunik",
+      "sku_base": "TUN-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Tunik",
+      "product_type": "Tesettür Tunik",
+      "product_category": "Apparel & Accessories > Clothing > Clothing Tops",
+      "price": "1099.00",
+      "compare_at_price": null,
+      "colors": [
+        "Ekru",
+        "Adaçayı",
+        "Sütlü Kahve"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "tunik",
+        "kadin",
+        "aerobin",
+        "relax-fit",
+        "gunluk",
+        "yeni-sezon",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-tunik",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "bol-paca-krep-tesettur-pantolon",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Relax Fit",
+      "length": "98 cm",
+      "model_height": "172 cm",
+      "model_size": "38",
+      "fabric": "Aerobin",
+      "stretch": "Esnek değil",
+      "care": "30 derecede yıkayın. Askıda kurutun.",
+      "season": "İlkbahar / Yaz",
+      "style": "Minimal",
+      "occasion": "Günlük",
+      "description_html": "<p>Tunik boyu pantolon üstünü örter; aerobin terletmeden durur.</p><h3>Ürün özellikleri</h3><ul><li>Relax fit</li><li>Aerobin</li><li>Yan yırtmaç</li><li>Uzun kol</li><li>Yuvarlak yaka</li></ul><p><strong>Kalıp:</strong> Relax Fit</p><p><strong>Kumaş:</strong> Aerobin</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Bol paça pantolon ve ince şal ile üçlü sakin bir hat verir.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Askıda kurutun.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Relax Fit Aerobin Tesettür Tunik | Demo Modest Katalog",
+        "description": "Pantolon üstüne oturan aerobin tesettür tuniği günlük kullanım için inceleyin. Demo Modest DEMO. DEMO katalog kaydıdır; gerçek stok veya marka ürünü değildir.",
+        "primary_keyword": "tesettür tunik",
+        "secondary_keywords": [
+          "aerobin tesettür tunik",
+          "uzun tesettür tunik"
+        ],
+        "long_tail_keywords": [
+          "relax fit aerobin tesettür tunik",
+          "yazlık tesettür tunik"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru relax fit aerobin tesettür tunik"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Yan yırtmaç"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kol boyu"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Aerobin döküm"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Ekru",
+          "size": "36",
+          "sku": "TUN-001-EKR-36",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "TUN-001-EKR-38",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "TUN-001-EKR-40",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "TUN-001-EKR-42",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "TUN-001-EKR-44",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "36",
+          "sku": "TUN-001-ADA-36",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "38",
+          "sku": "TUN-001-ADA-38",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "40",
+          "sku": "TUN-001-ADA-40",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "42",
+          "sku": "TUN-001-ADA-42",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "44",
+          "sku": "TUN-001-ADA-44",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "36",
+          "sku": "TUN-001-SUT-36",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "38",
+          "sku": "TUN-001-SUT-38",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "40",
+          "sku": "TUN-001-SUT-40",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "42",
+          "sku": "TUN-001-SUT-42",
+          "qty": 14,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "44",
+          "sku": "TUN-001-SUT-44",
+          "qty": 14,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 15,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Minimal Yuvarlak Yaka Tesettür Tunik",
+      "handle": "minimal-yuvarlak-yaka-tesettur-tunik",
+      "sku_base": "TUN-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Tunik",
+      "product_type": "Tesettür Tunik",
+      "product_category": "Apparel & Accessories > Clothing > Clothing Tops",
+      "price": "899.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "tunik",
+        "kadin",
+        "minimal",
+        "krep",
+        "ofis",
+        "cok-satan"
+      ],
+      "collections": [
+        "tesettur-tunik",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "yuksek-bel-palazzo-tesettur-pantolon",
+        "ince-pamuk-tesettur-esarp"
+      ],
+      "intent": "Transactional",
+      "material": "%96 Polyester %4 Elastan",
+      "fit": "Regular",
+      "length": "92 cm",
+      "model_height": "168 cm",
+      "model_size": "36",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "Ters yıkayın. Düşük ısıda ütüleyin.",
+      "season": "Dört mevsim",
+      "style": "Minimal",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Yaka sade bırakıldı; krep yüzey ütü izini az gösterir.</p><h3>Ürün özellikleri</h3><ul><li>Yuvarlak yaka</li><li>Krep</li><li>Düz kesim</li><li>Uzun kol</li><li>Kalça üzeri boy</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> Palazzo pantolon veya düz etek üzerine tek parça kalabilir.</p><p><strong>Bakım:</strong> Ters yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Minimal Yuvarlak Yaka Tesettür Tunik | Demo Modest",
+        "description": "Sade yuvarlak yakalı krep tesettür tuniği ofis ve günlük için inceleyin. DEMO üründür. Tema testi için hazırlanmıştır; satış verisi içermez.",
+        "primary_keyword": "tesettür tunik",
+        "secondary_keywords": [
+          "krep tesettür tunik",
+          "yuvarlak yaka tesettür tunik"
+        ],
+        "long_tail_keywords": [
+          "minimal krep tesettür tunik",
+          "ofis tesettür tunik"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Siyah yuvarlak yaka tesettür tunik"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Tunik boyu pantolon üstünde"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yaka dikişi"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep yüzey"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "TUN-002-SIY-36",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "TUN-002-SIY-38",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "TUN-002-SIY-40",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "TUN-002-SIY-42",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "TUN-002-SIY-44",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "TUN-002-SIY-46",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "TUN-002-VIZ-36",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "TUN-002-VIZ-38",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "TUN-002-VIZ-40",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "TUN-002-VIZ-42",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "TUN-002-VIZ-44",
+          "qty": 20,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "46",
+          "sku": "TUN-002-VIZ-46",
+          "qty": 20,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 12,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Yırtmaç Detaylı Uzun Tesettür Tunik",
+      "handle": "yirtmac-detayli-uzun-tesettur-tunik",
+      "sku_base": "TUN-003",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Tunik",
+      "product_type": "Tesettür Tunik",
+      "product_category": "Apparel & Accessories > Clothing > Clothing Tops",
+      "price": "1199.00",
+      "compare_at_price": null,
+      "colors": [
+        "Bordo",
+        "Lacivert"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "sinirli-stok"
+      ],
+      "tags": [
+        "tesettur",
+        "tunik",
+        "kadin",
+        "uzun",
+        "viskon",
+        "salas",
+        "sinirli-stok",
+        "sonbahar"
+      ],
+      "collections": [
+        "tesettur-tunik"
+      ],
+      "related_handles": [
+        "bol-paca-krep-tesettur-pantolon",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Viskon",
+      "fit": "Rahat",
+      "length": "108 cm",
+      "model_height": "177 cm",
+      "model_size": "40",
+      "fabric": "Viskon",
+      "stretch": "Esnek değil",
+      "care": "Soğuk yıkayın. Sıkmayın. Askıda kurutun.",
+      "season": "Sonbahar",
+      "style": "Salaş",
+      "occasion": "Günlük",
+      "description_html": "<p>Yan yırtmaç adımı rahatlatır; uzun boy pantolonu neredeyse örter.</p><h3>Ürün özellikleri</h3><ul><li>Uzun tunik boyu</li><li>Yan yırtmaç</li><li>Viskon</li><li>Rahat kalıp</li><li>Düşük omuz</li></ul><p><strong>Kalıp:</strong> Rahat</p><p><strong>Kumaş:</strong> Viskon</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Dar paça yerine bol pantolon tercih edin; şalı düz bağlayın.</p><p><strong>Bakım:</strong> Soğuk yıkayın. Sıkmayın. Askıda kurutun.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Yırtmaç Detaylı Uzun Tesettür Tunik | Demo Modest Katalog",
+        "description": "Yan yırtmaçlı uzun tesettür tuniği sınırlı DEMO stokla inceleyin. Gerçek satış verisi yoktur. Görseller sonradan eklenebilir; sahte görsel adresi yoktur.",
+        "primary_keyword": "tesettür tunik",
+        "secondary_keywords": [
+          "uzun tesettür tunik",
+          "yırtmaçlı tesettür tunik"
+        ],
+        "long_tail_keywords": [
+          "viskon uzun tesettür tunik",
+          "salaş tesettür tunik"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Bordo yırtmaçlı uzun tesettür tunik"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Yan yırtmaç hareketi"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Omuz düşümü"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Viskon döküm"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Bordo",
+          "size": "38",
+          "sku": "TUN-003-BOR-38",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "40",
+          "sku": "TUN-003-BOR-40",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "42",
+          "sku": "TUN-003-BOR-42",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "44",
+          "sku": "TUN-003-BOR-44",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "TUN-003-LAC-38",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "TUN-003-LAC-40",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "TUN-003-LAC-42",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "44",
+          "sku": "TUN-003-LAC-44",
+          "qty": 2,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 0,
+        "low_stock": 8,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Salaş Kesim Viskon Tesettür Tunik",
+      "handle": "salas-kesim-viskon-tesettur-tunik",
+      "sku_base": "TUN-004",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Tunik",
+      "product_type": "Tesettür Tunik",
+      "product_category": "Apparel & Accessories > Clothing > Clothing Tops",
+      "price": "999.00",
+      "compare_at_price": null,
+      "colors": [
+        "Pudra",
+        "Taş"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "tunik",
+        "kadin",
+        "salas",
+        "viskon",
+        "gunluk",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-tunik"
+      ],
+      "related_handles": [
+        "minimal-dugmeli-tesettur-jile",
+        "yuksek-bel-palazzo-tesettur-pantolon"
+      ],
+      "intent": "Transactional",
+      "material": "%95 Viskon %5 Elastan",
+      "fit": "Salaş",
+      "length": "96 cm",
+      "model_height": "171 cm",
+      "model_size": "M",
+      "fabric": "Viskon",
+      "stretch": "Hafif esnek",
+      "care": "Hassas programda yıkayın. Sıkmayın.",
+      "season": "İlkbahar / Yaz",
+      "style": "Salaş",
+      "occasion": "Günlük",
+      "description_html": "<p>Salaş kesim beden harfini gevşetir; pudra tonu kumaşı yumuşak gösterir.</p><h3>Ürün özellikleri</h3><ul><li>Salaş kesim</li><li>Viskon</li><li>Düşük omuz</li><li>Uzun kol</li><li>Yarım pat</li></ul><p><strong>Kalıp:</strong> Salaş</p><p><strong>Kumaş:</strong> Viskon</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Jile altına veya tek başına pantolonla kullanılabilir.</p><p><strong>Bakım:</strong> Hassas programda yıkayın. Sıkmayın.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Salaş Kesim Viskon Tesettür Tunik | Demo Modest Katalog",
+        "description": "Salaş viskon tesettür tuniği S–XL beden aralığında inceleyin. Demo Modest DEMO kaydı. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir. İncelemeden önce",
+        "primary_keyword": "tesettür tunik",
+        "secondary_keywords": [
+          "salaş tesettür tunik",
+          "viskon tesettür tunik"
+        ],
+        "long_tail_keywords": [
+          "pudra salaş tesettür tunik",
+          "günlük viskon tesettür tunik"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Pudra salaş viskon tesettür tunik"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Düşük omuz duruşu"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yarım pat"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Viskon kumaş"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Pudra",
+          "size": "S",
+          "sku": "TUN-004-PUD-S",
+          "qty": 0,
+          "available": false
+        },
+        {
+          "color": "Pudra",
+          "size": "M",
+          "sku": "TUN-004-PUD-M",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Pudra",
+          "size": "L",
+          "sku": "TUN-004-PUD-L",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Pudra",
+          "size": "XL",
+          "sku": "TUN-004-PUD-XL",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "S",
+          "sku": "TUN-004-TAS-S",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "M",
+          "sku": "TUN-004-TAS-M",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "L",
+          "sku": "TUN-004-TAS-L",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "XL",
+          "sku": "TUN-004-TAS-XL",
+          "qty": 8,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 7,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Modern Palazzo Pantolonlu Tesettür Takım",
+      "handle": "modern-palazzo-pantolonlu-tesettur-takim",
+      "sku_base": "TAK-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Takım",
+      "product_type": "Tesettür Takım",
+      "product_category": "Apparel & Accessories > Clothing",
+      "price": "2199.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon",
+        "Ekru",
+        "Antrasit"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "takim",
+        "kadin",
+        "palazzo",
+        "krep",
+        "modern",
+        "yeni-sezon",
+        "ofis"
+      ],
+      "collections": [
+        "tesettur-takim",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "minimal-fermuarli-ferace"
+      ],
+      "intent": "Transactional",
+      "material": "%96 Polyester %4 Elastan",
+      "fit": "Regular",
+      "length": "Üst 92 cm / Pantolon 108 cm",
+      "model_height": "175 cm",
+      "model_size": "38",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "Takımı ters çevirerek birlikte yıkayın.",
+      "season": "İlkbahar / Yaz",
+      "style": "Modern",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Üst tunik ve palazzo pantolon aynı kumaştan; hat tek parça gibi okunur.</p><h3>Ürün özellikleri</h3><ul><li>İkili takım</li><li>Palazzo pantolon</li><li>Krep</li><li>Regular üst</li><li>Beli lastikli alt</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> Tek renk şal; çanta ve ayakkabıyı mat tutun.</p><p><strong>Bakım:</strong> Takımı ters çevirerek birlikte yıkayın.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Modern Palazzo Pantolonlu Tesettür Takım | Demo Modest",
+        "description": "Tunik ve palazzo pantolondan oluşan krep tesettür takımı inceleyin. Dört renk, DEMO stok. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür takım",
+        "secondary_keywords": [
+          "palazzo tesettür takım",
+          "krep tesettür takım"
+        ],
+        "long_tail_keywords": [
+          "modern palazzo tesettür takım",
+          "ikili tesettür takım"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Vizon palazzo pantolonlu tesettür takım"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Takım tam boy"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Pantolon beli"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep üst detay"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "TAK-001-SIY-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "TAK-001-SIY-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "TAK-001-SIY-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "TAK-001-SIY-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "TAK-001-SIY-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "TAK-001-VIZ-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "TAK-001-VIZ-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "TAK-001-VIZ-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "TAK-001-VIZ-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "TAK-001-VIZ-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "36",
+          "sku": "TAK-001-EKR-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "TAK-001-EKR-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "TAK-001-EKR-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "TAK-001-EKR-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "TAK-001-EKR-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "36",
+          "sku": "TAK-001-ANT-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "38",
+          "sku": "TAK-001-ANT-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "40",
+          "sku": "TAK-001-ANT-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "42",
+          "sku": "TAK-001-ANT-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "44",
+          "sku": "TAK-001-ANT-44",
+          "qty": 10,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 20,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Regular Fit Krep Tesettür Takım",
+      "handle": "regular-fit-krep-tesettur-takim",
+      "sku_base": "TAK-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Takım",
+      "product_type": "Tesettür Takım",
+      "product_category": "Apparel & Accessories > Clothing",
+      "price": "1999.00",
+      "compare_at_price": null,
+      "colors": [
+        "Lacivert",
+        "Kahve"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "takim",
+        "kadin",
+        "krep",
+        "regular",
+        "ofis",
+        "cok-satan"
+      ],
+      "collections": [
+        "tesettur-takim",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "klasik-dugmeli-tesettur-ferace",
+        "ince-pamuk-tesettur-esarp"
+      ],
+      "intent": "Transactional",
+      "material": "%97 Polyester %3 Elastan",
+      "fit": "Regular",
+      "length": "Üst 90 cm / Pantolon 106 cm",
+      "model_height": "173 cm",
+      "model_size": "40",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "30 derecede yıkayın. Düşük ısıda ütüleyin.",
+      "season": "Dört mevsim",
+      "style": "Klasik",
+      "occasion": "Ofis",
+      "description_html": "<p>Regular üst omuzu doldurmaz; düz paça pantolon ayakkabıyı gizler.</p><h3>Ürün özellikleri</h3><ul><li>İkili takım</li><li>Regular fit</li><li>Krep</li><li>Düz paça</li><li>Gizli fermuar</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Ofis</p><p><strong>Kombin önerisi:</strong> Aynı aileden bir ferace veya trençkot katman olur.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Regular Fit Krep Tesettür Takım | Demo Modest Katalog",
+        "description": "Ofis temposuna uygun regular krep tesettür takımı inceleyin. Demo Modest DEMO üründür. DEMO katalog kaydıdır; gerçek stok veya marka ürünü değildir.",
+        "primary_keyword": "tesettür takım",
+        "secondary_keywords": [
+          "krep tesettür takım",
+          "ofis tesettür takım"
+        ],
+        "long_tail_keywords": [
+          "regular fit krep tesettür takım",
+          "lacivert tesettür takım"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Lacivert regular krep tesettür takım"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Düz paça duruş"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Üst kapama"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep pantolon dikişi"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Lacivert",
+          "size": "36",
+          "sku": "TAK-002-LAC-36",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "TAK-002-LAC-38",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "TAK-002-LAC-40",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "TAK-002-LAC-42",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "44",
+          "sku": "TAK-002-LAC-44",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "46",
+          "sku": "TAK-002-LAC-46",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "36",
+          "sku": "TAK-002-KAH-36",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "38",
+          "sku": "TAK-002-KAH-38",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "40",
+          "sku": "TAK-002-KAH-40",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "42",
+          "sku": "TAK-002-KAH-42",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "44",
+          "sku": "TAK-002-KAH-44",
+          "qty": 16,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "46",
+          "sku": "TAK-002-KAH-46",
+          "qty": 0,
+          "available": false
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 11,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Soft Dokulu Günlük Tesettür Takım",
+      "handle": "soft-dokulu-gunluk-tesettur-takim",
+      "sku_base": "TAK-003",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Takım",
+      "product_type": "Tesettür Takım",
+      "product_category": "Apparel & Accessories > Clothing",
+      "price": "1699.00",
+      "compare_at_price": "2099.00",
+      "colors": [
+        "Bej",
+        "Sütlü Kahve"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "indirim"
+      ],
+      "tags": [
+        "tesettur",
+        "takim",
+        "kadin",
+        "gunluk",
+        "viskon",
+        "rahat-kalip",
+        "indirim",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-takim",
+        "indirim"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "relax-fit-aerobin-tesettur-tunik"
+      ],
+      "intent": "Commercial Investigation",
+      "material": "%70 Viskon %30 Polyester",
+      "fit": "Rahat",
+      "length": "Üst 88 cm / Pantolon 104 cm",
+      "model_height": "169 cm",
+      "model_size": "38",
+      "fabric": "Viskon karışım",
+      "stretch": "Hafif esnek",
+      "care": "Hassas yıkayın. Kurutma makinesi kullanmayın.",
+      "season": "İlkbahar / Yaz",
+      "style": "Günlük",
+      "occasion": "Günlük",
+      "description_html": "<p>Yumuşak doku evden çıkışta sert durmaz; takım tek karar verir.</p><h3>Ürün özellikleri</h3><ul><li>İkili takım</li><li>Soft doku</li><li>Rahat kalıp</li><li>Beli lastik</li><li>Yuvarlak yaka üst</li></ul><p><strong>Kalıp:</strong> Rahat</p><p><strong>Kumaş:</strong> Viskon karışım</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Ekru şal ve düz taban; takımı ayırmadan giyin.</p><p><strong>Bakım:</strong> Hassas yıkayın. Kurutma makinesi kullanmayın.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Soft Dokulu Günlük Tesettür Takım | Demo Modest Katalog",
+        "description": "Yumuşak viskon karışımlı günlük tesettür takımı indirimli DEMO fiyatla inceleyin. Tema testi için hazırlanmıştır; satış verisi içermez. İncelemeden önce beden",
+        "primary_keyword": "tesettür takım",
+        "secondary_keywords": [
+          "günlük tesettür takım",
+          "viskon tesettür takım"
+        ],
+        "long_tail_keywords": [
+          "soft dokulu tesettür takım",
+          "rahat tesettür takım"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Bej soft dokulu tesettür takım"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Lastikli bel"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Üst yaka"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Yumuşak kumaş"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Bej",
+          "size": "38",
+          "sku": "TAK-003-BEJ-38",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "40",
+          "sku": "TAK-003-BEJ-40",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "42",
+          "sku": "TAK-003-BEJ-42",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "44",
+          "sku": "TAK-003-BEJ-44",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "38",
+          "sku": "TAK-003-SUT-38",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "40",
+          "sku": "TAK-003-SUT-40",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "42",
+          "sku": "TAK-003-SUT-42",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "44",
+          "sku": "TAK-003-SUT-44",
+          "qty": 7,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 8,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Oversize Gömlek Pantolon Tesettür Takım",
+      "handle": "oversize-gomlek-pantolon-tesettur-takim",
+      "sku_base": "TAK-004",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Takım",
+      "product_type": "Tesettür Takım",
+      "product_category": "Apparel & Accessories > Clothing",
+      "price": "1899.00",
+      "compare_at_price": null,
+      "colors": [
+        "Zeytin",
+        "Taş"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "takim",
+        "kadin",
+        "oversize",
+        "gomlek",
+        "keten-gorunum",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-takim"
+      ],
+      "related_handles": [
+        "oversize-cepli-tesettur-yelek",
+        "ince-pamuk-tesettur-esarp"
+      ],
+      "intent": "Transactional",
+      "material": "%80 Polyester %20 Viskon",
+      "fit": "Oversize",
+      "length": "Üst 100 cm / Pantolon 105 cm",
+      "model_height": "178 cm",
+      "model_size": "M",
+      "fabric": "Keten görünüm",
+      "stretch": "Esnek değil",
+      "care": "Askıda kurutun. Buhar verin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Oversize",
+      "occasion": "Günlük / Seyahat",
+      "description_html": "<p>Gömlek tunik oversize durur; pantolon beli gömlek altına gizlenir.</p><h3>Ürün özellikleri</h3><ul><li>Gömlek üst</li><li>Oversize</li><li>Keten görünüm</li><li>Düz pantolon</li><li>Ahşap düğme görünümü</li></ul><p><strong>Kalıp:</strong> Oversize</p><p><strong>Kumaş:</strong> Keten görünüm</p><p><strong>Kullanım:</strong> Günlük / Seyahat</p><p><strong>Kombin önerisi:</strong> Jile yerine gömleği dışarıda bırakın; şalı ince tutun.</p><p><strong>Bakım:</strong> Askıda kurutun. Buhar verin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Oversize Gömlek Pantolon Tesettür Takım | Demo Modest",
+        "description": "Gömlek ve pantolondan oversize tesettür takımı S–XXL aralığında inceleyin. DEMO kayıttır. Görseller sonradan eklenebilir; sahte görsel adresi yoktur.",
+        "primary_keyword": "tesettür takım",
+        "secondary_keywords": [
+          "gömlek tesettür takım",
+          "oversize tesettür takım"
+        ],
+        "long_tail_keywords": [
+          "keten görünümlü tesettür takım",
+          "yazlık tesettür takım"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Zeytin oversize gömlek tesettür takım"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Gömlek boyu"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Düğme sırası"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Pantolon paça"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Zeytin",
+          "size": "S",
+          "sku": "TAK-004-ZEY-S",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "M",
+          "sku": "TAK-004-ZEY-M",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "L",
+          "sku": "TAK-004-ZEY-L",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "XL",
+          "sku": "TAK-004-ZEY-XL",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "XXL",
+          "sku": "TAK-004-ZEY-XXL",
+          "qty": 0,
+          "available": false
+        },
+        {
+          "color": "Taş",
+          "size": "S",
+          "sku": "TAK-004-TAS-S",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "M",
+          "sku": "TAK-004-TAS-M",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "L",
+          "sku": "TAK-004-TAS-L",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "XL",
+          "sku": "TAK-004-TAS-XL",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "XXL",
+          "sku": "TAK-004-TAS-XXL",
+          "qty": 9,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 9,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Bol Paça Krep Tesettür Pantolon",
+      "handle": "bol-paca-krep-tesettur-pantolon",
+      "sku_base": "PAN-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Pantolon",
+      "product_type": "Tesettür Pantolon",
+      "product_category": "Apparel & Accessories > Clothing > Pants",
+      "price": "899.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon",
+        "Taş"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "pantolon",
+        "kadin",
+        "bol-paca",
+        "krep",
+        "gunluk",
+        "cok-satan"
+      ],
+      "collections": [
+        "tesettur-pantolon",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "relax-fit-aerobin-tesettur-tunik",
+        "minimal-dugmeli-tesettur-jile"
+      ],
+      "intent": "Transactional",
+      "material": "%96 Polyester %4 Elastan",
+      "fit": "Bol paça",
+      "length": "108 cm",
+      "model_height": "175 cm",
+      "model_size": "38",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "Ters yıkayın. Düşük ısıda ütüleyin.",
+      "season": "Dört mevsim",
+      "style": "Günlük",
+      "occasion": "Günlük",
+      "description_html": "<p>Bol paça adımı gizler; krep kırışmayı azaltır.</p><h3>Ürün özellikleri</h3><ul><li>Bol paça</li><li>Krep</li><li>Yüksek bel</li><li>Yan cep</li><li>Beli lastik arkası</li></ul><p><strong>Kalıp:</strong> Bol paça</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Uzun tunik veya kısa bir jile ile orantı kurulur.</p><p><strong>Bakım:</strong> Ters yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Bol Paça Krep Tesettür Pantolon | Demo Modest Katalog",
+        "description": "Yüksek bel bol paça krep tesettür pantolonu günlük kombinler için inceleyin. DEMO üründür. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir.",
+        "primary_keyword": "tesettür pantolon",
+        "secondary_keywords": [
+          "bol paça tesettür pantolon",
+          "krep tesettür pantolon"
+        ],
+        "long_tail_keywords": [
+          "yüksek bel bol paça tesettür pantolon",
+          "günlük tesettür pantolon"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Vizon bol paça tesettür pantolon"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Paça dökümü"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Bel lastiği"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Yan cep"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "PAN-001-SIY-36",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "PAN-001-SIY-38",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "PAN-001-SIY-40",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "PAN-001-SIY-42",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "PAN-001-SIY-44",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "PAN-001-SIY-46",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "PAN-001-VIZ-36",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "PAN-001-VIZ-38",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "PAN-001-VIZ-40",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "PAN-001-VIZ-42",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "PAN-001-VIZ-44",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "46",
+          "sku": "PAN-001-VIZ-46",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "36",
+          "sku": "PAN-001-TAS-36",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "38",
+          "sku": "PAN-001-TAS-38",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "40",
+          "sku": "PAN-001-TAS-40",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "42",
+          "sku": "PAN-001-TAS-42",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "44",
+          "sku": "PAN-001-TAS-44",
+          "qty": 22,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "46",
+          "sku": "PAN-001-TAS-46",
+          "qty": 22,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 18,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Yüksek Bel Palazzo Tesettür Pantolon",
+      "handle": "yuksek-bel-palazzo-tesettur-pantolon",
+      "sku_base": "PAN-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Pantolon",
+      "product_type": "Tesettür Pantolon",
+      "product_category": "Apparel & Accessories > Clothing > Pants",
+      "price": "999.00",
+      "compare_at_price": "1299.00",
+      "colors": [
+        "Ekru",
+        "Siyah"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "indirim"
+      ],
+      "tags": [
+        "tesettur",
+        "pantolon",
+        "kadin",
+        "palazzo",
+        "aerobin",
+        "indirim",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-pantolon",
+        "indirim"
+      ],
+      "related_handles": [
+        "minimal-yuvarlak-yaka-tesettur-tunik",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Commercial Investigation",
+      "material": "%100 Polyester",
+      "fit": "Palazzo",
+      "length": "110 cm",
+      "model_height": "176 cm",
+      "model_size": "36",
+      "fabric": "Aerobin",
+      "stretch": "Esnek değil",
+      "care": "Askıda kurutun. Buharlı ütü.",
+      "season": "İlkbahar / Yaz",
+      "style": "Modern",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Palazzo genişliği ayakkabıyı örter; yüksek bel tuniği içine almaz.</p><h3>Ürün özellikleri</h3><ul><li>Palazzo</li><li>Yüksek bel</li><li>Aerobin</li><li>Fermuarlı bel</li><li>Ütü çizgisi yok</li></ul><p><strong>Kalıp:</strong> Palazzo</p><p><strong>Kumaş:</strong> Aerobin</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> Dar kesim tunik veya kısa gömlek üst ile dengeleyin.</p><p><strong>Bakım:</strong> Askıda kurutun. Buharlı ütü.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Yüksek Bel Palazzo Tesettür Pantolon | Demo Modest",
+        "description": "Aerobin palazzo tesettür pantolonu indirimli DEMO fiyatla inceleyin. Gerçek kampanya değildir. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür pantolon",
+        "secondary_keywords": [
+          "palazzo tesettür pantolon",
+          "yüksek bel tesettür pantolon"
+        ],
+        "long_tail_keywords": [
+          "aerobin palazzo tesettür pantolon",
+          "ekru tesettür pantolon"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru yüksek bel palazzo tesettür pantolon"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Palazzo paça genişliği"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Bel fermuarı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Aerobin döküm"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Ekru",
+          "size": "36",
+          "sku": "PAN-002-EKR-36",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "PAN-002-EKR-38",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "PAN-002-EKR-40",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "PAN-002-EKR-42",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "PAN-002-EKR-44",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "PAN-002-SIY-36",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "PAN-002-SIY-38",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "PAN-002-SIY-40",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "PAN-002-SIY-42",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "PAN-002-SIY-44",
+          "qty": 8,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 10,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Relax Fit Beli Lastikli Tesettür Pantolon",
+      "handle": "beli-lastikli-relax-fit-tesettur-pantolon",
+      "sku_base": "PAN-003",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Pantolon",
+      "product_type": "Tesettür Pantolon",
+      "product_category": "Apparel & Accessories > Clothing > Pants",
+      "price": "799.00",
+      "compare_at_price": null,
+      "colors": [
+        "Antrasit",
+        "Camel"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44",
+        "46",
+        "48",
+        "50"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "pantolon",
+        "kadin",
+        "relax-fit",
+        "lastik-bel",
+        "gunluk",
+        "buyuk-beden"
+      ],
+      "collections": [
+        "tesettur-pantolon"
+      ],
+      "related_handles": [
+        "salas-kesim-viskon-tesettur-tunik",
+        "oversize-cepli-keten-gorunumlu-tesettur-elbise"
+      ],
+      "intent": "Transactional",
+      "material": "%70 Viskon %30 Polyester",
+      "fit": "Relax Fit",
+      "length": "104 cm",
+      "model_height": "167 cm",
+      "model_size": "42",
+      "fabric": "Viskon karışım",
+      "stretch": "Hafif esnek",
+      "care": "30 derecede yıkayın. Sıkmayın.",
+      "season": "Dört mevsim",
+      "style": "Rahat",
+      "occasion": "Günlük",
+      "description_html": "<p>Lastik bel oturuşu sıkmaz; relax paça ev ve yolculukta durur.</p><h3>Ürün özellikleri</h3><ul><li>Beli lastikli</li><li>Relax fit</li><li>Viskon karışım</li><li>İki cep</li><li>Büyük beden aralığı</li></ul><p><strong>Kalıp:</strong> Relax Fit</p><p><strong>Kumaş:</strong> Viskon karışım</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Oversize tunik veya uzun tshirt yerine kapalı yaka tunik seçin.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Sıkmayın.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Relax Fit Beli Lastikli Tesettür Pantolon | Demo Modest",
+        "description": "Lastik bel relax tesettür pantolonu 38–50 beden DEMO aralığında inceleyin. DEMO katalog kaydıdır; gerçek stok veya marka ürünü değildir. İncelemeden önce beden",
+        "primary_keyword": "tesettür pantolon",
+        "secondary_keywords": [
+          "beli lastikli tesettür pantolon",
+          "rahat tesettür pantolon"
+        ],
+        "long_tail_keywords": [
+          "büyük beden tesettür pantolon",
+          "relax fit tesettür pantolon"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Antrasit beli lastikli tesettür pantolon"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Lastik bel detayı"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Relax paça"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Cep ağzı"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Antrasit",
+          "size": "38",
+          "sku": "PAN-003-ANT-38",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "40",
+          "sku": "PAN-003-ANT-40",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "42",
+          "sku": "PAN-003-ANT-42",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "44",
+          "sku": "PAN-003-ANT-44",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "46",
+          "sku": "PAN-003-ANT-46",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "48",
+          "sku": "PAN-003-ANT-48",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "50",
+          "sku": "PAN-003-ANT-50",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "38",
+          "sku": "PAN-003-CAM-38",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "40",
+          "sku": "PAN-003-CAM-40",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "42",
+          "sku": "PAN-003-CAM-42",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "44",
+          "sku": "PAN-003-CAM-44",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "46",
+          "sku": "PAN-003-CAM-46",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "48",
+          "sku": "PAN-003-CAM-48",
+          "qty": 13,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "50",
+          "sku": "PAN-003-CAM-50",
+          "qty": 0,
+          "available": false
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 13,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Minimal Fermuarlı Ferace",
+      "handle": "minimal-fermuarli-ferace",
+      "sku_base": "FER-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Ferace",
+      "product_type": "Tesettür Ferace",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "1899.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon",
+        "Lacivert"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "ferace",
+        "kadin",
+        "minimal",
+        "dis-giyim",
+        "yeni-sezon",
+        "kis"
+      ],
+      "collections": [
+        "tesettur-ferace",
+        "dis-giyim",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "regular-fit-krep-tesettur-takim"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Regular",
+      "length": "140 cm",
+      "model_height": "174 cm",
+      "model_size": "38",
+      "fabric": "Astarlı krep",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme önerilir. Düşük ısıda ütüleyin.",
+      "season": "Sonbahar / Kış",
+      "style": "Minimal",
+      "occasion": "Günlük / Dışarı",
+      "description_html": "<p>Fermuar çizgisi sade durur; astar rüzgârı keser.</p><h3>Ürün özellikleri</h3><ul><li>Ön fermuar</li><li>Astarlı</li><li>Regular kalıp</li><li>Uzun kol</li><li>Yan yırtmaç</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Astarlı krep</p><p><strong>Kullanım:</strong> Günlük / Dışarı</p><p><strong>Kombin önerisi:</strong> İçine düz bir takım veya elbise; boyu iç parçanın altına insin.</p><p><strong>Bakım:</strong> Kuru temizleme önerilir. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Minimal Fermuarlı Ferace | Demo Modest Katalog tesettür giyi",
+        "description": "Sade fermuarlı tesettür feraceyi dış katman olarak inceleyin. Demo Modest DEMO kaydı. Tema testi için hazırlanmıştır; satış verisi içermez. İncelemeden önce",
+        "primary_keyword": "tesettür ferace",
+        "secondary_keywords": [
+          "fermuarlı ferace",
+          "minimal tesettür ferace"
+        ],
+        "long_tail_keywords": [
+          "astarlı fermuarlı tesettür ferace",
+          "kış tesettür ferace"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Siyah minimal fermuarlı ferace"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Fermuar çizgisi"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yan yırtmaç"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Astar detayı"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "FER-001-SIY-36",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "FER-001-SIY-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "FER-001-SIY-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "FER-001-SIY-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "FER-001-SIY-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "FER-001-SIY-46",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "FER-001-VIZ-36",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "FER-001-VIZ-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "FER-001-VIZ-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "FER-001-VIZ-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "FER-001-VIZ-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "46",
+          "sku": "FER-001-VIZ-46",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "36",
+          "sku": "FER-001-LAC-36",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "FER-001-LAC-38",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "FER-001-LAC-40",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "FER-001-LAC-42",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "44",
+          "sku": "FER-001-LAC-44",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "46",
+          "sku": "FER-001-LAC-46",
+          "qty": 11,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 18,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Klasik Düğmeli Tesettür Ferace",
+      "handle": "klasik-dugmeli-tesettur-ferace",
+      "sku_base": "FER-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Ferace",
+      "product_type": "Tesettür Ferace",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "2099.00",
+      "compare_at_price": null,
+      "colors": [
+        "Kahve",
+        "Siyah"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46",
+        "48"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "ferace",
+        "kadin",
+        "klasik",
+        "dis-giyim",
+        "cok-satan",
+        "kis"
+      ],
+      "collections": [
+        "tesettur-ferace",
+        "dis-giyim",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "ince-pamuk-tesettur-esarp",
+        "duz-kesim-uzun-kollu-tesettur-elbise"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Regular",
+      "length": "142 cm",
+      "model_height": "170 cm",
+      "model_size": "40",
+      "fabric": "Krep",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Buharlı ütü.",
+      "season": "Sonbahar / Kış",
+      "style": "Klasik",
+      "occasion": "Günlük",
+      "description_html": "<p>Düğme sırası klasik okunur; omuz pedi yoktur.</p><h3>Ürün özellikleri</h3><ul><li>Ön düğme</li><li>Kapüşonsuz</li><li>Regular</li><li>Derin cep</li><li>Uzun boy</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> İç kombin açık renk kalsın; ferace koyu kalsın.</p><p><strong>Bakım:</strong> Kuru temizleme. Buharlı ütü.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Klasik Düğmeli Tesettür Ferace | Demo Modest Katalog",
+        "description": "Düğmeli klasik tesettür feraceyi günlük dış katman olarak inceleyin. DEMO üründür. Görseller sonradan eklenebilir; sahte görsel adresi yoktur.",
+        "primary_keyword": "tesettür ferace",
+        "secondary_keywords": [
+          "düğmeli ferace",
+          "klasik tesettür ferace"
+        ],
+        "long_tail_keywords": [
+          "uzun düğmeli tesettür ferace",
+          "kahve tesettür ferace"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Kahve klasik düğmeli tesettür ferace"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Düğme sırası"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Cep ağzı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Uzun boy duruş"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Kahve",
+          "size": "36",
+          "sku": "FER-002-KAH-36",
+          "qty": 0,
+          "available": false
+        },
+        {
+          "color": "Kahve",
+          "size": "38",
+          "sku": "FER-002-KAH-38",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "40",
+          "sku": "FER-002-KAH-40",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "42",
+          "sku": "FER-002-KAH-42",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "44",
+          "sku": "FER-002-KAH-44",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "46",
+          "sku": "FER-002-KAH-46",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "48",
+          "sku": "FER-002-KAH-48",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "FER-002-SIY-36",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "FER-002-SIY-38",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "FER-002-SIY-40",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "FER-002-SIY-42",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "FER-002-SIY-44",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "FER-002-SIY-46",
+          "qty": 15,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "48",
+          "sku": "FER-002-SIY-48",
+          "qty": 15,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 13,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Hafif Dokulu Yazlık Tesettür Ferace",
+      "handle": "hafif-dokulu-yazlik-tesettur-ferace",
+      "sku_base": "FER-003",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Ferace",
+      "product_type": "Tesettür Ferace",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "1599.00",
+      "compare_at_price": null,
+      "colors": [
+        "Ekru",
+        "Adaçayı"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "sinirli-stok"
+      ],
+      "tags": [
+        "tesettur",
+        "ferace",
+        "kadin",
+        "yazlik",
+        "viskon",
+        "dis-giyim",
+        "sinirli-stok",
+        "yaz"
+      ],
+      "collections": [
+        "tesettur-ferace",
+        "dis-giyim"
+      ],
+      "related_handles": [
+        "relax-fit-aerobin-tesettur-elbise",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Viskon",
+      "fit": "Rahat",
+      "length": "136 cm",
+      "model_height": "172 cm",
+      "model_size": "38",
+      "fabric": "Viskon",
+      "stretch": "Esnek değil",
+      "care": "Soğuk yıkayın. Askıda kurutun.",
+      "season": "İlkbahar / Yaz",
+      "style": "Hafif",
+      "occasion": "Günlük / Seyahat",
+      "description_html": "<p>Yazlık ferace astarsızdır; kumaş hava alır.</p><h3>Ürün özellikleri</h3><ul><li>Hafif doku</li><li>Astarsız</li><li>Açık kesim</li><li>Uzun kol</li><li>Yan yırtmaç</li></ul><p><strong>Kalıp:</strong> Rahat</p><p><strong>Kumaş:</strong> Viskon</p><p><strong>Kullanım:</strong> Günlük / Seyahat</p><p><strong>Kombin önerisi:</strong> İçine ince bir elbise; feraceyi açık bırakabilirsiniz.</p><p><strong>Bakım:</strong> Soğuk yıkayın. Askıda kurutun.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Hafif Dokulu Yazlık Tesettür Ferace | Demo Modest Katalog",
+        "description": "Astarsız yazlık tesettür feraceyi sınırlı DEMO stokla inceleyin. Gerçek envanter değildir. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir.",
+        "primary_keyword": "tesettür ferace",
+        "secondary_keywords": [
+          "yazlık ferace",
+          "hafif tesettür ferace"
+        ],
+        "long_tail_keywords": [
+          "viskon yazlık tesettür ferace",
+          "astarsız tesettür ferace"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru hafif yazlık tesettür ferace"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Açık duruş"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kol ucu"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Viskon doku"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Ekru",
+          "size": "38",
+          "sku": "FER-003-EKR-38",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "40",
+          "sku": "FER-003-EKR-40",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "42",
+          "sku": "FER-003-EKR-42",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "44",
+          "sku": "FER-003-EKR-44",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "38",
+          "sku": "FER-003-ADA-38",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "40",
+          "sku": "FER-003-ADA-40",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "42",
+          "sku": "FER-003-ADA-42",
+          "qty": 2,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "44",
+          "sku": "FER-003-ADA-44",
+          "qty": 2,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 0,
+        "low_stock": 8,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Soft Dokulu Oversize Tesettür Kap",
+      "handle": "soft-dokulu-oversize-tesettur-kap",
+      "sku_base": "KAP-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Kap",
+      "product_type": "Tesettür Kap",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "2299.00",
+      "compare_at_price": null,
+      "colors": [
+        "Vizon",
+        "Sütlü Kahve",
+        "Antrasit"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "kap",
+        "kadin",
+        "oversize",
+        "dis-giyim",
+        "yeni-sezon",
+        "sonbahar"
+      ],
+      "collections": [
+        "tesettur-kap",
+        "dis-giyim",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "modern-palazzo-pantolonlu-tesettur-takim"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Oversize",
+      "length": "130 cm",
+      "model_height": "175 cm",
+      "model_size": "38",
+      "fabric": "Soft krep",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme önerilir.",
+      "season": "Sonbahar / Kış",
+      "style": "Oversize",
+      "occasion": "Günlük",
+      "description_html": "<p>Oversize kap omuzu düşürür; yumuşak yüzey kışlık sertlikte değildir.</p><h3>Ürün özellikleri</h3><ul><li>Oversize</li><li>Soft doku</li><li>Çıtçıt kapama</li><li>Derin cep</li><li>Kapüşonsuz</li></ul><p><strong>Kalıp:</strong> Oversize</p><p><strong>Kumaş:</strong> Soft krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> İçine dar bir takım; kap bel hizasını örtmesin diye kemer eklemeyin.</p><p><strong>Bakım:</strong> Kuru temizleme önerilir.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Soft Dokulu Oversize Tesettür Kap | Demo Modest Katalog",
+        "description": "Yumuşak dokulu oversize tesettür kapı sonbahar katmanı olarak inceleyin. DEMO kayıttır. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür kap",
+        "secondary_keywords": [
+          "oversize tesettür kap",
+          "soft tesettür kap"
+        ],
+        "long_tail_keywords": [
+          "vizon oversize tesettür kap",
+          "sonbahar tesettür kap"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Vizon soft oversize tesettür kap"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Çıtçıt kapama"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Cep derinliği"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Soft kumaş"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Vizon",
+          "size": "36",
+          "sku": "KAP-001-VIZ-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "38",
+          "sku": "KAP-001-VIZ-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "40",
+          "sku": "KAP-001-VIZ-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "42",
+          "sku": "KAP-001-VIZ-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "44",
+          "sku": "KAP-001-VIZ-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "36",
+          "sku": "KAP-001-SUT-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "38",
+          "sku": "KAP-001-SUT-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "40",
+          "sku": "KAP-001-SUT-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "42",
+          "sku": "KAP-001-SUT-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Sütlü Kahve",
+          "size": "44",
+          "sku": "KAP-001-SUT-44",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "36",
+          "sku": "KAP-001-ANT-36",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "38",
+          "sku": "KAP-001-ANT-38",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "40",
+          "sku": "KAP-001-ANT-40",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "42",
+          "sku": "KAP-001-ANT-42",
+          "qty": 10,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "44",
+          "sku": "KAP-001-ANT-44",
+          "qty": 10,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 15,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Düz Kesim Uzun Tesettür Pardesü",
+      "handle": "duz-kesim-uzun-tesettur-pardesu",
+      "sku_base": "PAR-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Pardesü",
+      "product_type": "Tesettür Pardesü",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "2199.00",
+      "compare_at_price": "2699.00",
+      "colors": [
+        "Siyah",
+        "Lacivert"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "indirim"
+      ],
+      "tags": [
+        "tesettur",
+        "pardesu",
+        "kadin",
+        "uzun",
+        "dis-giyim",
+        "indirim",
+        "kis"
+      ],
+      "collections": [
+        "tesettur-pardesu",
+        "dis-giyim",
+        "indirim"
+      ],
+      "related_handles": [
+        "ince-pamuk-tesettur-esarp",
+        "asimetrik-kesim-viskon-tesettur-elbise"
+      ],
+      "intent": "Commercial Investigation",
+      "material": "%100 Polyester",
+      "fit": "Düz kesim",
+      "length": "145 cm",
+      "model_height": "171 cm",
+      "model_size": "40",
+      "fabric": "Astarlı krep",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Düşük ısıda ütü.",
+      "season": "Sonbahar / Kış",
+      "style": "Klasik",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Pardesü boyu ayakkabıya yaklaşır; düz kesim rüzgârda açılmaz.</p><h3>Ürün özellikleri</h3><ul><li>Uzun pardesü</li><li>Düz kesim</li><li>Düğmeli</li><li>Astarlı</li><li>Kol ağzı manşet</li></ul><p><strong>Kalıp:</strong> Düz kesim</p><p><strong>Kumaş:</strong> Astarlı krep</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> İçinde düz elbise veya takım; şalı yakadan içeri almayın.</p><p><strong>Bakım:</strong> Kuru temizleme. Düşük ısıda ütü.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Düz Kesim Uzun Tesettür Pardesü | Demo Modest Katalog",
+        "description": "Uzun düz kesim tesettür pardesüyü indirimli DEMO fiyatla inceleyin. Gerçek kampanya yoktur. DEMO katalog kaydıdır; gerçek stok veya marka ürünü değildir.",
+        "primary_keyword": "tesettür pardesü",
+        "secondary_keywords": [
+          "uzun tesettür pardesü",
+          "düz kesim pardesü"
+        ],
+        "long_tail_keywords": [
+          "astarlı tesettür pardesü",
+          "kış tesettür pardesü"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Siyah düz kesim tesettür pardesü"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Uzun boy duruş"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Manşet"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Astar"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "PAR-001-SIY-38",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "PAR-001-SIY-40",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "PAR-001-SIY-42",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "PAR-001-SIY-44",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "PAR-001-SIY-46",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "PAR-001-LAC-38",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "PAR-001-LAC-40",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "PAR-001-LAC-42",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "44",
+          "sku": "PAR-001-LAC-44",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "46",
+          "sku": "PAR-001-LAC-46",
+          "qty": 6,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 10,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Kemerli Midi Tesettür Kap",
+      "handle": "kemerli-midi-tesettur-kap",
+      "sku_base": "KAP-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Kap",
+      "product_type": "Tesettür Kap",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "1999.00",
+      "compare_at_price": null,
+      "colors": [
+        "Camel",
+        "Kahve"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "kap",
+        "kadin",
+        "kemer",
+        "midi",
+        "dis-giyim",
+        "bahar"
+      ],
+      "collections": [
+        "tesettur-kap",
+        "dis-giyim"
+      ],
+      "related_handles": [
+        "yuksek-bel-palazzo-tesettur-pantolon",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Regular",
+      "length": "118 cm",
+      "model_height": "176 cm",
+      "model_size": "36",
+      "fabric": "Krep",
+      "stretch": "Esnek değil",
+      "care": "Kemerı çıkarıp düşük ısıda ütüleyin.",
+      "season": "İlkbahar / Sonbahar",
+      "style": "Zarif",
+      "occasion": "Ofis / Gezi",
+      "description_html": "<p>İnce kemer beli işaretler; midi boy pantolon paçasını açık bırakır.</p><h3>Ürün özellikleri</h3><ul><li>Çıkarılabilir kemer</li><li>Midi boy</li><li>Regular</li><li>Düğme</li><li>Yırtmaçlı etek ucu</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Ofis / Gezi</p><p><strong>Kombin önerisi:</strong> Palazzo pantolon ile kemeri bağlayın; şalı düz tutun.</p><p><strong>Bakım:</strong> Kemerı çıkarıp düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Kemerli Midi Tesettür Kap | Demo Modest Katalog tesettür giy",
+        "description": "Kemerli midi tesettür kapı ofis ve gezi katmanı olarak inceleyin. Demo Modest DEMO. Tema testi için hazırlanmıştır; satış verisi içermez. İncelemeden önce",
+        "primary_keyword": "tesettür kap",
+        "secondary_keywords": [
+          "kemerli tesettür kap",
+          "midi tesettür kap"
+        ],
+        "long_tail_keywords": [
+          "camel kemerli tesettür kap",
+          "ofis tesettür kap"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Camel kemerli midi tesettür kap"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Kemer bağlama"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Midi boy"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Yırtmaç ucu"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Camel",
+          "size": "36",
+          "sku": "KAP-002-CAM-36",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "38",
+          "sku": "KAP-002-CAM-38",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "40",
+          "sku": "KAP-002-CAM-40",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "42",
+          "sku": "KAP-002-CAM-42",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "36",
+          "sku": "KAP-002-KAH-36",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "38",
+          "sku": "KAP-002-KAH-38",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "40",
+          "sku": "KAP-002-KAH-40",
+          "qty": 8,
+          "available": true
+        },
+        {
+          "color": "Kahve",
+          "size": "42",
+          "sku": "KAP-002-KAH-42",
+          "qty": 8,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 8,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Zarif Saten Tesettür Abiye",
+      "handle": "zarif-saten-tesettur-abiye",
+      "sku_base": "ABI-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Abiye",
+      "product_type": "Tesettür Abiye",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "2799.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Bordo",
+        "Gül Kurusu"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "abiye",
+        "kadin",
+        "saten",
+        "davet",
+        "yeni-sezon",
+        "kis"
+      ],
+      "collections": [
+        "tesettur-abiye",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "soft-krep-tesettur-sal",
+        "klasik-belden-oturan-tesettur-trenckot"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester saten",
+      "fit": "Regular",
+      "length": "150 cm",
+      "model_height": "175 cm",
+      "model_size": "38",
+      "fabric": "Saten",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Satenı buharla düzeltin.",
+      "season": "Sonbahar / Kış",
+      "style": "Zarif",
+      "occasion": "Davet",
+      "description_html": "<p>Saten ışığı yumuşak kırar; kesim davet için uzun bırakıldı.</p><h3>Ürün özellikleri</h3><ul><li>Saten görünüm</li><li>Astarlı</li><li>Uzun boy</li><li>Kapalı yaka</li><li>Gizli fermuar</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Saten</p><p><strong>Kullanım:</strong> Davet</p><p><strong>Kombin önerisi:</strong> Aynı tonda saten görünümlü bir şal; takı tek parça kalsın.</p><p><strong>Bakım:</strong> Kuru temizleme. Satenı buharla düzeltin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Zarif Saten Tesettür Abiye | Demo Modest Katalog tesettür gi",
+        "description": "Uzun saten tesettür abiyeyi davet kombinleri için inceleyin. Demo Modest DEMO üründür. Görseller sonradan eklenebilir; sahte görsel adresi yoktur.",
+        "primary_keyword": "tesettür abiye",
+        "secondary_keywords": [
+          "saten tesettür abiye",
+          "uzun tesettür abiye"
+        ],
+        "long_tail_keywords": [
+          "zarif saten tesettür abiye",
+          "davet tesettür abiye"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Bordo zarif saten tesettür abiye"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Uzun etek dökümü"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kapalı yaka"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Saten yüzey"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "ABI-001-SIY-36",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "ABI-001-SIY-38",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "ABI-001-SIY-40",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "ABI-001-SIY-42",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "36",
+          "sku": "ABI-001-BOR-36",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "38",
+          "sku": "ABI-001-BOR-38",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "40",
+          "sku": "ABI-001-BOR-40",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Bordo",
+          "size": "42",
+          "sku": "ABI-001-BOR-42",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Gül Kurusu",
+          "size": "36",
+          "sku": "ABI-001-GUL-36",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Gül Kurusu",
+          "size": "38",
+          "sku": "ABI-001-GUL-38",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Gül Kurusu",
+          "size": "40",
+          "sku": "ABI-001-GUL-40",
+          "qty": 7,
+          "available": true
+        },
+        {
+          "color": "Gül Kurusu",
+          "size": "42",
+          "sku": "ABI-001-GUL-42",
+          "qty": 7,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 12,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Drapeli Uzun Tesettür Abiye",
+      "handle": "drapeli-uzun-tesettur-abiye",
+      "sku_base": "ABI-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Abiye",
+      "product_type": "Tesettür Abiye",
+      "product_category": "Apparel & Accessories > Clothing > Dresses",
+      "price": "3199.00",
+      "compare_at_price": null,
+      "colors": [
+        "Lacivert",
+        "Siyah"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42"
+      ],
+      "badges": [
+        "sinirli-stok"
+      ],
+      "tags": [
+        "tesettur",
+        "abiye",
+        "kadin",
+        "drape",
+        "davet",
+        "sinirli-stok"
+      ],
+      "collections": [
+        "tesettur-abiye"
+      ],
+      "related_handles": [
+        "ince-pamuk-tesettur-esarp",
+        "zarif-saten-tesettur-abiye"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Regular",
+      "length": "152 cm",
+      "model_height": "177 cm",
+      "model_size": "38",
+      "fabric": "Şifon astarlı",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Drapeyi çekiştirmeyin.",
+      "season": "Dört mevsim",
+      "style": "Zarif",
+      "occasion": "Davet",
+      "description_html": "<p>Drape belde toplanır; kumaş ağır aktığı için astar şarttır.</p><h3>Ürün özellikleri</h3><ul><li>Drape detay</li><li>Uzun abiye</li><li>Astarlı</li><li>Uzun kol</li><li>Hafif evaze etek</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Şifon astarlı</p><p><strong>Kullanım:</strong> Davet</p><p><strong>Kombin önerisi:</strong> Düz bir şal; kemer eklemeyin, drape yeter.</p><p><strong>Bakım:</strong> Kuru temizleme. Drapeyi çekiştirmeyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Drapeli Uzun Tesettür Abiye | Demo Modest Katalog tesettür g",
+        "description": "Drapeli uzun tesettür abiyeyi sınırlı DEMO adetle inceleyin. Gerçek stok iddiası yoktur. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir.",
+        "primary_keyword": "tesettür abiye",
+        "secondary_keywords": [
+          "drapeli tesettür abiye",
+          "uzun tesettür abiye"
+        ],
+        "long_tail_keywords": [
+          "drapeli davet tesettür abiye",
+          "lacivert tesettür abiye"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Lacivert drapeli tesettür abiye"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Bel drape detayı"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Etek evazesi"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Astar katmanı"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Lacivert",
+          "size": "38",
+          "sku": "ABI-002-LAC-38",
+          "qty": 1,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "40",
+          "sku": "ABI-002-LAC-40",
+          "qty": 1,
+          "available": true
+        },
+        {
+          "color": "Lacivert",
+          "size": "42",
+          "sku": "ABI-002-LAC-42",
+          "qty": 1,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "ABI-002-SIY-38",
+          "qty": 1,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "ABI-002-SIY-40",
+          "qty": 1,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "ABI-002-SIY-42",
+          "qty": 1,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 0,
+        "low_stock": 6,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Klasik Belden Oturan Tesettür Trençkot",
+      "handle": "klasik-belden-oturan-tesettur-trenckot",
+      "sku_base": "DIS-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Trençkot",
+      "product_type": "Tesettür Trençkot",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "2499.00",
+      "compare_at_price": null,
+      "colors": [
+        "Bej",
+        "Siyah",
+        "Taş"
+      ],
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "trenckot",
+        "kadin",
+        "klasik",
+        "dis-giyim",
+        "cok-satan",
+        "bahar"
+      ],
+      "collections": [
+        "dis-giyim",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "minimal-kemer-detayli-krep-tesettur-elbise",
+        "soft-krep-tesettur-sal"
+      ],
+      "intent": "Transactional",
+      "material": "%65 Polyester %35 Pamuk",
+      "fit": "Regular",
+      "length": "120 cm",
+      "model_height": "174 cm",
+      "model_size": "38",
+      "fabric": "Pamuk karışım",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Kemerı ayrı ütüleyin.",
+      "season": "İlkbahar / Sonbahar",
+      "style": "Klasik",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Trenç kemeri beli toplar; pamuk karışım baharda yeter.</p><h3>Ürün özellikleri</h3><ul><li>Kemerli</li><li>Çift sıra düğme görünümü</li><li>Midi-uzun</li><li>Kol kayışı</li><li>Astarlı</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Pamuk karışım</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> Elbise veya takım üstüne; şalı yaka dışına alın.</p><p><strong>Bakım:</strong> Kuru temizleme. Kemerı ayrı ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Klasik Belden Oturan Tesettür Trençkot | Demo Modest",
+        "description": "Belden oturan klasik tesettür trençkotu bahar katmanı olarak inceleyin. DEMO üründür. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür trençkot",
+        "secondary_keywords": [
+          "klasik trençkot",
+          "kemerli tesettür trençkot"
+        ],
+        "long_tail_keywords": [
+          "bej tesettür trençkot",
+          "bahar tesettür trençkot"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Bej klasik tesettür trençkot"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Bel kemeri"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kol kayışı"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Çift düğme görünümü"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Bej",
+          "size": "36",
+          "sku": "DIS-001-BEJ-36",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "38",
+          "sku": "DIS-001-BEJ-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "40",
+          "sku": "DIS-001-BEJ-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "42",
+          "sku": "DIS-001-BEJ-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "44",
+          "sku": "DIS-001-BEJ-44",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Bej",
+          "size": "46",
+          "sku": "DIS-001-BEJ-46",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "36",
+          "sku": "DIS-001-SIY-36",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "38",
+          "sku": "DIS-001-SIY-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "40",
+          "sku": "DIS-001-SIY-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "42",
+          "sku": "DIS-001-SIY-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "44",
+          "sku": "DIS-001-SIY-44",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "46",
+          "sku": "DIS-001-SIY-46",
+          "qty": 0,
+          "available": false
+        },
+        {
+          "color": "Taş",
+          "size": "36",
+          "sku": "DIS-001-TAS-36",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "38",
+          "sku": "DIS-001-TAS-38",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "40",
+          "sku": "DIS-001-TAS-40",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "42",
+          "sku": "DIS-001-TAS-42",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "44",
+          "sku": "DIS-001-TAS-44",
+          "qty": 12,
+          "available": true
+        },
+        {
+          "color": "Taş",
+          "size": "46",
+          "sku": "DIS-001-TAS-46",
+          "qty": 12,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 17,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "Oversize Yün Görünümlü Tesettür Kaban",
+      "handle": "oversize-yun-gorunumlu-tesettur-kaban",
+      "sku_base": "DIS-002",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Kaban",
+      "product_type": "Tesettür Kaban",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "3499.00",
+      "compare_at_price": null,
+      "colors": [
+        "Antrasit",
+        "Camel"
+      ],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "badges": [],
+      "tags": [
+        "tesettur",
+        "kaban",
+        "kadin",
+        "oversize",
+        "dis-giyim",
+        "kis"
+      ],
+      "collections": [
+        "dis-giyim"
+      ],
+      "related_handles": [
+        "regular-fit-krep-tesettur-takim",
+        "klasik-dugmeli-tesettur-ferace"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester yün görünüm",
+      "fit": "Oversize",
+      "length": "112 cm",
+      "model_height": "173 cm",
+      "model_size": "40",
+      "fabric": "Yün görünüm",
+      "stretch": "Esnek değil",
+      "care": "Kuru temizleme. Askıda dinlendirin.",
+      "season": "Kış",
+      "style": "Oversize",
+      "occasion": "Günlük / Soğuk hava",
+      "description_html": "<p>Yün görünümü kışlık durur; oversize içine katman alır.</p><h3>Ürün özellikleri</h3><ul><li>Oversize</li><li>Yün görünüm</li><li>Çıtçıt</li><li>Derin cep</li><li>Astarlı</li></ul><p><strong>Kalıp:</strong> Oversize</p><p><strong>Kumaş:</strong> Yün görünüm</p><p><strong>Kullanım:</strong> Günlük / Soğuk hava</p><p><strong>Kombin önerisi:</strong> İçine ferace değil, takım veya kalın tunik yeterli.</p><p><strong>Bakım:</strong> Kuru temizleme. Askıda dinlendirin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Oversize Yün Görünümlü Tesettür Kaban | Demo Modest",
+        "description": "Kışlık yün görünümlü oversize tesettür kabanı inceleyin. Demo Modest DEMO kaydıdır. DEMO katalog kaydıdır; gerçek stok veya marka ürünü değildir.",
+        "primary_keyword": "tesettür kaban",
+        "secondary_keywords": [
+          "oversize tesettür kaban",
+          "yün görünümlü kaban"
+        ],
+        "long_tail_keywords": [
+          "kış tesettür kaban",
+          "antrasit tesettür kaban"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Antrasit oversize tesettür kaban"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Çıtçıt kapama"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Cep"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Yün görünüm doku"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Antrasit",
+          "size": "38",
+          "sku": "DIS-002-ANT-38",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "40",
+          "sku": "DIS-002-ANT-40",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "42",
+          "sku": "DIS-002-ANT-42",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "44",
+          "sku": "DIS-002-ANT-44",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "46",
+          "sku": "DIS-002-ANT-46",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "38",
+          "sku": "DIS-002-CAM-38",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "40",
+          "sku": "DIS-002-CAM-40",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "42",
+          "sku": "DIS-002-CAM-42",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "44",
+          "sku": "DIS-002-CAM-44",
+          "qty": 6,
+          "available": true
+        },
+        {
+          "color": "Camel",
+          "size": "46",
+          "sku": "DIS-002-CAM-46",
+          "qty": 6,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 10,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Soft Krep Tesettür Şal",
+      "handle": "soft-krep-tesettur-sal",
+      "sku_base": "SAL-001",
+      "vendor": "Demo Modest",
+      "category": "Şal",
+      "product_type": "Şal",
+      "product_category": "Apparel & Accessories > Clothing Accessories > Scarves & Shawls",
+      "price": "449.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Ekru",
+        "Vizon",
+        "Pudra"
+      ],
+      "sizes": [
+        "Tek Beden"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "sal",
+        "kadin",
+        "krep",
+        "aksesuar",
+        "yeni-sezon"
+      ],
+      "collections": [
+        "sal-esarp",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "minimal-kemer-detayli-krep-tesettur-elbise",
+        "modern-palazzo-pantolonlu-tesettur-takim"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Polyester",
+      "fit": "Tek beden",
+      "length": "75 x 185 cm",
+      "model_height": "175 cm",
+      "model_size": "Tek beden",
+      "fabric": "Krep",
+      "stretch": "Esnek değil",
+      "care": "Soğuk yıkayın. Ütülemeyin; buhar yeterli.",
+      "season": "Dört mevsim",
+      "style": "Minimal",
+      "occasion": "Günlük",
+      "description_html": "<p>Krep şal kaymaz; dört renk swatch ve tek beden stok durumunu test eder.</p><h3>Ürün özellikleri</h3><ul><li>Tek beden</li><li>Soft krep</li><li>Saçaksız kenar</li><li>Hafif döküm</li><li>Ütü izi az</li></ul><p><strong>Kalıp:</strong> Tek beden</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Elbise, takım veya ferace ile aynı aileden bir ton seçin.</p><p><strong>Bakım:</strong> Soğuk yıkayın. Ütülemeyin; buhar yeterli.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Soft Krep Tesettür Şal | Demo Modest Katalog tesettür giyim",
+        "description": "Kaymayan soft krep tesettür şalı dört renkte inceleyin. Demo Modest DEMO aksesuarıdır. Tema testi için hazırlanmıştır; satış verisi içermez.",
+        "primary_keyword": "tesettür şal",
+        "secondary_keywords": [
+          "krep tesettür şal",
+          "soft tesettür şal"
+        ],
+        "long_tail_keywords": [
+          "kaymaz krep tesettür şal",
+          "günlük tesettür şal"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru soft krep tesettür şal"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Şal dökümü"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kenar dikişi"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Krep doku"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "Tek Beden",
+          "sku": "SAL-001-SIY-TEK",
+          "qty": 25,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "Tek Beden",
+          "sku": "SAL-001-EKR-TEK",
+          "qty": 25,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "Tek Beden",
+          "sku": "SAL-001-VIZ-TEK",
+          "qty": 25,
+          "available": true
+        },
+        {
+          "color": "Pudra",
+          "size": "Tek Beden",
+          "sku": "SAL-001-PUD-TEK",
+          "qty": 0,
+          "available": false
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 3,
+        "low_stock": 0,
+        "sold_out": 1
+      }
+    },
+    {
+      "demo": true,
+      "title": "İnce Pamuk Tesettür Eşarp",
+      "handle": "ince-pamuk-tesettur-esarp",
+      "sku_base": "ESR-001",
+      "vendor": "Demo Modest",
+      "category": "Eşarp",
+      "product_type": "Eşarp",
+      "product_category": "Apparel & Accessories > Clothing Accessories > Scarves & Shawls",
+      "price": "349.00",
+      "compare_at_price": null,
+      "colors": [
+        "Taş",
+        "Adaçayı",
+        "Gül Kurusu"
+      ],
+      "sizes": [
+        "Tek Beden"
+      ],
+      "badges": [
+        "cok-satan"
+      ],
+      "tags": [
+        "tesettur",
+        "esarp",
+        "kadin",
+        "pamuk",
+        "aksesuar",
+        "cok-satan",
+        "yaz"
+      ],
+      "collections": [
+        "sal-esarp",
+        "cok-satanlar"
+      ],
+      "related_handles": [
+        "relax-fit-aerobin-tesettur-tunik",
+        "zarif-saten-tesettur-abiye"
+      ],
+      "intent": "Transactional",
+      "material": "%100 Pamuk",
+      "fit": "Tek beden",
+      "length": "100 x 100 cm",
+      "model_height": "168 cm",
+      "model_size": "Tek beden",
+      "fabric": "Pamuk",
+      "stretch": "Esnek değil",
+      "care": "30 derecede yıkayın. Düşük ısıda ütüleyin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Sade",
+      "occasion": "Günlük",
+      "description_html": "<p>İnce pamuk yazın nefes alır; kare kesim bağlanmayı kolaylaştırır.</p><h3>Ürün özellikleri</h3><ul><li>Kare kesim</li><li>İnce pamuk</li><li>Hafif</li><li>Düz renk</li><li>Tek beden</li></ul><p><strong>Kalıp:</strong> Tek beden</p><p><strong>Kumaş:</strong> Pamuk</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Tunik ve pantolon üzerine açık ton; abiye için daha koyu bir şal yeğdir.</p><p><strong>Bakım:</strong> 30 derecede yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "İnce Pamuk Tesettür Eşarp | Demo Modest Katalog tesettür giy",
+        "description": "Yazlık ince pamuk tesettür eşarbı üç düz renkte inceleyin. DEMO aksesuardır. Görseller sonradan eklenebilir; sahte görsel adresi yoktur. İncelemeden önce beden",
+        "primary_keyword": "tesettür eşarp",
+        "secondary_keywords": [
+          "pamuk tesettür eşarp",
+          "ince tesettür eşarp"
+        ],
+        "long_tail_keywords": [
+          "yazlık pamuk tesettür eşarp",
+          "kare tesettür eşarp"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Taş ince pamuk tesettür eşarp"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Kare katlanmış eşarp"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Kenar dikişi"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Pamuk doku"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Taş",
+          "size": "Tek Beden",
+          "sku": "ESR-001-TAS-TEK",
+          "qty": 30,
+          "available": true
+        },
+        {
+          "color": "Adaçayı",
+          "size": "Tek Beden",
+          "sku": "ESR-001-ADA-TEK",
+          "qty": 30,
+          "available": true
+        },
+        {
+          "color": "Gül Kurusu",
+          "size": "Tek Beden",
+          "sku": "ESR-001-GUL-TEK",
+          "qty": 30,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 3,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Minimal Düğmeli Tesettür Jile",
+      "handle": "minimal-dugmeli-tesettur-jile",
+      "sku_base": "JIL-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Jile",
+      "product_type": "Tesettür Jile",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "1199.00",
+      "compare_at_price": null,
+      "colors": [
+        "Siyah",
+        "Vizon",
+        "Zeytin"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "badges": [
+        "yeni"
+      ],
+      "tags": [
+        "tesettur",
+        "jile",
+        "kadin",
+        "minimal",
+        "krep",
+        "yeni-sezon",
+        "ofis"
+      ],
+      "collections": [
+        "jile-yelek",
+        "yeni-sezon"
+      ],
+      "related_handles": [
+        "salas-kesim-viskon-tesettur-tunik",
+        "bol-paca-krep-tesettur-pantolon"
+      ],
+      "intent": "Transactional",
+      "material": "%97 Polyester %3 Elastan",
+      "fit": "Regular",
+      "length": "110 cm",
+      "model_height": "172 cm",
+      "model_size": "M",
+      "fabric": "Krep",
+      "stretch": "Hafif esnek",
+      "care": "Ters yıkayın. Düşük ısıda ütüleyin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Minimal",
+      "occasion": "Günlük / Ofis",
+      "description_html": "<p>Kolsuz jile tuniğin üstüne katman ekler; düğme sırası ince tutuldu.</p><h3>Ürün özellikleri</h3><ul><li>Kolsuz</li><li>Ön düğme</li><li>Regular</li><li>Yan yırtmaç</li><li>Cepsiz sade ön</li></ul><p><strong>Kalıp:</strong> Regular</p><p><strong>Kumaş:</strong> Krep</p><p><strong>Kullanım:</strong> Günlük / Ofis</p><p><strong>Kombin önerisi:</strong> Salaş tunik ve bol paça pantolonun üstüne tek kat yeter.</p><p><strong>Bakım:</strong> Ters yıkayın. Düşük ısıda ütüleyin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Minimal Düğmeli Tesettür Jile | Demo Modest Katalog",
+        "description": "Tunik üstüne giyilen düğmeli tesettür jileyi S–XL aralığında inceleyin. DEMO kayıttır. Fiyatlar DEMO birimdir; canlı pazar fiyatı değildir. İncelemeden önce",
+        "primary_keyword": "tesettür jile",
+        "secondary_keywords": [
+          "düğmeli tesettür jile",
+          "uzun tesettür jile"
+        ],
+        "long_tail_keywords": [
+          "minimal krep tesettür jile",
+          "ofis tesettür jile"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Vizon minimal düğmeli tesettür jile"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Düğme sırası"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Yan yırtmaç"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Kolsuz kol oyuğu"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Siyah",
+          "size": "S",
+          "sku": "JIL-001-SIY-S",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "M",
+          "sku": "JIL-001-SIY-M",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "L",
+          "sku": "JIL-001-SIY-L",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Siyah",
+          "size": "XL",
+          "sku": "JIL-001-SIY-XL",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "S",
+          "sku": "JIL-001-VIZ-S",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "M",
+          "sku": "JIL-001-VIZ-M",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "L",
+          "sku": "JIL-001-VIZ-L",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Vizon",
+          "size": "XL",
+          "sku": "JIL-001-VIZ-XL",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "S",
+          "sku": "JIL-001-ZEY-S",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "M",
+          "sku": "JIL-001-ZEY-M",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "L",
+          "sku": "JIL-001-ZEY-L",
+          "qty": 11,
+          "available": true
+        },
+        {
+          "color": "Zeytin",
+          "size": "XL",
+          "sku": "JIL-001-ZEY-XL",
+          "qty": 11,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 12,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    },
+    {
+      "demo": true,
+      "title": "Oversize Cepli Tesettür Yelek",
+      "handle": "oversize-cepli-tesettur-yelek",
+      "sku_base": "YEL-001",
+      "vendor": "Demo Modest",
+      "category": "Tesettür Yelek",
+      "product_type": "Tesettür Yelek",
+      "product_category": "Apparel & Accessories > Clothing > Outerwear",
+      "price": "1099.00",
+      "compare_at_price": "1399.00",
+      "colors": [
+        "Ekru",
+        "Antrasit"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "badges": [
+        "indirim"
+      ],
+      "tags": [
+        "tesettur",
+        "yelek",
+        "kadin",
+        "oversize",
+        "keten-gorunum",
+        "indirim",
+        "yaz"
+      ],
+      "collections": [
+        "jile-yelek",
+        "indirim"
+      ],
+      "related_handles": [
+        "oversize-gomlek-pantolon-tesettur-takim",
+        "relax-fit-aerobin-tesettur-tunik"
+      ],
+      "intent": "Commercial Investigation",
+      "material": "%80 Polyester %20 Viskon",
+      "fit": "Oversize",
+      "length": "78 cm",
+      "model_height": "170 cm",
+      "model_size": "M",
+      "fabric": "Keten görünüm",
+      "stretch": "Esnek değil",
+      "care": "Askıda kurutun. Buhar verin.",
+      "season": "İlkbahar / Yaz",
+      "style": "Oversize",
+      "occasion": "Günlük",
+      "description_html": "<p>Yelek jileden kısa durur; cep günlük işi çantaya taşırmaz.</p><h3>Ürün özellikleri</h3><ul><li>Oversize</li><li>İki büyük cep</li><li>Çıtçıt</li><li>Kolsuz</li><li>Kalça üzeri</li></ul><p><strong>Kalıp:</strong> Oversize</p><p><strong>Kumaş:</strong> Keten görünüm</p><p><strong>Kullanım:</strong> Günlük</p><p><strong>Kombin önerisi:</strong> Gömlek takımın üstüne veya tek tunik üzerine açık bırakın.</p><p><strong>Bakım:</strong> Askıda kurutun. Buhar verin.</p><p><em>Demo Modest kataloğu için hazırlanmış DEMO üründür. Gerçek stok, gerçek marka veya gerçek satış verisi değildir.</em></p>",
+      "seo": {
+        "title": "Oversize Cepli Tesettür Yelek | Demo Modest Katalog",
+        "description": "Cepli oversize tesettür yeleği indirimli DEMO fiyatla inceleyin. Gerçek indirim değildir. Varyant ve rozet davranışını denemek için kurgulanmıştır.",
+        "primary_keyword": "tesettür yelek",
+        "secondary_keywords": [
+          "oversize tesettür yelek",
+          "cepli tesettür yelek"
+        ],
+        "long_tail_keywords": [
+          "keten görünümlü tesettür yelek",
+          "yazlık tesettür yelek"
+        ]
+      },
+      "images": [
+        {
+          "position": 1,
+          "role": "ana",
+          "src": null,
+          "alt": "Ekru oversize cepli tesettür yelek"
+        },
+        {
+          "position": 2,
+          "role": "aci",
+          "src": null,
+          "alt": "Büyük cep"
+        },
+        {
+          "position": 3,
+          "role": "detay",
+          "src": null,
+          "alt": "Çıtçıt"
+        },
+        {
+          "position": 4,
+          "role": "kumas",
+          "src": null,
+          "alt": "Keten görünüm"
+        }
+      ],
+      "variants": [
+        {
+          "color": "Ekru",
+          "size": "S",
+          "sku": "YEL-001-EKR-S",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "M",
+          "sku": "YEL-001-EKR-M",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "L",
+          "sku": "YEL-001-EKR-L",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "XL",
+          "sku": "YEL-001-EKR-XL",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Ekru",
+          "size": "XXL",
+          "sku": "YEL-001-EKR-XXL",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "S",
+          "sku": "YEL-001-ANT-S",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "M",
+          "sku": "YEL-001-ANT-M",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "L",
+          "sku": "YEL-001-ANT-L",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "XL",
+          "sku": "YEL-001-ANT-XL",
+          "qty": 9,
+          "available": true
+        },
+        {
+          "color": "Antrasit",
+          "size": "XXL",
+          "sku": "YEL-001-ANT-XXL",
+          "qty": 9,
+          "available": true
+        }
+      ],
+      "stock_summary": {
+        "in_stock": 10,
+        "low_stock": 0,
+        "sold_out": 0
+      }
+    }
+  ]
+}

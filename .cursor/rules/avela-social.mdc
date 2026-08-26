@@ -1,0 +1,16 @@
+---
+description: Avela site adresi ve sosyal hesapları
+alwaysApply: true
+---
+
+# Avela site ve sosyal hesaplar
+
+- Site: https://www.avelatr.com
+- E-posta: info@avelatr.com
+- Instagram: https://www.instagram.com/avelatr (`avelatr`)
+- Facebook: https://www.facebook.com/avelatr (`avelatr`)
+- TikTok: https://www.tiktok.com/@avelatr (`avelatr`)
+
+Kullanıldığı yerler: `config/settings_data.json`, `config/settings_schema.json`, `snippets/social-links.liquid`, `snippets/structured-data.liquid`, footer, sosyal şerit, mobil menü.
+
+Kullanıcı açıkça başka adres veya kullanıcı adı vermeden bunları değiştirme.

@@ -1,0 +1,171 @@
+{% doc %}
+  Predictive search form with live suggestions.
+
+  @param {string} input_id - Unique input id
+  @param {string} results_id - Unique results container id
+  @param {string} [terms] - Current search terms
+  @example
+  {% render 'predictive-search', input_id: 'HeaderSearch', results_id: 'PredictiveResultsHeader' %}
+{% enddoc %}
+
+<predictive-search class="predictive-search" data-url="{{ routes.predictive_search_url }}">
+  <form class="predictive-search__form" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="visually-hidden" for="{{ input_id }}">{{ 'search.title' | t }}</label>
+    <input
+      id="{{ input_id }}"
+      class="field__input"
+      type="search"
+      name="q"
+      value="{{ terms | escape }}"
+      placeholder="{{ 'search.placeholder' | t }}"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      role="combobox"
+      aria-expanded="false"
+      aria-autocomplete="list"
+      aria-controls="{{ results_id }}"
+    >
+    <input type="hidden" name="type" value="product">
+    <input type="hidden" name="options[prefix]" value="last">
+    {% assign search_submit = 'search.submit' | t %}
+    <button class="button" type="submit">{% render 'turkish-upper', text: search_submit %}</button>
+    <div id="{{ results_id }}" class="predictive-search__results" data-predictive-results tabindex="-1"></div>
+  </form>
+</predictive-search>
+
+{% stylesheet %}
+  .predictive-search {
+    display: block;
+  }
+
+  .predictive-search__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xs);
+    align-items: center;
+  }
+
+  .predictive-search__results {
+    grid-column: 1 / -1;
+  }
+
+  .predictive-search__results:empty {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('predictive-search')) {
+    customElements.define(
+      'predictive-search',
+      class PredictiveSearch extends HTMLElement {
+        connectedCallback() {
+          this.input = this.querySelector('input[type="search"]');
+          this.results = this.querySelector('[data-predictive-results]');
+          this.controller = null;
+          this.input.addEventListener(
+            'input',
+            this.debounce(() => this.onChange(), 280)
+          );
+          this.input.addEventListener('focus', () => {
+            if (this.input.value.trim()) this.onChange();
+          });
+          this.addEventListener('keydown', (event) => this.onKeydown(event));
+        }
+
+        onChange() {
+          const term = this.input.value.trim();
+          if (!term.length) {
+            this.close();
+            return;
+          }
+          this.getResults(term);
+        }
+
+        async getResults(term) {
+          this.controller?.abort();
+          this.controller = new AbortController();
+          const url = new URL(this.dataset.url, window.location.origin);
+          url.searchParams.set('q', term);
+          url.searchParams.set('section_id', 'predictive-search');
+          url.searchParams.set('resources[type]', 'query,product,collection,page,article');
+          url.searchParams.set('resources[limit]', '6');
+          url.searchParams.set('resources[limit_scope]', 'each');
+          url.searchParams.set('resources[options][unavailable_products]', 'hide');
+          this.results.setAttribute('aria-busy', 'true');
+          try {
+            const response = await fetch(url, { signal: this.controller.signal });
+            if (!response.ok) {
+              this.close();
+              return;
+            }
+            const html = await response.text();
+            const section = new DOMParser()
+              .parseFromString(html, 'text/html')
+              .querySelector('#shopify-section-predictive-search');
+            this.results.innerHTML = section ? section.innerHTML : '';
+            this.open();
+          } catch (error) {
+            if (error.name !== 'AbortError') this.close();
+          } finally {
+            this.results.removeAttribute('aria-busy');
+          }
+        }
+
+        onKeydown(event) {
+          const options = Array.from(this.results.querySelectorAll('[role="option"]'));
+          if (event.key === 'Escape') {
+            this.close();
+            return;
+          }
+          if (event.key === 'Enter') {
+            const selected = options.find((option) => option.getAttribute('aria-selected') === 'true');
+            if (selected?.href) {
+              event.preventDefault();
+              window.location.assign(selected.href);
+            }
+            return;
+          }
+          if (!options.length || (event.key !== 'ArrowDown' && event.key !== 'ArrowUp')) return;
+          event.preventDefault();
+          const current = options.findIndex((option) => option.getAttribute('aria-selected') === 'true');
+          let next = event.key === 'ArrowDown' ? current + 1 : current - 1;
+          if (next < 0) next = options.length - 1;
+          if (next >= options.length) next = 0;
+          options.forEach((option, index) => option.setAttribute('aria-selected', String(index === next)));
+          options[next]?.scrollIntoView({ block: 'nearest' });
+          this.input.setAttribute('aria-activedescendant', options[next]?.id || '');
+        }
+
+        syncOverlay() {
+          this.closest('.header-search')?.classList.toggle(
+            'is-searching',
+            Boolean(this.results.innerHTML.trim())
+          );
+        }
+
+        open() {
+          this.input.setAttribute('aria-expanded', 'true');
+          this.syncOverlay();
+        }
+
+        close() {
+          this.results.innerHTML = '';
+          this.input.setAttribute('aria-expanded', 'false');
+          this.input.removeAttribute('aria-activedescendant');
+          this.syncOverlay();
+        }
+
+        debounce(fn, wait) {
+          let timer;
+          return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), wait);
+          };
+        }
+      }
+    );
+  }
+{% endjavascript %}

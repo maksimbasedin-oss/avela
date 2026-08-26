@@ -1,0 +1,265 @@
+{% liquid
+  assign merch = section.settings.collection
+  if merch == blank or merch.products_count < 1
+    if section.settings.fallback_handle != blank
+      assign merch = collections[section.settings.fallback_handle]
+    endif
+  endif
+  if merch == blank or merch.products_count < 1
+    assign merch = collections.all
+  endif
+
+  assign block_products = 0
+  for block in section.blocks
+    if block.settings.product != blank
+      assign block_products = block_products | plus: 1
+    endif
+  endfor
+
+  assign use_blocks = false
+  if merch == blank or merch.products_count < 1
+    if block_products > 0
+      assign use_blocks = true
+    endif
+  endif
+
+  assign limit = section.settings.products_to_show | default: 8
+  assign product_limit = limit | minus: 1
+  if product_limit < 1
+    assign product_limit = 1
+  endif
+  assign heading_text = section.settings.heading
+  assign cta_label = section.settings.button_label
+  assign see_more_label = 'collections.see_more' | t
+  assign cta_url = routes.all_products_collection_url
+  if merch != blank and merch.url != blank
+    assign cta_url = merch.url
+  endif
+%}
+
+{% if use_blocks or merch.products_count > 0 %}
+  <div class="featured-collection full-width band band--{{ section.settings.band }}">
+    <div class="section-head">
+      <span class="section-head__index">0{{ section.index }}</span>
+      {% if heading_text != blank %}
+        <h2>{% render 'turkish-upper', text: heading_text %}</h2>
+      {% endif %}
+      {% if cta_label != blank %}
+        {% render 'button', label: cta_label, url: cta_url, style: 'text' %}
+      {% endif %}
+    </div>
+
+    <ul class="featured-collection__grid" role="list">
+      {% if use_blocks %}
+        {% for block in section.blocks limit: product_limit %}
+          {% if block.settings.product != blank %}
+            <li {{ block.shopify_attributes }}>
+              {% liquid
+                assign card_loading = 'lazy'
+                assign card_priority = 'auto'
+                if section.index <= 3 and forloop.index <= 2
+                  assign card_loading = 'eager'
+                endif
+              %}
+              {% render 'product-card', product: block.settings.product, loading: card_loading, priority: card_priority %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for product in merch.products limit: product_limit %}
+          <li>
+            {% liquid
+              assign card_loading = 'lazy'
+              assign card_priority = 'auto'
+              if section.index <= 3 and forloop.index <= 2
+                assign card_loading = 'eager'
+              endif
+            %}
+            {% render 'product-card', product: product, loading: card_loading, priority: card_priority %}
+          </li>
+        {% endfor %}
+      {% endif %}
+
+      <li class="featured-collection__brand">
+        <a class="featured-collection__brand-link" href="{{ cta_url }}">
+          <span class="featured-collection__brand-logo">
+            {% render 'brand-logo' %}
+          </span>
+          <span class="featured-collection__more">
+            <span class="featured-collection__more-label">{{ see_more_label | escape }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path d="M3 8h9M8.5 4.5 12 8 8.5 11.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .featured-collection {
+    padding-block: var(--space-xl);
+  }
+
+  .featured-collection .section-head h2 {
+    flex: 1;
+  }
+
+  .featured-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .featured-collection__grid > li {
+    display: flex;
+    background: var(--color-background);
+    padding: var(--space-sm);
+  }
+
+  .featured-collection__grid > li > .product-card {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .featured-collection__brand {
+    align-items: stretch;
+  }
+
+  .featured-collection__brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    width: 100%;
+    min-height: 100%;
+    aspect-ratio: 3 / 4;
+    padding: var(--space-md) var(--space-sm);
+    color: var(--color-foreground);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .featured-collection__brand-logo {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .featured-collection__brand-logo .brand-logo {
+    color: inherit;
+  }
+
+  .featured-collection__more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 11.5rem;
+    min-height: 2.5rem;
+    padding: 0 0.7rem;
+    border: 1px solid currentColor;
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .featured-collection__more-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .featured-collection__more svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    flex: 0 0 auto;
+  }
+
+  .featured-collection__brand-link:hover .featured-collection__more,
+  .featured-collection__brand-link:focus-visible .featured-collection__more {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  @media screen and (min-width: 990px) {
+    .featured-collection__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.featured_collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:labels.collection"
+    },
+    {
+      "type": "text",
+      "id": "fallback_handle",
+      "label": "t:labels.fallback_handle"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Çok satanlar"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label",
+      "default": "Tümünü gör"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 2,
+      "label": "t:labels.products_to_show",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "band",
+      "label": "t:labels.background",
+      "options": [
+        { "value": "paper", "label": "t:options.band.paper" },
+        { "value": "ash", "label": "t:options.band.ash" },
+        { "value": "ink", "label": "t:options.band.ink" }
+      ],
+      "default": "paper"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "t:general.product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:general.product"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "t:general.featured_collection" }]
+}
+{% endschema %}

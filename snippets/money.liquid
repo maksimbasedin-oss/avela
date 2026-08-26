@@ -1,0 +1,8 @@
+{% doc %}
+  Tutarı Türk lirası olarak gösterir.
+
+  @param {number} amount - Kuruş cinsinden tutar
+  @example
+  {% render 'money', amount: product.price %}
+{% enddoc %}
+{{- amount | money_without_currency | strip -}}&nbsp;₺

@@ -1,0 +1,17 @@
+{% doc %}
+  Fills leftover size-filter cells with the store mark.
+
+  @param {number} count - Number of size values already rendered
+{% enddoc %}
+
+{% assign size_mod = count | modulo: 3 %}
+{% if size_mod > 0 %}
+  {% assign size_span = 3 | minus: size_mod %}
+  <li
+    class="collection__filter-size-logo{% if size_span == 1 %} collection__filter-size-logo--mark{% endif %}"
+    style="grid-column: span {{ size_span }};"
+    aria-hidden="true"
+  >
+    {% render 'brand-logo' %}
+  </li>
+{% endif %}

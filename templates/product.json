@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "settings": {},
+      "blocks": {
+        "faq-fit": {
+          "type": "faq",
+          "settings": {
+            "question": "Beden nasıl seçilir?",
+            "answer": "<p>Kalıp, boy ve modelin giydiği beden ürün kartında yazar. İki beden arasında kaldıysanız rahat duruş için bir büyük bedeni deneyin.</p>"
+          }
+        },
+        "faq-fabric": {
+          "type": "faq",
+          "settings": {
+            "question": "Kumaş nasıl durur?",
+            "answer": "<p>Kumaş ve esneklik bilgisi ürün detayındadır. İlk yıkamada ürün bakım dikişindeki yönergeyi izleyin.</p>"
+          }
+        },
+        "faq-return": {
+          "type": "faq",
+          "settings": {
+            "question": "İade nasıl yapılır?",
+            "answer": "<p>Kargo ve iade koşulları ürün sayfasındaki ilgili bölümde ve Kargo ve iade sayfasında yer alır. Kullanılmamış, etiketli ürünler için geçerlidir.</p>"
+          }
+        }
+      },
+      "block_order": ["faq-fit", "faq-fabric", "faq-return"]
+    }
+  },
+  "order": ["main"]
+}

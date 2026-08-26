@@ -1,0 +1,104 @@
+{% liquid
+  assign has_trust = false
+  if settings.trust_shipping != blank or settings.trust_returns != blank or settings.trust_payment != blank or settings.trust_support != blank or settings.whatsapp_url != blank or settings.free_shipping_threshold != blank
+    assign has_trust = true
+  endif
+%}
+
+{% if has_trust %}
+  <ul class="trust-bar full-width" role="list">
+    {% if settings.free_shipping_threshold != blank %}
+      {% assign free_ship_label = 'trust.free_shipping_html' | t: amount: settings.free_shipping_threshold %}
+      <li>{% render 'turkish-upper', text: free_ship_label %}</li>
+    {% endif %}
+    {% if settings.trust_shipping != blank %}
+      <li>{% render 'turkish-upper', text: settings.trust_shipping %}</li>
+    {% endif %}
+    {% if settings.trust_returns != blank %}
+      <li>{% render 'turkish-upper', text: settings.trust_returns %}</li>
+    {% endif %}
+    {% if settings.trust_payment != blank %}
+      <li>{% render 'turkish-upper', text: settings.trust_payment %}</li>
+    {% endif %}
+    {% if settings.trust_support != blank %}
+      <li>{% render 'turkish-upper', text: settings.trust_support %}</li>
+    {% endif %}
+    {% if settings.whatsapp_url != blank %}
+      <li>
+        <a href="{{ settings.whatsapp_url }}">{{ 'accessibility.whatsapp' | t }}</a>
+      </li>
+    {% endif %}
+    <li class="trust-bar__brand">
+      <a class="trust-bar__brand-link" href="{{ routes.root_url }}" aria-label="{{ 'general.brand' | t }}">
+        {% render 'brand-logo' %}
+      </a>
+    </li>
+  </ul>
+{% endif %}
+
+{% stylesheet %}
+  .trust-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--color-foreground);
+    color: var(--color-foreground);
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  .trust-bar li {
+    padding: var(--space-md);
+    background: var(--color-surface);
+  }
+
+  .trust-bar a {
+    color: inherit;
+  }
+
+  .trust-bar__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+  }
+
+  .trust-bar__brand-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .trust-bar__brand-link {
+    display: inline-flex;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    .trust-bar {
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.trust",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:info.trust_empty"
+    }
+  ],
+  "presets": [{ "name": "t:general.trust" }]
+}
+{% endschema %}

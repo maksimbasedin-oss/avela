@@ -1,0 +1,13 @@
+{
+  "name": "avela",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Avela tesettür giyim Shopify Online Store 2.0 teması",
+  "scripts": {
+    "theme:dev": "shopify theme dev --store kc50pn-ri.myshopify.com"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@shopify/cli": "^4.6.1"
+  }
+}

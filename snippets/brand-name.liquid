@@ -1,0 +1,10 @@
+{% doc %}
+  Vitrinde marka adını döndürür. Shop adı boş veya My Store ise Avela.
+{% enddoc %}
+{%- liquid
+  assign brand_name = shop.name
+  if shop.name == 'My Store' or shop.name == 'Mağazam' or shop.name == blank
+    assign brand_name = 'general.brand' | t
+  endif
+-%}
+{{- brand_name -}}

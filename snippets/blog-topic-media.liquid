@@ -1,0 +1,13 @@
+{% doc %}
+  Stil rehberi konu kartı. Her konuda özgün ikon ve etiket.
+
+  @param {string} tag - Topic tag or all
+  @param {string} label - Visible topic label
+  @example
+  {% render 'blog-topic-media', tag: 'Elbise', label: 'Elbise' %}
+{% enddoc %}
+
+<span class="blog-page__topic-media">
+  {% render 'blog-topic-icon', tag: tag %}
+</span>
+<span class="blog-page__topic-label">{% render 'turkish-upper', text: label %}</span>

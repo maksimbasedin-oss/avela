@@ -1,0 +1,56 @@
+{% doc %}
+  Renders header navigation. Parents with children open as an accordion.
+
+  @param {linklist} menu - The menu to render
+  @param {boolean} [mobile] - Use drawer accordion layout
+  @example
+  {% render 'header-menu', menu: section.settings.menu %}
+{% enddoc %}
+
+{% if menu != blank %}
+  <ul class="header-menu{% if mobile %} header-menu--mobile{% endif %}">
+    {% for link in menu.links %}
+      {% liquid
+        assign child_count = 0
+        assign is_mega = false
+        for child in link.links
+          if child.url != link.url
+            assign child_count = child_count | plus: 1
+            if child.links.size > 0
+              assign is_mega = true
+            endif
+          endif
+        endfor
+      %}
+      <li class="header-menu__item{% if child_count > 0 %} header-menu__item--has-children{% endif %}">
+        {% if child_count > 0 %}
+          <details
+            class="header-menu__accordion"
+            {% if mobile %}
+              name="header-mobile-menu"
+            {% else %}
+              name="header-desktop-menu"
+            {% endif %}
+          >
+            <summary class="header-menu__link">
+              {% render 'turkish-upper', text: link.title %}
+            </summary>
+            <div class="header-menu__dropdown">
+              {% render 'header-menu-children', link: link, is_mega: is_mega, all_url: link.url, all_current: link.current %}
+            </div>
+          </details>
+        {% else %}
+          <a
+            class="header-menu__link"
+            href="{{ link.url }}"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {% render 'turkish-upper', text: link.title %}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

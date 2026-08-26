@@ -1,0 +1,431 @@
+{% doc %}
+  Renders product media gallery with arrows, swipe, and framed preview.
+
+  @param {product} product - Product
+  @example
+  {% render 'product-media', product: product %}
+{% enddoc %}
+
+{% if product.media.size > 0 %}
+  {% liquid
+    assign image_count = 0
+    for media in product.media
+      if media.media_type == 'image'
+        assign image_count = image_count | plus: 1
+      endif
+    endfor
+  %}
+  <product-gallery class="product-gallery" aria-label="{{ 'products.gallery' | t }}">
+    <div class="product-gallery__stage">
+      <div class="product-gallery__viewport" data-gallery-viewport>
+        {% for media in product.media %}
+          {% liquid
+            assign media_loading = 'lazy'
+            assign media_priority = 'auto'
+            if forloop.first
+              assign media_loading = 'eager'
+              assign media_priority = 'high'
+            endif
+            assign media_alt = media.alt | default: product.title
+          %}
+          <figure class="product-gallery__slide" id="Media-{{ media.id }}">
+            {% case media.media_type %}
+              {% when 'image' %}
+                <button
+                  type="button"
+                  class="product-gallery__zoom"
+                  data-zoom-src="{{ media | image_url: width: 2000 }}"
+                  data-zoom-alt="{{ media_alt | escape }}"
+                  data-zoom-index="{{ forloop.index0 }}"
+                  aria-label="{{ 'products.zoom' | t }}"
+                >
+                  {{
+                    media
+                    | image_url: width: 1600
+                    | image_tag:
+                      widths: '600, 900, 1200, 1600',
+                      sizes: '(min-width: 750px) 50vw, 100vw',
+                      loading: media_loading,
+                      fetchpriority: media_priority,
+                      alt: media_alt
+                  }}
+                </button>
+              {% when 'video' %}
+                {{ media | video_tag: controls: true, loading: media_loading }}
+              {% when 'external_video' %}
+                {{ media | external_video_tag }}
+              {% else %}
+                {{ media | media_tag }}
+            {% endcase %}
+          </figure>
+        {% endfor %}
+      </div>
+
+      {% if product.media.size > 1 %}
+        <button type="button" class="product-gallery__arrow product-gallery__arrow--prev" data-gallery-prev>
+          <span class="visually-hidden">{{ 'accessibility.previous' | t }}</span>
+          {{ 'icon-chevron-left.svg' | inline_asset_content }}
+        </button>
+        <button type="button" class="product-gallery__arrow product-gallery__arrow--next" data-gallery-next>
+          <span class="visually-hidden">{{ 'accessibility.next' | t }}</span>
+          {{ 'icon-chevron-right.svg' | inline_asset_content }}
+        </button>
+      {% endif %}
+    </div>
+
+    {% if product.media.size > 1 %}
+      <ul class="product-gallery__thumbs">
+        {% for media in product.media %}
+          <li>
+            <a href="#Media-{{ media.id }}" class="product-gallery__thumb" data-gallery-thumb="{{ forloop.index0 }}">
+              {{
+                media.preview_image
+                | image_url: width: 160
+                | image_tag: loading: 'lazy', alt: media.alt
+              }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <dialog class="product-zoom" data-zoom-dialog aria-label="{{ 'products.zoom' | t }}">
+      <button type="button" class="product-zoom__close" data-zoom-close>
+        <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </button>
+
+      <div class="product-zoom__stage">
+        {% if image_count > 1 %}
+          <button type="button" class="product-gallery__arrow product-gallery__arrow--prev" data-lightbox-prev>
+            <span class="visually-hidden">{{ 'accessibility.previous' | t }}</span>
+            {{ 'icon-chevron-left.svg' | inline_asset_content }}
+          </button>
+        {% endif %}
+
+        <div class="product-zoom__frame">
+          <div class="product-zoom__viewport" data-lightbox-viewport>
+            {% for media in product.media %}
+              {% if media.media_type == 'image' %}
+                {% assign media_alt = media.alt | default: product.title %}
+                <figure class="product-zoom__slide">
+                  {{
+                    media
+                    | image_url: width: 2000
+                    | image_tag:
+                      widths: '800, 1200, 1600, 2000',
+                      sizes: '92vw',
+                      loading: 'lazy',
+                      alt: media_alt
+                  }}
+                </figure>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if image_count > 1 %}
+          <button type="button" class="product-gallery__arrow product-gallery__arrow--next" data-lightbox-next>
+            <span class="visually-hidden">{{ 'accessibility.next' | t }}</span>
+            {{ 'icon-chevron-right.svg' | inline_asset_content }}
+          </button>
+        {% endif %}
+      </div>
+    </dialog>
+  </product-gallery>
+{% endif %}
+
+{% stylesheet %}
+  .product-gallery__stage {
+    position: relative;
+  }
+
+  .product-gallery__viewport,
+  .product-zoom__viewport {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .product-gallery__viewport::-webkit-scrollbar,
+  .product-zoom__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-gallery__slide,
+  .product-zoom__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    margin: 0;
+    background: var(--color-border);
+  }
+
+  .product-gallery__zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .product-gallery__zoom img,
+  .product-gallery__slide video,
+  .product-gallery__slide iframe,
+  .product-zoom__slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .product-gallery__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--color-foreground);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .product-gallery__arrow--prev {
+    left: 0.75rem;
+  }
+
+  .product-gallery__arrow--next {
+    right: 0.75rem;
+  }
+
+  .product-gallery__arrow svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: block;
+  }
+
+  .product-gallery__thumbs {
+    display: none;
+    gap: var(--space-xs);
+    list-style: none;
+    padding: var(--space-sm) 0 0;
+    margin: 0;
+  }
+
+  .product-gallery__thumb {
+    display: block;
+    border: 1px solid transparent;
+  }
+
+  .product-gallery__thumb.is-active {
+    border-color: var(--color-foreground);
+  }
+
+  .product-gallery__thumb img {
+    width: 4.5rem;
+    height: 6rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-zoom {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: var(--space-xl) var(--page-margin);
+    border: 0;
+    background: rgb(12 12 12 / 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .product-zoom::backdrop {
+    background: rgb(12 12 12 / 0.2);
+    backdrop-filter: blur(18px);
+  }
+
+  .product-zoom__stage {
+    position: relative;
+    width: min(100%, 44rem);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--space-xl) * 2);
+  }
+
+  .product-zoom__frame {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-foreground);
+    background: var(--color-background);
+    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.28);
+  }
+
+  .product-zoom__slide {
+    background: var(--color-background);
+  }
+
+  .product-zoom__slide img {
+    max-height: min(78vh, 56rem);
+    object-fit: contain;
+  }
+
+  .product-zoom__close {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    z-index: 3;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    border: 1px solid var(--color-foreground);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .product-zoom .product-gallery__arrow {
+    position: absolute;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-gallery__thumbs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('product-gallery')) {
+    customElements.define(
+      'product-gallery',
+      class ProductGallery extends HTMLElement {
+        connectedCallback() {
+          this.viewport = this.querySelector('[data-gallery-viewport]');
+          this.slides = Array.from(this.querySelectorAll('.product-gallery__slide'));
+          this.thumbs = Array.from(this.querySelectorAll('[data-gallery-thumb]'));
+          this.dialog = this.querySelector('[data-zoom-dialog]');
+          this.lightbox = this.querySelector('[data-lightbox-viewport]');
+          this.lightboxSlides = Array.from(this.querySelectorAll('.product-zoom__slide'));
+          this.dragged = false;
+          this.pointerX = 0;
+
+          this.querySelector('[data-gallery-prev]')?.addEventListener('click', () => this.step(this.viewport, this.slides, -1));
+          this.querySelector('[data-gallery-next]')?.addEventListener('click', () => this.step(this.viewport, this.slides, 1));
+          this.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => this.step(this.lightbox, this.lightboxSlides, -1));
+          this.querySelector('[data-lightbox-next]')?.addEventListener('click', () => this.step(this.lightbox, this.lightboxSlides, 1));
+
+          this.thumbs.forEach((thumb) => {
+            thumb.addEventListener('click', (event) => {
+              event.preventDefault();
+              this.goTo(this.viewport, this.slides, Number(thumb.dataset.galleryThumb));
+            });
+          });
+
+          this.querySelectorAll('[data-zoom-src]').forEach((button) => {
+            button.addEventListener('pointerdown', (event) => {
+              this.dragged = false;
+              this.pointerX = event.clientX;
+            });
+            button.addEventListener('pointermove', (event) => {
+              if (Math.abs(event.clientX - this.pointerX) > 10) this.dragged = true;
+            });
+            button.addEventListener('click', () => {
+              if (this.dragged) return;
+              this.openLightbox(Number(button.dataset.zoomIndex || 0));
+            });
+          });
+
+          this.querySelector('[data-zoom-close]')?.addEventListener('click', () => this.dialog?.close());
+          this.dialog?.addEventListener('click', (event) => {
+            if (event.target === this.dialog) this.dialog.close();
+          });
+          this.dialog?.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') this.step(this.lightbox, this.lightboxSlides, -1);
+            if (event.key === 'ArrowRight') this.step(this.lightbox, this.lightboxSlides, 1);
+          });
+
+          this.viewport?.addEventListener('scroll', () => this.syncThumbs(), { passive: true });
+          this.bindDrag(this.viewport);
+          this.bindDrag(this.lightbox);
+          this.syncThumbs();
+        }
+
+        bindDrag(viewport) {
+          if (!viewport) return;
+          let dragging = false;
+          let startX = 0;
+          let startScroll = 0;
+
+          viewport.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'touch' || event.button !== 0) return;
+            dragging = true;
+            this.dragged = false;
+            startX = event.clientX;
+            startScroll = viewport.scrollLeft;
+            viewport.setPointerCapture(event.pointerId);
+          });
+          viewport.addEventListener('pointermove', (event) => {
+            if (!dragging) return;
+            const dx = event.clientX - startX;
+            if (Math.abs(dx) > 8) this.dragged = true;
+            viewport.scrollLeft = startScroll - dx;
+          });
+          const endDrag = () => {
+            if (!dragging) return;
+            dragging = false;
+            const slides = viewport === this.lightbox ? this.lightboxSlides : this.slides;
+            this.goTo(viewport, slides, this.indexOf(viewport, slides));
+          };
+          viewport.addEventListener('pointerup', endDrag);
+          viewport.addEventListener('pointercancel', endDrag);
+        }
+
+        indexOf(viewport, slides) {
+          if (!viewport || !slides.length) return 0;
+          return Math.round(viewport.scrollLeft / Math.max(viewport.clientWidth, 1));
+        }
+
+        goTo(viewport, slides, index) {
+          if (!viewport || !slides.length) return;
+          const next = ((index % slides.length) + slides.length) % slides.length;
+          viewport.scrollTo({ left: next * viewport.clientWidth, behavior: 'smooth' });
+          if (viewport === this.viewport) this.syncThumbs(next);
+        }
+
+        step(viewport, slides, direction) {
+          this.goTo(viewport, slides, this.indexOf(viewport, slides) + direction);
+        }
+
+        syncThumbs(index) {
+          const current = index ?? this.indexOf(this.viewport, this.slides);
+          this.thumbs.forEach((thumb, thumbIndex) => {
+            thumb.classList.toggle('is-active', thumbIndex === current);
+          });
+        }
+
+        openLightbox(index) {
+          if (!this.dialog || !this.lightbox) return;
+          const imageButtons = Array.from(this.querySelectorAll('[data-zoom-src]'));
+          const imageIndex = imageButtons.findIndex((button) => Number(button.dataset.zoomIndex) === index);
+          this.dialog.showModal();
+          const target = imageIndex < 0 ? 0 : imageIndex;
+          const align = () => this.lightbox.scrollTo({ left: target * this.lightbox.clientWidth, behavior: 'auto' });
+          requestAnimationFrame(() => requestAnimationFrame(align));
+        }
+      }
+    );
+  }
+{% endjavascript %}

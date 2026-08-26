@@ -1,0 +1,34 @@
+{% doc %}
+  Yazı kapanışı: beden rehberi, teslimat ve iletişim.
+
+  @example
+  {% render 'article-guide-close' %}
+{% enddoc %}
+
+{% liquid
+  assign close_text = 'blog.article_close' | t
+  assign size_guide_label = 'blog.size_guide' | t
+  assign shipping_label = 'blog.shipping_page' | t
+  assign contact_label = 'blog.contact_page' | t
+%}
+
+<aside class="article-page__close">
+  <p>{{ close_text | escape }}</p>
+  <ul class="article-page__close-links" role="list">
+    {% if pages['beden-rehberi'] != blank %}
+      <li>
+        <a class="button button--text" href="{{ pages['beden-rehberi'].url }}">{{ size_guide_label | escape }}</a>
+      </li>
+    {% endif %}
+    {% if pages['kargo-ve-iade'] != blank %}
+      <li>
+        <a class="button button--text" href="{{ pages['kargo-ve-iade'].url }}">{{ shipping_label | escape }}</a>
+      </li>
+    {% endif %}
+    {% if pages.contact != blank %}
+      <li>
+        <a class="button button--text" href="{{ pages.contact.url }}">{{ contact_label | escape }}</a>
+      </li>
+    {% endif %}
+  </ul>
+</aside>

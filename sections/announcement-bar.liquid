@@ -1,0 +1,79 @@
+{%- liquid
+  assign announcement = section.settings.text
+  if announcement == blank and settings.free_shipping_threshold != blank
+    assign announcement = 'trust.free_shipping_html' | t: amount: settings.free_shipping_threshold
+  endif
+-%}
+{%- if announcement != blank -%}
+  {%- capture announcement_upper -%}
+    {%- render 'turkish-upper', text: announcement -%}
+  {%- endcapture -%}
+  {%- assign announcement_marked = announcement_upper | strip | replace: 'ÜCRETSİZ', '<span class="announcement-bar__em">ÜCRETSİZ</span>' -%}
+  <div class="announcement-bar full-width">
+    <div class="announcement-bar__inner">
+      {%- if section.settings.link != blank -%}
+        <a class="announcement-bar__link" href="{{ section.settings.link }}">
+          {{ announcement_marked }}
+        </a>
+      {%- else -%}
+        <p class="announcement-bar__text">{{ announcement_marked }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .announcement-bar {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .announcement-bar__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: var(--space-xs) var(--page-margin);
+    text-align: center;
+  }
+
+  .announcement-bar__text,
+  .announcement-bar__link {
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+  }
+
+  .announcement-bar__em {
+    font-weight: 700;
+    font-size: 1.18em;
+    letter-spacing: 0.22em;
+  }
+
+  .announcement-bar__link:hover {
+    text-decoration: underline;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.announcement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.announcement"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,964 @@
+{% capture brand_name %}
+  {% render 'brand-name' %}
+{% endcapture %}
+{% assign brand_name = brand_name | strip %}
+
+<header-bar
+  class="header-bar full-width{% if section.settings.enable_sticky %} header-bar--sticky{% endif %}"
+  style="--logo-width: {{ settings.logo_width }}px"
+>
+  <header class="header">
+    <details class="header-drawer" scroll-lock>
+      <summary class="header__icon header__icon--menu">
+        <span class="visually-hidden">{{ 'accessibility.menu' | t }}</span>
+        <span class="header__icon-open">{{ 'icon-menu.svg' | inline_asset_content }}</span>
+        <span class="header__icon-close">{{ 'icon-close.svg' | inline_asset_content }}</span>
+      </summary>
+      <div class="header-drawer__panel">
+        <div class="header-drawer__top">
+          <a class="header-drawer__brand" href="{{ routes.root_url }}" aria-label="{{ brand_name | escape }}">
+            {% render 'brand-logo' %}
+          </a>
+          <button type="button" class="header-drawer__close" data-close-details>
+            <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+            {{ 'icon-close.svg' | inline_asset_content }}
+          </button>
+        </div>
+        <div class="header-drawer__body">
+          <nav class="header-drawer__nav" aria-label="{{ brand_name | escape }}">
+            <p class="eyebrow">{% assign menu_label = 'accessibility.menu' | t %}{% render 'turkish-upper', text: menu_label %}</p>
+            {% render 'header-menu', menu: section.settings.menu, mobile: true %}
+          </nav>
+          {% if shop.customer_accounts_enabled %}
+            <div class="header-drawer__section">
+              {% assign account_label = 'customers.account' | t %}
+              <p class="eyebrow">{% render 'turkish-upper', text: account_label %}</p>
+              {% render 'account-nav' %}
+            </div>
+          {% endif %}
+        </div>
+        {% liquid
+          assign drawer_email = settings.contact_email | default: 'info@avelatr.com'
+          assign drawer_whatsapp = settings.whatsapp_url
+          if drawer_whatsapp == blank and shop.phone != blank
+            assign drawer_digits = shop.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+'
+            if drawer_digits != blank
+              assign drawer_whatsapp = 'https://wa.me/' | append: drawer_digits
+            endif
+          endif
+          if drawer_whatsapp != blank
+            unless drawer_whatsapp contains 'wa.me' or drawer_whatsapp contains 'whatsapp'
+              assign drawer_whatsapp = blank
+            endunless
+          endif
+        %}
+        <div class="header-drawer__foot">
+          <nav class="header-drawer__section" aria-label="{{ 'footer.contact' | t }}">
+            <p class="eyebrow">{% assign reach_label = 'footer.contact' | t %}{% render 'turkish-upper', text: reach_label %}</p>
+            <ul class="header-drawer__contacts">
+              {% if drawer_whatsapp != blank %}
+                <li>
+                  <a class="header-drawer__contact" href="{{ drawer_whatsapp }}"{% if drawer_whatsapp contains 'wa.me' or drawer_whatsapp contains 'whatsapp' %} rel="noopener"{% endif %}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path fill="currentColor" d="M17.47 14.38c-.28-.14-1.67-.82-1.93-.92-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.39a8.4 8.4 0 0 1-1.55-1.92c-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.87-2.11-.23-.56-.46-.48-.64-.49h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.43 1.02 2.82 1.17 3.02c.14.19 2.01 3.06 4.86 4.29 1.8.78 2.17.79 2.95.67.45-.07 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.11-.25-.18-.53-.32ZM12.04 21.8a9.8 9.8 0 0 1-4.97-1.36l-.36-.21-3.69.97.99-3.6-.23-.37a9.8 9.8 0 1 1 8.26 4.57Zm0-17.96a8.16 8.16 0 0 0-6.9 12.47l.14.23-.59 2.15 2.21-.58.22.13a8.16 8.16 0 1 0 4.92-14.4Z"/>
+                    </svg>
+                    {{ 'footer.whatsapp_support' | t }}
+                    {%- assign wa_digits = drawer_whatsapp | split: 'wa.me/' | last | remove: '+' -%}
+                    {%- if wa_digits != blank %} +{{ wa_digits }}{% endif %}
+                  </a>
+                </li>
+              {% endif %}
+              {% if drawer_email != blank %}
+                <li>
+                  <a class="header-drawer__contact" href="mailto:{{ drawer_email }}">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M3.5 6.5h17v11h-17z"/>
+                      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m3.5 7 8.5 6.2L20.5 7"/>
+                    </svg>
+                    {{ drawer_email }}
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+          <nav class="header-drawer__section" aria-label="{{ 'footer.follow' | t }}">
+            <p class="eyebrow">{% assign follow_label = 'footer.follow' | t %}{% render 'turkish-upper', text: follow_label %}</p>
+            {% render 'social-links', class: 'header-drawer__social' %}
+          </nav>
+          <nav class="header-drawer__legal" aria-label="{{ 'footer.legal' | t }}">
+            <p class="eyebrow">{% assign legal_label = 'footer.legal' | t %}{% render 'turkish-upper', text: legal_label %}</p>
+            <ul>
+              {% if pages['hakkimizda'] != blank %}
+                <li>
+                  <a href="{{ pages['hakkimizda'].url }}">{% render 'turkish-upper', text: pages['hakkimizda'].title %}</a>
+                </li>
+              {% endif %}
+              {% if pages['gizlilik-politikasi'] != blank %}
+                <li>
+                  <a href="{{ pages['gizlilik-politikasi'].url }}">{% render 'turkish-upper', text: pages['gizlilik-politikasi'].title %}</a>
+                </li>
+              {% endif %}
+              {% if pages['kullanim-kosullari'] != blank %}
+                <li>
+                  <a href="{{ pages['kullanim-kosullari'].url }}">{% render 'turkish-upper', text: pages['kullanim-kosullari'].title %}</a>
+                </li>
+              {% endif %}
+              {% if pages['kvkk-aydinlatma'] != blank %}
+                <li>
+                  <a href="{{ pages['kvkk-aydinlatma'].url }}">{% render 'turkish-upper', text: pages['kvkk-aydinlatma'].title %}</a>
+                </li>
+              {% endif %}
+              {% if pages['kargo-ve-iade'] != blank %}
+                <li>
+                  <a href="{{ pages['kargo-ve-iade'].url }}">{% render 'turkish-upper', text: pages['kargo-ve-iade'].title %}</a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+          <p class="header-drawer__copy">
+            &copy; {{ 'now' | date: '%Y' }}
+            <a href="{{ routes.root_url }}">{{ 'general.brand' | t }}</a>
+            ·
+            <a href="https://www.avelatr.com">avelatr.com</a>
+          </p>
+        </div>
+      </div>
+    </details>
+
+    <a class="header__brand" href="{{ routes.root_url }}" aria-label="{{ brand_name | escape }}">
+      {% render 'brand-logo' %}
+    </a>
+
+    <nav class="header__desktop" aria-label="{{ brand_name | escape }}">
+      {% render 'header-menu', menu: section.settings.menu %}
+    </nav>
+
+    <div class="header__icons">
+      {% if section.settings.show_search %}
+        <button type="button" class="header__icon" data-open-search>
+          <span class="visually-hidden">{{ 'accessibility.search' | t }}</span>
+          {{ 'icon-search.svg' | inline_asset_content }}
+        </button>
+      {% endif %}
+
+      {% if shop.customer_accounts_enabled %}
+        {% liquid
+          assign account_menu_handle = 'customer-account-main-menu'
+          if section.settings.customer_account_menu != blank
+            assign account_menu_handle = section.settings.customer_account_menu.handle
+          endif
+        %}
+        {% render 'account-button', menu: account_menu_handle %}
+      {% endif %}
+
+      <a
+        class="header__icon"
+        href="{{ routes.cart_url }}"
+        data-open-cart
+        aria-label="{{ 'accessibility.cart' | t }}"
+      >
+        <sup data-cart-count aria-live="polite">
+          {%- if cart.item_count > 0 -%}
+            {{ cart.item_count }}
+          {%- endif -%}
+        </sup>
+        {{ 'icon-cart.svg' | inline_asset_content }}
+      </a>
+    </div>
+  </header>
+
+  {% if section.settings.show_search %}
+    <dialog class="header-search" scroll-lock aria-label="{{ 'search.title' | t }}">
+      <div class="header-search__panel">
+        <div class="header-search__head">
+          {% assign search_label = 'search.title' | t %}
+          <p class="eyebrow">{% render 'turkish-upper', text: search_label %}</p>
+          <button type="button" class="header__icon" data-close-search>
+            <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+            {{ 'icon-close.svg' | inline_asset_content }}
+          </button>
+        </div>
+        <p class="header-search__lede">{{ 'search.lede' | t }}</p>
+        {% render 'predictive-search', input_id: 'HeaderSearch', results_id: 'PredictiveResultsHeader' %}
+        {% liquid
+          assign search_handles = 'yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
+          assign search_suggest_count = 0
+          for handle in search_handles
+            assign suggest = collections[handle]
+            if suggest != blank and suggest.products_count > 0
+              assign search_suggest_count = search_suggest_count | plus: 1
+            endif
+          endfor
+        %}
+        {% if search_suggest_count > 0 %}
+          <nav class="header-search__suggest" data-search-suggest aria-label="{{ 'search.collections' | t }}">
+            {% assign collections_label = 'search.collections' | t %}
+            <p class="eyebrow">{% render 'turkish-upper', text: collections_label %}</p>
+            <ul class="header-search__suggest-list" role="list">
+              {% for handle in search_handles %}
+                {% assign suggest = collections[handle] %}
+                {% if suggest != blank and suggest.products_count > 0 %}
+                  <li>
+                    <a href="{{ suggest.url }}">
+                      {% capture suggest_title %}
+                        {% render 'storefront-title', text: suggest.title, handle: suggest.handle %}
+                      {% endcapture %}
+                      {% render 'turkish-upper', text: suggest_title %}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </div>
+    </dialog>
+  {% endif %}
+</header-bar>
+
+{% stylesheet %}
+  .header-bar {
+    --icon-stroke-width: 1.25;
+    display: block;
+    position: relative;
+    overflow-x: clip;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .header-bar--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-md);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--page-width);
+    margin-inline: auto;
+    min-width: 0;
+    min-height: 4.25rem;
+    padding: var(--space-sm) var(--page-margin);
+  }
+
+  .header__brand {
+    justify-self: start;
+    min-width: 0;
+    text-decoration: none;
+    color: var(--color-foreground);
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+  }
+
+  .header__brand img {
+    width: auto;
+    max-width: min(var(--logo-width), 100%);
+    max-height: 3.25rem;
+    height: auto;
+  }
+
+  .header__title,
+  .header__logo-mark {
+    font-family: var(--font-heading--family);
+    font-size: 1.35rem;
+    letter-spacing: 0.42em;
+  }
+
+  .header__logo-mark {
+    display: block;
+    width: min(9.5rem, var(--logo-width));
+  }
+
+  .header__logo-mark svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .header__icon,
+  .header-drawer > summary {
+    appearance: none;
+    list-style: none;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-foreground);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .header-drawer > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .header svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    display: block;
+  }
+
+  .header a sup {
+    position: absolute;
+    top: 0.15rem;
+    right: 0.1rem;
+    font-size: 0.65rem;
+  }
+
+  .header a sup:empty {
+    display: none;
+  }
+
+  .header__icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    justify-self: end;
+    min-width: 0;
+    gap: var(--space-2xs);
+  }
+
+  .header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-menu__link {
+    appearance: none;
+    list-style: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+  }
+
+  .header-menu__link[aria-current='page'] {
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+
+  .header-menu__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-lg) var(--page-margin) var(--space-xl);
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 30;
+  }
+
+  .header-menu__children {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-xl);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-menu__children--mega {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .header-menu__children a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .header-menu__grandchildren {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xs) 0 0;
+  }
+
+  .header-menu__grandchildren a {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+  }
+
+  .header-drawer__panel {
+    display: none;
+  }
+
+  .header-search {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: var(--space-xl) var(--page-margin);
+    overflow: auto;
+    border: 0;
+    background: rgb(12 12 12 / 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-search::backdrop {
+    background: rgb(12 12 12 / 0.2);
+    backdrop-filter: blur(18px);
+  }
+
+    .header-search__panel {
+    width: min(36rem, 100%);
+    margin-inline: auto;
+    padding: var(--space-lg);
+    border: 1px solid var(--color-foreground);
+    background: var(--color-background);
+  }
+
+  .header-search__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .header-search__lede {
+    margin: var(--space-md) 0 0;
+    color: var(--color-secondary);
+  }
+
+  .header-search .predictive-search {
+    margin-top: var(--space-md);
+  }
+
+  .header-search .predictive-search__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 0;
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .header-search .field__input {
+    border: 0;
+    padding: 0.85rem 0;
+    min-height: 3rem;
+    letter-spacing: 0.04em;
+    background: transparent;
+  }
+
+  .header-search .field__input:focus-visible {
+    outline: none;
+  }
+
+  .header-search .predictive-search__form .button {
+    border: 0;
+    background: transparent;
+    color: var(--color-foreground);
+    min-height: 3rem;
+    padding: 0 0 0 var(--space-sm);
+  }
+
+  .header-search.is-searching .header-search__suggest {
+    display: none;
+  }
+
+  .header-search__suggest {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .header-search__suggest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+  }
+
+  .header-search__suggest-list a {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .header-search__suggest-list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.28em;
+  }
+
+  @media screen and (min-width: 750px) {
+    .header-drawer {
+      display: none;
+    }
+
+    .header__desktop {
+      justify-self: center;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .header-menu {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm) var(--space-md);
+    }
+
+    .header__desktop,
+    .header-menu {
+      align-self: stretch;
+      height: 100%;
+      align-items: stretch;
+    }
+
+    .header-menu__item {
+      position: static;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .header-menu__accordion {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .header-menu__accordion > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .header-menu__accordion > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .header-menu__accordion > summary::after {
+      content: '';
+      width: 0.38rem;
+      height: 0.38rem;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: translateY(-0.08rem) rotate(45deg);
+    }
+
+    .header-menu__accordion[open] > summary::after {
+      transform: translateY(0.12rem) rotate(-135deg);
+    }
+
+    .header-menu__accordion > .header-menu__dropdown {
+      display: none;
+      z-index: 50;
+    }
+
+    .header-menu__accordion[open] > .header-menu__dropdown {
+      display: block;
+    }
+
+    .header-menu__children {
+      width: 100%;
+    }
+
+    .header-menu__item-all {
+      margin-left: auto;
+    }
+
+    .header-menu__all {
+      letter-spacing: 0.12em;
+    }
+
+    .header-bar:has(.header-menu__accordion[open]) ~ .ticker-bar {
+      z-index: 1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .header {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--space-xs);
+    }
+
+    .header__brand {
+      justify-self: center;
+      max-width: 100%;
+    }
+
+    .header__desktop {
+      display: none;
+    }
+
+    .header-drawer {
+      position: relative;
+    }
+
+    .header-drawer[open] .header__icon-open,
+    .header-drawer:not([open]) .header__icon-close {
+      display: none;
+    }
+
+    .header-drawer__panel {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      overflow: auto;
+      background: var(--color-background);
+      color: var(--color-foreground);
+    }
+
+    .header-drawer__top {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      min-height: var(--header-height);
+      padding: 0 var(--page-margin);
+      background: var(--color-background);
+      border-bottom: 1px solid var(--color-foreground);
+    }
+
+    .header-drawer__brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-min);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-drawer__close {
+      min-width: var(--touch-min);
+      min-height: var(--touch-min);
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    .header-drawer__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+      padding: var(--space-xl) var(--page-margin);
+    }
+
+    .header-drawer__nav .eyebrow,
+    .header-drawer__section .eyebrow,
+    .header-drawer__legal .eyebrow {
+      margin-bottom: var(--space-sm);
+    }
+
+    .header-menu--mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      border-top: 1px solid var(--color-foreground);
+    }
+
+    .header-menu--mobile .header-menu__item {
+      border-bottom: 1px solid var(--color-foreground);
+    }
+
+    .header-menu--mobile .header-menu__link {
+      width: 100%;
+      justify-content: space-between;
+      min-height: 3.5rem;
+      font-family: var(--font-heading--family);
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .header-menu--mobile .header-menu__accordion > summary {
+      list-style: none;
+    }
+
+    .header-menu--mobile .header-menu__accordion > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .header-menu--mobile .header-menu__accordion > summary::after {
+      content: '';
+      width: 0.7rem;
+      height: 0.7rem;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: translateY(-0.15rem) rotate(45deg);
+    }
+
+    .header-menu--mobile .header-menu__accordion[open] > summary::after {
+      transform: translateY(0.15rem) rotate(-135deg);
+    }
+
+    .header-menu--mobile .header-menu__dropdown {
+      position: static;
+      display: none;
+      padding: 0 0 var(--space-md);
+      border: 0;
+      background: transparent;
+    }
+
+    .header-menu--mobile .header-menu__accordion[open] > .header-menu__dropdown {
+      display: block;
+    }
+
+    .header-menu--mobile .header-menu__children {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .header-menu--mobile .header-menu__item-all {
+      margin-left: 0;
+    }
+
+    .header-menu--mobile .header-menu__children a {
+      min-height: var(--touch-min);
+      font-family: var(--font-primary--family);
+      font-size: 0.8125rem;
+      letter-spacing: 0.12em;
+      color: var(--color-secondary);
+    }
+
+    .header-drawer__section {
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .header-drawer__foot {
+      margin-top: auto;
+      padding: var(--space-xl) var(--page-margin) calc(var(--space-lg) + env(safe-area-inset-bottom, 0px));
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-foreground);
+    }
+
+    .header-drawer__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-drawer__contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: 100%;
+      min-height: var(--touch-min);
+      padding: 0 0.85rem;
+      border: 1px solid var(--color-foreground);
+      background: var(--color-background);
+      color: var(--color-foreground);
+      text-decoration: none;
+      font-size: 0.8125rem;
+      letter-spacing: 0.06em;
+    }
+
+    .header-drawer__contact svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      flex: 0 0 auto;
+    }
+
+    .header-drawer__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 var(--space-md);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-drawer__social a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-min);
+      color: var(--color-foreground);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .header-drawer__legal {
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .header-drawer__legal ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-drawer__legal a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.25rem;
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+    }
+
+    .header-drawer__copy {
+      margin-top: var(--space-md);
+      color: var(--color-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    .header-drawer__copy a {
+      min-height: 0;
+      color: inherit;
+    }
+
+    .header-search {
+      padding: var(--space-md) var(--page-margin);
+    }
+
+    .header-search__panel {
+      padding: var(--space-md);
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('header-bar')) {
+    customElements.define(
+      'header-bar',
+      class HeaderBar extends HTMLElement {
+        connectedCallback() {
+          this.dialog = this.querySelector('dialog');
+          this.querySelector('[data-open-search]')?.addEventListener('click', () => {
+            this.dialog?.showModal();
+            this.dialog?.querySelector('input[type="search"]')?.focus();
+          });
+          this.querySelector('[data-close-search]')?.addEventListener('click', () => this.dialog?.close());
+          this.dialog?.addEventListener('click', (event) => {
+            if (event.target === this.dialog) this.dialog.close();
+          });
+          this.dialog?.addEventListener('close', () => {
+            this.dialog.classList.remove('is-searching');
+            this.dialog.querySelector('[data-predictive-results]')?.replaceChildren();
+          });
+          this.querySelectorAll('[data-close-details]').forEach((button) => {
+            button.addEventListener('click', () => button.closest('details')?.removeAttribute('open'));
+          });
+          this.closeDesktopMenus = (event) => {
+            if (event.target.closest('.header-menu__accordion')) return;
+            this.querySelectorAll('.header__desktop .header-menu__accordion[open]').forEach((item) => {
+              item.removeAttribute('open');
+            });
+          };
+          document.addEventListener('click', this.closeDesktopMenus);
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') this.closeDesktopMenus(event);
+          });
+          this.syncStickyOffset = this.syncStickyOffset.bind(this);
+          this.syncStickyOffset();
+          window.addEventListener('resize', this.syncStickyOffset, { passive: true });
+          window.addEventListener('scroll', this.syncStickyOffset, { passive: true });
+        }
+
+        disconnectedCallback() {
+          window.removeEventListener('resize', this.syncStickyOffset);
+          window.removeEventListener('scroll', this.syncStickyOffset);
+          document.removeEventListener('click', this.closeDesktopMenus);
+        }
+
+        syncStickyOffset() {
+          if (this.stickyFrame) return;
+          this.stickyFrame = requestAnimationFrame(() => {
+            this.stickyFrame = null;
+            const root = document.documentElement;
+            const ticker = document.querySelector('[data-ticker]');
+            const headerHeight = this.offsetHeight;
+            root.style.setProperty('--header-height', `${headerHeight}px`);
+
+            const headerBox = this.getBoundingClientRect();
+            let offset = 0;
+            if (headerBox.bottom > 0) {
+              offset = headerBox.bottom;
+            }
+
+            if (ticker) {
+              ticker.style.top = `${headerHeight}px`;
+              const tickerBox = ticker.getBoundingClientRect();
+              if (tickerBox.bottom > 0 && tickerBox.top <= offset + 1) {
+                offset = tickerBox.bottom;
+              }
+            }
+
+            root.style.setProperty('--sticky-offset', `${Math.max(0, Math.round(offset))}px`);
+          });
+        }
+      }
+    );
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "t:labels.enable_sticky",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "t:labels.show_search",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "customer_account_menu",
+      "label": "t:labels.customer_account_menu",
+      "info": "t:info.customer_account_menu",
+      "default": "customer-account-main-menu"
+    }
+  ]
+}
+{% endschema %}

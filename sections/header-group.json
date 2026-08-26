@@ -1,0 +1,68 @@
+{
+  "type": "header",
+  "name": "t:general.header",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Yıl boyu ücretsiz kargo",
+        "link": "/pages/kargo-ve-iade"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "enable_sticky": true,
+        "show_search": true
+      }
+    },
+    "ticker": {
+      "type": "ticker-bar",
+      "settings": {
+        "speed": 32
+      },
+      "blocks": {
+        "t1": {
+          "type": "message",
+          "settings": {
+            "text": "Yıl boyu ücretsiz kargo",
+            "link": "/pages/kargo-ve-iade"
+          }
+        },
+        "t2": {
+          "type": "message",
+          "settings": {
+            "text": "Teslimattan sonra 14 gün içinde iade"
+          }
+        },
+        "t3": {
+          "type": "message",
+          "settings": {
+            "text": "3D güvenli ödeme"
+          }
+        },
+        "t4": {
+          "type": "message",
+          "settings": {
+            "text": "Yeni sezon tesettür elbise ve takım",
+            "link": "/collections/yeni-sezon"
+          }
+        },
+        "t5": {
+          "type": "message",
+          "settings": {
+            "text": "Beğen, bedenini seç, sepete at",
+            "link": "/collections/tesettur-elbise"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5"]
+    },
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {}
+    }
+  },
+  "order": ["announcement", "header", "ticker", "cart-drawer"]
+}

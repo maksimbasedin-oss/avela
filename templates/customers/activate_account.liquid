@@ -1,0 +1,31 @@
+<div class="customers">
+  <h1>{{ 'customers.activate' | t }}</h1>
+
+  {% form 'activate_customer_password', class: 'customers__form' %}
+    {{ form.errors | default_errors }}
+    <div class="field">
+      <label class="field__label" for="ActivatePassword">{{ 'customers.login.password' | t }}</label>
+      <input
+        id="ActivatePassword"
+        class="field__input"
+        type="password"
+        name="customer[password]"
+        autocomplete="new-password"
+        required
+      >
+    </div>
+    <div class="field">
+      <label class="field__label" for="ActivatePasswordConfirm">{{ 'customers.password_confirm' | t }}</label>
+      <input
+        id="ActivatePasswordConfirm"
+        class="field__input"
+        type="password"
+        name="customer[password_confirmation]"
+        autocomplete="new-password"
+        required
+      >
+    </div>
+    <button class="button" type="submit">{{ 'customers.activate' | t }}</button>
+  {% endform %}
+</div>
+

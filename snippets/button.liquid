@@ -1,0 +1,43 @@
+{% doc %}
+  Renders a theme button.
+
+  @param {string} label - Button label
+  @param {string} [url] - Optional link. Renders an anchor when present
+  @param {string} [style] - primary, secondary, or text
+  @param {string} [type] - Native button type when not a link
+  @param {boolean} [full_width] - Stretch button to container width
+  @param {boolean} [disabled] - Disabled state
+  @example
+  {% render 'button', label: 'Yeni sezonu keşfet', url: '/collections/all', style: 'primary' %}
+{% enddoc %}
+
+{% liquid
+  assign button_style = style | default: 'primary'
+  assign button_class = 'button button--' | append: button_style
+  if full_width
+    assign button_class = button_class | append: ' button--full'
+  endif
+%}
+
+{% if url != blank %}
+  <a
+    class="{{ button_class }}"
+    href="{{ url }}"
+    {% if disabled %}
+      aria-disabled="true"
+      tabindex="-1"
+    {% endif %}
+  >
+    {% render 'turkish-upper', text: label %}
+  </a>
+{% else %}
+  <button
+    class="{{ button_class }}"
+    type="{{ type | default: 'button' }}"
+    {% if disabled %}
+      disabled
+    {% endif %}
+  >
+    {% render 'turkish-upper', text: label %}
+  </button>
+{% endif %}

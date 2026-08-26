@@ -1,0 +1,31 @@
+{% doc %}
+  Shopify sıralama değerini Türkçe etikete çevirir.
+
+  @param {string} value - sort_by değeri
+  @param {string} [fallback] - Eşleşme yoksa etiket
+{% enddoc %}
+{%- liquid
+  case value
+    when 'manual', 'featured'
+      assign label = 'collections.sort_featured' | t
+    when 'relevance', 'most-relevant'
+      assign label = 'collections.sort_relevance' | t
+    when 'best-selling'
+      assign label = 'collections.sort_best_selling' | t
+    when 'title-ascending'
+      assign label = 'collections.sort_az' | t
+    when 'title-descending'
+      assign label = 'collections.sort_za' | t
+    when 'price-ascending'
+      assign label = 'collections.sort_price_asc' | t
+    when 'price-descending'
+      assign label = 'collections.sort_price_desc' | t
+    when 'created-ascending'
+      assign label = 'collections.sort_date_asc' | t
+    when 'created-descending'
+      assign label = 'collections.sort_date_desc' | t
+    else
+      assign label = fallback | default: value
+  endcase
+-%}
+{{- label -}}

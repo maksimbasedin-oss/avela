@@ -1,0 +1,14 @@
+---
+description: Dış giyim kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Dış giyim ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/j9sb7rdF/image.png
+
+Dosya: `assets/icon-cat-dis-giyim.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `dis-giyim`), `snippets/blog-topic-icon.liquid` (tag `dis-giyim`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

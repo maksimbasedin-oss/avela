@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    {% render 'css-variables' %}
+
+    {% unless settings.type_heading_font.system? %}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      {{ settings.type_heading_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
+    {% endunless %}
+
+    {% unless settings.type_primary_font.system? %}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
+    {% endunless %}
+
+    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {% render 'meta-tags' %}
+    {% render 'structured-data' %}
+
+    {{ content_for_header }}
+    <link rel="icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" sizes="32x32">
+    <link rel="icon" href="{{ 'favicon-48.png' | asset_url }}" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}" sizes="180x180">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#MainContent">
+      {{ 'accessibility.skip_to_content' | t }}
+    </a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+    {% render 'cookie-banner' %}
+  </body>
+</html>

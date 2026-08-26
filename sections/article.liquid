@@ -1,0 +1,370 @@
+<article class="article-page">
+  {% capture blog_title %}
+    {% render 'storefront-title', text: blog.title, handle: blog.handle %}
+  {% endcapture %}
+  {% assign blog_title = blog_title | strip %}
+  {% render 'breadcrumbs',
+    current_title: article.title,
+    current_url: article.url,
+    parent_title: blog_title,
+    parent_url: blog.url,
+    parent_handle: blog.handle
+  %}
+
+  <header class="article-page__header">
+    <p class="eyebrow">{% render 'turkish-upper', text: blog_title, handle: blog.handle %}</p>
+    <h1>{{ article.title }}</h1>
+    {% assign date = article.published_at | time_tag: format: 'date' %}
+    <p class="text-caption">{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
+    {% if article.excerpt != blank %}
+      <p class="article-page__lede">{{ article.excerpt | strip_html }}</p>
+    {% endif %}
+    {% render 'article-toc', article: article %}
+  </header>
+
+  {% if article.image %}
+    <figure class="article-page__media">
+      {% assign hero_alt = article.image.alt | default: article.title %}
+      {{
+        article.image
+        | image_url: width: 1600
+        | image_tag:
+          widths: '800, 1200, 1600',
+          sizes: 'min(48rem, 100vw)',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: hero_alt
+      }}
+    </figure>
+  {% endif %}
+
+  <div class="rte article-page__content">
+    {{ article.content }}
+  </div>
+
+  {% render 'article-guide-close' %}
+
+  {% assign shop_links = 0 %}
+  {% for tag in article.tags %}
+    {% assign related_col = collections[tag] %}
+    {% if related_col != blank and related_col.products_count > 0 %}
+      {% assign shop_links = shop_links | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if shop_links > 0 %}
+    <nav class="article-page__shop" aria-label="{{ 'collections.related' | t }}">
+      <p class="eyebrow">{% assign shop_label = 'blog.shop' | t %}{% render 'turkish-upper', text: shop_label %}</p>
+      <ul class="article-page__tags" role="list">
+        {% for tag in article.tags %}
+          {% assign related_col = collections[tag] %}
+          {% if related_col != blank and related_col.products_count > 0 %}
+            <li>
+              <a href="{{ related_col.url }}">{{ related_col.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+
+  {% if article.tags.size > 0 %}
+    <ul class="article-page__tags" role="list">
+      {% for tag in article.tags %}
+        {% unless tag contains '-' %}
+          <li>
+            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}">
+              {% render 'blog-topic-icon', tag: tag %}
+              <span>{% render 'turkish-upper', text: tag %}</span>
+            </a>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% assign related_count = 0 %}
+  {% for related in blog.articles %}
+    {% unless related.id == article.id %}
+      {% assign related_count = related_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if related_count > 0 %}
+    <section class="article-page__related" aria-labelledby="RelatedArticles">
+      <h2 id="RelatedArticles">{{ 'blog.related' | t }}</h2>
+      <ul class="blog-page__grid" role="list">
+        {% assign shown = 0 %}
+        {% for related in blog.articles %}
+          {% if shown < 3 and related.id != article.id %}
+            <li>
+              {% render 'article-card', article: related %}
+            </li>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if blog.comments_enabled? %}
+    <section class="article-page__comments" id="comments" aria-labelledby="ArticleComments">
+      <h2 id="ArticleComments">{{ 'blog.article_comments' | t }}</h2>
+
+      {% paginate article.comments by 10 %}
+        {% if article.comments_count > 0 %}
+          <ol class="article-page__comment-list">
+            {% for comment in article.comments %}
+              <li>
+                <p>{{ comment.author }}</p>
+                <p class="text-caption">{{ comment.created_at | time_tag: format: 'date' }}</p>
+                <div class="rte">{{ comment.content }}</div>
+              </li>
+            {% endfor %}
+          </ol>
+          {% if paginate.pages > 1 %}
+            {{ paginate | default_pagination: anchor: 'comments' }}
+          {% endif %}
+        {% endif %}
+      {% endpaginate %}
+
+      {% form 'new_comment', article %}
+        <h3>{{ 'blog.comment_form_title' | t }}</h3>
+        {% if form.posted_successfully? %}
+          <p>{{ 'blog.comment_success' | t }}</p>
+        {% endif %}
+        {{ form.errors | default_errors }}
+        <div class="field">
+          <label class="field__label" for="CommentAuthor">{{ 'blog.comment_form_name' | t }}</label>
+          <input id="CommentAuthor" class="field__input" type="text" name="comment[author]" value="{{ form.author }}" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="CommentEmail">{{ 'blog.comment_form_email' | t }}</label>
+          <input id="CommentEmail" class="field__input" type="email" name="comment[email]" value="{{ form.email }}" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="CommentBody">{{ 'blog.comment_form_body' | t }}</label>
+          <textarea id="CommentBody" class="field__input" name="comment[body]" rows="5" required>{{ form.body }}</textarea>
+        </div>
+        <button class="button" type="submit">{{ 'blog.comment_form_submit' | t }}</button>
+      {% endform %}
+    </section>
+  {% endif %}
+</article>
+
+{% stylesheet %}
+  .article-page {
+    padding-block: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 48rem;
+  }
+
+  .article-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .article-page__lede {
+    max-width: 42rem;
+    margin: var(--space-xs) 0 0;
+    color: var(--color-secondary);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .article-page__toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .article-page__toc ol {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  .article-page__toc a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .article-page__close {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .article-page__close p {
+    margin: 0;
+    color: var(--color-secondary);
+    line-height: 1.65;
+  }
+
+  .article-page__close-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .article-page__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .article-page__content p,
+  .article-page__content ul,
+  .article-page__content ol {
+    line-height: 1.7;
+  }
+
+  .article-page__content p + p {
+    margin-top: 0.85em;
+  }
+
+  .article-page__content h2 {
+    margin-top: 1.75em;
+    font-size: 1.35rem;
+    scroll-margin-top: 5.5rem;
+  }
+
+  .article-page__content h3 {
+    margin-top: 1.25em;
+    font-size: 1.02rem;
+    letter-spacing: 0.04em;
+  }
+
+  .article-page__content ul,
+  .article-page__content ol {
+    padding-left: 1.2rem;
+    margin: 0.6em 0 0;
+  }
+
+  .article-page__content li + li {
+    margin-top: 0.4em;
+  }
+
+  .article-page__content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0 0;
+    font-size: 0.95rem;
+  }
+
+  .article-page__content th,
+  .article-page__content td {
+    border: 1px solid var(--color-border);
+    padding: 0.55rem 0.7rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .article-page__content th {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    background: var(--color-surface);
+  }
+
+  .article-page__media img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-page__tags,
+  .article-page__comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .article-page__tags a {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0 var(--space-sm) 0 0.45rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .article-page__tags .blog-topic-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .article-page__tags .blog-topic-icon svg,
+  .article-page__tags .blog-topic-icon img {
+    display: block;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .article-page__related,
+  .article-page__comments,
+  .article-page__comments form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .article-page__related {
+    max-width: none;
+  }
+
+  .article-page .blog-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .article-page .blog-page__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .article-page__comment-list {
+    flex-direction: column;
+  }
+
+  .article-page__comment-list li {
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.article",
+  "settings": []
+}
+{% endschema %}

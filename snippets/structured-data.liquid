@@ -1,0 +1,59 @@
+{% doc %}
+  Emits Organization and WebSite JSON-LD from live shop data.
+{% enddoc %}
+
+{% liquid
+  assign brand_name = shop.name
+  if shop.name == 'My Store' or shop.name == 'Mağazam' or shop.name == blank
+    assign brand_name = 'general.brand' | t
+  endif
+  assign organization = brand_name | json
+  assign site_url = shop.url
+  if shop.domain contains 'myshopify.com'
+    assign site_url = 'https://www.avelatr.com'
+  endif
+  assign contact_email = settings.contact_email | default: 'info@avelatr.com'
+  assign contact_phone = ''
+  if settings.whatsapp_url contains 'wa.me/'
+    assign contact_phone = settings.whatsapp_url | split: 'wa.me/' | last | remove: '+' | prepend: '+'
+  endif
+  assign social_instagram = settings.social_instagram | default: 'https://www.instagram.com/avelatr'
+  assign social_tiktok = settings.social_tiktok | default: 'https://www.tiktok.com/@avelatr'
+  assign social_facebook = settings.social_facebook | default: 'https://www.facebook.com/avelatr'
+  assign search_url = request.origin | append: routes.search_url | append: '?q={search_term_string}'
+%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": {{ organization }},
+        "url": {{ site_url | json }},
+        "email": {{ contact_email | json }}
+        {%- if contact_phone != blank -%}
+          ,"telephone": {{ contact_phone | json }}
+        {%- endif -%}
+        ,"sameAs": [
+          {{ social_instagram | json }},
+          {{ social_facebook | json }},
+          {{ social_tiktok | json }}
+        ]
+        {%- if settings.logo -%}
+          ,"logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
+        {%- endif -%}
+      },
+      {
+        "@type": "WebSite",
+        "name": {{ organization }},
+        "url": {{ site_url | json }},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {{ search_url | json }},
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+</script>

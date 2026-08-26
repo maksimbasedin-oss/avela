@@ -1,0 +1,52 @@
+{% doc %}
+  Theme Editor button block.
+  @example
+  {% content_for 'block', type: 'button', id: 'cta' %}
+{% enddoc %}
+
+<div class="button-block" {{ block.shopify_attributes }}>
+  {% if block.settings.label != blank %}
+    {% render 'button',
+      label: block.settings.label,
+      url: block.settings.url,
+      style: block.settings.style
+    %}
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .button-block {
+    display: flex;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.button_label",
+      "default": "Koleksiyonu incele"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.button_style",
+      "options": [
+        { "value": "primary", "label": "t:options.button_style.primary" },
+        { "value": "secondary", "label": "t:options.button_style.secondary" },
+        { "value": "text", "label": "t:options.button_style.text" }
+      ],
+      "default": "primary"
+    }
+  ],
+  "presets": [{ "name": "t:general.button" }]
+}
+{% endschema %}

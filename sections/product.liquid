@@ -1,0 +1,728 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'ProductForm-' | append: section.id
+  assign parent_collection = product.collections.first
+%}
+
+<product-info class="product" data-section="{{ section.id }}">
+  {% render 'breadcrumbs',
+    current_title: product.title,
+    current_url: product.url,
+    parent_title: parent_collection.title,
+    parent_url: parent_collection.url,
+    parent_handle: parent_collection.handle
+  %}
+
+  <div class="product__grid">
+    {% render 'product-media', product: product %}
+
+    <div class="product__info">
+      <h1>{% render 'turkish-upper', text: product.title %}</h1>
+      <div class="product__price" data-price>
+        {% render 'price', price: current_variant.price, compare_at_price: current_variant.compare_at_price %}
+      </div>
+
+      {% if current_variant.inventory_management and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= 5 %}
+        <p class="text-caption" data-stock>{{ 'products.low_stock' | t: count: current_variant.inventory_quantity }}</p>
+      {% endif %}
+
+      {% form 'product', product, id: product_form_id, class: 'product__form' %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            {% assign option_index = option.position | minus: 1 %}
+            {% assign selected_option = current_variant.options[option_index] %}
+            <fieldset class="product__option">
+              <legend>{{ option.name }}</legend>
+              <div class="product__option-values">
+                {% liquid
+                  assign is_color = false
+                  if option.name == 'Renk' or option.name == 'Color' or option.name == 'Colour'
+                    assign is_color = true
+                  endif
+                %}
+                {% for value in option.values %}
+                  {% liquid
+                    assign option_id = 'option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index
+                    assign value_label = value
+                    if value.name != blank
+                      assign value_label = value.name
+                    endif
+                  %}
+                  <input
+                    id="{{ option_id }}"
+                    type="radio"
+                    name="options[{{ option.name }}]"
+                    value="{{ value_label }}"
+                    data-option-position="{{ option.position }}"
+                    {% if value_label == selected_option %}
+                      checked
+                    {% endif %}
+                  >
+                  <label
+                    for="{{ option_id }}"
+                    class="{% if is_color %}product__swatch-label{% endif %}{% if value.available == false %} product__option-unavailable{% endif %}"
+                  >
+                    {% if is_color %}
+                      {% render 'color-swatch', value: value_label, class: 'product__swatch' %}
+                      <span class="visually-hidden">{{ value_label }}</span>
+                    {% else %}
+                      {{ value_label }}
+                    {% endif %}
+                  </label>
+                {% endfor %}
+              </div>
+            </fieldset>
+          {% endfor %}
+        {% endunless %}
+
+        <select name="id" class="visually-hidden" data-variant-select>
+          {% for variant in product.variants %}
+            <option
+              value="{{ variant.id }}"
+              {% if variant == current_variant %}
+                selected
+              {% endif %}
+              data-available="{{ variant.available }}"
+              data-price="{% render 'money', amount: variant.price %}"
+              data-compare="{% if variant.compare_at_price > variant.price %}{% render 'money', amount: variant.compare_at_price %}{% endif %}"
+            >
+              {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <div class="product__quantity" data-quantity-wrap{% unless current_variant.available %} hidden{% endunless %}>
+          <label class="field__label" for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+          <div class="product__qty-box">
+            <input
+              id="Quantity-{{ section.id }}"
+              class="product__qty-input"
+              type="number"
+              name="quantity"
+              min="1"
+              value="1"
+              inputmode="numeric"
+            >
+          </div>
+        </div>
+
+        <button
+          class="button button--full"
+          type="submit"
+          name="add"
+          data-add
+          data-add-label="{{ 'products.add_to_cart' | t }}"
+          data-sold-label="{{ 'products.sold_out' | t }}"
+          {% unless current_variant.available %}
+            hidden
+            disabled
+          {% endunless %}
+        >
+          {{ 'products.add_to_cart' | t }}
+        </button>
+
+        <div data-dynamic-checkout{% unless current_variant.available %} hidden{% endunless %}>
+          {{ form | payment_button }}
+        </div>
+      {% endform %}
+
+      {% render 'stock-request', product: product, variant: current_variant %}
+
+      {% liquid
+        assign attr_keys = 'fit,length,fabric,stretch,model_size,model_height,material,season,style,occasion' | split: ','
+        assign attr_count = 0
+        for key in attr_keys
+          if product.metafields.custom[key] != blank
+            assign attr_count = attr_count | plus: 1
+          endif
+        endfor
+      %}
+      {% if attr_count > 0 %}
+        <div class="product__specs">
+          <p class="eyebrow">{% assign specs_label = 'products.specs' | t %}{% render 'turkish-upper', text: specs_label %}</p>
+          <dl class="product__attrs">
+            {% for key in attr_keys %}
+              {% if product.metafields.custom[key] != blank %}
+                {% assign attr_label = 'products.' | append: key %}
+                <div class="product__attr">
+                  <dt>{% assign attr_label_text = attr_label | t %}{% render 'turkish-upper', text: attr_label_text %}</dt>
+                  <dd>{{ product.metafields.custom[key].value | escape }}</dd>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </dl>
+        </div>
+      {% endif %}
+
+      <div class="product__accordions">
+        {% if product.metafields.custom.size_chart != blank %}
+          <details class="product__panel">
+            <summary>
+              <span class="eyebrow">{% assign size_chart_label = 'products.size_chart' | t %}{% render 'turkish-upper', text: size_chart_label %}</span>
+              <span class="product__panel-mark" aria-hidden="true"></span>
+            </summary>
+            <div class="product__panel-body rte">{{ product.metafields.custom.size_chart | metafield_tag }}</div>
+          </details>
+        {% endif %}
+
+        {% if product.description != blank %}
+          <details class="product__panel" open>
+            <summary>
+              <span class="eyebrow">{% assign desc_label = 'products.description' | t %}{% render 'turkish-upper', text: desc_label %}</span>
+              <span class="product__panel-mark" aria-hidden="true"></span>
+            </summary>
+            <div class="product__panel-body rte">{{ product.description }}</div>
+          </details>
+        {% endif %}
+
+        {% if product.metafields.custom.care != blank %}
+          <details class="product__panel">
+            <summary>
+              <span class="eyebrow">{% assign care_label = 'products.care' | t %}{% render 'turkish-upper', text: care_label %}</span>
+              <span class="product__panel-mark" aria-hidden="true"></span>
+            </summary>
+            <div class="product__panel-body rte">{{ product.metafields.custom.care | metafield_tag }}</div>
+          </details>
+        {% endif %}
+
+        {% if settings.trust_shipping != blank or settings.trust_returns != blank or settings.trust_payment != blank %}
+          <details class="product__panel">
+            <summary>
+              <span class="eyebrow">{% assign ship_label = 'products.shipping_returns' | t %}{% render 'turkish-upper', text: ship_label %}</span>
+              <span class="product__panel-mark" aria-hidden="true"></span>
+            </summary>
+            <div class="product__panel-body">
+              {% if settings.trust_shipping != blank %}
+                <p>{{ settings.trust_shipping | escape }}</p>
+              {% endif %}
+              {% if settings.trust_returns != blank %}
+                <p>{{ settings.trust_returns | escape }}</p>
+              {% endif %}
+              {% if settings.trust_payment != blank %}
+                <p>{{ settings.trust_payment | escape }}</p>
+              {% endif %}
+            </div>
+          </details>
+        {% endif %}
+      </div>
+
+      {% if settings.whatsapp_url != blank %}
+        <a class="product__whatsapp" href="{{ settings.whatsapp_url }}">{{ 'accessibility.whatsapp' | t }}</a>
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% if block.type == '@app' %}
+          <div {{ block.shopify_attributes }}>{% render block %}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% liquid
+    assign faq_total = 0
+    for block in section.blocks
+      if block.type == 'faq' and block.settings.question != blank
+        assign faq_total = faq_total | plus: 1
+      endif
+    endfor
+  %}
+
+  {% if faq_total > 0 %}
+    <section class="product__faq">
+      <p class="eyebrow">{% assign faq_label = 'products.faq' | t %}{% render 'turkish-upper', text: faq_label %}</p>
+      <div class="product__accordions">
+        {% for block in section.blocks %}
+          {% if block.type == 'faq' and block.settings.question != blank %}
+            <details class="product__panel" {{ block.shopify_attributes }}>
+              <summary>
+                <span class="eyebrow">{% render 'turkish-upper', text: block.settings.question %}</span>
+                <span class="product__panel-mark" aria-hidden="true"></span>
+              </summary>
+              <div class="product__panel-body rte">{{ block.settings.answer }}</div>
+            </details>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- assign faq_count = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' and block.settings.question != blank -%}
+              {%- if faq_count > 0 -%},{%- endif -%}
+              {
+                "@type": "Question",
+                "name": {{ block.settings.question | json }},
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": {{ block.settings.answer | strip_html | json }}
+                }
+              }
+              {%- assign faq_count = faq_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {% endif %}
+
+  {% if parent_collection and parent_collection.products_count > 1 %}
+    <section class="product__related">
+      <h2>{{ 'products.related' | t }}</h2>
+      <ul class="product__related-grid" role="list">
+        {% assign related_count = 0 %}
+        {% for related in parent_collection.products %}
+          {% if related.id != product.id and related_count < 4 %}
+            <li>
+              {% render 'product-card', product: related, loading: 'lazy' %}
+            </li>
+            {% assign related_count = related_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% render 'recently-viewed', product: product %}
+
+  <script type="application/json" data-variants>
+    {{ product.variants | json }}
+  </script>
+</product-info>
+
+{% stylesheet %}
+  .product__grid {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .product__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .product__info h1 {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    max-width: 16ch;
+  }
+
+  .product__price {
+    font-size: 1.15rem;
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .product__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .product__option {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product__option-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+  }
+
+  .product__option-values input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .product__option-values label {
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .product__option-values input:checked + label {
+    border-color: var(--color-foreground);
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .product__swatch-label {
+    padding: 0.35rem;
+    min-width: var(--touch-min);
+  }
+
+  .product__option-values input:checked + .product__swatch-label {
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .product__swatch {
+    width: 1.15rem;
+    height: 1.15rem;
+    border: 1px solid var(--color-foreground);
+    background: var(--swatch);
+    display: block;
+  }
+
+  .product__option-unavailable {
+    opacity: 0.45;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+
+  .product__quantity {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    width: max-content;
+  }
+
+  .product__qty-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 6.5rem;
+    height: var(--touch-min);
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .product__qty-input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    appearance: textfield;
+  }
+
+  .product__qty-input::-webkit-outer-spin-button,
+  .product__qty-input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .product__qty-input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .stock-request {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: 1px solid var(--color-foreground);
+  }
+
+  .stock-request[hidden] {
+    display: none;
+  }
+
+  .stock-request__status {
+    margin: 0;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+  }
+
+  .stock-request__lede,
+  .stock-request__success {
+    margin: 0;
+    color: var(--color-secondary);
+  }
+
+  .stock-request__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .product__specs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .product__attrs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 0;
+    background: var(--color-foreground);
+    border: 1px solid var(--color-foreground);
+  }
+
+  .product__attr {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+    padding: 0.8rem 0.85rem;
+    background: var(--color-background);
+  }
+
+  .product__attr:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .product__attr dt {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-secondary);
+    line-height: 1.3;
+  }
+
+  .product__attr dd {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+  }
+
+  .product__accordions {
+    border: 1px solid var(--color-foreground);
+  }
+
+  .product__accordions > .product__panel + .product__panel,
+  .product__faq > .product__panel + .product__panel {
+    border-top: 1px solid var(--color-foreground);
+  }
+
+  .product__panel summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    min-height: var(--touch-min);
+    padding: 0.75rem 0.85rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .product__panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .product__panel-mark {
+    flex: 0 0 auto;
+    width: 0.85rem;
+    height: 0.85rem;
+    position: relative;
+  }
+
+  .product__panel-mark::before,
+  .product__panel-mark::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+  }
+
+  .product__panel-mark::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .product__panel-mark::after {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+
+  .product__panel[open] .product__panel-mark::after {
+    display: none;
+  }
+
+  .product__panel-body {
+    padding: 0 0.85rem 1rem;
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .product__panel-body p,
+  .product__panel-body li {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .product__panel-body p + p,
+  .product__panel-body ul,
+  .product__panel-body ol {
+    margin-top: 0.7rem;
+  }
+
+  .product__whatsapp {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .product__faq {
+    margin-top: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .product__related {
+    margin-top: var(--space-2xl);
+  }
+
+  .product__related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-lg) 0 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+
+    .product-gallery__thumbs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product__info {
+      position: sticky;
+      top: var(--sticky-offset);
+    }
+
+    .product__related-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('product-info')) {
+    customElements.define(
+      'product-info',
+      class ProductInfo extends HTMLElement {
+        connectedCallback() {
+          this.variants = JSON.parse(this.querySelector('[data-variants]')?.textContent || '[]');
+          this.select = this.querySelector('[data-variant-select]');
+          this.addButton = this.querySelector('[data-add]');
+          this.price = this.querySelector('[data-price]');
+          this.quantityWrap = this.querySelector('[data-quantity-wrap]');
+          this.checkoutWrap = this.querySelector('[data-dynamic-checkout]');
+          this.stockRequest = this.querySelector('[data-stock-request]');
+          this.stockVariant = this.querySelector('[data-stock-variant]');
+          this.stockBody = this.querySelector('[data-stock-body]');
+          this.bodyTemplate = this.stockRequest?.dataset.bodyTemplate || '';
+          this.querySelectorAll('[data-option-position]').forEach((input) => {
+            input.addEventListener('change', () => this.updateVariant());
+          });
+          if (new URLSearchParams(window.location.search).has('contact_posted') && this.stockRequest) {
+            this.stockRequest.hidden = false;
+          }
+        }
+
+        selectedOptions() {
+          return Array.from(this.querySelectorAll('[data-option-position]:checked')).map((input) => input.value);
+        }
+
+        updateVariant() {
+          const options = this.selectedOptions();
+          const variant = this.variants.find((item) =>
+            options.every((value, index) => item.options[index] === value)
+          );
+          if (!variant || !this.select) return;
+          this.select.value = String(variant.id);
+          const option = this.select.selectedOptions[0];
+          if (this.addButton) {
+            this.addButton.disabled = !variant.available;
+            this.addButton.hidden = !variant.available;
+          }
+          if (this.quantityWrap) this.quantityWrap.hidden = !variant.available;
+          if (this.checkoutWrap) this.checkoutWrap.hidden = !variant.available;
+          if (this.stockRequest) this.stockRequest.hidden = variant.available;
+          if (this.stockVariant) this.stockVariant.value = variant.title || '';
+          if (this.stockBody && this.bodyTemplate) {
+            this.stockBody.value = this.bodyTemplate.replaceAll('__VARIANT__', variant.title || '');
+          }
+          const formatted = option?.dataset.price;
+          const compare = option?.dataset.compare;
+          if (this.price && formatted) {
+            const current = this.price.querySelector('.price__current');
+            const compareEl = this.price.querySelector('.price__compare');
+            if (current) current.textContent = formatted;
+            if (compareEl) {
+              compareEl.textContent = compare || '';
+              compareEl.hidden = !compare;
+            }
+            this.price.classList.toggle('price--sale', Boolean(compare));
+          }
+          const stock = this.querySelector('[data-stock]');
+          if (stock) {
+            const qty = Number(variant.inventory_quantity || 0);
+            stock.hidden = !(variant.available && qty > 0 && qty <= 5);
+          }
+        }
+      }
+    );
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.product",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "faq",
+      "name": "t:general.faq_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "t:labels.question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "t:labels.answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

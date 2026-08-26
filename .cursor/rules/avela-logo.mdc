@@ -1,0 +1,14 @@
+---
+description: Avela site logosunu değiştirme
+alwaysApply: true
+---
+
+# Avela site logosu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/N6VDrmDV/image.png
+
+Dosya: `assets/logo-avela.png`
+
+Kullanıldığı yerler: `snippets/brand-logo.liquid` (header, drawer, footer, şifre sayfası, trust bar, koleksiyon vitrini, ürün kartı placeholder).
+
+Kullanıcı açıkça başka bir görsel vermeden bu logoyu başka kaynakla, eski SVG drape işaretiyle veya düz "AVELA" yazısıyla değiştirme.

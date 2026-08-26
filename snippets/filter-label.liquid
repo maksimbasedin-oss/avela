@@ -1,0 +1,38 @@
+{% doc %}
+  Filtre başlığı veya değerini Türkçe döndürür.
+
+  @param {string} text - Shopify etiket
+  @param {string} [param] - filter.param_name
+{% enddoc %}
+{%- liquid
+  assign raw = text | default: '' | strip | downcase
+  assign pname = param | default: '' | downcase
+  assign label = text
+
+  if raw == 'in stock' or raw == 'available'
+    assign label = 'collections.filter_in_stock' | t
+  elsif raw == 'out of stock' or raw == 'unavailable'
+    assign label = 'collections.filter_out_of_stock' | t
+  elsif pname == 'filter.v.availability'
+    if raw == '1'
+      assign label = 'collections.filter_in_stock' | t
+    elsif raw == '0'
+      assign label = 'collections.filter_out_of_stock' | t
+    else
+      assign label = 'collections.filter_availability' | t
+    endif
+  elsif raw == 'availability'
+    assign label = 'collections.filter_availability' | t
+  elsif raw == 'price' or pname contains 'filter.v.price'
+    assign label = 'collections.filter_price' | t
+  elsif raw == 'color' or raw == 'colour' or raw == 'renk' or pname contains 'option.color' or pname contains 'option.renk'
+    assign label = 'collections.filter_color' | t
+  elsif raw == 'size' or raw == 'beden' or pname contains 'option.size' or pname contains 'option.beden'
+    assign label = 'collections.filter_size' | t
+  elsif raw == 'product type' or raw == 'type' or pname contains 'product_type'
+    assign label = 'collections.filter_type' | t
+  elsif raw == 'brand' or raw == 'vendor' or pname contains 'vendor'
+    assign label = 'collections.filter_vendor' | t
+  endif
+-%}
+{{- label -}}

@@ -1,0 +1,14 @@
+{% doc %}
+  Renders a product badge.
+
+  @param {string} label - Badge text
+  @param {string} [tone] - sale, new, or soldout
+  @example
+  {% render 'badge', label: 'Yeni', tone: 'new' %}
+{% enddoc %}
+
+{% if label != blank %}
+  <span class="badge{% if tone != blank %} badge--{{ tone }}{% endif %}">
+    {% render 'turkish-upper', text: label %}
+  </span>
+{% endif %}

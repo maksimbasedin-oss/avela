@@ -1,0 +1,206 @@
+{% liquid
+  assign messages = 0
+  for block in section.blocks
+    if block.settings.text != blank
+      assign messages = messages | plus: 1
+    endif
+  endfor
+
+  assign fallback = section.settings.text
+  if fallback == blank and settings.free_shipping_threshold != blank
+    assign fallback = 'trust.free_shipping_html' | t: amount: settings.free_shipping_threshold
+  endif
+  if fallback == blank and settings.trust_shipping != blank
+    assign fallback = settings.trust_shipping
+  endif
+%}
+
+{% if messages > 0 or fallback != blank %}
+  <div
+    class="ticker-bar full-width"
+    style="--ticker-duration: {{ section.settings.speed }}s"
+    data-ticker
+  >
+    <div class="ticker-bar__viewport">
+      <div class="ticker-bar__track">
+        {% for copy in (1..2) %}
+          <div class="ticker-bar__group"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+            {% if messages > 0 %}
+              {% for block in section.blocks %}
+                {% if block.settings.text != blank %}
+                  <span class="ticker-bar__item" {{ block.shopify_attributes }}>
+                    {% if block.settings.link != blank and copy == 1 %}
+                      <a href="{{ block.settings.link }}">{% render 'turkish-upper', text: block.settings.text %}</a>
+                    {% else %}
+                      <span>{% render 'turkish-upper', text: block.settings.text %}</span>
+                    {% endif %}
+                  </span>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <span class="ticker-bar__item">
+                {% if section.settings.link != blank and copy == 1 %}
+                  <a href="{{ section.settings.link }}">{% render 'turkish-upper', text: fallback %}</a>
+                {% else %}
+                  <span>{% render 'turkish-upper', text: fallback %}</span>
+                {% endif %}
+              </span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .ticker-bar {
+    --ticker-duration: 32s;
+    background: var(--color-foreground);
+    color: var(--color-background);
+    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  .ticker-bar {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 39;
+  }
+
+  .ticker-bar__viewport {
+    overflow: hidden;
+    min-height: 2.5rem;
+  }
+
+  .ticker-bar__track {
+    display: flex;
+    width: max-content;
+    animation: ticker-slide var(--ticker-duration) linear infinite;
+  }
+
+  .ticker-bar__group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .ticker-bar__item {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0 1.25rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  .ticker-bar__item + .ticker-bar__item::before {
+    content: '';
+    width: 0.25rem;
+    height: 0.25rem;
+    margin-right: 1.25rem;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.45;
+  }
+
+  .ticker-bar a,
+  .ticker-bar span {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ticker-bar a:hover {
+    text-decoration: underline;
+  }
+
+  .ticker-bar:hover .ticker-bar__track,
+  .ticker-bar:focus-within .ticker-bar__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-bar__viewport {
+      overflow: auto;
+    }
+
+    .ticker-bar__track {
+      animation: none;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .ticker-bar__group:last-child {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  const ticker = document.querySelector('[data-ticker]');
+  const header = document.querySelector('header-bar.header-bar--sticky');
+  if (ticker && header) {
+    const sync = () => {
+      ticker.style.top = `${header.offsetHeight}px`;
+    };
+    sync();
+    window.addEventListener('resize', sync);
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "info": "t:info.ticker_fallback"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "s",
+      "label": "t:labels.ticker_speed",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "t:general.announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:labels.text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.ticker"
+    }
+  ]
+}
+{% endschema %}

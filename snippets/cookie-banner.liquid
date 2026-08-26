@@ -1,0 +1,247 @@
+{% doc %}
+  Shopify çerez onayını Türkçe Avela penceresiyle değiştirir.
+  Resmi Shopify Customer Privacy API ile rızayı kaydeder.
+
+  @example
+  {% render 'cookie-banner' %}
+{% enddoc %}
+
+{% liquid
+  assign policy_url = ''
+  if shop.privacy_policy != blank
+    assign policy_url = shop.privacy_policy.url
+  elsif pages['gizlilik-politikasi'] != blank
+    assign policy_url = pages['gizlilik-politikasi'].url
+  endif
+  assign accept_label = 'privacy.banner.accept' | t
+  assign decline_label = 'privacy.banner.decline' | t
+  assign save_label = 'privacy.banner.save' | t
+%}
+
+<cookie-consent class="cookie-consent" hidden>
+  <div
+    class="cookie-consent__panel"
+    role="alertdialog"
+    aria-modal="false"
+    aria-labelledby="AvelaCookieTitle"
+    aria-describedby="AvelaCookieBody"
+  >
+    <div class="cookie-consent__view" data-view="intro">
+      <h2 id="AvelaCookieTitle">{{ 'privacy.banner.title' | t }}</h2>
+      <div id="AvelaCookieBody" class="cookie-consent__body">
+        {% if policy_url != blank %}
+          {{ 'privacy.banner.body_html' | t: url: policy_url }}
+        {% else %}
+          <p>{{ 'privacy.banner.body' | t }}</p>
+        {% endif %}
+      </div>
+      <div class="cookie-consent__actions">
+        <button type="button" class="button" data-accept-all>
+          {% render 'turkish-upper', text: accept_label %}
+        </button>
+        <button type="button" class="button button--secondary" data-decline>
+          {% render 'turkish-upper', text: decline_label %}
+        </button>
+        <button type="button" class="button button--text" data-manage>
+          {{ 'privacy.banner.manage' | t }}
+        </button>
+      </div>
+    </div>
+
+    <form class="cookie-consent__view" data-view="prefs" hidden>
+      <p class="eyebrow">{{ 'privacy.banner.preferences_title' | t }}</p>
+      <h2>{{ 'privacy.banner.preferences_title' | t }}</h2>
+      <label class="cookie-consent__option">
+        <input type="checkbox" name="analytics" checked>
+        <span>
+          <strong>{{ 'privacy.banner.analytics' | t }}</strong>
+          {{ 'privacy.banner.analytics_help' | t }}
+        </span>
+      </label>
+      <label class="cookie-consent__option">
+        <input type="checkbox" name="marketing" checked>
+        <span>
+          <strong>{{ 'privacy.banner.marketing' | t }}</strong>
+          {{ 'privacy.banner.marketing_help' | t }}
+        </span>
+      </label>
+      <label class="cookie-consent__option">
+        <input type="checkbox" name="preferences" checked>
+        <span>
+          <strong>{{ 'privacy.banner.preferences' | t }}</strong>
+          {{ 'privacy.banner.preferences_help' | t }}
+        </span>
+      </label>
+      <div class="cookie-consent__actions">
+        <button type="submit" class="button">
+          {% render 'turkish-upper', text: save_label %}
+        </button>
+        <button type="button" class="button button--text" data-back>
+          {{ 'privacy.banner.back' | t }}
+        </button>
+      </div>
+    </form>
+  </div>
+</cookie-consent>
+
+{% stylesheet %}
+  .cookie-consent {
+    display: block;
+    position: fixed;
+    z-index: 80;
+    left: auto;
+    right: max(var(--page-margin), env(safe-area-inset-right, 0px));
+    bottom: max(var(--page-margin), env(safe-area-inset-bottom, 0px));
+    width: min(28rem, calc(100vw - (var(--page-margin) * 2)));
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .cookie-consent[hidden] {
+    display: none !important;
+  }
+
+  .cookie-consent__panel {
+    width: 100%;
+    max-height: min(34rem, calc(100svh - 3rem));
+    overflow: auto;
+    overflow-wrap: break-word;
+    padding: var(--space-lg);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    border: 1px solid var(--color-foreground);
+    box-shadow: 0 18px 48px rgb(0 0 0 / 0.12);
+  }
+
+  .cookie-consent__panel h2 {
+    margin: 0 0 var(--space-sm);
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  .cookie-consent__body,
+  .cookie-consent__option {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-secondary);
+  }
+
+  .cookie-consent__body a {
+    color: var(--color-foreground);
+  }
+
+  .cookie-consent__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .cookie-consent__actions .button {
+    width: 100%;
+  }
+
+  .cookie-consent__actions .button--text {
+    width: auto;
+    align-self: flex-start;
+  }
+
+  .cookie-consent__option {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    margin-top: var(--space-sm);
+  }
+
+  .cookie-consent__option strong {
+    display: block;
+    color: var(--color-foreground);
+    font-weight: 400;
+  }
+
+  .cookie-consent__option input {
+    margin-top: 0.3rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-foreground);
+  }
+
+  @media (max-width: 699px) {
+    .cookie-consent {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .cookie-consent__panel {
+      max-height: min(42rem, 86svh);
+      border-inline: 0;
+      border-bottom: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('cookie-consent')) {
+    customElements.define(
+      'cookie-consent',
+      class CookieConsent extends HTMLElement {
+        connectedCallback() {
+          this.intro = this.querySelector('[data-view="intro"]');
+          this.prefs = this.querySelector('[data-view="prefs"]');
+          this.querySelector('[data-accept-all]')?.addEventListener('click', () =>
+            this.save({ analytics: true, marketing: true, preferences: true })
+          );
+          this.querySelector('[data-decline]')?.addEventListener('click', () =>
+            this.save({ analytics: false, marketing: false, preferences: false })
+          );
+          this.querySelector('[data-manage]')?.addEventListener('click', () => this.toggle(true));
+          this.querySelector('[data-back]')?.addEventListener('click', () => this.toggle(false));
+          this.prefs?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const data = new FormData(this.prefs);
+            this.save({
+              analytics: data.has('analytics'),
+              marketing: data.has('marketing'),
+              preferences: data.has('preferences'),
+            });
+          });
+
+          if (!window.Shopify?.loadFeatures) return;
+          window.Shopify.loadFeatures(
+            [{ name: 'consent-tracking-api', version: '0.1' }],
+            (error) => {
+              if (error || !window.Shopify.customerPrivacy) return;
+              if (this.shouldDisplay()) this.hidden = false;
+            }
+          );
+        }
+
+        shouldDisplay() {
+          const api = window.Shopify.customerPrivacy;
+          const consent = api.currentVisitorConsent?.() || {};
+          const undecided = !consent.analytics && !consent.marketing && !consent.preferences;
+          if (typeof api.shouldShowBanner === 'function') {
+            return api.shouldShowBanner() && undecided;
+          }
+          return undecided;
+        }
+
+        toggle(manage) {
+          this.intro.hidden = manage;
+          this.prefs.hidden = !manage;
+        }
+
+        save(consent) {
+          window.Shopify.customerPrivacy.setTrackingConsent(consent, () => {
+            this.hidden = true;
+          });
+        }
+      }
+    );
+  }
+{% endjavascript %}

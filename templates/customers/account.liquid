@@ -1,0 +1,34 @@
+<div class="customers customers--wide">
+  <header class="customers__head">
+    <h1>{{ 'customers.account' | t }}</h1>
+    {% if customer.first_name != blank %}
+      <p>{{ 'customers.welcome' | t: name: customer.first_name }}</p>
+    {% endif %}
+    <p>
+      <a href="{{ routes.account_addresses_url }}">{{ 'customers.addresses' | t }}</a>
+      ·
+      <a href="{{ routes.account_logout_url }}">{{ 'customers.logout' | t }}</a>
+    </p>
+  </header>
+
+  <h2>{{ 'customers.orders' | t }}</h2>
+  {% if customer.orders.size > 0 %}
+    <ul class="customers__orders" role="list">
+      {% for order in customer.orders %}
+        <li>
+          <a href="{{ order.customer_url }}">{{ order.name }}</a>
+          <span>{{ order.created_at | date: '%d.%m.%Y' }}</span>
+          <span>{{ order.financial_status_label }}</span>
+          <span>{{ order.fulfillment_status_label }}</span>
+          <span>{% render 'money', amount: order.total_price %}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>{{ 'customers.empty_orders' | t }}</p>
+    <p>
+      <a class="button" href="{{ routes.all_products_collection_url }}">{{ '404.back_to_shopping' | t }}</a>
+    </p>
+  {% endif %}
+</div>
+

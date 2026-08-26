@@ -1,0 +1,217 @@
+<cart-drawer data-item-count="{{ cart.item_count }}">
+  <dialog class="cart-drawer" data-cart-dialog aria-labelledby="CartDrawerTitle">
+    <div class="cart-drawer__header">
+      <h2 id="CartDrawerTitle">{{ 'cart.title' | t }}</h2>
+      <button type="button" class="header__icon" data-close-cart>
+        <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </button>
+    </div>
+
+    {% if cart.item_count == 0 %}
+      {% assign continue_label = 'cart.continue' | t %}
+      <p class="cart-drawer__empty">{{ 'cart.empty' | t }}</p>
+      {% render 'button', label: continue_label, url: routes.all_products_collection_url, style: 'primary' %}
+    {% else %}
+      <form class="cart-drawer__form" action="{{ routes.cart_url }}" method="post">
+        {% render 'cart-items', show_quantity: true %}
+        {% render 'cart-shipping' %}
+
+        <div class="cart-drawer__footer">
+          <p class="cart-drawer__subtotal">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            {% render 'money', amount: cart.total_price %}
+          </p>
+          <button class="button button--full" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+          <a class="button button--text" href="{{ routes.cart_url }}">{{ 'cart.view' | t }}</a>
+        </div>
+      </form>
+    {% endif %}
+  </dialog>
+</cart-drawer>
+
+{% stylesheet %}
+  .cart-drawer {
+    width: min(26rem, 100%);
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 0 0 auto;
+    border: 0;
+    padding: var(--space-lg);
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .cart-drawer[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-drawer::backdrop {
+    background: rgb(0 0 0 / 0.32);
+  }
+
+  .cart-drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .cart-drawer__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .cart-drawer__form .cart-items {
+    overflow: auto;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .cart-drawer__empty {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .cart-drawer__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: auto;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cart-drawer__subtotal {
+    display: flex;
+    justify-content: space-between;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('cart-drawer')) {
+    customElements.define(
+      'cart-drawer',
+      class CartDrawer extends HTMLElement {
+        connectedCallback() {
+          this.dialog = this.querySelector('[data-cart-dialog]');
+          this.sectionId = this.closest('.shopify-section')?.id?.replace('shopify-section-', '') || 'cart-drawer';
+          this.dialog?.addEventListener('click', (event) => {
+            if (event.target === this.dialog) this.dialog.close();
+          });
+          if (!window.avelaCartEvents) {
+            window.avelaCartEvents = true;
+            document.addEventListener('click', (event) => {
+              const drawer = document.querySelector('cart-drawer');
+              const open = event.target.closest('[data-open-cart]');
+              if (open) {
+                const path = window.location.pathname.replace(/\/$/, '');
+                if (path.endsWith('/cart')) return;
+                event.preventDefault();
+                drawer?.open();
+              }
+              if (event.target.closest('[data-close-cart]')) drawer?.dialog?.close();
+              const qty = event.target.closest('[data-qty-change]');
+              if (qty) {
+                const input = qty.closest('.cart-item__qty')?.querySelector('[data-cart-quantity]');
+                if (!input) return;
+                input.value = String(Math.max(0, Number(input.value || 0) + Number(qty.dataset.qtyChange)));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            });
+            document.addEventListener('submit', (event) => {
+              const form = event.target;
+              const drawer = document.querySelector('cart-drawer');
+              if (!(form instanceof HTMLFormElement) || !form.action.includes('/cart/add')) return;
+              const submitter = event.submitter;
+              const isAdd =
+                !submitter ||
+                submitter.getAttribute('name') === 'add' ||
+                submitter.hasAttribute('data-add') ||
+                submitter.hasAttribute('data-sticky-add');
+              if (!isAdd) return;
+              event.preventDefault();
+              drawer?.addFromForm(form);
+            });
+          }
+          this.addEventListener('change', (event) => {
+            const input = event.target.closest('[data-cart-quantity]');
+            if (!input) return;
+            this.change(input.dataset.lineKey, Number(input.value));
+          });
+          this.addEventListener('click', (event) => {
+            const remove = event.target.closest('[data-cart-remove]');
+            if (!remove) return;
+            event.preventDefault();
+            this.change(remove.dataset.lineKey, 0);
+          });
+        }
+
+        open() {
+          this.dialog?.showModal();
+        }
+
+        root() {
+          return window.Shopify?.routes?.root || '/';
+        }
+
+        async addFromForm(form) {
+          const data = new FormData(form);
+          const response = await fetch(`${this.root()}cart/add.js`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              items: [{ id: Number(data.get('id')), quantity: Number(data.get('quantity') || 1) }],
+              sections: this.sectionId,
+            }),
+          });
+          if (!response.ok) return;
+          const json = await response.json();
+          this.applySection(json.sections?.[this.sectionId]);
+          document.querySelector('cart-drawer')?.open();
+        }
+
+        async change(key, quantity) {
+          const response = await fetch(`${this.root()}cart/change.js`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ id: key, quantity, sections: this.sectionId }),
+          });
+          if (!response.ok) return;
+          const json = await response.json();
+          this.applySection(json.sections?.[this.sectionId], json.item_count);
+        }
+
+        applySection(html, itemCount) {
+          if (!html) return;
+          const next = new DOMParser().parseFromString(html, 'text/html').querySelector('cart-drawer');
+          const wasOpen = this.dialog?.open;
+          if (next) this.replaceWith(next);
+          const drawer = document.querySelector('cart-drawer');
+          if (wasOpen) drawer?.open();
+          const count = itemCount ?? Number(drawer?.dataset.itemCount || 0);
+          document.querySelectorAll('[data-cart-count]').forEach((node) => {
+            node.textContent = count > 0 ? String(count) : '';
+          });
+        }
+      }
+    );
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:general.cart_drawer",
+  "settings": [],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

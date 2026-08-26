@@ -1,0 +1,64 @@
+{% doc %}
+  Text links to customer account pages.
+
+  @param {string} [class] - Optional class on the list
+  @example
+  {% render 'account-nav' %}
+{% enddoc %}
+
+{% liquid
+  assign url_parts = routes.account_url | split: '?'
+  assign account_base = url_parts | first
+  assign account_query = ''
+  if url_parts.size > 1
+    assign account_query = '?' | append: url_parts.last
+  endif
+  assign profile_url = account_base | append: '/profile' | append: account_query
+%}
+
+<ul class="account-nav {{ class }}" role="list">
+  {% if customer %}
+    <li>
+      {% if customer.first_name != blank %}
+        {{ 'customers.welcome' | t: name: customer.first_name }}
+      {% else %}
+        {{ 'customers.account' | t }}
+      {% endif %}
+    </li>
+    <li>
+      <a href="{{ routes.account_url }}">{{ 'customers.orders' | t }}</a>
+    </li>
+    <li>
+      <a href="{{ profile_url }}">{{ 'customers.profile' | t }}</a>
+    </li>
+    <li>
+      <a href="{{ routes.account_addresses_url }}">{{ 'customers.addresses' | t }}</a>
+    </li>
+  {% else %}
+    <li>
+      <a href="{{ routes.storefront_login_url }}">{{ 'customers.sign_in' | t }}</a>
+    </li>
+    <li>
+      <a href="{{ routes.account_url }}">{{ 'customers.orders' | t }}</a>
+    </li>
+  {% endif %}
+</ul>
+
+{% stylesheet %}
+  .account-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .account-nav a {
+    color: inherit;
+    text-decoration: none;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+{% endstylesheet %}

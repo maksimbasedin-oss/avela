@@ -1,0 +1,72 @@
+{% doc %}
+  Stokta olmayan varyant için talep formu.
+
+  @param {product} product - Ürün
+  @param {variant} variant - Seçili varyant
+{% enddoc %}
+
+{% assign request_title = 'products.stock_request' | t %}
+<section
+  class="stock-request"
+  id="stock-request"
+  data-stock-request
+  data-body-template="{{ 'products.stock_request_body' | t: product: product.title, variant: '__VARIANT__' | escape }}"
+  {% if variant.available %}
+    hidden
+  {% endif %}
+>
+  <p class="stock-request__status" data-availability-status>{{ 'products.sold_out' | t }}</p>
+  <p class="eyebrow">{% render 'turkish-upper', text: request_title %}</p>
+  <p class="stock-request__lede">{{ 'products.stock_request_lede' | t }}</p>
+
+  {% form 'contact', class: 'stock-request__form' %}
+    {% if form.posted_successfully? %}
+      <p class="stock-request__success">{{ 'products.stock_request_success' | t }}</p>
+    {% else %}
+      {{ form.errors | default_errors }}
+      <input type="hidden" name="contact[konu]" value="{{ request_title | escape }}">
+      <input type="hidden" name="contact[urun]" value="{{ product.title | escape }}">
+      <input
+        type="hidden"
+        name="contact[varyant]"
+        value="{{ variant.title | escape }}"
+        data-stock-variant
+      >
+      <input type="hidden" name="contact[baglanti]" value="{{ shop.url }}{{ product.url }}">
+      <label class="visually-hidden" for="StockRequestBody-{{ product.id }}">{{ 'pages.contact_body' | t }}</label>
+      <textarea
+        id="StockRequestBody-{{ product.id }}"
+        class="visually-hidden"
+        name="contact[body]"
+        data-stock-body
+        rows="2"
+      >{{ 'products.stock_request_body' | t: product: product.title, variant: variant.title }}</textarea>
+
+      <div class="field">
+        <label class="field__label" for="StockRequestName-{{ product.id }}">{{ 'pages.contact_name' | t }}</label>
+        <input
+          id="StockRequestName-{{ product.id }}"
+          class="field__input"
+          type="text"
+          name="contact[name]"
+          value="{{ customer.name }}"
+          autocomplete="name"
+          required
+        >
+      </div>
+      <div class="field">
+        <label class="field__label" for="StockRequestEmail-{{ product.id }}">{{ 'pages.contact_email' | t }}</label>
+        <input
+          id="StockRequestEmail-{{ product.id }}"
+          class="field__input"
+          type="email"
+          name="contact[email]"
+          value="{{ customer.email }}"
+          autocomplete="email"
+          required
+        >
+      </div>
+      <button class="button button--full" type="submit">{{ 'products.stock_request_submit' | t }}</button>
+    {% endif %}
+  {% endform %}
+</section>

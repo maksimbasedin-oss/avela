@@ -1,0 +1,14 @@
+---
+description: Tesettür elbise kategori ikonunu değiştirme
+alwaysApply: true
+---
+
+# Tesettür elbise ikonu
+
+Kullanıcının verdiği kaynak: https://i.ibb.co/Y47Yvtw5/image.png
+
+Dosya: `assets/icon-cat-elbise.png`
+
+Kullanıldığı yerler: `snippets/category-chip-icon.liquid` (icon `elbise`), `snippets/blog-topic-icon.liquid` (tag `elbise`).
+
+Kullanıcı açıkça başka bir görsel vermeden bu ikonu başka kaynakla veya eski çizgi SVG ile değiştirme.

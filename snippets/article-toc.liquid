@@ -1,0 +1,36 @@
+{% doc %}
+  Yazıdaki id’li h2 başlıklarından içindekiler listesi üretir.
+
+  @param {article} article - Article
+  @example
+  {% render 'article-toc', article: article %}
+{% enddoc %}
+
+{% liquid
+  assign toc_label = 'blog.toc' | t
+  assign chunks = article.content | split: '<h2 id="'
+%}
+
+{% if chunks.size > 2 %}
+  <nav class="article-page__toc" aria-labelledby="ArticleToc">
+    <p class="eyebrow" id="ArticleToc">{% render 'turkish-upper', text: toc_label %}</p>
+    <ol>
+      {% for chunk in chunks %}
+        {% unless forloop.first %}
+          {% liquid
+            assign id_and_rest = chunk | split: '"'
+            assign heading_id = id_and_rest | first | strip
+            assign after_open = chunk | split: '>'
+            assign heading_html = after_open[1] | split: '</h2' | first
+            assign heading_text = heading_html | strip_html | strip
+          %}
+          {% if heading_id != blank and heading_text != blank %}
+            <li>
+              <a href="#{{ heading_id | escape }}">{{ heading_text | escape }}</a>
+            </li>
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}
