@@ -212,10 +212,6 @@
         {% endif %}
       </div>
 
-      {% if settings.whatsapp_url != blank %}
-        <a class="product__whatsapp" href="{{ settings.whatsapp_url }}">{{ 'accessibility.whatsapp' | t }}</a>
-      {% endif %}
-
       {% for block in section.blocks %}
         {% if block.type == '@app' %}
           <div {{ block.shopify_attributes }}>{% render block %}</div>
@@ -587,12 +583,6 @@
   .product__panel-body ul,
   .product__panel-body ol {
     margin-top: 0.7rem;
-  }
-
-  .product__whatsapp {
-    min-height: var(--touch-min);
-    display: inline-flex;
-    align-items: center;
   }
 
   .product__faq {

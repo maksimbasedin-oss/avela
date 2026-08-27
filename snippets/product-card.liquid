@@ -308,7 +308,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     touch-action: pan-x;
-    cursor: grab;
+    cursor: pointer;
     user-select: none;
   }
 
@@ -625,8 +625,8 @@
 {% endstylesheet %}
 
 {% javascript %}
-  if (!window.__avelaProductCardGalleryV5) {
-    window.__avelaProductCardGalleryV5 = true;
+  if (!window.__avelaProductCardGalleryV6) {
+    window.__avelaProductCardGalleryV6 = true;
 
     const galleryOf = (node) => node?.closest?.('[data-product-gallery]');
     const trackOf = (gallery) => gallery?.querySelector('[data-product-gallery-track]');
@@ -683,18 +683,27 @@
         startX: event.clientX,
         startScroll: track.scrollLeft,
         moved: false,
+        captured: false,
       };
-      track.classList.add('is-dragging');
-      track.setPointerCapture(event.pointerId);
     });
 
     document.addEventListener('pointermove', (event) => {
       if (!drag) return;
       const dx = event.clientX - drag.startX;
-      if (Math.abs(dx) > 6) {
+      if (!drag.moved && Math.abs(dx) <= 6) return;
+      if (!drag.moved) {
         drag.moved = true;
-        event.preventDefault();
+        drag.track.classList.add('is-dragging');
+        if (!drag.captured) {
+          drag.captured = true;
+          try {
+            drag.track.setPointerCapture(event.pointerId);
+          } catch (error) {
+            drag.captured = false;
+          }
+        }
       }
+      event.preventDefault();
       drag.track.scrollLeft = drag.startScroll - dx;
     });
 
@@ -742,11 +751,20 @@
     document.addEventListener(
       'click',
       (event) => {
-        if (!event.target.closest('[data-product-gallery-track]')) return;
-        if (!suppressClick) return;
+        const slide = event.target.closest('a.product-card__slide');
+        if (!slide || !slide.closest('[data-product-gallery-track]')) return;
+        if (suppressClick) {
+          event.preventDefault();
+          event.stopPropagation();
+          suppressClick = false;
+          return;
+        }
+        const href = slide.getAttribute('href');
+        if (!href || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
         event.preventDefault();
-        event.stopPropagation();
-        suppressClick = false;
+        window.location.assign(href);
       },
       true
     );
