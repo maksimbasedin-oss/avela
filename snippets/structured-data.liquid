@@ -45,6 +45,25 @@
         {%- else -%}
           ,"logo": {{ 'logo-avela.png' | asset_url | prepend: 'https:' | json }}
         {%- endif -%}
+        {%- liquid
+          assign return_path = '/pages/kargo-ve-iade'
+          if pages['kargo-ve-iade'] != blank
+            assign return_path = pages['kargo-ve-iade'].url
+          endif
+          assign return_url = site_url | append: return_path
+        -%}
+        ,"hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+          "refundType": "https://schema.org/FullRefund",
+          "itemCondition": "https://schema.org/NewCondition",
+          "url": {{ return_url | json }}
+        }
       },
       {
         "@type": "WebSite",

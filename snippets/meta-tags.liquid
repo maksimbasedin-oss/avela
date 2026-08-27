@@ -270,9 +270,7 @@
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
-  <script type="application/ld+json">
-    {{ product | structured_data }}
-  </script>
+  {% render 'product-structured-data' %}
 
   <meta
     property="og:price:amount"
