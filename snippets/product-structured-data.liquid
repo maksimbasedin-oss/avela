@@ -26,6 +26,10 @@
   assign product_path = product.url | split: '?' | first
   assign product_abs = site_url | append: product_path
   assign currency_code = shop.currency | default: 'TRY'
+  assign product_description = product.description | strip_html | strip
+  if product_description == blank
+    assign product_description = product.metafields.global.description_tag.value | default: product.metafields.global.description_tag | strip
+  endif
 %}
 
 {%- capture return_policy_json -%}
@@ -49,7 +53,7 @@
     "@id": {{ product_path | append: '#product' | json }},
     "@type": "ProductGroup",
     "name": {{ product.title | json }},
-    "description": {{ product.description | strip_html | json }},
+    "description": {{ product_description | json }},
     "url": {{ product_abs | json }},
     "productGroupID": {{ product.id | json }},
     "brand": {
@@ -84,6 +88,9 @@
           "@id": {{ variant_path | append: '#variant' | json }},
           "@type": "Product",
           "name": {{ variant_name | json }}
+          {%- if product_description != blank -%}
+            ,"description": {{ product_description | json }}
+          {%- endif -%}
           {%- if variant_image != blank -%}
             ,"image": {{ variant_image | image_url: width: 1920 | prepend: 'https:' | json }}
           {%- endif -%}
