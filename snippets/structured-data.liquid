@@ -13,10 +13,11 @@
     assign site_url = 'https://www.avelatr.com'
   endif
   assign contact_email = settings.contact_email | default: 'info@avelatr.com'
-  assign contact_phone = ''
-  if settings.whatsapp_url contains 'wa.me/'
-    assign contact_phone = settings.whatsapp_url | split: 'wa.me/' | last | remove: '+' | prepend: '+'
-  endif
+  assign contact_phone = settings.contact_phone | default: '+90 536 498 47 27'
+  assign contact_phone = contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+  unless contact_phone contains '+'
+    assign contact_phone = contact_phone | prepend: '+'
+  endunless
   assign social_instagram = settings.social_instagram | default: 'https://www.instagram.com/avelatr'
   assign social_tiktok = settings.social_tiktok | default: 'https://www.tiktok.com/@avelatr'
   assign social_facebook = settings.social_facebook | default: 'https://www.facebook.com/avelatr'
@@ -63,6 +64,35 @@
           "refundType": "https://schema.org/FullRefund",
           "itemCondition": "https://schema.org/NewCondition",
           "url": {{ return_url | json }}
+        }
+        ,"hasShippingService": {
+          "@id": {{ return_url | append: '#shipping' | json }},
+          "@type": "ShippingService",
+          "name": "Türkiye içi kargo",
+          "url": {{ return_url | json }},
+          "shippingConditions": {
+            "@type": "ShippingConditions",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "orderValue": {
+              "@type": "MonetaryAmount",
+              "minValue": 2000,
+              "currency": "TRY"
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 0,
+              "currency": "TRY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 2,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            }
+          }
         }
       },
       {
