@@ -9,22 +9,20 @@
     assign contact_heading = 'footer.contact' | t
   endif
 
-  assign whatsapp_url = settings.whatsapp_url
-  if whatsapp_url == blank and shop.phone != blank
-    assign whatsapp_digits = shop.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+'
-    if whatsapp_digits != blank
-      assign whatsapp_url = 'https://wa.me/' | append: whatsapp_digits
-    endif
-  endif
-  if whatsapp_url != blank
-    unless whatsapp_url contains 'wa.me' or whatsapp_url contains 'whatsapp'
-      assign whatsapp_url = blank
-    endunless
-  endif
+  assign whatsapp_url = settings.whatsapp_url | default: 'https://wa.me/905364984727'
+  unless whatsapp_url contains 'wa.me' or whatsapp_url contains 'whatsapp'
+    assign whatsapp_url = 'https://wa.me/905364984727'
+  endunless
+  assign contact_phone = settings.contact_phone | default: '+90 536 498 47 27'
+  assign contact_phone_href = contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+  unless contact_phone_href contains '+'
+    assign contact_phone_href = contact_phone_href | prepend: '+'
+  endunless
+  assign contact_phone_href = contact_phone_href | prepend: 'tel:'
 
   assign has_contact = false
   if section.settings.show_contact
-    if contact_email != blank or whatsapp_url != blank or settings.trust_support != blank
+    if contact_email != blank or whatsapp_url != blank or contact_phone != blank or settings.trust_support != blank
       assign has_contact = true
     endif
   endif
@@ -36,7 +34,7 @@
     endif
   endif
 
-  assign shop_fallback = 'yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
+  assign shop_fallback = 'all,yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
   assign menu_blocks = 0
   for block in section.blocks
     if block.type == 'menu'
@@ -179,6 +177,11 @@
           <div class="footer__block">
             <p class="eyebrow">{% render 'turkish-upper', text: contact_heading %}</p>
             <ul class="footer__links">
+              {% if contact_phone != blank %}
+                <li>
+                  <a class="footer__phone" href="{{ contact_phone_href }}">{{ contact_phone | escape }}</a>
+                </li>
+              {% endif %}
               {% if whatsapp_url != blank %}
                 <li>
                   <a class="footer__whatsapp" href="{{ whatsapp_url }}"{% if whatsapp_url contains 'wa.me' or whatsapp_url contains 'whatsapp' %} rel="noopener"{% endif %}>
@@ -459,6 +462,7 @@
   }
 
   .footer__whatsapp,
+  .footer__phone,
   .footer__email {
     gap: 0.5rem;
   }

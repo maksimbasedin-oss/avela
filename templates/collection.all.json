@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+        "products_per_page": 24,
+        "columns": "3",
+        "seo_content": "<p>Avela tesettür elbise, takım, tunik, pantolon, dış giyim ve şal koleksiyonunun tamamı. Beğen, bedenini seç, sepete at.</p>"
+      },
+      "blocks": {
+        "faq-size": {
+          "type": "faq",
+          "settings": {
+            "question": "Tüm ürünler sayfasında neler var?",
+            "answer": "<p>Mağazadaki tüm tesettür ürünleri tek listede yer alır. Kategori kartlarından elbise, takım, tunik, pantolon, dış giyim veya şala geçebilirsin.</p>"
+          }
+        },
+        "faq-filter": {
+          "type": "faq",
+          "settings": {
+            "question": "Nasıl filtrelerim?",
+            "answer": "<p>Üstteki sıralama ve filtrelerle beden, renk ve fiyata göre daralt. Her üründe kalıp ve beden tablosu vardır.</p>"
+          }
+        },
+        "faq-ship": {
+          "type": "faq",
+          "settings": {
+            "question": "Kargo ve iade nasıl işler?",
+            "answer": "<p>Güncel kargo eşiği ve iade süresi Theme Settings ve Kargo ve iade sayfasından yönetilir.</p>"
+          }
+        }
+      },
+      "block_order": ["faq-size", "faq-filter", "faq-ship"]
+    }
+  },
+  "order": ["main"]
+}

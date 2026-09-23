@@ -39,23 +39,26 @@
         </div>
         {% liquid
           assign drawer_email = settings.contact_email | default: 'info@avelatr.com'
-          assign drawer_whatsapp = settings.whatsapp_url
-          if drawer_whatsapp == blank and shop.phone != blank
-            assign drawer_digits = shop.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+'
-            if drawer_digits != blank
-              assign drawer_whatsapp = 'https://wa.me/' | append: drawer_digits
-            endif
-          endif
-          if drawer_whatsapp != blank
-            unless drawer_whatsapp contains 'wa.me' or drawer_whatsapp contains 'whatsapp'
-              assign drawer_whatsapp = blank
-            endunless
-          endif
+          assign drawer_whatsapp = settings.whatsapp_url | default: 'https://wa.me/905364984727'
+          unless drawer_whatsapp contains 'wa.me' or drawer_whatsapp contains 'whatsapp'
+            assign drawer_whatsapp = 'https://wa.me/905364984727'
+          endunless
+          assign drawer_phone = settings.contact_phone | default: '+90 536 498 47 27'
+          assign drawer_phone_href = drawer_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+          unless drawer_phone_href contains '+'
+            assign drawer_phone_href = drawer_phone_href | prepend: '+'
+          endunless
+          assign drawer_phone_href = drawer_phone_href | prepend: 'tel:'
         %}
         <div class="header-drawer__foot">
           <nav class="header-drawer__section" aria-label="{{ 'footer.contact' | t }}">
             <p class="eyebrow">{% assign reach_label = 'footer.contact' | t %}{% render 'turkish-upper', text: reach_label %}</p>
             <ul class="header-drawer__contacts">
+              {% if drawer_phone != blank %}
+                <li>
+                  <a class="header-drawer__contact" href="{{ drawer_phone_href }}">{{ drawer_phone | escape }}</a>
+                </li>
+              {% endif %}
               {% if drawer_whatsapp != blank %}
                 <li>
                   <a class="header-drawer__contact" href="{{ drawer_whatsapp }}"{% if drawer_whatsapp contains 'wa.me' or drawer_whatsapp contains 'whatsapp' %} rel="noopener"{% endif %}>
@@ -179,7 +182,7 @@
         <p class="header-search__lede">{{ 'search.lede' | t }}</p>
         {% render 'predictive-search', input_id: 'HeaderSearch', results_id: 'PredictiveResultsHeader' %}
         {% liquid
-          assign search_handles = 'yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
+          assign search_handles = 'all,yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
           assign search_suggest_count = 0
           for handle in search_handles
             assign suggest = collections[handle]

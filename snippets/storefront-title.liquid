@@ -10,8 +10,8 @@
   assign hnd = handle | default: '' | downcase
   assign label = raw
 
-  if hnd == 'all' or key == 'products' or key == 'all products' or key == 'catalog'
-    assign label = 'search.products' | t
+  if hnd == 'all' or hnd == 'tum-urunler' or key == 'products' or key == 'all products' or key == 'catalog' or key == 'tüm ürünler'
+    assign label = 'collections.all' | t
   elsif hnd == 'news' or key == 'news'
     assign label = 'blog.news' | t
   elsif key == 'home' or key == 'home page' or key == 'frontpage'
