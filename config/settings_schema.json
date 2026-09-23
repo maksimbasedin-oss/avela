@@ -102,7 +102,7 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "t:labels.heading_font",
-        "default": "linotype_didot_n4"
+        "default": "outfit_n5"
       },
       {
         "type": "font_picker",
@@ -223,6 +223,13 @@
         "label": "t:labels.contact_email",
         "info": "t:info.contact_email",
         "default": "info@avelatr.com"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "t:labels.contact_phone",
+        "info": "t:info.contact_phone",
+        "default": "+90 536 498 47 27"
       },
       {
         "type": "text",

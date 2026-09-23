@@ -11,7 +11,7 @@
   {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
 
   :root {
-    --font-heading--family: {{ settings.type_heading_font.family }}, Didot, Georgia, 'Times New Roman', {{ settings.type_heading_font.fallback_families }};
+    --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
     --font-heading--style: {{ settings.type_heading_font.style }};
     --font-heading--weight: {{ settings.type_heading_font.weight }};
     --font-primary--family: {{ settings.type_primary_font.family }}, 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, sans-serif;

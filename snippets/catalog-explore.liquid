@@ -20,11 +20,6 @@
   <nav class="catalog-explore" aria-label="{{ 'collections.shop_by' | t }}">
     <p class="eyebrow">{% assign shop_by = 'collections.shop_by' | t %}{% render 'turkish-upper', text: shop_by %}</p>
     <ul class="catalog-explore__list" role="list">
-      <li>
-        <a class="catalog-explore__card catalog-explore__brand" href="{{ routes.root_url }}">
-          {% render 'brand-logo', class: 'catalog-explore__mark' %}
-        </a>
-      </li>
       {% for handle in catalog_handles %}
         {% assign catalog_collection = collections[handle] %}
         {% if catalog_collection != blank and catalog_collection.products_count > 0 %}
@@ -44,6 +39,11 @@
           </li>
         {% endif %}
       {% endfor %}
+      <li>
+        <a class="catalog-explore__card catalog-explore__brand" href="{{ routes.root_url }}">
+          {% render 'brand-logo', class: 'catalog-explore__mark' %}
+        </a>
+      </li>
     </ul>
   </nav>
 {% endif %}
@@ -66,10 +66,18 @@
     border: 1px solid var(--color-foreground);
   }
 
+  .catalog-explore__list > li {
+    display: flex;
+    min-width: 0;
+    background: var(--color-background);
+  }
+
   .catalog-explore__card {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex: 1;
+    width: 100%;
     min-height: 4.75rem;
     padding: 0.85rem 0.9rem;
     background: var(--color-background);
