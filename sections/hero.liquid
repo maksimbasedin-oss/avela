@@ -206,6 +206,10 @@
     .hero__heading {
       font-size: clamp(1.45rem, 6vw, 2.15rem);
     }
+
+    .hero__mark .brand-logo__image {
+      opacity: 0.8;
+    }
   }
 
   @media screen and (min-width: 750px) {
@@ -255,9 +259,17 @@
       border-left: 0;
     }
 
+    .hero__content,
+    .hero__mark {
+      overflow: visible;
+    }
+
     .hero__mark .brand-logo__image {
       width: min(100%, 24rem);
+      max-width: none;
       max-height: none;
+      transform: rotate(50deg) scale(2);
+      transform-origin: center;
     }
 
     .hero__actions {
