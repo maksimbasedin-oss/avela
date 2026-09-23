@@ -102,7 +102,7 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "t:labels.heading_font",
-        "default": "outfit_n5"
+        "default": "outfit_n3"
       },
       {
         "type": "font_picker",
