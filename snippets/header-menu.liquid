@@ -9,29 +9,6 @@
 
 {% if menu != blank %}
   <ul class="header-menu{% if mobile %} header-menu--mobile{% endif %}">
-    {% liquid
-      assign catalog_url = collections['all'].url | default: '/collections/all'
-      assign has_catalog = false
-      for link in menu.links
-        if link.url contains '/collections/all' or link.url contains '/collections/tum-urunler'
-          assign has_catalog = true
-        endif
-      endfor
-    %}
-    {% unless has_catalog %}
-      <li class="header-menu__item">
-        <a
-          class="header-menu__link"
-          href="{{ catalog_url }}"
-          {% if collection.handle == 'all' or collection.handle == 'tum-urunler' or request.path contains '/collections/all' %}
-            aria-current="page"
-          {% endif %}
-        >
-          {% assign catalog_label = 'collections.all' | t %}
-          {% render 'turkish-upper', text: catalog_label %}
-        </a>
-      </li>
-    {% endunless %}
     {% for link in menu.links %}
       {% liquid
         assign child_count = 0

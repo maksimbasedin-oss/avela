@@ -1,10 +1,19 @@
 {% doc %}
-  Footer payment marks: Visa, Mastercard, Troy, 3D Secure.
+  Footer payment marks: iyzico, Visa, Mastercard, Troy, 3D Secure.
 
   @example
   {% render 'payment-icons' %}
 {% enddoc %}
 
+<span class="payment-icon" role="listitem">
+  <img
+    src="{{ 'pay-iyzico.png' | asset_url }}"
+    alt="{{ 'footer.payment_iyzico' | t }}"
+    width="38"
+    height="24"
+    loading="lazy"
+  >
+</span>
 <span class="payment-icon" role="listitem">
   <img
     src="{{ 'pay-visa.png' | asset_url }}"
