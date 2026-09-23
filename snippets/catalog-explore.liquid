@@ -135,6 +135,65 @@
     color: var(--color-secondary);
   }
 
+  @media screen and (max-width: 749px) {
+    .catalog-explore {
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+    }
+
+    .catalog-explore .eyebrow {
+      font-size: 0.625rem;
+    }
+
+    .catalog-explore__list {
+      display: flex;
+      grid-template-columns: none;
+      gap: 0.45rem;
+      overflow-x: auto;
+      margin-top: 0.45rem;
+      padding-bottom: 0.15rem;
+      background: transparent;
+      border: 0;
+      scrollbar-width: none;
+    }
+
+    .catalog-explore__list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .catalog-explore__list > li {
+      flex: 0 0 auto;
+      background: transparent;
+    }
+
+    .catalog-explore__card {
+      min-height: 2.6rem;
+      padding: 0.28rem 0.7rem 0.28rem 0.28rem;
+      border: 1px solid var(--color-foreground);
+      gap: 0.4rem;
+    }
+
+    .catalog-explore .category-chips__icon {
+      flex-basis: 1.85rem;
+      width: 1.85rem;
+      height: 1.85rem;
+    }
+
+    .catalog-explore__count {
+      display: none;
+    }
+
+    .catalog-explore__brand {
+      min-width: 4.25rem;
+      padding: 0.35rem 0.65rem;
+    }
+
+    .catalog-explore__brand .brand-logo__image {
+      max-width: 3.1rem;
+      max-height: 2rem;
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .catalog-explore__list {
       grid-template-columns: repeat(3, minmax(0, 1fr));

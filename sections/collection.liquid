@@ -12,7 +12,7 @@
   {% endcapture %}
   {% assign display_title = display_title | strip %}
 
-  <div class="collection">
+  <div class="collection{% if collection.handle == 'all' %} collection--catalog{% endif %}">
     {% render 'breadcrumbs', current_title: display_title, current_url: collection.url, current_handle: collection.handle %}
 
     <header class="collection__header">
@@ -468,6 +468,32 @@
   .collection__intro {
     max-width: 42rem;
     color: var(--color-secondary);
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection--catalog .breadcrumbs {
+      margin: var(--space-sm) 0 var(--space-xs);
+      padding-bottom: 0.4rem;
+    }
+
+    .collection--catalog .collection__header {
+      gap: 0.15rem;
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+    }
+
+    .collection--catalog .collection__header h1 {
+      max-width: none;
+      font-size: 1.65rem;
+    }
+
+    .collection--catalog .collection__intro {
+      display: none;
+    }
+
+    .collection--catalog .collection__toolbar {
+      margin-bottom: var(--space-sm);
+    }
   }
 
   .collection__toolbar {
