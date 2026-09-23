@@ -133,7 +133,10 @@
       {% endform %}
 
       {% render 'stock-request', product: product, variant: current_variant %}
+    </div>
+  </div>
 
+  <div class="product__details">
       {% liquid
         assign attr_keys = 'fit,length,fabric,stretch,model_size,model_height,material,season,style,occasion' | split: ','
         assign attr_count = 0
@@ -217,7 +220,6 @@
           <div {{ block.shopify_attributes }}>{% render block %}</div>
         {% endif %}
       {% endfor %}
-    </div>
   </div>
 
   {% liquid
@@ -306,6 +308,10 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
+  }
+
+  .product__details {
+    margin-top: var(--space-xl);
   }
 
   .product__info h1 {
@@ -615,6 +621,7 @@
     .product__info {
       position: sticky;
       top: var(--sticky-offset);
+      justify-content: space-between;
     }
 
     .product__related-grid {
@@ -645,6 +652,22 @@
           if (new URLSearchParams(window.location.search).has('contact_posted') && this.stockRequest) {
             this.stockRequest.hidden = false;
           }
+          this.alignToPhoto();
+          const stage = this.querySelector('.product-gallery__stage');
+          if (stage && 'ResizeObserver' in window) {
+            this.photoObserver = new ResizeObserver(() => this.alignToPhoto());
+            this.photoObserver.observe(stage);
+          }
+          this.onResize = () => this.alignToPhoto();
+          window.addEventListener('resize', this.onResize);
+        }
+
+        alignToPhoto() {
+          const info = this.querySelector('.product__info');
+          const stage = this.querySelector('.product-gallery__stage');
+          if (!info || !stage) return;
+          const desktop = window.matchMedia('(min-width: 750px)').matches;
+          info.style.minHeight = desktop ? `${Math.round(stage.getBoundingClientRect().height)}px` : '';
         }
 
         selectedOptions() {
