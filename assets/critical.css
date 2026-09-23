@@ -43,6 +43,11 @@ svg {
   height: auto;
 }
 
+#MainContent > .shopify-section ~ .shopify-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 36rem;
+}
+
 input,
 textarea,
 select,

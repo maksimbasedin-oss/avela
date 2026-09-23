@@ -57,7 +57,7 @@
               {% liquid
                 assign card_loading = 'lazy'
                 assign card_priority = 'auto'
-                if section.index <= 3 and forloop.index <= 2
+                if section.index == 1 and forloop.index == 1
                   assign card_loading = 'eager'
                 endif
               %}
@@ -71,7 +71,7 @@
             {% liquid
               assign card_loading = 'lazy'
               assign card_priority = 'auto'
-              if section.index <= 3 and forloop.index <= 2
+              if section.index == 1 and forloop.index == 1
                 assign card_loading = 'eager'
               endif
             %}

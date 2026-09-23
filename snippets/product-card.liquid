@@ -49,17 +49,30 @@
               endif
             %}
             <a class="product-card__slide" href="{{ product.url }}">
-              {{
-                image
-                | image_url: width: 900
-                | image_tag:
-                  widths: '360, 540, 720, 900',
-                  sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
-                  loading: slide_loading,
-                  fetchpriority: slide_priority,
-                  alt: slide_alt,
-                  draggable: 'false'
-              }}
+              {% if forloop.first %}
+                {{
+                  image
+                  | image_url: width: 640
+                  | image_tag:
+                    widths: '240, 360, 480, 640',
+                    sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+                    loading: slide_loading,
+                    fetchpriority: slide_priority,
+                    alt: slide_alt,
+                    draggable: 'false'
+                }}
+              {% else %}
+                <img
+                  alt="{{ slide_alt | escape }}"
+                  width="640"
+                  height="{{ 640.0 | divided_by: image.aspect_ratio | round }}"
+                  sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+                  data-src="{{ image | image_url: width: 640 }}"
+                  data-srcset="{{ image | image_url: width: 240 }} 240w, {{ image | image_url: width: 360 }} 360w, {{ image | image_url: width: 480 }} 480w, {{ image | image_url: width: 640 }} 640w"
+                  decoding="async"
+                  draggable="false"
+                >
+              {% endif %}
             </a>
           {% endfor %}
         </div>
@@ -88,25 +101,23 @@
           <span class="product-card__image{% if hover != blank %} product-card__image--has-hover{% endif %}">
             {{
               featured
-              | image_url: width: 900
+              | image_url: width: 640
               | image_tag:
-                widths: '360, 540, 720, 900',
+                widths: '240, 360, 480, 640',
                 sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
                 loading: loading_attr,
                 fetchpriority: priority_attr,
                 alt: image_alt
             }}
             {% if hover != blank %}
-              {{
-                hover
-                | image_url: width: 900
-                | image_tag:
-                  class: 'product-card__hover',
-                  widths: '360, 540, 720, 900',
-                  sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
-                  loading: 'lazy',
-                  alt: hover_alt
-              }}
+              <img
+                class="product-card__hover"
+                alt="{{ hover_alt | escape }}"
+                width="640"
+                height="{{ 640.0 | divided_by: hover.aspect_ratio | round }}"
+                data-src="{{ hover | image_url: width: 640 }}"
+                decoding="async"
+              >
             {% endif %}
           </span>
         {% else %}
@@ -398,7 +409,7 @@
     opacity: 0;
   }
 
-  .product-card__image--has-hover:hover .product-card__hover {
+  .product-card__image--has-hover:hover .product-card__hover[src] {
     opacity: 1;
   }
 
@@ -625,8 +636,37 @@
 {% endstylesheet %}
 
 {% javascript %}
-  if (!window.__avelaProductCardGalleryV6) {
-    window.__avelaProductCardGalleryV6 = true;
+  if (!window.__avelaProductCardGalleryV7) {
+    window.__avelaProductCardGalleryV7 = true;
+
+    const hydrateImages = (root) => {
+      if (!root || root.dataset.imagesReady === 'true') return;
+      root.dataset.imagesReady = 'true';
+      root.querySelectorAll('img[data-src]').forEach((img) => {
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        img.removeAttribute('data-srcset');
+      });
+    };
+
+    document.addEventListener(
+      'pointerover',
+      (event) => {
+        const card = event.target.closest?.('.product-card');
+        if (card) hydrateImages(card);
+      },
+      true
+    );
+
+    document.addEventListener(
+      'pointerdown',
+      (event) => {
+        const card = event.target.closest?.('.product-card');
+        if (card) hydrateImages(card);
+      },
+      true
+    );
 
     const galleryOf = (node) => node?.closest?.('[data-product-gallery]');
     const trackOf = (gallery) => gallery?.querySelector('[data-product-gallery-track]');
@@ -656,6 +696,7 @@
         const control = next || prev || dot;
         const gallery = galleryOf(control);
         if (!gallery) return;
+        hydrateImages(gallery);
         event.preventDefault();
         event.stopPropagation();
         const track = trackOf(gallery);
