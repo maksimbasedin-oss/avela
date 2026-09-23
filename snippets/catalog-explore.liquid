@@ -20,6 +20,11 @@
   <nav class="catalog-explore" aria-label="{{ 'collections.shop_by' | t }}">
     <p class="eyebrow">{% assign shop_by = 'collections.shop_by' | t %}{% render 'turkish-upper', text: shop_by %}</p>
     <ul class="catalog-explore__list" role="list">
+      <li>
+        <a class="catalog-explore__card catalog-explore__brand" href="{{ routes.root_url }}">
+          {% render 'brand-logo', class: 'catalog-explore__mark' %}
+        </a>
+      </li>
       {% for handle in catalog_handles %}
         {% assign catalog_collection = collections[handle] %}
         {% if catalog_collection != blank and catalog_collection.products_count > 0 %}
@@ -70,6 +75,15 @@
     background: var(--color-background);
     color: var(--color-foreground);
     text-decoration: none;
+  }
+
+  .catalog-explore__brand {
+    justify-content: center;
+  }
+
+  .catalog-explore__brand .brand-logo__image {
+    max-width: 5.75rem;
+    max-height: 3.6rem;
   }
 
   .catalog-explore .category-chips__icon {
