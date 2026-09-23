@@ -47,7 +47,8 @@
           aria-current="page"
         {% endif %}
       >
-        {{ 'general.view_collection' | t }}
+        {% assign view_label = 'general.view_collection' | t %}
+        {% render 'turkish-upper', text: view_label %}
       </a>
     </li>
   {% endif %}
