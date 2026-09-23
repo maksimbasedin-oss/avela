@@ -2,12 +2,12 @@
   Türkçe büyük harf. i → İ, ı → I. CSS uppercase kullanma.
 
   @param {string} text - Metin
-  @param {string} [handle] - Kaynak handle
+  @param {string} [resource_handle] - Kaynak handle
   @example
   {% render 'turkish-upper', text: 'Yeni' %}
 {% enddoc %}
 {%- capture source -%}
-  {%- render 'storefront-title', text: text, handle: handle -%}
+  {%- render 'storefront-title', text: text, resource_handle: resource_handle -%}
 {%- endcapture -%}
 {%- liquid
   assign source = source | strip

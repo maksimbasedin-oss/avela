@@ -21,7 +21,7 @@
             <a class="collection-card" href="{{ collection.url }}">
               {% if collection.featured_image %}
                 {% capture card_title %}
-                  {% render 'storefront-title', text: collection.title, handle: collection.handle %}
+                  {% render 'storefront-title', text: collection.title, resource_handle: collection.handle %}
                 {% endcapture %}
                 {% assign card_title = card_title | strip %}
                 {% assign card_alt = collection.featured_image.alt | default: card_title %}

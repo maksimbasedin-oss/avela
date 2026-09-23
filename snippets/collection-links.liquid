@@ -52,14 +52,14 @@
         {% assign related = collections[handle] %}
         {% if related != blank and related.products_count > 0 %}
           <li>
-            <a href="{{ related.url }}">{% render 'turkish-upper', text: related.title, handle: related.handle %}</a>
+            <a href="{{ related.url }}">{% render 'turkish-upper', text: related.title, resource_handle: related.handle %}</a>
           </li>
           {% assign shown = shown | plus: 1 %}
         {% endif %}
       {% endfor %}
       {% if blogs['stil-rehberi'] != blank %}
         <li>
-          <a href="{{ blogs['stil-rehberi'].url }}">{% render 'turkish-upper', text: blogs['stil-rehberi'].title, handle: blogs['stil-rehberi'].handle %}</a>
+          <a href="{{ blogs['stil-rehberi'].url }}">{% render 'turkish-upper', text: blogs['stil-rehberi'].title, resource_handle: blogs['stil-rehberi'].handle %}</a>
         </li>
       {% endif %}
     </ul>

@@ -202,7 +202,7 @@
                   <li>
                     <a href="{{ suggest.url }}">
                       {% capture suggest_title %}
-                        {% render 'storefront-title', text: suggest.title, handle: suggest.handle %}
+                        {% render 'storefront-title', text: suggest.title, resource_handle: suggest.handle %}
                       {% endcapture %}
                       {% render 'turkish-upper', text: suggest_title %}
                     </a>

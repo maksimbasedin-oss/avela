@@ -98,7 +98,7 @@
                   {% assign shop_collection = collections[handle] %}
                   {% if shop_collection != blank and shop_collection.products_count > 0 %}
                     <li>
-                      <a href="{{ shop_collection.url }}">{% render 'turkish-upper', text: shop_collection.title, handle: shop_collection.handle %}</a>
+                      <a href="{{ shop_collection.url }}">{% render 'turkish-upper', text: shop_collection.title, resource_handle: shop_collection.handle %}</a>
                     </li>
                   {% endif %}
                 {% endfor %}
@@ -139,7 +139,7 @@
             {% assign shop_collection = collections[handle] %}
             {% if shop_collection != blank and shop_collection.products_count > 0 %}
               <li>
-                <a href="{{ shop_collection.url }}">{% render 'turkish-upper', text: shop_collection.title, handle: shop_collection.handle %}</a>
+                <a href="{{ shop_collection.url }}">{% render 'turkish-upper', text: shop_collection.title, resource_handle: shop_collection.handle %}</a>
               </li>
             {% endif %}
           {% endfor %}

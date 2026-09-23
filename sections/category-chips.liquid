@@ -28,7 +28,7 @@
             <a class="category-chips__card" href="{{ block.settings.collection.url }}">
               {% render 'category-chip-icon', icon: block.settings.icon, handle: block.settings.collection.handle %}
               <span class="category-chips__copy">
-                <span class="category-chips__title">{% render 'turkish-upper', text: block.settings.collection.title, handle: block.settings.collection.handle %}</span>
+                <span class="category-chips__title">{% render 'turkish-upper', text: block.settings.collection.title, resource_handle: block.settings.collection.handle %}</span>
                 <span class="category-chips__count">{{ 'collections.product_count' | t: count: block.settings.collection.products_count }}</span>
               </span>
             </a>

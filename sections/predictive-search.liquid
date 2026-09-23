@@ -71,7 +71,7 @@
                 aria-selected="false"
               >
                 {% capture collection_title %}
-                  {% render 'storefront-title', text: collection.title, handle: collection.handle %}
+                  {% render 'storefront-title', text: collection.title, resource_handle: collection.handle %}
                 {% endcapture %}
                 {{ collection_title | strip | highlight: predictive_search.terms }}
               </a>

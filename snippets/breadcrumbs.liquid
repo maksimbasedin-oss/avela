@@ -15,11 +15,11 @@
   assign page_url = current_url | default: request.path
 %}
 {% capture crumb_current %}
-  {% render 'storefront-title', text: current_title, handle: current_handle %}
+  {% render 'storefront-title', text: current_title, resource_handle: current_handle %}
 {% endcapture %}
 {% assign crumb_current = crumb_current | strip %}
 {% capture crumb_parent %}
-  {% render 'storefront-title', text: parent_title, handle: parent_handle %}
+  {% render 'storefront-title', text: parent_title, resource_handle: parent_handle %}
 {% endcapture %}
 {% assign crumb_parent = crumb_parent | strip %}
 

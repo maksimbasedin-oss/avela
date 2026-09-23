@@ -1,6 +1,6 @@
 <article class="article-page">
   {% capture blog_title %}
-    {% render 'storefront-title', text: blog.title, handle: blog.handle %}
+    {% render 'storefront-title', text: blog.title, resource_handle: blog.handle %}
   {% endcapture %}
   {% assign blog_title = blog_title | strip %}
   {% render 'breadcrumbs',
@@ -12,7 +12,7 @@
   %}
 
   <header class="article-page__header">
-    <p class="eyebrow">{% render 'turkish-upper', text: blog_title, handle: blog.handle %}</p>
+    <p class="eyebrow">{% render 'turkish-upper', text: blog_title, resource_handle: blog.handle %}</p>
     <h1>{{ article.title }}</h1>
     {% assign date = article.published_at | time_tag: format: 'date' %}
     <p class="text-caption">{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>

@@ -29,7 +29,7 @@
               <span class="catalog-explore__copy">
                 <span class="catalog-explore__title">
                   {% capture catalog_title %}
-                    {% render 'storefront-title', text: catalog_collection.title, handle: catalog_collection.handle %}
+                    {% render 'storefront-title', text: catalog_collection.title, resource_handle: catalog_collection.handle %}
                   {% endcapture %}
                   {% render 'turkish-upper', text: catalog_title %}
                 </span>

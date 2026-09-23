@@ -33,7 +33,7 @@
               endif
               assign card_alt = card_image.alt | default: card_collection.title
               capture card_title
-                render 'storefront-title', text: card_collection.title, handle: card_collection.handle
+                render 'storefront-title', text: card_collection.title, resource_handle: card_collection.handle
               endcapture
               assign card_title = card_title | strip
               if card_alt == card_collection.title
@@ -63,7 +63,7 @@
                 <span class="collection-card__index">{{ card_index }}</span>
               </span>
               <span class="collection-card__meta">
-                <span class="collection-card__title">{% render 'turkish-upper', text: card_title, handle: card_collection.handle %}</span>
+                <span class="collection-card__title">{% render 'turkish-upper', text: card_title, resource_handle: card_collection.handle %}</span>
                 <span class="collection-card__cta">
                   {{ 'collections.product_count' | t: count: card_collection.products_count }}
                   <span class="collection-card__shop"> · {{ 'collections.shop_now' | t }}</span>

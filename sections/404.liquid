@@ -20,7 +20,7 @@
         {% assign error_collection = collections[handle] %}
         {% if error_collection != blank and error_collection.products_count > 0 %}
           <li>
-            <a href="{{ error_collection.url }}">{% render 'turkish-upper', text: error_collection.title, handle: error_collection.handle %}</a>
+            <a href="{{ error_collection.url }}">{% render 'turkish-upper', text: error_collection.title, resource_handle: error_collection.handle %}</a>
           </li>
         {% endif %}
       {% endfor %}

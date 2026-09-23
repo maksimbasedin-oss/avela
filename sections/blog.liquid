@@ -96,14 +96,14 @@
 
   <div class="blog-page">
     {% capture blog_title %}
-      {% render 'storefront-title', text: blog.title, handle: blog.handle %}
+      {% render 'storefront-title', text: blog.title, resource_handle: blog.handle %}
     {% endcapture %}
     {% assign blog_title = blog_title | strip %}
     {% render 'breadcrumbs', current_title: blog_title, current_url: blog.url, current_handle: blog.handle %}
 
     <header class="blog-page__header">
       <p class="eyebrow">{% render 'turkish-upper', text: guide_label %}</p>
-      <h1>{% render 'turkish-upper', text: blog_title, handle: blog.handle %}</h1>
+      <h1>{% render 'turkish-upper', text: blog_title, resource_handle: blog.handle %}</h1>
       {% if intro != blank %}
         <p class="blog-page__lede">{{ intro | escape }}</p>
       {% endif %}
