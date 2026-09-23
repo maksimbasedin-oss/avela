@@ -8,7 +8,33 @@
 {% enddoc %}
 
 {% if menu != blank %}
+  {% liquid
+    assign catalog = collections['all']
+    assign catalog_listed = false
+    if catalog != blank
+      for link in menu.links
+        assign link_path = link.url | downcase
+        if link_path contains '/collections/all' or link_path contains '/collections/tum-urunler'
+          assign catalog_listed = true
+        endif
+      endfor
+    endif
+  %}
   <ul class="header-menu{% if mobile %} header-menu--mobile{% endif %}">
+    {% if catalog != blank and catalog_listed == false %}
+      <li class="header-menu__item">
+        <a
+          class="header-menu__link"
+          href="{{ catalog.url }}"
+          {% if request.page_type == 'collection' and collection.handle == 'all' %}
+            aria-current="page"
+          {% endif %}
+        >
+          {% assign catalog_label = 'collections.all' | t %}
+          {% render 'turkish-upper', text: catalog_label %}
+        </a>
+      </li>
+    {% endif %}
     {% for link in menu.links %}
       {% liquid
         assign child_count = 0

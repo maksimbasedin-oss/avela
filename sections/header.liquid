@@ -182,7 +182,7 @@
         <p class="header-search__lede">{{ 'search.lede' | t }}</p>
         {% render 'predictive-search', input_id: 'HeaderSearch', results_id: 'PredictiveResultsHeader' %}
         {% liquid
-          assign search_handles = 'yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
+          assign search_handles = 'all,yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
           assign search_suggest_count = 0
           for handle in search_handles
             assign suggest = collections[handle]

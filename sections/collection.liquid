@@ -22,8 +22,14 @@
       </p>
       {% if collection.description != blank %}
         <div class="rte collection__intro">{{ collection.description }}</div>
+      {% elsif collection.handle == 'all' %}
+        <div class="rte collection__intro">{{ 'collections.all_intro' | t }}</div>
       {% endif %}
     </header>
+
+    {% if collection.handle == 'all' %}
+      {% render 'catalog-explore' %}
+    {% endif %}
 
     {% if has_filters %}
       <input id="CollectionFilters" class="visually-hidden collection-filters-check" type="checkbox">
@@ -406,46 +412,44 @@
 {% endpaginate %}
 
 {% stylesheet %}
-  .breadcrumbs__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    list-style: none;
-    padding: 0;
+  .breadcrumbs {
     margin: 0 0 var(--space-md);
-    font-size: 0.8125rem;
-    color: var(--color-secondary);
-  }
-
-  .breadcrumbs__list li:not(:last-child)::after {
-    content: '/';
-    margin-left: var(--space-xs);
-  }
-
-  .breadcrumbs a {
-    color: inherit;
-    text-decoration: none;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .breadcrumbs__list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    align-items: center;
+    gap: 0.55rem;
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-md);
-    font-size: 0.8125rem;
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
     color: var(--color-secondary);
   }
 
-  .breadcrumbs__list li:not(:last-child)::after {
-    content: '/';
-    margin-left: var(--space-xs);
+  .breadcrumbs__sep {
+    display: block;
+    width: 0.7rem;
+    height: 1px;
+    background: var(--color-foreground);
   }
 
-  .breadcrumbs a {
+  .breadcrumbs__link {
     color: inherit;
     text-decoration: none;
+  }
+
+  .breadcrumbs__link:hover {
+    color: var(--color-foreground);
+  }
+
+  .breadcrumbs__current {
+    color: var(--color-foreground);
+    font-weight: 600;
   }
 
   .collection__header {

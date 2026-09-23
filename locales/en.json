@@ -294,6 +294,8 @@
     "filter_size": "Beden",
     "filter_type": "Ürün tipi",
     "filter_vendor": "Marka",
+    "all": "Tüm ürünler",
+    "all_intro": "Elbise, takım, tunik, pantolon, dış giyim, abiye ve şal. Tüm Avela parçaları bir arada; kategoriden gir veya aşağıdan bedenini seç.",
     "jile_yelek": "Jile ve yelek",
     "product_count": {
       "one": "{{ count }} ürün",

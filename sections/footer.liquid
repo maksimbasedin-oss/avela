@@ -34,7 +34,7 @@
     endif
   endif
 
-  assign shop_fallback = 'yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
+  assign shop_fallback = 'all,yeni-sezon,tesettur-elbise,tesettur-takim,tesettur-tunik,tesettur-pantolon,dis-giyim,sal-esarp,indirim' | split: ','
   assign menu_blocks = 0
   for block in section.blocks
     if block.type == 'menu'

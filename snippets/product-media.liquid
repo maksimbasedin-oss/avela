@@ -41,10 +41,10 @@
                 >
                   {{
                     media
-                    | image_url: width: 1600
+                    | image_url: width: 960
                     | image_tag:
-                      widths: '600, 900, 1200, 1600',
-                      sizes: '(min-width: 750px) 50vw, 100vw',
+                      widths: '360, 540, 720, 960',
+                      sizes: '(min-width: 750px) 34vw, 100vw',
                       loading: media_loading,
                       fetchpriority: media_priority,
                       alt: media_alt
@@ -76,13 +76,19 @@
     {% if product.media.size > 1 %}
       <ul class="product-gallery__thumbs">
         {% for media in product.media %}
+          {% liquid
+            assign thumb_index = forloop.index | prepend: '00' | slice: -2, 2
+          %}
           <li>
             <a href="#Media-{{ media.id }}" class="product-gallery__thumb" data-gallery-thumb="{{ forloop.index0 }}">
-              {{
-                media.preview_image
-                | image_url: width: 160
-                | image_tag: loading: 'lazy', alt: media.alt
-              }}
+              <span class="product-gallery__thumb-index">{{ thumb_index }}</span>
+              <span class="product-gallery__thumb-frame">
+                {{
+                  media.preview_image
+                  | image_url: width: 160
+                  | image_tag: loading: 'lazy', alt: media.alt
+                }}
+              </span>
             </a>
           </li>
         {% endfor %}
@@ -217,24 +223,55 @@
 
   .product-gallery__thumbs {
     display: none;
-    gap: var(--space-xs);
+    gap: 0.7rem;
     list-style: none;
-    padding: var(--space-sm) 0 0;
-    margin: 0;
+    padding: 0.8rem 0 0;
+    margin: 0.85rem 0 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-top: 1px solid var(--color-foreground);
+  }
+
+  .product-gallery__thumbs::-webkit-scrollbar {
+    display: none;
   }
 
   .product-gallery__thumb {
-    display: block;
-    border: 1px solid transparent;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.35rem;
+    color: var(--color-secondary);
+    text-decoration: none;
   }
 
-  .product-gallery__thumb.is-active {
-    border-color: var(--color-foreground);
+  .product-gallery__thumb-index {
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    line-height: 1;
+  }
+
+  .product-gallery__thumb-frame {
+    display: block;
+    padding: 0.15rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .product-gallery__thumb.is-active .product-gallery__thumb-index {
+    align-self: flex-start;
+    padding: 0.2rem 0.35rem;
+    background: #3c3c3c;
+    color: #fff;
+  }
+
+  .product-gallery__thumb.is-active .product-gallery__thumb-frame {
+    border-color: #3c3c3c;
   }
 
   .product-gallery__thumb img {
-    width: 4.5rem;
-    height: 6rem;
+    width: 3.15rem;
+    height: 4.4rem;
     object-fit: cover;
     display: block;
   }
@@ -302,7 +339,7 @@
   @media screen and (min-width: 750px) {
     .product-gallery__thumbs {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
   }
 {% endstylesheet %}
