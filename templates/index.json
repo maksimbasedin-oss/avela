@@ -14,11 +14,11 @@
       "settings": {
         "image": "shopify://shop_images/avela-demo-hero.png",
         "eyebrow": "Yeni sezon",
-        "heading": "Tesettür elbise, takım, dış giyim.",
-        "text": "<p>Beğen, bedenini seç, sepete at.</p>",
+        "heading": "Tesettür elbise|Takım dış giyim",
+        "text": "",
         "trust_text": "Yıl boyu ücretsiz kargo Avela'da",
-        "button_label": "Alışverişe başla",
-        "button_link": "shopify://collections/tesettur-elbise",
+        "button_label": "Tüm ürünleri gör",
+        "button_link": "shopify://collections/all",
         "secondary_label": "Çok satanlar",
         "secondary_link": "shopify://collections/cok-satanlar"
       }
