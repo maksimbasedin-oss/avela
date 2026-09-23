@@ -27,6 +27,8 @@
       assign key = 'indirim'
     elsif handle_key contains 'dis-giyim' or handle_key contains 'ferace' or handle_key contains 'kap' or handle_key contains 'pardesu' or handle_key contains 'trenckot' or handle_key contains 'kaban'
       assign key = 'dis-giyim'
+    elsif handle_key contains 'yeni'
+      assign key = 'yeni'
     else
       assign key = 'collection'
     endif
@@ -51,6 +53,8 @@
       <img src="{{ 'icon-cat-abiye.png' | asset_url }}" alt="" width="24" height="24">
     {%- when 'indirim' -%}
       <img src="{{ 'icon-cat-indirim.png' | asset_url }}" alt="" width="24" height="24">
+    {%- when 'yeni' -%}
+      <img src="{{ 'icon-cat-yeni.png' | asset_url }}" alt="" width="24" height="24">
     {%- else -%}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M8.2 4.4h7.6L17.4 8.2l.6 12.2H6l.6-12.2z"/>
