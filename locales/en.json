@@ -383,7 +383,16 @@
     "related": "Benzer ürünler",
     "recently_viewed": "Son baktıkların",
     "faq": "Sıkça sorulanlar",
-    "low_stock": "Son {{ count }} adet"
+    "low_stock": "Son {{ count }} adet",
+    "tax_included": "KDV dahil",
+    "save_percent": "%{{ percent }} indirim",
+    "size_help": "Beden rehberi",
+    "perk_free_shipping": "{{ amount }} ₺ üzeri ücretsiz kargo",
+    "perk_dispatch": "1–2 iş gününde kargoda",
+    "perk_returns": "14 gün içinde kolay iade",
+    "perk_payment": "iyzico ile güvenli ödeme",
+    "whatsapp_help": "Beden konusunda kararsız mısınız? WhatsApp'tan sorun",
+    "whatsapp_message": "Merhaba, {{ product }} için beden danışmak istiyorum: {{ url }}"
   },
   "search": {
     "title": "Arama",

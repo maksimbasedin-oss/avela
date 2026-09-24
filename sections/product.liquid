@@ -23,9 +23,37 @@
     {% render 'product-media', product: product %}
 
     <div class="product__info">
-      <h1>{% render 'turkish-upper', text: product.title %}</h1>
-      <div class="product__price" data-price>
-        {% render 'price', price: current_variant.price, compare_at_price: current_variant.compare_at_price %}
+      <div class="product__head">
+        {% if parent_collection %}
+          <a class="eyebrow product__kicker" href="{{ parent_collection.url }}">
+            {%- render 'turkish-upper', text: parent_collection.title, resource_handle: parent_collection.handle -%}
+          </a>
+        {% endif %}
+        <h1>{% render 'turkish-upper', text: product.title %}</h1>
+      </div>
+
+      {% liquid
+        assign save_percent = 0
+        if current_variant.compare_at_price > current_variant.price
+          assign save_amount = current_variant.compare_at_price | minus: current_variant.price | times: 100
+          assign save_percent = save_amount | divided_by: current_variant.compare_at_price
+        endif
+      %}
+      <div class="product__price-row">
+        <div class="product__price" data-price>
+          {% render 'price', price: current_variant.price, compare_at_price: current_variant.compare_at_price %}
+        </div>
+        <span
+          class="product__save"
+          data-save
+          data-template="{{ 'products.save_percent' | t: percent: '__PERCENT__' | escape }}"
+          {% if save_percent == 0 %}
+            hidden
+          {% endif %}
+        >
+          {{- 'products.save_percent' | t: percent: save_percent -}}
+        </span>
+        <span class="product__tax">{{ 'products.tax_included' | t }}</span>
       </div>
 
       {% if current_variant.inventory_management and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= 5 %}
@@ -37,15 +65,25 @@
           {% for option in product.options_with_values %}
             {% assign option_index = option.position | minus: 1 %}
             {% assign selected_option = current_variant.options[option_index] %}
+            {% liquid
+              assign is_color = false
+              if option.name == 'Renk' or option.name == 'Color' or option.name == 'Colour'
+                assign is_color = true
+              endif
+              assign is_size = false
+              if option.name == 'Beden' or option.name == 'Size'
+                assign is_size = true
+              endif
+            %}
             <fieldset class="product__option">
-              <legend>{{ option.name }}</legend>
+              <legend class="product__option-head">
+                <span class="eyebrow">{% render 'turkish-upper', text: option.name %}</span>
+                <span class="product__option-selected" data-selected-value="{{ option.position }}">{{ selected_option }}</span>
+                {% if is_size and pages['beden-rehberi'] != blank %}
+                  <a class="product__size-help" href="{{ pages['beden-rehberi'].url }}">{{ 'products.size_help' | t }}</a>
+                {% endif %}
+              </legend>
               <div class="product__option-values">
-                {% liquid
-                  assign is_color = false
-                  if option.name == 'Renk' or option.name == 'Color' or option.name == 'Colour'
-                    assign is_color = true
-                  endif
-                %}
                 {% for value in option.values %}
                   {% liquid
                     assign option_id = 'option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index
@@ -97,8 +135,9 @@
           {% endfor %}
         </select>
 
+        <div class="product__buy-row">
         <div class="product__quantity" data-quantity-wrap{% unless current_variant.available %} hidden{% endunless %}>
-          <label class="field__label" for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+          <label class="visually-hidden" for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
           <div class="product__qty-box">
             <input
               id="Quantity-{{ section.id }}"
@@ -126,6 +165,7 @@
         >
           {{ 'products.add_to_cart' | t }}
         </button>
+        </div>
 
         <div data-dynamic-checkout{% unless current_variant.available %} hidden{% endunless %}>
           {{ form | payment_button }}
@@ -133,6 +173,45 @@
       {% endform %}
 
       {% render 'stock-request', product: product, variant: current_variant %}
+
+      {% liquid
+        assign free_amount = settings.free_shipping_threshold | plus: 0
+        if free_amount >= 1000
+          assign free_thousands = free_amount | divided_by: 1000
+          assign free_rest = free_amount | modulo: 1000 | plus: 1000 | append: '' | slice: 1, 3
+          assign free_amount = free_thousands | append: '.' | append: free_rest
+        endif
+      %}
+      <ul class="product__perks" role="list">
+        {% if settings.free_shipping_threshold != blank %}
+          <li class="product__perk">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.75 6.75h11v9.5h-11zM13.75 9.75h4l2.75 3v3.5h-6.75z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="6.5" cy="17.25" r="1.6" fill="var(--color-background)" stroke="currentColor" stroke-width="1.3"/><circle cx="17" cy="17.25" r="1.6" fill="var(--color-background)" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>{{ 'products.perk_free_shipping' | t: amount: free_amount }}</span>
+          </li>
+        {% endif %}
+        <li class="product__perk">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>{{ 'products.perk_dispatch' | t }}</span>
+        </li>
+        <li class="product__perk">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.75 9.25h10.5a4 4 0 0 1 0 8H9.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 5.75-3.25 3.5L8 12.75" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>{{ 'products.perk_returns' | t }}</span>
+        </li>
+        <li class="product__perk">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5.25" y="10.25" width="13.5" height="9.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8.25 10.25V7.75a3.75 3.75 0 0 1 7.5 0v2.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span>{{ 'products.perk_payment' | t }}</span>
+        </li>
+      </ul>
+
+      {% liquid
+        assign help_whatsapp = settings.whatsapp_url | default: 'https://wa.me/905364984727'
+        assign help_product_url = request.origin | append: product.url
+        assign help_message = 'products.whatsapp_message' | t: product: product.title, url: help_product_url
+      %}
+      <a class="product__help" href="{{ help_whatsapp }}?text={{ help_message | url_encode }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.47 14.38c-.28-.14-1.67-.82-1.93-.92-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.39a8.4 8.4 0 0 1-1.55-1.92c-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.87-2.11-.23-.56-.46-.48-.64-.49h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.43 1.02 2.82 1.17 3.02c.14.19 2.01 3.06 4.86 4.29 1.8.78 2.17.79 2.95.67.45-.07 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.11-.25-.18-.53-.32ZM12.04 21.8a9.8 9.8 0 0 1-4.97-1.36l-.36-.21-3.69.97.99-3.6-.23-.37a9.8 9.8 0 1 1 8.26 4.57Zm0-17.96a8.16 8.16 0 0 0-6.9 12.47l.14.23-.59 2.15 2.21-.58.22.13a8.16 8.16 0 1 0 4.92-14.4Z"/></svg>
+        <span>{{ 'products.whatsapp_help' | t }}</span>
+      </a>
     </div>
   </div>
 
@@ -209,6 +288,9 @@
               {% endif %}
               {% if settings.trust_payment != blank %}
                 <p>{{ settings.trust_payment | escape }}</p>
+              {% endif %}
+              {% if pages['kargo-ve-iade'] != blank %}
+                <p><a href="{{ pages['kargo-ve-iade'].url }}">{{ 'products.shipping_link' | t }}</a></p>
               {% endif %}
             </div>
           </details>
@@ -314,15 +396,169 @@
     margin-top: var(--space-xl);
   }
 
+  .product__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .product__kicker {
+    color: var(--color-secondary);
+    text-decoration: none;
+    width: max-content;
+  }
+
+  .product__kicker:hover {
+    color: var(--color-foreground);
+  }
+
   .product__info h1 {
     font-size: clamp(1.7rem, 4vw, 2.6rem);
     max-width: 16ch;
+    margin: 0;
   }
 
-  .product__price {
-    font-size: 1.15rem;
-    padding-bottom: var(--space-sm);
+  .product__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-xs) var(--space-sm);
+    padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .product__price .price {
+    gap: var(--space-sm);
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  .product__price .price__compare {
+    font-family: var(--font-primary--family);
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+
+  .product__save {
+    align-self: center;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid var(--color-foreground);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .product__save[hidden],
+  .product__buy-row [hidden] {
+    display: none;
+  }
+
+  .product__tax {
+    margin-left: auto;
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .product__option-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    width: 100%;
+    padding: 0;
+  }
+
+  .product__option-head .eyebrow {
+    margin: 0;
+  }
+
+  .product__option-selected {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+  }
+
+  .product__option-selected::before {
+    content: '·';
+    margin-right: var(--space-xs);
+  }
+
+  .product__size-help {
+    margin-left: auto;
+    color: var(--color-foreground);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
+  }
+
+  .product__buy-row {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-xs);
+  }
+
+  .product__buy-row .product__add {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .product__buy-row .product__qty-box {
+    height: 100%;
+  }
+
+  .product__perks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--color-foreground);
+    background: var(--color-foreground);
+  }
+
+  .product__perk {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    background: var(--color-background);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  .product__perk:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .product__perk svg {
+    flex: none;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .product__help {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    width: max-content;
+    max-width: 100%;
+    color: var(--color-foreground);
+    font-size: 0.8125rem;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
+  }
+
+  .product__help svg {
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .product__form {
@@ -621,7 +857,10 @@
     .product__info {
       position: sticky;
       top: var(--sticky-offset);
-      justify-content: space-between;
+    }
+
+    .product__perks {
+      margin-top: auto;
     }
 
     .product__related-grid {
@@ -705,6 +944,17 @@
             }
             this.price.classList.toggle('price--sale', Boolean(compare));
           }
+          const save = this.querySelector('[data-save]');
+          if (save) {
+            const regular = Number(variant.compare_at_price || 0);
+            const percent = regular > variant.price ? Math.floor(((regular - variant.price) * 100) / regular) : 0;
+            save.hidden = percent === 0;
+            if (percent) save.textContent = (save.dataset.template || '').replace('__PERCENT__', percent);
+          }
+          this.querySelectorAll('[data-selected-value]').forEach((label) => {
+            const value = variant.options[Number(label.dataset.selectedValue) - 1];
+            if (value) label.textContent = value;
+          });
           const stock = this.querySelector('[data-stock]');
           if (stock) {
             const qty = Number(variant.inventory_quantity || 0);
