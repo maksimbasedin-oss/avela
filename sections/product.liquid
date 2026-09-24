@@ -43,15 +43,8 @@
         <div class="product__price" data-price>
           {% render 'price', price: current_variant.price, compare_at_price: current_variant.compare_at_price %}
         </div>
-        <span
-          class="product__save"
-          data-save
-          data-template="{{ 'products.save_percent' | t: percent: '__PERCENT__' | escape }}"
-          {% if save_percent == 0 %}
-            hidden
-          {% endif %}
-        >
-          {{- 'products.save_percent' | t: percent: save_percent -}}
+        <span class="product__save" data-save{% if save_percent == 0 %} hidden{% endif %}>
+          %<span data-save-value>{{ save_percent }}</span> {{ 'products.save_label' | t -}}
         </span>
         <span class="product__tax">{{ 'products.tax_included' | t }}</span>
       </div>
@@ -949,7 +942,8 @@
             const regular = Number(variant.compare_at_price || 0);
             const percent = regular > variant.price ? Math.floor(((regular - variant.price) * 100) / regular) : 0;
             save.hidden = percent === 0;
-            if (percent) save.textContent = (save.dataset.template || '').replace('__PERCENT__', percent);
+            const saveValue = save.querySelector('[data-save-value]');
+            if (percent && saveValue) saveValue.textContent = String(percent);
           }
           this.querySelectorAll('[data-selected-value]').forEach((label) => {
             const value = variant.options[Number(label.dataset.selectedValue) - 1];

@@ -385,7 +385,7 @@
     "faq": "Sıkça sorulanlar",
     "low_stock": "Son {{ count }} adet",
     "tax_included": "KDV dahil",
-    "save_percent": "%{{ percent }} indirim",
+    "save_label": "indirim",
     "size_help": "Beden rehberi",
     "perk_free_shipping": "{{ amount }} ₺ üzeri ücretsiz kargo",
     "perk_dispatch": "1–2 iş gününde kargoda",
