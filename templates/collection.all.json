@@ -12,7 +12,7 @@
     "main": {
       "type": "collection",
       "settings": {
-        "products_per_page": 12,
+        "products_per_page": 24,
         "columns": "3",
         "seo_content": ""
       },

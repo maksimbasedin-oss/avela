@@ -29,16 +29,73 @@
         "heading": "Kategoriye göre"
       },
       "blocks": {
-        "chip-1": { "type": "collection", "settings": { "collection": "tesettur-elbise", "icon": "elbise" } },
-        "chip-2": { "type": "collection", "settings": { "collection": "tesettur-takim", "icon": "takim" } },
-        "chip-3": { "type": "collection", "settings": { "collection": "tesettur-tunik", "icon": "tunik" } },
-        "chip-4": { "type": "collection", "settings": { "collection": "tesettur-pantolon", "icon": "pantolon" } },
-        "chip-5": { "type": "collection", "settings": { "collection": "dis-giyim", "icon": "dis-giyim" } },
-        "chip-6": { "type": "collection", "settings": { "collection": "tesettur-abiye", "icon": "abiye" } },
-        "chip-7": { "type": "collection", "settings": { "collection": "sal-esarp", "icon": "sal" } },
-        "chip-8": { "type": "collection", "settings": { "collection": "indirim", "icon": "indirim" } }
+        "chip-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-elbise",
+            "icon": "elbise"
+          }
+        },
+        "chip-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-takim",
+            "icon": "takim"
+          }
+        },
+        "chip-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-tunik",
+            "icon": "tunik"
+          }
+        },
+        "chip-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-pantolon",
+            "icon": "pantolon"
+          }
+        },
+        "chip-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "dis-giyim",
+            "icon": "dis-giyim"
+          }
+        },
+        "chip-6": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-abiye",
+            "icon": "abiye"
+          }
+        },
+        "chip-7": {
+          "type": "collection",
+          "settings": {
+            "collection": "sal-esarp",
+            "icon": "sal"
+          }
+        },
+        "chip-8": {
+          "type": "collection",
+          "settings": {
+            "collection": "indirim",
+            "icon": "indirim"
+          }
+        }
       },
-      "block_order": ["chip-1", "chip-2", "chip-3", "chip-4", "chip-5", "chip-6", "chip-7", "chip-8"]
+      "block_order": [
+        "chip-1",
+        "chip-2",
+        "chip-3",
+        "chip-4",
+        "chip-5",
+        "chip-6",
+        "chip-7",
+        "chip-8"
+      ]
     },
     "bestsellers": {
       "type": "featured-collection",
@@ -51,16 +108,65 @@
         "band": "paper"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "relax-fit-aerobin-tesettur-elbise" } },
-        "p2": { "type": "product", "settings": { "product": "minimal-yuvarlak-yaka-tesettur-tunik" } },
-        "p3": { "type": "product", "settings": { "product": "regular-fit-krep-tesettur-takim" } },
-        "p4": { "type": "product", "settings": { "product": "bol-paca-krep-tesettur-pantolon" } },
-        "p5": { "type": "product", "settings": { "product": "klasik-dugmeli-tesettur-ferace" } },
-        "p6": { "type": "product", "settings": { "product": "klasik-belden-oturan-tesettur-trenckot" } },
-        "p7": { "type": "product", "settings": { "product": "ince-pamuk-tesettur-esarp" } },
-        "p8": { "type": "product", "settings": { "product": "soft-krep-tesettur-sal" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "relax-fit-aerobin-tesettur-elbise"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-yuvarlak-yaka-tesettur-tunik"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "regular-fit-krep-tesettur-takim"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "bol-paca-krep-tesettur-pantolon"
+          }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "product": "klasik-dugmeli-tesettur-ferace"
+          }
+        },
+        "p6": {
+          "type": "product",
+          "settings": {
+            "product": "klasik-belden-oturan-tesettur-trenckot"
+          }
+        },
+        "p7": {
+          "type": "product",
+          "settings": {
+            "product": "ince-pamuk-tesettur-esarp"
+          }
+        },
+        "p8": {
+          "type": "product",
+          "settings": {
+            "product": "soft-krep-tesettur-sal"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ]
     },
     "categories": {
       "type": "collection-list",
@@ -68,16 +174,65 @@
         "heading": "Kategoriler"
       },
       "blocks": {
-        "cat-1": { "type": "collection", "settings": { "collection": "tesettur-elbise" } },
-        "cat-2": { "type": "collection", "settings": { "collection": "tesettur-takim" } },
-        "cat-3": { "type": "collection", "settings": { "collection": "tesettur-tunik" } },
-        "cat-4": { "type": "collection", "settings": { "collection": "tesettur-pantolon" } },
-        "cat-5": { "type": "collection", "settings": { "collection": "dis-giyim" } },
-        "cat-6": { "type": "collection", "settings": { "collection": "sal-esarp" } },
-        "cat-7": { "type": "collection", "settings": { "collection": "tesettur-abiye" } },
-        "cat-8": { "type": "collection", "settings": { "collection": "indirim" } }
+        "cat-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-elbise"
+          }
+        },
+        "cat-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-takim"
+          }
+        },
+        "cat-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-tunik"
+          }
+        },
+        "cat-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-pantolon"
+          }
+        },
+        "cat-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "dis-giyim"
+          }
+        },
+        "cat-6": {
+          "type": "collection",
+          "settings": {
+            "collection": "sal-esarp"
+          }
+        },
+        "cat-7": {
+          "type": "collection",
+          "settings": {
+            "collection": "tesettur-abiye"
+          }
+        },
+        "cat-8": {
+          "type": "collection",
+          "settings": {
+            "collection": "indirim"
+          }
+        }
       },
-      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4", "cat-5", "cat-6", "cat-7", "cat-8"]
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3",
+        "cat-4",
+        "cat-5",
+        "cat-6",
+        "cat-7",
+        "cat-8"
+      ]
     },
     "new-season": {
       "type": "featured-collection",
@@ -90,16 +245,65 @@
         "band": "ash"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "minimal-kemer-detayli-krep-tesettur-elbise" } },
-        "p2": { "type": "product", "settings": { "product": "relax-fit-aerobin-tesettur-tunik" } },
-        "p3": { "type": "product", "settings": { "product": "modern-palazzo-pantolonlu-tesettur-takim" } },
-        "p4": { "type": "product", "settings": { "product": "minimal-fermuarli-ferace" } },
-        "p5": { "type": "product", "settings": { "product": "soft-dokulu-oversize-tesettur-kap" } },
-        "p6": { "type": "product", "settings": { "product": "zarif-saten-tesettur-abiye" } },
-        "p7": { "type": "product", "settings": { "product": "soft-krep-tesettur-sal" } },
-        "p8": { "type": "product", "settings": { "product": "minimal-dugmeli-tesettur-jile" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-kemer-detayli-krep-tesettur-elbise"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "relax-fit-aerobin-tesettur-tunik"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "modern-palazzo-pantolonlu-tesettur-takim"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-fermuarli-ferace"
+          }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "product": "soft-dokulu-oversize-tesettur-kap"
+          }
+        },
+        "p6": {
+          "type": "product",
+          "settings": {
+            "product": "zarif-saten-tesettur-abiye"
+          }
+        },
+        "p7": {
+          "type": "product",
+          "settings": {
+            "product": "soft-krep-tesettur-sal"
+          }
+        },
+        "p8": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-dugmeli-tesettur-jile"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ]
     },
     "dresses": {
       "type": "featured-collection",
@@ -112,16 +316,65 @@
         "band": "paper"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "minimal-kemer-detayli-krep-tesettur-elbise" } },
-        "p2": { "type": "product", "settings": { "product": "relax-fit-aerobin-tesettur-elbise" } },
-        "p3": { "type": "product", "settings": { "product": "asimetrik-kesim-viskon-tesettur-elbise" } },
-        "p4": { "type": "product", "settings": { "product": "duz-kesim-uzun-kollu-tesettur-elbise" } },
-        "p5": { "type": "product", "settings": { "product": "oversize-cepli-keten-gorunumlu-tesettur-elbise" } },
-        "p6": { "type": "product", "settings": { "product": "zarif-saten-tesettur-abiye" } },
-        "p7": { "type": "product", "settings": { "product": "drapeli-uzun-tesettur-abiye" } },
-        "p8": { "type": "product", "settings": { "product": "relax-fit-aerobin-tesettur-tunik" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-kemer-detayli-krep-tesettur-elbise"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "relax-fit-aerobin-tesettur-elbise"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "asimetrik-kesim-viskon-tesettur-elbise"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "duz-kesim-uzun-kollu-tesettur-elbise"
+          }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "product": "oversize-cepli-keten-gorunumlu-tesettur-elbise"
+          }
+        },
+        "p6": {
+          "type": "product",
+          "settings": {
+            "product": "zarif-saten-tesettur-abiye"
+          }
+        },
+        "p7": {
+          "type": "product",
+          "settings": {
+            "product": "drapeli-uzun-tesettur-abiye"
+          }
+        },
+        "p8": {
+          "type": "product",
+          "settings": {
+            "product": "relax-fit-aerobin-tesettur-tunik"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ]
     },
     "sets": {
       "type": "featured-collection",
@@ -134,12 +387,37 @@
         "band": "ash"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "modern-palazzo-pantolonlu-tesettur-takim" } },
-        "p2": { "type": "product", "settings": { "product": "regular-fit-krep-tesettur-takim" } },
-        "p3": { "type": "product", "settings": { "product": "soft-dokulu-gunluk-tesettur-takim" } },
-        "p4": { "type": "product", "settings": { "product": "oversize-gomlek-pantolon-tesettur-takim" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "modern-palazzo-pantolonlu-tesettur-takim"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "regular-fit-krep-tesettur-takim"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "soft-dokulu-gunluk-tesettur-takim"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "oversize-gomlek-pantolon-tesettur-takim"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
     },
     "outerwear": {
       "type": "featured-collection",
@@ -152,16 +430,65 @@
         "band": "paper"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "minimal-fermuarli-ferace" } },
-        "p2": { "type": "product", "settings": { "product": "klasik-dugmeli-tesettur-ferace" } },
-        "p3": { "type": "product", "settings": { "product": "soft-dokulu-oversize-tesettur-kap" } },
-        "p4": { "type": "product", "settings": { "product": "klasik-belden-oturan-tesettur-trenckot" } },
-        "p5": { "type": "product", "settings": { "product": "duz-kesim-uzun-tesettur-pardesu" } },
-        "p6": { "type": "product", "settings": { "product": "kemerli-midi-tesettur-kap" } },
-        "p7": { "type": "product", "settings": { "product": "hafif-dokulu-yazlik-tesettur-ferace" } },
-        "p8": { "type": "product", "settings": { "product": "oversize-yun-gorunumlu-tesettur-kaban" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "minimal-fermuarli-ferace"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "klasik-dugmeli-tesettur-ferace"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "soft-dokulu-oversize-tesettur-kap"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "klasik-belden-oturan-tesettur-trenckot"
+          }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "product": "duz-kesim-uzun-tesettur-pardesu"
+          }
+        },
+        "p6": {
+          "type": "product",
+          "settings": {
+            "product": "kemerli-midi-tesettur-kap"
+          }
+        },
+        "p7": {
+          "type": "product",
+          "settings": {
+            "product": "hafif-dokulu-yazlik-tesettur-ferace"
+          }
+        },
+        "p8": {
+          "type": "product",
+          "settings": {
+            "product": "oversize-yun-gorunumlu-tesettur-kaban"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ]
     },
     "sale": {
       "type": "featured-collection",
@@ -174,12 +501,37 @@
         "band": "ash"
       },
       "blocks": {
-        "p1": { "type": "product", "settings": { "product": "asimetrik-kesim-viskon-tesettur-elbise" } },
-        "p2": { "type": "product", "settings": { "product": "soft-dokulu-gunluk-tesettur-takim" } },
-        "p3": { "type": "product", "settings": { "product": "yuksek-bel-palazzo-tesettur-pantolon" } },
-        "p4": { "type": "product", "settings": { "product": "oversize-cepli-tesettur-yelek" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "asimetrik-kesim-viskon-tesettur-elbise"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "soft-dokulu-gunluk-tesettur-takim"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "yuksek-bel-palazzo-tesettur-pantolon"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "oversize-cepli-tesettur-yelek"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
     },
     "trust": {
       "type": "trust-bar",
@@ -189,9 +541,9 @@
       "type": "editorial",
       "settings": {
         "image": "shopify://shop_images/avela-demo-editorial.png",
-        "eyebrow": "Hızlı karar",
-        "heading": "Tek parça yeter.",
-        "text": "<p>Her kumaşın bir duruşu var. Elbise veya takım; hikâye üründe, seçim sende.</p>",
+        "eyebrow": "Kolay kombin",
+        "heading": "Tek parça, tam görünüm.",
+        "text": "<p>Elbise ve takımlarımız, üzerine fazladan bir şey düşünmeden giyebilmeniz için tasarlandı. Bir şal ve sevdiğiniz ayakkabıyla kombininiz hazır.</p>",
         "button_label": "Elbiseleri gör",
         "button_link": "shopify://collections/tesettur-elbise",
         "button_style": "primary"
@@ -202,12 +554,12 @@
       "settings": {
         "image": "shopify://shop_images/avela-demo-editorial.png",
         "eyebrow": "İndirim",
-        "heading": "Seçili parçalar.",
-        "text": "<p>Seçili parçalarda indirimli fiyat. Kumaş ve kalıp üründe.</p>",
+        "heading": "Seçili parçalarda indirim.",
+        "text": "<p>Sezonun sevilen elbise, takım ve pantolonları indirimli fiyatlarla. Beden ve renk seçenekleri stokla sınırlıdır.</p>",
         "button_label": "İndirimleri gör",
         "button_link": "shopify://collections/indirim",
-        "newsletter_heading": "Yeni sezon notları",
-        "newsletter_text": "<p>Koleksiyon ve bakım notları. Spam yok.</p>"
+        "newsletter_heading": "Yeniliklerden ilk siz haberdar olun",
+        "newsletter_text": "<p>Yeni koleksiyonlar, indirimler ve kombin önerileri e-posta kutunuza gelsin. Dilediğiniz zaman abonelikten çıkabilirsiniz.</p>"
       }
     }
   },
