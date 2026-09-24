@@ -1,7 +1,13 @@
 {%- liquid
   assign announcement = section.settings.text
   if announcement == blank and settings.free_shipping_threshold != blank
-    assign announcement = 'trust.free_shipping_html' | t: amount: settings.free_shipping_threshold
+    assign free_amount = settings.free_shipping_threshold | plus: 0
+    if free_amount >= 1000
+      assign free_thousands = free_amount | divided_by: 1000
+      assign free_rest = free_amount | modulo: 1000 | plus: 1000 | append: '' | slice: 1, 3
+      assign free_amount = free_thousands | append: '.' | append: free_rest
+    endif
+    assign announcement = 'trust.free_shipping_html' | t: amount: free_amount
   endif
 -%}
 {%- if announcement != blank -%}

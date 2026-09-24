@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "t:general.header",
@@ -5,7 +14,7 @@
     "announcement": {
       "type": "announcement-bar",
       "settings": {
-        "text": "Yıl boyu ücretsiz kargo",
+        "text": "2.000 ₺ ve üzeri siparişlerde ücretsiz kargo",
         "link": "/pages/kargo-ve-iade"
       }
     },
@@ -26,7 +35,7 @@
         "t1": {
           "type": "message",
           "settings": {
-            "text": "Yıl boyu ücretsiz kargo",
+            "text": "2.000 ₺ ve üzeri siparişlerde ücretsiz kargo",
             "link": "/pages/kargo-ve-iade"
           }
         },
