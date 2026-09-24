@@ -31,8 +31,17 @@
       {
         "@type": "Organization",
         "name": {{ organization }},
+        "legalName": "DESTEKTELEKOM BİLİŞİM HİZMETLERİ TİC. LTD. ŞTİ.",
+        "taxID": "2930490482",
         "url": {{ site_url | json }},
-        "email": {{ contact_email | json }}
+        "email": {{ contact_email | json }},
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Değirmiçem Mah. Nişantaşı Sok. Tekerekoğlu İş Merkezi No: 2 Kat: 1 Daire: 44",
+          "addressLocality": "Şehitkamil",
+          "addressRegion": "Gaziantep",
+          "addressCountry": "TR"
+        }
         {%- if contact_phone != blank -%}
           ,"telephone": {{ contact_phone | json }}
         {%- endif -%}
