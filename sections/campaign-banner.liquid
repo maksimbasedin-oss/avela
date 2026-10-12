@@ -29,7 +29,6 @@
     <div class="campaign-banner__inner">
       {% if show_offer %}
         <div class="campaign-banner__head">
-          <span class="campaign-banner__index" aria-hidden="true">0{{ section.index }}</span>
           {% if section.settings.eyebrow != blank %}
             <p class="eyebrow">{% render 'turkish-upper', text: section.settings.eyebrow %}</p>
           {% endif %}
@@ -127,13 +126,6 @@
     display: grid;
     gap: var(--space-md);
     padding: var(--space-2xl) var(--page-margin);
-  }
-
-  .campaign-banner__index {
-    display: block;
-    font-size: 0.6875rem;
-    letter-spacing: 0.2em;
-    opacity: 0.55;
   }
 
   .campaign-banner h2 {

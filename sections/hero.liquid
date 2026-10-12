@@ -25,7 +25,6 @@
   {% endif %}
 
   <div class="hero__stage">
-    <span class="hero__index" aria-hidden="true">01</span>
     {% if section.settings.eyebrow != blank %}
       <p class="eyebrow">{% render 'turkish-upper', text: section.settings.eyebrow %}</p>
     {% endif %}
@@ -118,12 +117,6 @@
     gap: var(--space-sm);
     min-width: 0;
     padding: var(--space-lg) var(--page-margin);
-  }
-
-  .hero__index {
-    font-size: 0.6875rem;
-    letter-spacing: 0.2em;
-    color: rgb(255 255 255 / 0.55);
   }
 
   .hero__heading {

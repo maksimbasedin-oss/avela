@@ -10,7 +10,6 @@
 {% if visible_blocks > 0 %}
   <div class="collection-list full-width">
     <div class="section-head">
-      <span class="section-head__index">0{{ section.index }}</span>
       {% if section.settings.heading != blank %}
         <h2 class="collection-list__heading">{% render 'turkish-upper', text: section.settings.heading %}</h2>
       {% endif %}
@@ -39,10 +38,6 @@
               if card_alt == card_collection.title
                 assign card_alt = card_title
               endif
-              assign card_index = forloop.index | prepend: '0'
-              if forloop.index > 9
-                assign card_index = forloop.index
-              endif
             %}
             <a
               class="collection-card{% if card_image == blank %} collection-card--plain{% endif %}"
@@ -60,7 +55,6 @@
                       alt: card_alt
                   }}
                 {% endif %}
-                <span class="collection-card__index">{{ card_index }}</span>
               </span>
               <span class="collection-card__meta">
                 <span class="collection-card__title">{% render 'turkish-upper', text: card_title, resource_handle: card_collection.handle %}</span>
@@ -127,21 +121,6 @@
     object-position: center 18%;
     filter: none;
     opacity: 0.88;
-  }
-
-  .collection-list .collection-card__index {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    min-width: 1.6rem;
-    padding: 0.2rem 0.35rem;
-    background: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-heading--family);
-    font-size: 0.625rem;
-    letter-spacing: 0.12em;
-    line-height: 1.2;
   }
 
   .collection-list .collection-card__meta {

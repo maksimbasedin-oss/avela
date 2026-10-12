@@ -118,7 +118,6 @@
     {% if show_overview %}
       <section class="blog-page__how" aria-labelledby="BlogHow">
         <div class="section-head">
-          <span class="section-head__index">01</span>
           <h2 id="BlogHow">{% render 'turkish-upper', text: how_title %}</h2>
         </div>
         <p class="blog-page__how-text">{{ how_text | escape }}</p>
@@ -152,7 +151,6 @@
 
       <section class="blog-page__how" aria-labelledby="BlogAudience">
         <div class="section-head">
-          <span class="section-head__index">02</span>
           <h2 id="BlogAudience">{% render 'turkish-upper', text: audience_title %}</h2>
         </div>
         <p class="blog-page__how-text">{{ audience_text | escape }}</p>
@@ -174,7 +172,6 @@
 
       <section class="blog-page__how" aria-labelledby="BlogOccasion">
         <div class="section-head">
-          <span class="section-head__index">03</span>
           <h2 id="BlogOccasion">{% render 'turkish-upper', text: occasion_title %}</h2>
         </div>
         <p class="blog-page__how-text">{{ occasion_text | escape }}</p>
@@ -200,7 +197,6 @@
 
       <section class="blog-page__how" aria-labelledby="BlogFabric">
         <div class="section-head">
-          <span class="section-head__index">04</span>
           <h2 id="BlogFabric">{% render 'turkish-upper', text: fabric_title %}</h2>
         </div>
         <p class="blog-page__how-text">{{ fabric_text | escape }}</p>
@@ -232,7 +228,6 @@
 
       <section class="blog-page__how" aria-labelledby="BlogPath">
         <div class="section-head">
-          <span class="section-head__index">06</span>
           <h2 id="BlogPath">{% render 'turkish-upper', text: path_title %}</h2>
         </div>
         <ol class="blog-page__path">
@@ -287,7 +282,6 @@
 
       <section class="blog-page__how" aria-labelledby="BlogNot">
         <div class="section-head">
-          <span class="section-head__index">07</span>
           <h2 id="BlogNot">{% render 'turkish-upper', text: not_title %}</h2>
         </div>
         <p class="blog-page__how-text">{{ not_text | escape }}</p>
@@ -351,7 +345,6 @@
 
       {% if blog.articles_count > 1 %}
         <div class="section-head">
-          <span class="section-head__index">08</span>
           <h2>{% render 'turkish-upper', text: guide_label %}</h2>
         </div>
         <ul class="blog-page__grid" role="list">
